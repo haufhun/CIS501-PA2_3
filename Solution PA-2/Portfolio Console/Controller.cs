@@ -26,10 +26,10 @@ namespace Portfolio_Console
         /// <summary>
         /// Initializes the account, user interface and the continue program, and also reads info from the file to create the database.
         /// </summary>
-        public Controller()
+        public Controller(Account a, UserInterface ui)
         {
-            _account = new Account();
-            _userInterface = new UserInterface();
+            this._account = a;
+            this._userInterface = ui;
             _continueProgram = true;
             DataBase.GetInfoFromFile(new StreamReader("Ticker.txt"));
         }

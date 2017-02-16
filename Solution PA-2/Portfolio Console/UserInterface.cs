@@ -291,18 +291,18 @@ namespace Portfolio_Console
         /// Displays how much money was added to cash.
         /// </summary>
         /// <param name="cash">The amount of money deposited.</param>
-        public void DisplayFundsWereAdded(decimal cash)
+        public void DisplayFundsWereAdded(decimal cash, decimal fee)
         {
-            Console.WriteLine((cash - Account.TransferFee).ToString("c", CultureInfo.CreateSpecificCulture("en-US")) +
+            Console.WriteLine((cash - fee).ToString("c", CultureInfo.CreateSpecificCulture("en-US")) +
                               " was depostied into your account\n");
         }
         /// <summary>
         /// Displays how much money was withdrawn from cash.
         /// </summary>
         /// <param name="withdrawl">THe amount of money withdrawn.</param>
-        public void DisplayFundsWereWithdrawn(decimal withdrawl)
+        public void DisplayFundsWereWithdrawn(decimal withdrawl, decimal fee)
         {
-            Console.WriteLine((withdrawl - Account.TransferFee).ToString("c", CultureInfo.CreateSpecificCulture("en-US")) +
+            Console.WriteLine((withdrawl - fee).ToString("c", CultureInfo.CreateSpecificCulture("en-US")) +
                               " was withdrawn from your account\n");
         }
         /// <summary>
@@ -410,10 +410,8 @@ namespace Portfolio_Console
         /// Displays the stock information, such as ticker name, full name, and price.
         /// </summary>
         /// <param name="tickerName">THe ticker name.</param>
-        public void DisplayStockInfo(string tickerName)
+        public void DisplayStockInfo(string tickerName, string fullName, decimal price)
         {
-            var fullName = DataBase.PriceAndTickerName[tickerName].Item2;
-            var price = DataBase.PriceAndTickerName[tickerName].Item3;
             Console.WriteLine("\n" + tickerName + " - " + fullName + " - " + price.ToString("c") + "\n");
         }
         /// <summary>
