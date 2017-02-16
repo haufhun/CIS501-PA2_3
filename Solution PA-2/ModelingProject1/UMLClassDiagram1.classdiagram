@@ -14,16 +14,70 @@
     <logicalClassDesignerModelHasTypes>
       <class Id="1c79ae2f-7a38-4d3b-b2ef-737a06f188a4" name="GUIContr" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="3c00f01e-e5a8-4f53-947c-1e9dbad1b0b4" />
+        <targetEnds>
+          <association Id="f7f90255-811e-48d3-bdd6-154470b03a36" isDerived="false" sourceEndRoleName="GUIContr" targetEndRoleName="_account" isLeaf="false" isAbstract="false">
+            <classMoniker Id="1fd0918c-48f7-4a96-aee8-5f4200b3874a" LastKnownName="Account" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ae98e931-8477-4606-ab6b-663d698ae177" name="GUIContr" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="62786dff-8fdd-4bfb-8f39-bd35a8cf9812" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9cd6a457-dc52-4b84-96ef-3e2db4fa2100" name="_account" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="0c18521a-ca49-43a5-9d59-777369ae57d9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="0c50ddb7-1d3f-4fe3-878b-5a4a3dfa09a5" />
+          </association>
+        </targetEnds>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
       <class Id="9b5ec3fd-75aa-4e89-9055-d38b378b9ba6" name="ConsoleController" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="acce8dc0-707b-471e-b398-c77af0dd8efb" />
+        <targetEnds>
+          <association Id="41c4b9e7-d4f8-4227-9987-082d2f6129c3" isDerived="false" sourceEndRoleName="ConsoleController" targetEndRoleName="_account" isLeaf="false" isAbstract="false">
+            <classMoniker Id="1fd0918c-48f7-4a96-aee8-5f4200b3874a" LastKnownName="Account" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="adc7d4d4-f198-42ea-8943-c364b9b4346f" name="ConsoleController" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="b4b2d4bf-2989-4590-9d3a-d2a4f945a156" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="44dffd39-0a74-49cd-b790-e887ae899849" name="_account" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="fcb6e905-1644-4783-9023-e6b6765d08cf" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="63f82cb8-5702-4ac2-bafa-982c19d20ff3" />
+          </association>
+        </targetEnds>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
       <class Id="5e934243-14cc-4eb6-a66a-d3687d6690f6" name="Console" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="764a5291-e8be-4f7f-949a-394523190b19" />
+        <targetEnds>
+          <association Id="c4c9b99c-92ab-4d5e-9448-4a354665ad63" isDerived="false" sourceEndRoleName="Console" targetEndRoleName="ConsoleController" isLeaf="false" isAbstract="false">
+            <classMoniker Id="9b5ec3fd-75aa-4e89-9055-d38b378b9ba6" LastKnownName="ConsoleController" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="74fd2149-01dd-47ba-bb88-9d3607df59c3" name="Console" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="6f37371a-c1ec-4bf2-b297-9fbe0eac8dce" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="89d40aeb-7e30-40e7-a605-6177e301c269" name="ConsoleController" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="4054faea-3d4d-4327-9cf7-1bb5046914f9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="cdcbd1b9-c350-476a-997b-ccd9555db9c3" />
+          </association>
+        </targetEnds>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
@@ -34,6 +88,16 @@
     <logicalClassDesignerModelHasTypes>
       <class Id="1304b876-a4ff-4b17-8ee0-bbfb3f2e7b39" name="Stock" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="d05693a1-d275-430e-b149-da7e723c0ea4" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="32e9fcb3-390d-44ff-9966-396e2a529e3c" name="Handler" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e85c8db1-04e9-4b0a-a8b5-8f71fc986350" />
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="c9ca012a-2712-45d8-bdd8-74afef875d8f" name="c" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6823dc9b-9662-48c1-bb92-d7086f5b35ac" />
       </class>
     </logicalClassDesignerModelHasTypes>
   </packagedElements>

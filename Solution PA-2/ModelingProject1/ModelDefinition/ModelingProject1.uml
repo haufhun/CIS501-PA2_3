@@ -48,7 +48,49 @@
         name="GUIContr"
         isAbstract="false"
         isLeaf="false"
-        isActiveClass="false" />
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="0c50ddb7-1d3f-4fe3-878b-5a4a3dfa09a5"
+            isDerived="false"
+            sourceEndRoleName="GUIContr"
+            targetEndRoleName="_account"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="3c325eac-3b31-4d36-8fa5-8787569fa2ba"
+              LastKnownName="Account"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="62786dff-8fdd-4bfb-8f39-bd35a8cf9812"
+                  name="GUIContr"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0c18521a-ca49-43a5-9d59-777369ae57d9"
+                  name="_account"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <class
@@ -56,7 +98,49 @@
         name="ConsoleController"
         isAbstract="false"
         isLeaf="false"
-        isActiveClass="false" />
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="63f82cb8-5702-4ac2-bafa-982c19d20ff3"
+            isDerived="false"
+            sourceEndRoleName="ConsoleController"
+            targetEndRoleName="_account"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="3c325eac-3b31-4d36-8fa5-8787569fa2ba"
+              LastKnownName="Account"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b4b2d4bf-2989-4590-9d3a-d2a4f945a156"
+                  name="ConsoleController"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fcb6e905-1644-4783-9023-e6b6765d08cf"
+                  name="_account"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <class
@@ -64,7 +148,49 @@
         name="Console"
         isAbstract="false"
         isLeaf="false"
-        isActiveClass="false" />
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="cdcbd1b9-c350-476a-997b-ccd9555db9c3"
+            isDerived="false"
+            sourceEndRoleName="Console"
+            targetEndRoleName="ConsoleController"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="acce8dc0-707b-471e-b398-c77af0dd8efb"
+              LastKnownName="ConsoleController"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6f37371a-c1ec-4bf2-b297-9fbe0eac8dce"
+                  name="Console"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4054faea-3d4d-4327-9cf7-1bb5046914f9"
+                  name="ConsoleController"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <class
@@ -78,6 +204,21 @@
       <class
         Id="d05693a1-d275-430e-b149-da7e723c0ea4"
         name="Stock"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="e85c8db1-04e9-4b0a-a8b5-8f71fc986350"
+        name="Handler"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="6823dc9b-9662-48c1-bb92-d7086f5b35ac"
+        name="c"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false" />
