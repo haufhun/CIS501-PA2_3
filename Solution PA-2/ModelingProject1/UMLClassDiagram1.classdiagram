@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="026ecfc2-fa7b-4ea1-ac06-0b1b851d51e1" name="UMLClassDiagram1" linkedPackageId="da9dfddf-b9b4-4b15-b8ab-2b987c690ed4" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="1fd0918c-48f7-4a96-aee8-5f4200b3874a" name="Account" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="3c325eac-3b31-4d36-8fa5-8787569fa2ba" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="3f45152e-ef4f-4d33-9277-a71c6ea54d13" name="Portfolio" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="3c592ab0-eea5-4c31-a45f-ea216395d52d" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="1c79ae2f-7a38-4d3b-b2ef-737a06f188a4" name="GUIContr" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="3c00f01e-e5a8-4f53-947c-1e9dbad1b0b4" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="9b5ec3fd-75aa-4e89-9055-d38b378b9ba6" name="ConsoleCont" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="acce8dc0-707b-471e-b398-c77af0dd8efb" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="5e934243-14cc-4eb6-a66a-d3687d6690f6" name="Console" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="764a5291-e8be-4f7f-949a-394523190b19" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="6676509e-dc6d-432c-8214-4c048882eca6" name="Form" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="3fb027b4-5b39-4656-bdd5-18217475aa7a" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="1304b876-a4ff-4b17-8ee0-bbfb3f2e7b39" name="Stock" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="d05693a1-d275-430e-b149-da7e723c0ea4" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="da9dfddf-b9b4-4b15-b8ab-2b987c690ed4" name="ModelingProject1">
+    <elementDefinition Id="ba49bed6-8a6f-42e7-8d11-7d15a6a4b702" />
+    <profileInstances>
+      <packageHasProfileInstances Id="00b74280-f8a9-4690-89f0-0cceb23245cc">
+        <profileInstance Id="3feb3488-4b3d-4934-ad7a-6812244c3794" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="43818f23-089d-4404-80e8-aeaae8412481">
+        <profileInstance Id="7f746124-5f55-48ef-8d0b-5f499db2e28d" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</logicalClassDesignerModel>
