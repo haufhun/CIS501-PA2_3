@@ -17,7 +17,7 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="9b5ec3fd-75aa-4e89-9055-d38b378b9ba6" name="ConsoleCont" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="9b5ec3fd-75aa-4e89-9055-d38b378b9ba6" name="ConsoleController" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="acce8dc0-707b-471e-b398-c77af0dd8efb" />
       </class>
     </logicalClassDesignerModelHasTypes>

@@ -24,7 +24,7 @@
       </nestedChildShapes>
     </classShape>
     <classShape Id="b5ad08fb-b356-4f29-8874-b9f5a600eb26" absoluteBounds="2.375, 1.25, 1.5, 0.90234373509883881" hideQualifiedName="false" increaseHeight="0" customColor="181, 193, 223">
-      <classMoniker Id="9b5ec3fd-75aa-4e89-9055-d38b378b9ba6" LastKnownName="ConsoleCont" />
+      <classMoniker Id="9b5ec3fd-75aa-4e89-9055-d38b378b9ba6" LastKnownName="ConsoleController" />
       <nestedChildShapes>
         <AttributeElementListCompartment Id="5ce645dc-066c-4966-b51e-6dfbd78153f8" absoluteBounds="2.39, 1.6400000000000001, 1.4700000000000002, 0.2011718675494194" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
         <OperationElementListCompartment Id="bd7254fe-54fb-4c79-8069-3627e18709c8" absoluteBounds="2.39, 1.8511718675494193, 1.4700000000000002, 0.2011718675494194" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />

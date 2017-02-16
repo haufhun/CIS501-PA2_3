@@ -53,7 +53,7 @@
     <packageHasNamedElement>
       <class
         Id="acce8dc0-707b-471e-b398-c77af0dd8efb"
-        name="ConsoleCont"
+        name="ConsoleController"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false" />
