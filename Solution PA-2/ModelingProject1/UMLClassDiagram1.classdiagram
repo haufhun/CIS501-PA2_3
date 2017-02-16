@@ -95,11 +95,6 @@
         <elementDefinition Id="e85c8db1-04e9-4b0a-a8b5-8f71fc986350" />
       </Interface>
     </logicalClassDesignerModelHasTypes>
-    <logicalClassDesignerModelHasTypes>
-      <class Id="c9ca012a-2712-45d8-bdd8-74afef875d8f" name="c" isAbstract="false" isLeaf="false" isActiveClass="false">
-        <elementDefinition Id="6823dc9b-9662-48c1-bb92-d7086f5b35ac" />
-      </class>
-    </logicalClassDesignerModelHasTypes>
   </packagedElements>
   <package Id="da9dfddf-b9b4-4b15-b8ab-2b987c690ed4" name="ModelingProject1">
     <elementDefinition Id="ba49bed6-8a6f-42e7-8d11-7d15a6a4b702" />
