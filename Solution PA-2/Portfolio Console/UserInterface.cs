@@ -291,18 +291,18 @@ namespace Portfolio_Console
         /// Displays how much money was added to cash.
         /// </summary>
         /// <param name="cash">The amount of money deposited.</param>
-        public void DisplayFundsWereAdded(decimal cash, decimal fee)
+        public void DisplayFundsWereAdded(decimal cash)
         {
-            Console.WriteLine((cash - fee).ToString("c", CultureInfo.CreateSpecificCulture("en-US")) +
+            Console.WriteLine((cash).ToString("c", CultureInfo.CreateSpecificCulture("en-US")) +
                               " was depostied into your account\n");
         }
         /// <summary>
         /// Displays how much money was withdrawn from cash.
         /// </summary>
         /// <param name="withdrawl">THe amount of money withdrawn.</param>
-        public void DisplayFundsWereWithdrawn(decimal withdrawl, decimal fee)
+        public void DisplayFundsWereWithdrawn(decimal withdrawl)
         {
-            Console.WriteLine((withdrawl - fee).ToString("c", CultureInfo.CreateSpecificCulture("en-US")) +
+            Console.WriteLine((withdrawl).ToString("c", CultureInfo.CreateSpecificCulture("en-US")) +
                               " was withdrawn from your account\n");
         }
         /// <summary>

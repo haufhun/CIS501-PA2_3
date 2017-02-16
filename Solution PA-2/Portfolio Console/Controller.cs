@@ -31,7 +31,6 @@ namespace Portfolio_Console
             this._account = a;
             this._userInterface = ui;
             _continueProgram = true;
-            DataBase.GetInfoFromFile(new StreamReader("Ticker.txt"));
         }
 
         /// <summary>
@@ -130,12 +129,12 @@ namespace Portfolio_Console
         private void Deposit()
         {
             var cash = _userInterface.AskForFundsToAdd();
-            if (_userInterface.UserWantsToContinue(Account.TransferFee))
+            if (_userInterface.UserWantsToContinue(Account.TRANSFER_FEE))
             {
                 try
                 {
                     _account.AddFundsToCashFund(cash);
-                    _userInterface.DisplayFundsWereAdded(cash);
+                    _userInterface.DisplayFundsWereAdded(cash - Account.TRANSFER_FEE);
                 }
                 catch (InsufficientAccountBalanceFundsException ex)
                 {
@@ -159,7 +158,7 @@ namespace Portfolio_Console
             var withdrawl = _userInterface.AskForFundsToWithdraw();
 
 
-            while (withdrawl > _account.CashBalance + _account.InvestedBalance || withdrawl > _account.CashBalance - Account.TransferFee)
+            while (withdrawl > _account.CashBalance + _account.InvestedBalance || withdrawl > _account.CashBalance - Account.TRANSFER_FEE)
             {
                 Console.WriteLine("\nYou do not have sufficient funds in your account. Please try again.");
                 withdrawl = _userInterface.AskForFundsToWithdraw();
@@ -167,7 +166,7 @@ namespace Portfolio_Console
 
             try
             {
-                if (_userInterface.UserWantsToContinue(Account.TransferFee))
+                if (_userInterface.UserWantsToContinue(Account.TRANSFER_FEE))
                 {
                     while (withdrawl > _account.CashBalance)
                     {
@@ -188,7 +187,7 @@ namespace Portfolio_Console
                         }
                     }
                     _account.WithdrawFunds(withdrawl);
-                    _userInterface.DisplayFundsWereWithdrawn(withdrawl);
+                    _userInterface.DisplayFundsWereWithdrawn(withdrawl - Account.TRANSFER_FEE);
                 }
             }
             catch (InsufficientAccountBalanceFundsException ex)
@@ -406,12 +405,13 @@ namespace Portfolio_Console
                 try
                 {
                     var tickerName = _userInterface.AskForStockName();
-                    _userInterface.DisplayStockInfo(tickerName);
+                    _userInterface.DisplayStockInfo(tickerName, DataBase.PriceAndTickerName[tickerName].Item2, 
+                            DataBase.PriceAndTickerName[tickerName].Item3);
                     var inputOption = _userInterface.AskForWayOfPurchasingStocks();
                     if (inputOption == 1)
                     {
                         var shares = _userInterface.AskForNumberOfShares();
-                        if (_userInterface.UserWantsToContinue(Account.TradeFee))
+                        if (_userInterface.UserWantsToContinue(Account.TRADE_FEE))
                             _account.BuyStock(portfolioName, tickerName, shares);
                         _userInterface.DisplayStockWasPurchased(shares, DataBase.PriceAndTickerName[tickerName].Item3, tickerName);
                     }
@@ -419,7 +419,7 @@ namespace Portfolio_Console
                     {
                         var dollars = _userInterface.AskForDollars();
                         int shares = (int)(dollars / DataBase.PriceAndTickerName[tickerName].Item3);
-                        if (_userInterface.UserWantsToContinue(Account.TradeFee))
+                        if (_userInterface.UserWantsToContinue(Account.TRADE_FEE))
                             _account.BuyStock(portfolioName, tickerName, shares);
                         _userInterface.DisplayStockWasPurchased(shares, DataBase.PriceAndTickerName[tickerName].Item3, tickerName);
                     }
@@ -456,7 +456,7 @@ namespace Portfolio_Console
                 }
 
                 var shares = _userInterface.AskForNumberOfShares();
-                if (_userInterface.UserWantsToContinue(Account.TradeFee))
+                if (_userInterface.UserWantsToContinue(Account.TRADE_FEE))
                 {
                     _account.SellNumberOfStocks(portfolioName, tickerName, shares);
                     _userInterface.DisplayStockWasSold(shares, DataBase.PriceAndTickerName[tickerName].Item3, tickerName);
