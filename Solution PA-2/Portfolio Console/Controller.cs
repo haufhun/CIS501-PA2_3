@@ -128,7 +128,24 @@ namespace Portfolio_Console
         /// </summary>
         private void Deposit()
         {
-            var cash = _userInterface.AskForFundsToAdd();
+            decimal cash = 0;
+            try
+            {
+                cash = Convert.ToDecimal(_userInterface.AskForFundsToAdd());
+                if(cash < Account.TRANSFER_FEE)
+                {
+                    _userInterface.DisplayDepositTooSmall();
+                    _userInterface.WaitForUserToPressEnter();
+                    return;
+                }
+            }
+            catch(FormatException)
+            {
+                _userInterface.DisplayIncorrectNumberInput();
+                _userInterface.WaitForUserToPressEnter();
+                return;
+            }
+
             if (_userInterface.UserWantsToContinue(Account.TRANSFER_FEE))
             {
                 try
@@ -155,13 +172,26 @@ namespace Portfolio_Console
                 _userInterface.WaitForUserToPressEnter();
                 return;
             }
-            var withdrawl = _userInterface.AskForFundsToWithdraw();
+            decimal withdrawl = 0;
 
-
-            while (withdrawl > _account.CashBalance + _account.InvestedBalance || withdrawl > _account.CashBalance - Account.TRANSFER_FEE)
+            bool validInput = false;
+            while (!validInput)
             {
-                Console.WriteLine("\nYou do not have sufficient funds in your account. Please try again.");
-                withdrawl = _userInterface.AskForFundsToWithdraw();
+                validInput = true;
+                try
+                {
+                    withdrawl = Convert.ToDecimal(_userInterface.AskForFundsToWithdraw());
+                    if (withdrawl > _account.CashBalance + _account.InvestedBalance || withdrawl > _account.CashBalance - Account.TRANSFER_FEE)
+                    {
+                        _userInterface.DisplayErrorMessage("\nYou do not have sufficient funds in your account. Please try again.");
+                        validInput = false;
+                    }
+                }
+                catch (FormatException)
+                {
+                    _userInterface.DisplayIncorrectNumberInput();
+                    validInput = false;
+                }
             }
 
             try
@@ -170,7 +200,7 @@ namespace Portfolio_Console
                 {
                     while (withdrawl > _account.CashBalance)
                     {
-                        Console.WriteLine(
+                        _userInterface.DisplayErrorMessage(
                             "\nYou do not have sufficient funds in your accout. You must sell some of your stocks.");
                         if (_userInterface.UserWantsToContinue())
                         {
@@ -202,7 +232,6 @@ namespace Portfolio_Console
         private void AccountBalance()
         {
             _userInterface.DisplayAccountBalance(_account.GetAccountBalance());
-            Console.WriteLine();
             _userInterface.WaitForUserToPressEnter();
         }
         /// <summary>

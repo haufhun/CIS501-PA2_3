@@ -38,6 +38,13 @@ namespace Portfolio_Console
             Console.WriteLine("\nYou must create a portfolio before you can select one!");
         }
         /// <summary>
+        /// Tells the user to enter a number.
+        /// </summary>
+        public void DisplayIncorrectNumberInput()
+        {
+            Console.WriteLine("\nInvalid input. You must enter a number.\n");
+        }
+        /// <summary>
         /// Asks if the user wants to continue with a process.
         /// </summary>
         /// <returns>If the user wants to continue or not.</returns>
@@ -155,20 +162,27 @@ namespace Portfolio_Console
         /// <summary>
         /// Asks for the user to input the money they would like to deposit.
         /// </summary>
-        /// <returns>A decimal of the amount of money.</returns>
-        public decimal AskForFundsToAdd()
+        /// <returns>A string  of the amount of money to be handled by controller.</returns>
+        public string AskForFundsToAdd()
         {
             Console.Write("\nEnter the amount of money you would like to deposit: ");
-            return Convert.ToDecimal(Console.ReadLine());
+            return Console.ReadLine();
+        }
+        /// <summary>
+        /// Tells the user the amount of money entered was smaller than the transaction fee.
+        /// </summary>
+        public void DisplayDepositTooSmall()
+        {
+            Console.WriteLine("\nThe amount of money you would like to enter is smaller than the transaction fee, so no money will be placed in your account.\n");
         }
         /// <summary>
         /// Asks for the user to input the money they would like to withdraw.
         /// </summary>
-        /// <returns>A decimal of the amount of money.</returns>
-        public decimal AskForFundsToWithdraw()
+        /// <returns>A string of the amount of money to be handled by controller.</returns>
+        public string AskForFundsToWithdraw()
         {
             Console.Write("\nEnter the amount of money you would like to withdraw: ");
-            return Convert.ToDecimal(Console.ReadLine());
+            return Console.ReadLine();
         }
         /// <summary>
         /// Asks the user for the number of shares.
@@ -230,7 +244,7 @@ namespace Portfolio_Console
             Console.WriteLine("\nCash balance: " + balance.Item1.ToString("c", CultureInfo.CreateSpecificCulture("en-US"))
                   + "\nInvested balance: " + balance.Item2.ToString("c", CultureInfo.CreateSpecificCulture("en-US"))
                   + "\nTOTAL Account Balance: " +
-                  balance.Item3.ToString("c", CultureInfo.CreateSpecificCulture("en-US")));
+                  balance.Item3.ToString("c", CultureInfo.CreateSpecificCulture("en-US"))+"\n");
         }
         /// <summary>
         /// Displays the gains/losses report.
