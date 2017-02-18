@@ -19,9 +19,58 @@ namespace Portfolio_GUI
             _observers.Add(o);
         }
 
-        public void Handle(object sender, EventArgs e)
+        public void DepositFunds(decimal cash)
         {
-            sender.ToString();
+            //validate cash isn't null
+            //validate 
+
+            _account.AddFundsToCashFund(cash);
+        }
+
+        public void BuyStocks(string portfolioName, string tickerName, int numberOfShares)
+        {
+            //validate
+
+            _account.BuyStock(portfolioName, tickerName, numberOfShares);
+            SignalObservers();
+        }
+
+        public void SellStocks(string portfolioName, string tickerName, int numberOfShares)
+        {
+            //validate isn't null
+            //validate valid portfolioname and tickername
+            //validate numberofshares is #
+            //validate numberOfShares not too many shares to sell
+
+            _account.SellNumberOfStocks(portfolioName, tickerName, numberOfShares);
+            SignalObservers();
+        }
+
+        public void AddPortfolio(string portfolioName)
+        {
+            //validate isn't null
+            //validate name doesn't already exist
+            _account.AddPortfolio(portfolioName);
+        }
+        /// <summary>
+        /// Simulates stock market activity, either high, medium or low volatility based on user choice.
+        /// </summary>
+        public void Simulate(int volatility)
+        {
+            //show simulator form
+            switch (volatility)
+            {
+                case 1:
+                    Simulator.SimulateHighVolatility();
+                    break;
+                case 2:
+                    Simulator.SimulateMediumVolatility();
+                    break;
+                case 3:
+                    Simulator.SimulateLowVolatility();
+                    break;
+            }
+            SignalObservers();
         }
 
         /// <summary>
