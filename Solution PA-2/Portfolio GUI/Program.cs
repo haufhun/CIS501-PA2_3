@@ -7,6 +7,13 @@ using Class_Library;
 
 namespace Portfolio_GUI
 {
+    // defines the type of method that observes model updates:
+    public delegate void Observer();
+    //defines the type of method that handles an input event (button press):
+    public delegate void AccountInputHandler(object sender, EventArgs e); //for deposit & withdraw cash
+    // defines the type of method that handles an input event (button press):
+    public delegate void PortfolioInputHandler(object sender, EventArgs e); //for buy stocks, sell stocks & delete portfolio
+
     static class Program
     {
         /// <summary>
@@ -21,9 +28,11 @@ namespace Portfolio_GUI
 
             var c = new GuiController(a);
 
-            var mainForm = new UserInterface(c.Handle);
+            var mainForm = new UserInterface();
 
             //c.Register()
+
+            Application.Run(mainForm);
             
                                                         //Deck d = new Deck();
                                                         //Hand h = new Hand();
