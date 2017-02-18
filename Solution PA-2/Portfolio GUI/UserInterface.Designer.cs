@@ -1,6 +1,6 @@
 ﻿namespace Portfolio_GUI
 {
-    partial class Form1
+    partial class UserInterface
     {
         /// <summary>
         /// Required designer variable.

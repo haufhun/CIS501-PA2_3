@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Portfolio_GUI
 {
-    public partial class Form1 : Form
+    public partial class UserInterface : Form
     {
-        public Form1()
+        public UserInterface()
         {
             InitializeComponent();
+        }
+
+        public UserInterface(EventHandler<EventArgs> handle)
+        {
+            throw new NotImplementedException();
         }
     }
 }
