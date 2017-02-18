@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Class_Library;
 
 namespace Portfolio_GUI
 {
@@ -11,12 +12,32 @@ namespace Portfolio_GUI
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            var a = new Account();
+
+            var c = new GuiController(a);
+
+            var mainForm = new UserInterface(c.Handle);
+
+            //c.Register()
+            
+                                                        //Deck d = new Deck();
+                                                        //Hand h = new Hand();
+                                                        //GameController c = new GameController(d, h);
+                                                        //OutcomeForm outcome = new OutcomeForm(h);
+                                                        //outcome.Show();
+
+                                                        //MainForm mainform = new MainForm(c.handle2, h);
+                                                        //c.register(mainform.showCards);
+                                                        //c.register(outcome.checkScore);
+
+                                                        //Application.Run(mainform);  // Run  mainform  to receive the input events that
+                                                        ////   trigger computation.
+                                                        //MessageBox.Show("Click to exit.", "Exit");
         }
     }
 }
