@@ -19,7 +19,7 @@ namespace Portfolio_GUI
 
         public UserInterface(EventHandler<EventArgs> handle)
         {
-            throw new NotImplementedException();
+           // throw new NotImplementedException();
         }
     }
 }
