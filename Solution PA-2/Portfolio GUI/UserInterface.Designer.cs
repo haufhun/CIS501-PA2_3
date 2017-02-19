@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserInterface));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.uxTabControl = new System.Windows.Forms.TabControl();
             this.uxHomeTab = new System.Windows.Forms.TabPage();
             this.uxAccountTab = new System.Windows.Forms.TabPage();
@@ -45,18 +45,7 @@
             this.uxAccBalLabel = new System.Windows.Forms.Label();
             this.uxPortfolioTab = new System.Windows.Forms.TabPage();
             this.uxPortfolioToolStrip = new System.Windows.Forms.ToolStrip();
-            this.uxPortfolio1 = new System.Windows.Forms.ToolStripSplitButton();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.deletePortfolioToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.uxPortfolio2 = new System.Windows.Forms.ToolStripSplitButton();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.deletePortfolioToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.uxPortfolio3 = new System.Windows.Forms.ToolStripSplitButton();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.deletePortfolioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.uxAddPortfolio = new System.Windows.Forms.ToolStripButton();
-            this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.uxTotalInvestedLabel = new System.Windows.Forms.Label();
             this.uxAccBalOutput = new System.Windows.Forms.Label();
             this.uxTotalInvestedOutput = new System.Windows.Forms.Label();
@@ -84,18 +73,35 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label16 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.uxPortfolioName = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.uxPortfolio1 = new System.Windows.Forms.ToolStripSplitButton();
             this.buyStocksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sellStocksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.deletePortfolioToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.uxPortfolio2 = new System.Windows.Forms.ToolStripSplitButton();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.deletePortfolioToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.uxPortfolio3 = new System.Windows.Forms.ToolStripSplitButton();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
-            this.uxPortfolioName = new System.Windows.Forms.Label();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.deletePortfolioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uxAddPortfolio = new System.Windows.Forms.ToolStripButton();
+            this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.uxTabControl.SuspendLayout();
+            this.uxHomeTab.SuspendLayout();
             this.uxAccountTab.SuspendLayout();
             this.uxPortfolioTab.SuspendLayout();
             this.uxPortfolioToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // uxTabControl
@@ -114,6 +120,7 @@
             // 
             // uxHomeTab
             // 
+            this.uxHomeTab.Controls.Add(this.toolStrip1);
             this.uxHomeTab.Location = new System.Drawing.Point(4, 25);
             this.uxHomeTab.Name = "uxHomeTab";
             this.uxHomeTab.Padding = new System.Windows.Forms.Padding(3);
@@ -205,6 +212,7 @@
             // uxPortfolioTab
             // 
             this.uxPortfolioTab.Controls.Add(this.uxPortfolioName);
+            this.uxPortfolioTab.Controls.Add(this.label17);
             this.uxPortfolioTab.Controls.Add(this.chart1);
             this.uxPortfolioTab.Controls.Add(this.label7);
             this.uxPortfolioTab.Controls.Add(this.label8);
@@ -243,113 +251,10 @@
             this.uxPortfolioToolStrip.TabIndex = 3;
             this.uxPortfolioToolStrip.Text = "toolStrip1";
             // 
-            // uxPortfolio1
-            // 
-            this.uxPortfolio1.BackColor = System.Drawing.Color.Maroon;
-            this.uxPortfolio1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.buyStocksToolStripMenuItem,
-            this.sellStocksToolStripMenuItem,
-            this.toolStripMenuItem2,
-            this.deletePortfolioToolStripMenuItem2});
-            this.uxPortfolio1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.uxPortfolio1.Image = ((System.Drawing.Image)(resources.GetObject("uxPortfolio1.Image")));
-            this.uxPortfolio1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.uxPortfolio1.Name = "uxPortfolio1";
-            this.uxPortfolio1.Size = new System.Drawing.Size(117, 24);
-            this.uxPortfolio1.Text = "Portfolio 1";
-            this.uxPortfolio1.ButtonClick += new System.EventHandler(this.uxPortfolio1_ButtonClick);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Enabled = false;
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(185, 26);
-            this.toolStripMenuItem2.Text = " ";
-            // 
-            // deletePortfolioToolStripMenuItem2
-            // 
-            this.deletePortfolioToolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("deletePortfolioToolStripMenuItem2.Image")));
-            this.deletePortfolioToolStripMenuItem2.Name = "deletePortfolioToolStripMenuItem2";
-            this.deletePortfolioToolStripMenuItem2.Size = new System.Drawing.Size(185, 26);
-            this.deletePortfolioToolStripMenuItem2.Text = "DeletePortfolio";
-            // 
-            // uxPortfolio2
-            // 
-            this.uxPortfolio2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem5,
-            this.toolStripMenuItem1,
-            this.toolStripMenuItem3,
-            this.deletePortfolioToolStripMenuItem1});
-            this.uxPortfolio2.Image = ((System.Drawing.Image)(resources.GetObject("uxPortfolio2.Image")));
-            this.uxPortfolio2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.uxPortfolio2.Name = "uxPortfolio2";
-            this.uxPortfolio2.Size = new System.Drawing.Size(117, 24);
-            this.uxPortfolio2.Text = "Portfolio 2";
-            this.uxPortfolio2.ButtonClick += new System.EventHandler(this.uxPortfolio2_ButtonClick);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Enabled = false;
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(189, 26);
-            this.toolStripMenuItem3.Text = " ";
-            // 
-            // deletePortfolioToolStripMenuItem1
-            // 
-            this.deletePortfolioToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("deletePortfolioToolStripMenuItem1.Image")));
-            this.deletePortfolioToolStripMenuItem1.Name = "deletePortfolioToolStripMenuItem1";
-            this.deletePortfolioToolStripMenuItem1.Size = new System.Drawing.Size(189, 26);
-            this.deletePortfolioToolStripMenuItem1.Text = "Delete Portfolio";
-            // 
-            // uxPortfolio3
-            // 
-            this.uxPortfolio3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem6,
-            this.toolStripMenuItem7,
-            this.toolStripMenuItem4,
-            this.deletePortfolioToolStripMenuItem});
-            this.uxPortfolio3.Image = ((System.Drawing.Image)(resources.GetObject("uxPortfolio3.Image")));
-            this.uxPortfolio3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.uxPortfolio3.Name = "uxPortfolio3";
-            this.uxPortfolio3.Size = new System.Drawing.Size(117, 24);
-            this.uxPortfolio3.Text = "Portfolio 3";
-            this.uxPortfolio3.ButtonClick += new System.EventHandler(this.uxPortfolio3_ButtonClick);
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Enabled = false;
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(189, 26);
-            this.toolStripMenuItem4.Text = " ";
-            // 
-            // deletePortfolioToolStripMenuItem
-            // 
-            this.deletePortfolioToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("deletePortfolioToolStripMenuItem.Image")));
-            this.deletePortfolioToolStripMenuItem.Name = "deletePortfolioToolStripMenuItem";
-            this.deletePortfolioToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
-            this.deletePortfolioToolStripMenuItem.Text = "Delete Portfolio";
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
-            // 
-            // uxAddPortfolio
-            // 
-            this.uxAddPortfolio.Image = ((System.Drawing.Image)(resources.GetObject("uxAddPortfolio.Image")));
-            this.uxAddPortfolio.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.uxAddPortfolio.Name = "uxAddPortfolio";
-            this.uxAddPortfolio.Size = new System.Drawing.Size(122, 24);
-            this.uxAddPortfolio.Text = "&Add Portfolio";
-            // 
-            // helpToolStripButton
-            // 
-            this.helpToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.helpToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripButton.Image")));
-            this.helpToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.helpToolStripButton.Name = "helpToolStripButton";
-            this.helpToolStripButton.Size = new System.Drawing.Size(24, 24);
-            this.helpToolStripButton.Text = "He&lp";
             // 
             // uxTotalInvestedLabel
             // 
@@ -613,72 +518,209 @@
             // 
             // chart1
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(900, 337);
             this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart1.Series.Add(series3);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(288, 173);
             this.chart1.TabIndex = 23;
             this.chart1.Text = "chart1";
             // 
+            // uxPortfolioName
+            // 
+            this.uxPortfolioName.AutoSize = true;
+            this.uxPortfolioName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxPortfolioName.Location = new System.Drawing.Point(8, 36);
+            this.uxPortfolioName.Name = "uxPortfolioName";
+            this.uxPortfolioName.Size = new System.Drawing.Size(256, 39);
+            this.uxPortfolioName.TabIndex = 24;
+            this.uxPortfolioName.Text = "Portfolio Name";
+            this.uxPortfolioName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label17
+            // 
+            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(19, 81);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(1205, 2);
+            this.label17.TabIndex = 25;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1,
+            this.toolStripButton2});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 3);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1231, 27);
+            this.toolStrip1.TabIndex = 0;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(139, 24);
+            this.toolStripButton1.Text = "Open Ticker File";
+            // 
+            // uxPortfolio1
+            // 
+            this.uxPortfolio1.BackColor = System.Drawing.Color.Maroon;
+            this.uxPortfolio1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.buyStocksToolStripMenuItem,
+            this.sellStocksToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.deletePortfolioToolStripMenuItem2});
+            this.uxPortfolio1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.uxPortfolio1.Image = ((System.Drawing.Image)(resources.GetObject("uxPortfolio1.Image")));
+            this.uxPortfolio1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.uxPortfolio1.Name = "uxPortfolio1";
+            this.uxPortfolio1.Size = new System.Drawing.Size(117, 24);
+            this.uxPortfolio1.Text = "Portfolio 1";
+            this.uxPortfolio1.Visible = false;
+            this.uxPortfolio1.ButtonClick += new System.EventHandler(this.uxPortfolio1_ButtonClick);
+            // 
             // buyStocksToolStripMenuItem
             // 
-            this.buyStocksToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("buyStocksToolStripMenuItem.Image")));
             this.buyStocksToolStripMenuItem.Name = "buyStocksToolStripMenuItem";
             this.buyStocksToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
             this.buyStocksToolStripMenuItem.Text = "Buy Stocks";
             // 
             // sellStocksToolStripMenuItem
             // 
-            this.sellStocksToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("sellStocksToolStripMenuItem.Image")));
             this.sellStocksToolStripMenuItem.Name = "sellStocksToolStripMenuItem";
             this.sellStocksToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
             this.sellStocksToolStripMenuItem.Text = "Sell Stocks";
             // 
-            // toolStripMenuItem1
+            // toolStripMenuItem2
             // 
-            this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(189, 26);
-            this.toolStripMenuItem1.Text = "Sell Stocks";
+            this.toolStripMenuItem2.Enabled = false;
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(185, 26);
+            this.toolStripMenuItem2.Text = " ";
+            // 
+            // deletePortfolioToolStripMenuItem2
+            // 
+            this.deletePortfolioToolStripMenuItem2.Name = "deletePortfolioToolStripMenuItem2";
+            this.deletePortfolioToolStripMenuItem2.Size = new System.Drawing.Size(185, 26);
+            this.deletePortfolioToolStripMenuItem2.Text = "DeletePortfolio";
+            // 
+            // uxPortfolio2
+            // 
+            this.uxPortfolio2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem5,
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem3,
+            this.deletePortfolioToolStripMenuItem1});
+            this.uxPortfolio2.Image = ((System.Drawing.Image)(resources.GetObject("uxPortfolio2.Image")));
+            this.uxPortfolio2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.uxPortfolio2.Name = "uxPortfolio2";
+            this.uxPortfolio2.Size = new System.Drawing.Size(117, 24);
+            this.uxPortfolio2.Text = "Portfolio 2";
+            this.uxPortfolio2.Visible = false;
+            this.uxPortfolio2.ButtonClick += new System.EventHandler(this.uxPortfolio2_ButtonClick);
             // 
             // toolStripMenuItem5
             // 
-            this.toolStripMenuItem5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem5.Image")));
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
             this.toolStripMenuItem5.Size = new System.Drawing.Size(189, 26);
             this.toolStripMenuItem5.Text = "Buy Stocks";
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(189, 26);
+            this.toolStripMenuItem1.Text = "Sell Stocks";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Enabled = false;
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(189, 26);
+            this.toolStripMenuItem3.Text = " ";
+            // 
+            // deletePortfolioToolStripMenuItem1
+            // 
+            this.deletePortfolioToolStripMenuItem1.Name = "deletePortfolioToolStripMenuItem1";
+            this.deletePortfolioToolStripMenuItem1.Size = new System.Drawing.Size(189, 26);
+            this.deletePortfolioToolStripMenuItem1.Text = "Delete Portfolio";
+            // 
+            // uxPortfolio3
+            // 
+            this.uxPortfolio3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem6,
+            this.toolStripMenuItem7,
+            this.toolStripMenuItem4,
+            this.deletePortfolioToolStripMenuItem});
+            this.uxPortfolio3.Image = ((System.Drawing.Image)(resources.GetObject("uxPortfolio3.Image")));
+            this.uxPortfolio3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.uxPortfolio3.Name = "uxPortfolio3";
+            this.uxPortfolio3.Size = new System.Drawing.Size(117, 24);
+            this.uxPortfolio3.Text = "Portfolio 3";
+            this.uxPortfolio3.Visible = false;
+            this.uxPortfolio3.ButtonClick += new System.EventHandler(this.uxPortfolio3_ButtonClick);
+            // 
             // toolStripMenuItem6
             // 
-            this.toolStripMenuItem6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem6.Image")));
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
             this.toolStripMenuItem6.Size = new System.Drawing.Size(189, 26);
             this.toolStripMenuItem6.Text = "Buy Stocks";
             // 
             // toolStripMenuItem7
             // 
-            this.toolStripMenuItem7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem7.Image")));
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
             this.toolStripMenuItem7.Size = new System.Drawing.Size(189, 26);
             this.toolStripMenuItem7.Text = "Sell Stocks";
             // 
-            // uxPortfolioName
+            // toolStripMenuItem4
             // 
-            this.uxPortfolioName.AutoSize = true;
-            this.uxPortfolioName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxPortfolioName.Location = new System.Drawing.Point(274, 36);
-            this.uxPortfolioName.Name = "uxPortfolioName";
-            this.uxPortfolioName.Size = new System.Drawing.Size(256, 39);
-            this.uxPortfolioName.TabIndex = 24;
-            this.uxPortfolioName.Text = "Portfolio Name";
+            this.toolStripMenuItem4.Enabled = false;
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(189, 26);
+            this.toolStripMenuItem4.Text = " ";
+            // 
+            // deletePortfolioToolStripMenuItem
+            // 
+            this.deletePortfolioToolStripMenuItem.Name = "deletePortfolioToolStripMenuItem";
+            this.deletePortfolioToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
+            this.deletePortfolioToolStripMenuItem.Text = "Delete Portfolio";
+            // 
+            // uxAddPortfolio
+            // 
+            this.uxAddPortfolio.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.uxAddPortfolio.Name = "uxAddPortfolio";
+            this.uxAddPortfolio.Size = new System.Drawing.Size(122, 24);
+            this.uxAddPortfolio.Text = "&Add Portfolio";
+            this.uxAddPortfolio.Click += new System.EventHandler(this.uxAddPortfolio_Click);
+            // 
+            // helpToolStripButton
+            // 
+            this.helpToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.helpToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripButton.Image")));
+            this.helpToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.helpToolStripButton.Name = "helpToolStripButton";
+            this.helpToolStripButton.Size = new System.Drawing.Size(24, 24);
+            this.helpToolStripButton.Text = "He&lp";
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(164, 24);
+            this.toolStripButton2.Text = "Update Stock Prices";
             // 
             // UserInterface
             // 
@@ -690,6 +732,8 @@
             this.Name = "UserInterface";
             this.Text = "Ticker 501";
             this.uxTabControl.ResumeLayout(false);
+            this.uxHomeTab.ResumeLayout(false);
+            this.uxHomeTab.PerformLayout();
             this.uxAccountTab.ResumeLayout(false);
             this.uxAccountTab.PerformLayout();
             this.uxPortfolioTab.ResumeLayout(false);
@@ -697,6 +741,8 @@
             this.uxPortfolioToolStrip.ResumeLayout(false);
             this.uxPortfolioToolStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -762,6 +808,10 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
         private System.Windows.Forms.Label uxPortfolioName;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
     }
 }
 

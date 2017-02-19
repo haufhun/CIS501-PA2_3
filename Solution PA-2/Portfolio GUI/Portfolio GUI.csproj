@@ -47,7 +47,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuyStocksForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuyStocksForm.Designer.cs">
+      <DependentUpon>BuyStocksForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GuiController.cs" />
+    <Compile Include="GetPortfolioNameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GetPortfolioNameForm.Designer.cs">
+      <DependentUpon>GetPortfolioNameForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellStockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellStockForm.Designer.cs">
+      <DependentUpon>SellStockForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserInterface.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -56,19 +74,19 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BuyStocksForm.resx">
+      <DependentUpon>BuyStocksForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GetPortfolioNameForm.resx">
+      <DependentUpon>GetPortfolioNameForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserInterface.resx">
       <DependentUpon>UserInterface.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -83,7 +101,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Portfolio3.png" />
+    <None Include="Resources\AddPortfolioImage.png" />
+    <None Include="Resources\BuyStockImage.png" />
+    <None Include="Resources\DeleteImage.png" />
+    <None Include="Resources\PortfolioImage.png" />
+    <None Include="Resources\SellStockImage.png" />
     <Content Include="Ticker.txt" />
   </ItemGroup>
   <ItemGroup>
