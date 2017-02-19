@@ -42,7 +42,7 @@ namespace Portfolio_Console
         /// </summary>
         public void DisplayIncorrectNumberInput()
         {
-            Console.WriteLine("\nInvalid input. You must enter a number.\n");
+            Console.WriteLine("\nInvalid input, please enter a number\n");
         }
         /// <summary>
         /// Asks if the user wants to continue with a process.
@@ -188,18 +188,10 @@ namespace Portfolio_Console
         /// Asks the user for the number of shares.
         /// </summary>
         /// <returns>The number of shares the user wants.</returns>
-        public int AskForNumberOfShares()
+        public string AskForNumberOfShares()
         {
             Console.Write("\nEnter the number of shares: ");
-            var shares = Convert.ToInt32(Console.ReadLine());
-
-            while (shares <= 0)
-            {
-                DisplayIncorrectOptionChosenMessage();
-                shares = Convert.ToInt32(Console.ReadLine());
-            }
-
-            return shares;
+            return Console.ReadLine();
         }
         /// <summary>
         /// Asks the user for the stock name.
@@ -359,11 +351,11 @@ namespace Portfolio_Console
         /// <summary>
         /// Asks the user to input the dollar amount they would like to purchase.
         /// </summary>
-        /// <returns>The price they would like to purchase.</returns>
-        public decimal AskForDollars()
+        /// <returns>The price they would like to purchase as a string.</returns>
+        public string AskForDollars()
         {
             Console.Write("Enter the $ amount you would like to purchase: ");
-            return Convert.ToDecimal(Console.ReadLine());
+            return Console.ReadLine();
         }
         /// <summary>
         /// Displays to the user that a stock was purchased.

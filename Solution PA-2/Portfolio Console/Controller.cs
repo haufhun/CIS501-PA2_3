@@ -250,7 +250,6 @@ namespace Portfolio_Console
                 catch (FormatException)
                 {
                     _userInterface.DisplayIncorrectNumberInput();
-                    _userInterface.DisplayErrorMessage("Please enter one of the numbers shown.");
                 }
             }
             return num;
@@ -467,20 +466,34 @@ namespace Portfolio_Console
             {
                 try
                 {
-                    var tickerName = _userInterface.AskForStockName();
+                    string tickerName = UserStockName();
                     _userInterface.DisplayStockInfo(tickerName, DataBase.PriceAndTickerName[tickerName].Item2, 
                             DataBase.PriceAndTickerName[tickerName].Item3);
-                    var inputOption = _userInterface.AskForWayOfPurchasingStocks();
+                    
+                    int inputOption = _userInterface.AskForWayOfPurchasingStocks();
                     if (inputOption == 1)
                     {
-                        var shares = _userInterface.AskForNumberOfShares();
+                        int shares = UserNumberOfShares();
                         if (_userInterface.UserWantsToContinue(Account.TRADE_FEE))
                             _account.BuyStock(portfolioName, tickerName, shares);
                         _userInterface.DisplayStockWasPurchased(shares, DataBase.PriceAndTickerName[tickerName].Item3, tickerName);
                     }
                     else if (inputOption == 2)
                     {
-                        var dollars = _userInterface.AskForDollars();
+                        decimal dollars=0;
+                        bool valid = false;
+                        while (!valid)
+                        {
+                            try
+                            {
+                                dollars = Convert.ToDecimal(_userInterface.AskForDollars());
+                                valid = true;
+                            }
+                            catch (FormatException)
+                            {
+                                _userInterface.DisplayIncorrectNumberInput();
+                            }
+                        }
                         int shares = (int)(dollars / DataBase.PriceAndTickerName[tickerName].Item3);
                         if (_userInterface.UserWantsToContinue(Account.TRADE_FEE))
                             _account.BuyStock(portfolioName, tickerName, shares);
@@ -503,6 +516,54 @@ namespace Portfolio_Console
             _userInterface.WaitForUserToPressEnter();
         }
         /// <summary>
+        /// Asks the user for the name of the stock.
+        /// </summary>
+        /// <returns>The name of the stock.</returns>
+        private string UserStockName()
+        {
+            bool valid = false;
+            string tickerName = "";
+            while (!valid)
+            {
+                tickerName = _userInterface.AskForStockName();
+                if (!DataBase.PriceAndTickerName.ContainsKey(tickerName))
+                {
+                    _userInterface.DisplayErrorMessage("This stock does not exist. Please enter a stock from the ticker file.");
+                }
+                else
+                {
+                    valid = true;
+                }
+            }
+            return tickerName;
+        }
+        /// <summary>
+        /// Gets the number of shares the user would like to select and handles any error.
+        /// </summary>
+        /// <returns>The number of shares</returns>
+        private int UserNumberOfShares()
+        {
+            bool valid = false;
+            int shares = 0;
+            while (!valid)
+            {
+                try
+                {
+                    shares = Convert.ToInt32(_userInterface.AskForNumberOfShares());
+                    if (shares <= 0)
+                    {
+                        _userInterface.DisplayIncorrectOptionChosenMessage();
+                    }
+                    else { valid = true; }
+                }
+                catch (FormatException)
+                {
+                    _userInterface.DisplayIncorrectNumberInput();
+                }
+            }
+            return shares;
+        }
+        /// <summary>
         /// Sells a stock of a portfolio.
         /// </summary>
         /// <param name="portfolioName">The portfolio name.</param>
@@ -510,7 +571,7 @@ namespace Portfolio_Console
         {
             if (_account.InvestedBalance > 0)
             {
-                var tickerName = _userInterface.AskForStockName();
+                var tickerName = UserStockName();
 
                 while (!_account.SelectPortfolio(portfolioName).ContainsStock(tickerName))
                 {
@@ -518,7 +579,7 @@ namespace Portfolio_Console
                     tickerName = _userInterface.AskForStockName();
                 }
 
-                var shares = _userInterface.AskForNumberOfShares();
+                var shares = UserNumberOfShares();
                 if (_userInterface.UserWantsToContinue(Account.TRADE_FEE))
                 {
                     _account.SellNumberOfStocks(portfolioName, tickerName, shares);
