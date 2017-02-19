@@ -225,14 +225,14 @@ namespace Portfolio_Console
         /// that the user selects.
         /// </summary>
         /// <param name="names">A list of all the portfolio names.</param>
-        /// <returns>An int of the number corresponding to the desired portfolio.</returns>
-        public int DisplayPortfoliosAndAskForPortfolioNumber(List<string> names)
+        /// <returns>An string of the number corresponding to the desired portfolio.</returns>
+        public string DisplayPortfoliosAndAskForPortfolioNumber(List<string> names)
         {
             Console.WriteLine();
             for (var i = 0; i < names.Count; i++)
                 Console.WriteLine((i + 1) + ") " + names[i]);
             Console.Write("Enter the number of the portfolio desired: ");
-            return Convert.ToInt32(Console.ReadLine());
+            return Console.ReadLine();
         }
 
         /// <summary>
@@ -322,24 +322,14 @@ namespace Portfolio_Console
         /// <summary>
         /// Asks the user to input the desired market volatility, and returns their choice.
         /// </summary>
-        /// <returns>An int describing the market volatility, 1 for high and 3 for low.</returns>
-        public int AskForMarketVolatility()
+        /// <returns>A string describing the market volatility, 1 for high and 3 for low.</returns>
+        public string AskForMarketVolatility()
         {
             Console.Write("\n1) high-volatility\n"
                         + "2) medium-volatility\n"
                         + "3) low-volatility\n"
                         + "Select the volatility of the market: ");
-            var choice = Console.ReadLine();
-            while (choice != "1" && choice != "2" && choice != "3")
-            {
-                Console.WriteLine("\nIncorrect input. Try again. ");
-                Console.Write("\n1) high-volatility\n"
-                        + "2) medium-volatility\n"
-                        + "3) low-volatility\n"
-                        + "Select the volatility of the market: ");
-                choice = Console.ReadLine();
-            }
-            return Convert.ToInt32(choice);
+            return Console.ReadLine();
         }
         /// <summary>
         /// Asks the user how they would like to purchase stocks.
