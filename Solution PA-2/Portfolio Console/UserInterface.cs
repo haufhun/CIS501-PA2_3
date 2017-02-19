@@ -38,6 +38,13 @@ namespace Portfolio_Console
             Console.WriteLine("\nYou must create a portfolio before you can select one!");
         }
         /// <summary>
+        /// Tells the user to enter a number.
+        /// </summary>
+        public void DisplayIncorrectNumberInput()
+        {
+            Console.WriteLine("\nInvalid input, please enter a number\n");
+        }
+        /// <summary>
         /// Asks if the user wants to continue with a process.
         /// </summary>
         /// <returns>If the user wants to continue or not.</returns>
@@ -155,37 +162,36 @@ namespace Portfolio_Console
         /// <summary>
         /// Asks for the user to input the money they would like to deposit.
         /// </summary>
-        /// <returns>A decimal of the amount of money.</returns>
-        public decimal AskForFundsToAdd()
+        /// <returns>A string  of the amount of money to be handled by controller.</returns>
+        public string AskForFundsToAdd()
         {
             Console.Write("\nEnter the amount of money you would like to deposit: ");
-            return Convert.ToDecimal(Console.ReadLine());
+            return Console.ReadLine();
+        }
+        /// <summary>
+        /// Tells the user the amount of money entered was smaller than the transaction fee.
+        /// </summary>
+        public void DisplayDepositTooSmall()
+        {
+            Console.WriteLine("\nThe amount of money you would like to enter is smaller than the transaction fee, so no money will be placed in your account.\n");
         }
         /// <summary>
         /// Asks for the user to input the money they would like to withdraw.
         /// </summary>
-        /// <returns>A decimal of the amount of money.</returns>
-        public decimal AskForFundsToWithdraw()
+        /// <returns>A string of the amount of money to be handled by controller.</returns>
+        public string AskForFundsToWithdraw()
         {
             Console.Write("\nEnter the amount of money you would like to withdraw: ");
-            return Convert.ToDecimal(Console.ReadLine());
+            return Console.ReadLine();
         }
         /// <summary>
         /// Asks the user for the number of shares.
         /// </summary>
         /// <returns>The number of shares the user wants.</returns>
-        public int AskForNumberOfShares()
+        public string AskForNumberOfShares()
         {
             Console.Write("\nEnter the number of shares: ");
-            var shares = Convert.ToInt32(Console.ReadLine());
-
-            while (shares <= 0)
-            {
-                DisplayIncorrectOptionChosenMessage();
-                shares = Convert.ToInt32(Console.ReadLine());
-            }
-
-            return shares;
+            return Console.ReadLine();
         }
         /// <summary>
         /// Asks the user for the stock name.
@@ -211,14 +217,14 @@ namespace Portfolio_Console
         /// that the user selects.
         /// </summary>
         /// <param name="names">A list of all the portfolio names.</param>
-        /// <returns>An int of the number corresponding to the desired portfolio.</returns>
-        public int DisplayPortfoliosAndAskForPortfolioNumber(List<string> names)
+        /// <returns>An string of the number corresponding to the desired portfolio.</returns>
+        public string DisplayPortfoliosAndAskForPortfolioNumber(List<string> names)
         {
             Console.WriteLine();
             for (var i = 0; i < names.Count; i++)
                 Console.WriteLine((i + 1) + ") " + names[i]);
             Console.Write("Enter the number of the portfolio desired: ");
-            return Convert.ToInt32(Console.ReadLine());
+            return Console.ReadLine();
         }
 
         /// <summary>
@@ -230,7 +236,7 @@ namespace Portfolio_Console
             Console.WriteLine("\nCash balance: " + balance.Item1.ToString("c", CultureInfo.CreateSpecificCulture("en-US"))
                   + "\nInvested balance: " + balance.Item2.ToString("c", CultureInfo.CreateSpecificCulture("en-US"))
                   + "\nTOTAL Account Balance: " +
-                  balance.Item3.ToString("c", CultureInfo.CreateSpecificCulture("en-US")));
+                  balance.Item3.ToString("c", CultureInfo.CreateSpecificCulture("en-US"))+"\n");
         }
         /// <summary>
         /// Displays the gains/losses report.
@@ -308,24 +314,14 @@ namespace Portfolio_Console
         /// <summary>
         /// Asks the user to input the desired market volatility, and returns their choice.
         /// </summary>
-        /// <returns>An int describing the market volatility, 1 for high and 3 for low.</returns>
-        public int AskForMarketVolatility()
+        /// <returns>A string describing the market volatility, 1 for high and 3 for low.</returns>
+        public string AskForMarketVolatility()
         {
             Console.Write("\n1) high-volatility\n"
                         + "2) medium-volatility\n"
                         + "3) low-volatility\n"
                         + "Select the volatility of the market: ");
-            var choice = Console.ReadLine();
-            while (choice != "1" && choice != "2" && choice != "3")
-            {
-                Console.WriteLine("\nIncorrect input. Try again. ");
-                Console.Write("\n1) high-volatility\n"
-                        + "2) medium-volatility\n"
-                        + "3) low-volatility\n"
-                        + "Select the volatility of the market: ");
-                choice = Console.ReadLine();
-            }
-            return Convert.ToInt32(choice);
+            return Console.ReadLine();
         }
         /// <summary>
         /// Asks the user how they would like to purchase stocks.
@@ -355,11 +351,11 @@ namespace Portfolio_Console
         /// <summary>
         /// Asks the user to input the dollar amount they would like to purchase.
         /// </summary>
-        /// <returns>The price they would like to purchase.</returns>
-        public decimal AskForDollars()
+        /// <returns>The price they would like to purchase as a string.</returns>
+        public string AskForDollars()
         {
             Console.Write("Enter the $ amount you would like to purchase: ");
-            return Convert.ToDecimal(Console.ReadLine());
+            return Console.ReadLine();
         }
         /// <summary>
         /// Displays to the user that a stock was purchased.
