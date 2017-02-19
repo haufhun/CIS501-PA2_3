@@ -15,11 +15,18 @@ namespace Portfolio_GUI
         public UserInterface()
         {
             InitializeComponent();
+        
         }
 
         public UserInterface(EventHandler<EventArgs> handle)
         {
+       
            // throw new NotImplementedException();
+        }
+
+        private void uxAccountTab_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

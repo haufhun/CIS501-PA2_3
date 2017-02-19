@@ -69,6 +69,13 @@
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.uxAccBalLabel = new System.Windows.Forms.Label();
             this.uxAccBalTxtBox = new System.Windows.Forms.TextBox();
+            this.uxInfoListView = new System.Windows.Forms.ListView();
+            this.uxTickerNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.uxFullNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.uxCurrentPriceCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.uxNetworthOfSharesCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.uxPositionBalCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.uxNumOfSharesOwned = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.uxTabControl.SuspendLayout();
             this.uxAccountTab.SuspendLayout();
             this.uxPortfolioTab.SuspendLayout();
@@ -77,14 +84,16 @@
             // 
             // uxTabControl
             // 
+            this.uxTabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.uxTabControl.Controls.Add(this.uxHomeTab);
             this.uxTabControl.Controls.Add(this.uxAccountTab);
             this.uxTabControl.Controls.Add(this.uxPortfolioTab);
-            this.uxTabControl.Dock = System.Windows.Forms.DockStyle.Top;
             this.uxTabControl.Location = new System.Drawing.Point(0, 0);
             this.uxTabControl.Name = "uxTabControl";
             this.uxTabControl.SelectedIndex = 0;
-            this.uxTabControl.Size = new System.Drawing.Size(1168, 563);
+            this.uxTabControl.Size = new System.Drawing.Size(1245, 571);
             this.uxTabControl.TabIndex = 2;
             // 
             // uxHomeTab
@@ -99,15 +108,17 @@
             // 
             // uxAccountTab
             // 
+            this.uxAccountTab.Controls.Add(this.uxInfoListView);
             this.uxAccountTab.Controls.Add(this.uxAccBalTxtBox);
             this.uxAccountTab.Controls.Add(this.uxAccBalLabel);
             this.uxAccountTab.Location = new System.Drawing.Point(4, 25);
             this.uxAccountTab.Name = "uxAccountTab";
             this.uxAccountTab.Padding = new System.Windows.Forms.Padding(3);
-            this.uxAccountTab.Size = new System.Drawing.Size(1160, 534);
+            this.uxAccountTab.Size = new System.Drawing.Size(1237, 542);
             this.uxAccountTab.TabIndex = 1;
             this.uxAccountTab.Text = "Account";
             this.uxAccountTab.UseVisualStyleBackColor = true;
+            this.uxAccountTab.Click += new System.EventHandler(this.uxAccountTab_Click);
             // 
             // uxPortfolioTab
             // 
@@ -395,27 +406,77 @@
             // 
             this.uxAccBalLabel.AutoSize = true;
             this.uxAccBalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxAccBalLabel.Location = new System.Drawing.Point(856, 17);
+            this.uxAccBalLabel.Location = new System.Drawing.Point(886, 3);
             this.uxAccBalLabel.Name = "uxAccBalLabel";
-            this.uxAccBalLabel.Size = new System.Drawing.Size(166, 25);
+            this.uxAccBalLabel.Size = new System.Drawing.Size(176, 25);
             this.uxAccBalLabel.TabIndex = 0;
-            this.uxAccBalLabel.Text = "Account Balance:";
+            this.uxAccBalLabel.Text = "  Account Balance:";
             // 
             // uxAccBalTxtBox
             // 
             this.uxAccBalTxtBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.uxAccBalTxtBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxAccBalTxtBox.Location = new System.Drawing.Point(1028, 17);
+            this.uxAccBalTxtBox.Location = new System.Drawing.Point(1081, 3);
             this.uxAccBalTxtBox.Name = "uxAccBalTxtBox";
-            this.uxAccBalTxtBox.Size = new System.Drawing.Size(124, 23);
+            this.uxAccBalTxtBox.Size = new System.Drawing.Size(152, 23);
             this.uxAccBalTxtBox.TabIndex = 1;
+            this.uxAccBalTxtBox.Text = "$10000000.00";
+            // 
+            // uxInfoListView
+            // 
+            this.uxInfoListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.uxTickerNameCol,
+            this.uxFullNameCol,
+            this.uxCurrentPriceCol,
+            this.uxNumOfSharesOwned,
+            this.uxNetworthOfSharesCol,
+            this.uxPositionBalCol});
+            this.uxInfoListView.GridLines = true;
+            this.uxInfoListView.Location = new System.Drawing.Point(4, 31);
+            this.uxInfoListView.MinimumSize = new System.Drawing.Size(924, 286);
+            this.uxInfoListView.Name = "uxInfoListView";
+            this.uxInfoListView.Size = new System.Drawing.Size(924, 286);
+            this.uxInfoListView.TabIndex = 2;
+            this.uxInfoListView.UseCompatibleStateImageBehavior = false;
+            this.uxInfoListView.View = System.Windows.Forms.View.Details;
+            // 
+            // uxTickerNameCol
+            // 
+            this.uxTickerNameCol.Text = "Ticker Name";
+            this.uxTickerNameCol.Width = 91;
+            // 
+            // uxFullNameCol
+            // 
+            this.uxFullNameCol.Text = "Company Name";
+            this.uxFullNameCol.Width = 153;
+            // 
+            // uxCurrentPriceCol
+            // 
+            this.uxCurrentPriceCol.Text = "Price Per Share";
+            this.uxCurrentPriceCol.Width = 107;
+            // 
+            // uxNetworthOfSharesCol
+            // 
+            this.uxNetworthOfSharesCol.Text = "Networth of Shares";
+            this.uxNetworthOfSharesCol.Width = 124;
+            // 
+            // uxPositionBalCol
+            // 
+            this.uxPositionBalCol.Text = "Position Balance";
+            this.uxPositionBalCol.Width = 114;
+            // 
+            // uxNumOfSharesOwned
+            // 
+            this.uxNumOfSharesOwned.Text = "Shares Owned";
+            this.uxNumOfSharesOwned.Width = 100;
             // 
             // UserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1168, 563);
+            this.ClientSize = new System.Drawing.Size(1245, 571);
             this.Controls.Add(this.uxTabControl);
+            this.MinimumSize = new System.Drawing.Size(1201, 618);
             this.Name = "UserInterface";
             this.Text = "Ticker 501";
             this.uxTabControl.ResumeLayout(false);
@@ -471,6 +532,13 @@
         private System.Windows.Forms.ToolStripButton helpToolStripButton;
         private System.Windows.Forms.TextBox uxAccBalTxtBox;
         private System.Windows.Forms.Label uxAccBalLabel;
+        private System.Windows.Forms.ListView uxInfoListView;
+        private System.Windows.Forms.ColumnHeader uxTickerNameCol;
+        private System.Windows.Forms.ColumnHeader uxFullNameCol;
+        private System.Windows.Forms.ColumnHeader uxCurrentPriceCol;
+        private System.Windows.Forms.ColumnHeader uxNumOfSharesOwned;
+        private System.Windows.Forms.ColumnHeader uxNetworthOfSharesCol;
+        private System.Windows.Forms.ColumnHeader uxPositionBalCol;
     }
 }
 
