@@ -176,7 +176,7 @@ namespace Portfolio_Console
             }
             catch (IndexOutOfRangeException ex)
             {
-                _userInterface.DisplayErrorMessage("No funds were added your account.\n");
+                _userInterface.DisplayErrorMessage("No funds were added to your account.\n");
             }
             _userInterface.WaitForUserToPressEnter();
         }
@@ -247,7 +247,7 @@ namespace Portfolio_Console
             }
             catch (IndexOutOfRangeException ex)
             {
-                _userInterface.DisplayErrorMessage(ex.ToString());
+                _userInterface.DisplayErrorMessage("No funds were withdrawn from your account.\n");
             }
             _userInterface.WaitForUserToPressEnter();
         }
@@ -399,51 +399,62 @@ namespace Portfolio_Console
             do
             {
                 //var portfolio = _account.SelectPortfolio(portfolioName);
-                var portolioChoice = _userInterface.AskForUserSelectionOfPortfolio(portfolioName, _account.CashBalance);
-                switch (portolioChoice)
+                var portfolioChoice = -1;
+                try 
                 {
-                    case 1:
+                     portfolioChoice = _userInterface.AskForUserSelectionOfPortfolio(portfolioName,
+                        _account.CashBalance);
+                }
+                catch (FormatException)
+                {
+                    
+                }
+                switch (portfolioChoice)
+                    {
+                        case 1:
                         {
                             BuyStock(portfolioName);
                         }
-                        break;
-                    case 2:
+                            break;
+                        case 2:
                         {
                             SellStock(portfolioName);
                         }
-                        break;
-                    case 3:
+                            break;
+                        case 3:
                         {
                             PortfolioBalance(portfolioName);
                         }
-                        break;
-                    case 4:
+                            break;
+                        case 4:
                         {
                             PositionsBalance(portfolioName);
                         }
-                        break;
-                    case 5:
+                            break;
+                        case 5:
                         {
                             PortfolioGainsAndLossesReport(portfolioName);
                         }
-                        break;
-                    case 6:
+                            break;
+                        case 6:
                         {
                             portfolioIsSelected = DeletePortfolio(portfolioName);
                         }
-                        break;
-                    case 7:
+                            break;
+                        case 7:
                         {
                             Console.WriteLine();
                             portfolioIsSelected = false;
                         }
-                        break;
-                    default:
+                            break;
+                        default:
                         {
+                            _userInterface.DisplayIncorrectOptionChosenMessage();
                             _userInterface.WaitForUserToPressEnter();
                         }
-                        break;
-                }
+                            break;
+                    }
+                
             } while (portfolioIsSelected);
         }
         /// <summary>
@@ -518,13 +529,17 @@ namespace Portfolio_Console
                         try
                         {
                             if (_userInterface.UserWantsToContinue(Account.TRADE_FEE))
+                            {
                                 _account.BuyStock(portfolioName, tickerName, shares);
+                                _userInterface.DisplayStockWasPurchased(shares,
+                                    DataBase.PriceAndTickerName[tickerName].Item3, tickerName);
+                            }
                         }
                         catch (IndexOutOfRangeException ex)
                         {
-                            _userInterface.DisplayErrorMessage(ex.ToString());
+                            _userInterface.DisplayErrorMessage("Transaction was not complete. No stock has been purchased.");
                         }
-                        _userInterface.DisplayStockWasPurchased(shares, DataBase.PriceAndTickerName[tickerName].Item3, tickerName);
+                       // _userInterface.DisplayStockWasPurchased(shares, DataBase.PriceAndTickerName[tickerName].Item3, tickerName);
                     }
                     else if (inputOption == 2)
                     {
@@ -546,17 +561,20 @@ namespace Portfolio_Console
                         try
                         {
                             if (_userInterface.UserWantsToContinue(Account.TRADE_FEE))
+                            {
                                 _account.BuyStock(portfolioName, tickerName, shares);
+                                _userInterface.DisplayStockWasPurchased(shares, DataBase.PriceAndTickerName[tickerName].Item3, tickerName);
+                            }
                         }
                         catch (IndexOutOfRangeException ex)
                         {
-                            _userInterface.DisplayErrorMessage(ex.ToString());
+                            _userInterface.DisplayErrorMessage("Transaction was not complete. No stock has been purchased.");
                         }
                         catch (DivideByZeroException)
                         {
                             Console.WriteLine("The price entered exceeds the price of one stock. Cannot continue transaction...");
                         }
-                        _userInterface.DisplayStockWasPurchased(shares, DataBase.PriceAndTickerName[tickerName].Item3, tickerName);
+                      //  _userInterface.DisplayStockWasPurchased(shares, DataBase.PriceAndTickerName[tickerName].Item3, tickerName);
                     }
                     else
                     {
