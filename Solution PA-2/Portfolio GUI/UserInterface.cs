@@ -12,7 +12,7 @@ using Class_Library;
 
 namespace Portfolio_GUI
 {
-    public partial class UserInterface : Form
+    public partial class uxUserInterface : Form
     {
         //defines the type of method that handles a deposit cash input event 
         private DepositCashHandler _depositCashHandler;
@@ -32,15 +32,26 @@ namespace Portfolio_GUI
         private ReadFileHandler _readFileHandler;
 
 
-        private int _numOfPortolios = 0;
+        
         private Account _account;
+        private uxGetPortfolioNameForm getPortfolioNameForm;
+        private uxBuyStocksForm buyStocksForm;
+        private uxSellStockForm sellStockForm;
+
+        private int _numOfPortolios = 0;
 
 
-        public UserInterface(Account a, ReadFileHandler readFileHandler, SimulateHandler simulate,
-            DeletePortfolioHandler deletePortfolio, AddPortfolioHandler addPortfolio, SellStocksHandler sellStocks,
-            BuyStocksHandler buyStocks, DepositCashHandler depositFunds, WithdrawCashHandler withdrawFunds)
+        public uxUserInterface(Account a , uxGetPortfolioNameForm getPNameForm, uxBuyStocksForm bStkForm, uxSellStockForm sStkForm,
+            ReadFileHandler readFileHandler, SimulateHandler simulate, DeletePortfolioHandler deletePortfolio, AddPortfolioHandler addPortfolio, 
+            SellStocksHandler sellStocks, BuyStocksHandler buyStocks, DepositCashHandler depositFunds, WithdrawCashHandler withdrawFunds)
         {
+            ///Initializing account and inputForms///
             _account = a;
+            getPortfolioNameForm = getPNameForm;
+            buyStocksForm = bStkForm;
+            sellStockForm = sStkForm;
+
+            ///Initializing Delegates///
             _readFileHandler = readFileHandler;
             _simulateHandler = simulate;
             _deletePortfolioHandler = deletePortfolio;
@@ -49,6 +60,7 @@ namespace Portfolio_GUI
             _buyStocksHandler = buyStocks;
             _depositCashHandler = depositFunds;
             _withdrawCashHandler = withdrawFunds;
+
 
             InitializeComponent();
         }
@@ -107,48 +119,43 @@ namespace Portfolio_GUI
 
         private void uxAddPortfolio_Click(object sender, EventArgs e)
         {
-            _numOfPortolios++;
-            ShowMyBuyStocksForm();
+            
 
-            ///Create Method
-            GetPortfolioNameForm getPortfolio = new GetPortfolioNameForm();
+            uxGetPortfolioNameForm getPortfolio = new uxGetPortfolioNameForm();
             if (getPortfolio.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show("IM A BA");
+                string portfolioName = getPortfolioNameForm.PortfolioName;
+                _addPortfolioHandler(portfolioName);
+
+                AddPortfolioToToolStrip();// have controller call this?
             }
-            //_addPortfolioHandler();
-            //AddPortfolio();
+
+         
 
         }
 
 
-        private void AddPortfolio()
+        private void AddPortfolioToToolStrip()
         {
-            GetPortfolioNameForm PNameForm = new GetPortfolioNameForm();
-            PNameForm.Show();
-      //     PNameForm.
+            _numOfPortolios++;
 
             switch (_numOfPortolios)
             {
                 case 0:                 
-                    uxPortfolio1.Visible = true;
-                    _numOfPortolios++;
-                    
+                    uxPortfolio1.Visible = true;                    
                     break;
                 case 1:
-                    uxPortfolio2.Visible = true;
-                    _numOfPortolios++;
+                    uxPortfolio2.Visible = true;   
                     break;
                 case 2:
                     uxPortfolio3.Visible = true;
-                    uxAddPortfolio.Visible = false;
-                    _numOfPortolios++;
+                    uxAddPortfolio.Visible = false;    
                     break;
                 default:
-                    MessageBox.Show("You already have the maximum number of portfolios!");
+                    MessageBox.Show("Somehow the add portfolio button was visible and you already have the maximum number of portfolios!");
+                    _numOfPortolios--;
                     break;
             }
-
 
         }
 

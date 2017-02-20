@@ -27,28 +27,31 @@ namespace Portfolio_GUI
     public delegate void SimulateHandler(int volatility);
     // defines the type of method that handles a read file input event
     public delegate void ReadFileHandler(OpenFileDialog openFile);
+
     /// <summary>
     /// Runs the program.
     /// </summary>
-    static class Program
+    public static class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var a = new Account();
-            
-            var c = new GuiController(a);
+            var account = new Account();
+            var controller = new GuiController(account);
+            var getPrtNameForm = new uxGetPortfolioNameForm();
+            var buyStockForm = new uxBuyStocksForm();
+            var sellStockForm = new uxSellStockForm();
 
-            var mainForm = new UserInterface(a, c.ReadTickerFile, c.Simulate, c.DeletePortfolio, c.AddPortfolio, c.SellStocks, c.BuyStocks, c.DepositFunds, c.WithdrawFunds);
+            var mainForm = new uxUserInterface(account,getPrtNameForm, buyStockForm, sellStockForm, controller.ReadTickerFile, controller.Simulate, controller.DeletePortfolio, controller.AddPortfolio, controller.SellStocks, controller.BuyStocks, controller.DepositFunds, controller.WithdrawFunds);
 
-            c.Register(mainForm.DisplayHomeStockInfo);
-            c.Register(mainForm.DisplayAccount);
+            controller.Register(mainForm.DisplayHomeStockInfo);
+            controller.Register(mainForm.DisplayAccount);
 
             // c.Register(mainForm.);
 

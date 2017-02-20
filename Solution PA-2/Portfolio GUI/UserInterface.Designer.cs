@@ -1,6 +1,6 @@
 ﻿namespace Portfolio_GUI
 {
-    partial class UserInterface
+    partial class uxUserInterface
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserInterface));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uxUserInterface));
             this.uxTabControl = new System.Windows.Forms.TabControl();
             this.uxHomeTab = new System.Windows.Forms.TabPage();
             this.uxHomeListInfo = new System.Windows.Forms.ListView();
@@ -885,14 +885,14 @@
             this.uxVolatilityGroup.TabIndex = 8;
             this.uxVolatilityGroup.TabStop = false;
             // 
-            // UserInterface
+            // uxUserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1245, 571);
             this.Controls.Add(this.uxTabControl);
             this.MinimumSize = new System.Drawing.Size(1201, 618);
-            this.Name = "UserInterface";
+            this.Name = "uxUserInterface";
             this.Text = "Ticker 501";
             this.uxTabControl.ResumeLayout(false);
             this.uxHomeTab.ResumeLayout(false);

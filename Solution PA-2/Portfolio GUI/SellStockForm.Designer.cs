@@ -1,6 +1,6 @@
 ﻿namespace Portfolio_GUI
 {
-    partial class SellStockForm
+    partial class uxSellStockForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // uxSellStockForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "SellStockForm";
+            this.ClientSize = new System.Drawing.Size(282, 253);
+            this.Name = "uxSellStockForm";
+            this.Text = "Sell Stocks Form";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
