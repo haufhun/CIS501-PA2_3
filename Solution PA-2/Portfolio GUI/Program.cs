@@ -51,7 +51,7 @@ namespace Portfolio_GUI
             c.Register(mainForm.DisplayHomeStockInfo);
             c.Register(mainForm.DisplayAccount);
 
-
+           // c.Register(mainForm.);
             Application.Run(mainForm);
             
                                                         //Deck d = new Deck();

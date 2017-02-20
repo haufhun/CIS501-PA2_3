@@ -198,8 +198,7 @@ namespace Portfolio_GUI
 
         public void DisplayAccount()
         {
-            uxAccListInfo.BeginUpdate();
-            uxAccListInfo.Items.Clear();
+            
 
             var t = _account.GetAccountBalance();
 
@@ -209,13 +208,18 @@ namespace Portfolio_GUI
             uxAccNetWorthStocksOutput.Text = _account.GetCashBalance().ToString("C");
             uxAccGainsLossesOutput.Text = _account.GetGainsAndLossesReport().ToString("C");
 
-            //foreach (var i in DataBase.PriceAndTickerName.Values)
-            //{
-            //    string[] itemInfo = { i.Item1, i.Item2, i.Item3.ToString("C") };
-            //    ListViewItem item = new ListViewItem(itemInfo);
+            uxAccListInfo.BeginUpdate();
+            uxAccListInfo.Items.Clear();
 
-            //    uxAccListInfo.Items.Add(item);
-            //}
+            var list = new List<Tuple<decimal, double, string, string>>();
+            _account.GetPositionsBalance(list);
+            foreach (var i in list)
+            {
+                //TickerName    Company Name    Price per share     Shares owned    Networth of shares   position balance
+                string[] itemInfo = { i.Item1.ToString("C"), i.Item2.ToString("P"), i.Item3,i.Item4 };
+                ListViewItem item = new ListViewItem(itemInfo);
+                uxAccListInfo.Items.Add(item);
+            }
 
             uxAccListInfo.EndUpdate();
         }
