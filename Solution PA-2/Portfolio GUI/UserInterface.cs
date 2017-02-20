@@ -3,27 +3,31 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Class_Library;
 
 namespace Portfolio_GUI
 {
     public partial class UserInterface : Form
     {
         private int _numOfPortolios = 0;
-        public UserInterface()
+        private Account _account;
+        public UserInterface(Account a)
         {
+            _account = a;
             InitializeComponent();
-        
+
         }
 
-        public UserInterface(EventHandler<EventArgs> handle)
-        {
-       
-           // throw new NotImplementedException();
-        }
+        //public UserInterface(EventHandler<EventArgs> handle)
+        //{
+
+        //    // throw new NotImplementedException();
+        //}
 
         private void uxAccountTab_Click(object sender, EventArgs e)
         {
@@ -65,6 +69,7 @@ namespace Portfolio_GUI
         {
             uxPortfolioName.Text = uxPortfolio3.Text;
         }
+
         public void ShowMyBuyStocksForm()
         {
             //Form2 testDialog = new Form2();
@@ -112,8 +117,26 @@ namespace Portfolio_GUI
 
         private void uxAddPortfolio_Click(object sender, EventArgs e)
         {
-            AddPortfolio();//For now
+            //ReadFilehand
+            AddPortfolio(); //For now
 
+        }
+
+        private void uxOpenTickerFile_Click(object sender, EventArgs e)
+        {
+            
+            //han
+            //OpenTickerFile();
+        }
+
+        private void OpenTickerFile()
+        {
+            if (uxOpenFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                
+
+
+            }
         }
     }
 }

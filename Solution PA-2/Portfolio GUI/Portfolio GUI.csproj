@@ -112,6 +112,10 @@
     <None Include="Resources\BuyStockImage.png" />
     <None Include="Resources\SellStockImage.png" />
     <None Include="Resources\DeleteImage.png" />
+    <None Include="Resources\OpenFileImage.png" />
+    <None Include="Resources\UpdateImage.png" />
+    <None Include="Resources\SimulateImage.png" />
+    <None Include="Resources\ExitImage.png" />
     <Content Include="Ticker.txt" />
   </ItemGroup>
   <ItemGroup>

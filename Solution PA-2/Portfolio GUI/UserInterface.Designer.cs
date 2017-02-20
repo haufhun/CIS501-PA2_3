@@ -32,9 +32,12 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserInterface));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.uxTabControl = new System.Windows.Forms.TabControl();
             this.uxHomeTab = new System.Windows.Forms.TabPage();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.uxHomeToolStrip = new System.Windows.Forms.ToolStrip();
             this.uxAccountTab = new System.Windows.Forms.TabPage();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -46,12 +49,12 @@
             this.uxAccBalOutput = new System.Windows.Forms.Label();
             this.uxTotalInvestedLabel = new System.Windows.Forms.Label();
             this.uxInfoListView = new System.Windows.Forms.ListView();
-            this.uxTickerNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.uxFullNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.uxCurrentPriceCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.uxNumOfSharesOwned = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.uxNetworthOfSharesCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.uxPositionBalCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.uxAccTickerNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.uxAccFullNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.uxAccCurrentPriceCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.uxAccNumOfSharesOwnedCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.uxAccNetWorthCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.uxAccPositionBalCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.uxAccBalLabel = new System.Windows.Forms.Label();
             this.uxPortfolioTab = new System.Windows.Forms.TabPage();
             this.uxPortfolioName = new System.Windows.Forms.Label();
@@ -67,17 +70,22 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.uxPrtTickerNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.uxPrtCompanyNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.uxPrtCurrentPriceCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.uxPrtShareaOwnedCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.uxPrtNetWorthCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.uxPrtPositionBalCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label16 = new System.Windows.Forms.Label();
             this.uxPortfolioToolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.uxHmTickerNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.uxHmCompanyNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.uxHmCurrentPriceCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.uxOpenTickerFile = new System.Windows.Forms.ToolStripButton();
+            this.uxUpdateStockPrices = new System.Windows.Forms.ToolStripButton();
+            this.uxExitProgram = new System.Windows.Forms.ToolStripButton();
             this.uxPortfolio1 = new System.Windows.Forms.ToolStripSplitButton();
             this.uxBuyStocks1 = new System.Windows.Forms.ToolStripMenuItem();
             this.uxSellStocks1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,13 +103,17 @@
             this.uxDeletePortfolio3 = new System.Windows.Forms.ToolStripMenuItem();
             this.uxAddPortfolio = new System.Windows.Forms.ToolStripButton();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.uxOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.uxTabControl.SuspendLayout();
             this.uxHomeTab.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
+            this.uxHomeToolStrip.SuspendLayout();
             this.uxAccountTab.SuspendLayout();
             this.uxPortfolioTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.uxPortfolioToolStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.SuspendLayout();
             // 
             // uxTabControl
@@ -120,7 +132,8 @@
             // 
             // uxHomeTab
             // 
-            this.uxHomeTab.Controls.Add(this.toolStrip1);
+            this.uxHomeTab.Controls.Add(this.listView2);
+            this.uxHomeTab.Controls.Add(this.uxHomeToolStrip);
             this.uxHomeTab.Location = new System.Drawing.Point(4, 25);
             this.uxHomeTab.Name = "uxHomeTab";
             this.uxHomeTab.Padding = new System.Windows.Forms.Padding(3);
@@ -129,20 +142,23 @@
             this.uxHomeTab.Text = "Home";
             this.uxHomeTab.UseVisualStyleBackColor = true;
             // 
-            // toolStrip1
+            // uxHomeToolStrip
             // 
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripButton2});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 3);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1231, 27);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
+            this.uxHomeToolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.uxHomeToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.uxOpenTickerFile,
+            this.uxUpdateStockPrices,
+            this.toolStripSeparator2,
+            this.uxExitProgram});
+            this.uxHomeToolStrip.Location = new System.Drawing.Point(3, 3);
+            this.uxHomeToolStrip.Name = "uxHomeToolStrip";
+            this.uxHomeToolStrip.Size = new System.Drawing.Size(1231, 27);
+            this.uxHomeToolStrip.TabIndex = 0;
+            this.uxHomeToolStrip.Text = "toolStrip1";
             // 
             // uxAccountTab
             // 
+            this.uxAccountTab.Controls.Add(this.chart2);
             this.uxAccountTab.Controls.Add(this.label5);
             this.uxAccountTab.Controls.Add(this.label6);
             this.uxAccountTab.Controls.Add(this.label3);
@@ -268,50 +284,52 @@
             // 
             // uxInfoListView
             // 
+            this.uxInfoListView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.uxInfoListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.uxTickerNameCol,
-            this.uxFullNameCol,
-            this.uxCurrentPriceCol,
-            this.uxNumOfSharesOwned,
-            this.uxNetworthOfSharesCol,
-            this.uxPositionBalCol});
+            this.uxAccTickerNameCol,
+            this.uxAccFullNameCol,
+            this.uxAccCurrentPriceCol,
+            this.uxAccNumOfSharesOwnedCol,
+            this.uxAccNetWorthCol,
+            this.uxAccPositionBalCol});
             this.uxInfoListView.GridLines = true;
-            this.uxInfoListView.Location = new System.Drawing.Point(0, 0);
+            this.uxInfoListView.Location = new System.Drawing.Point(6, 6);
             this.uxInfoListView.Name = "uxInfoListView";
-            this.uxInfoListView.Size = new System.Drawing.Size(859, 286);
+            this.uxInfoListView.Size = new System.Drawing.Size(873, 286);
             this.uxInfoListView.TabIndex = 2;
             this.uxInfoListView.UseCompatibleStateImageBehavior = false;
             this.uxInfoListView.View = System.Windows.Forms.View.Details;
             // 
-            // uxTickerNameCol
+            // uxAccTickerNameCol
             // 
-            this.uxTickerNameCol.Text = "Ticker Name";
-            this.uxTickerNameCol.Width = 91;
+            this.uxAccTickerNameCol.Text = "Ticker Name";
+            this.uxAccTickerNameCol.Width = 91;
             // 
-            // uxFullNameCol
+            // uxAccFullNameCol
             // 
-            this.uxFullNameCol.Text = "Company Name";
-            this.uxFullNameCol.Width = 130;
+            this.uxAccFullNameCol.Text = "Company Name";
+            this.uxAccFullNameCol.Width = 130;
             // 
-            // uxCurrentPriceCol
+            // uxAccCurrentPriceCol
             // 
-            this.uxCurrentPriceCol.Text = "Price Per Share";
-            this.uxCurrentPriceCol.Width = 107;
+            this.uxAccCurrentPriceCol.Text = "Price Per Share";
+            this.uxAccCurrentPriceCol.Width = 107;
             // 
-            // uxNumOfSharesOwned
+            // uxAccNumOfSharesOwnedCol
             // 
-            this.uxNumOfSharesOwned.Text = "Shares Owned";
-            this.uxNumOfSharesOwned.Width = 100;
+            this.uxAccNumOfSharesOwnedCol.Text = "Shares Owned";
+            this.uxAccNumOfSharesOwnedCol.Width = 100;
             // 
-            // uxNetworthOfSharesCol
+            // uxAccNetWorthCol
             // 
-            this.uxNetworthOfSharesCol.Text = "Networth of Shares";
-            this.uxNetworthOfSharesCol.Width = 124;
+            this.uxAccNetWorthCol.Text = "Networth of Shares";
+            this.uxAccNetWorthCol.Width = 124;
             // 
-            // uxPositionBalCol
+            // uxAccPositionBalCol
             // 
-            this.uxPositionBalCol.Text = "Position Balance";
-            this.uxPositionBalCol.Width = 114;
+            this.uxAccPositionBalCol.Text = "Position Balance";
+            this.uxAccPositionBalCol.Width = 114;
             // 
             // uxAccBalLabel
             // 
@@ -352,12 +370,12 @@
             // uxPortfolioName
             // 
             this.uxPortfolioName.AutoSize = true;
-            this.uxPortfolioName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxPortfolioName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uxPortfolioName.Location = new System.Drawing.Point(4, 36);
             this.uxPortfolioName.Name = "uxPortfolioName";
-            this.uxPortfolioName.Size = new System.Drawing.Size(376, 39);
+            this.uxPortfolioName.Size = new System.Drawing.Size(368, 39);
             this.uxPortfolioName.TabIndex = 24;
-            this.uxPortfolioName.Text = "Please Add a Portfolio";
+            this.uxPortfolioName.Text = "Please add a portfolio";
             this.uxPortfolioName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label17
@@ -489,50 +507,52 @@
             // 
             // listView1
             // 
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6});
+            this.uxPrtTickerNameCol,
+            this.uxPrtCompanyNameCol,
+            this.uxPrtCurrentPriceCol,
+            this.uxPrtShareaOwnedCol,
+            this.uxPrtNetWorthCol,
+            this.uxPrtPositionBalCol});
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(6, 106);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(859, 286);
+            this.listView1.Size = new System.Drawing.Size(873, 286);
             this.listView1.TabIndex = 13;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             // 
-            // columnHeader1
+            // uxPrtTickerNameCol
             // 
-            this.columnHeader1.Text = "Ticker Name";
-            this.columnHeader1.Width = 91;
+            this.uxPrtTickerNameCol.Text = "Ticker Name";
+            this.uxPrtTickerNameCol.Width = 91;
             // 
-            // columnHeader2
+            // uxPrtCompanyNameCol
             // 
-            this.columnHeader2.Text = "Company Name";
-            this.columnHeader2.Width = 130;
+            this.uxPrtCompanyNameCol.Text = "Company Name";
+            this.uxPrtCompanyNameCol.Width = 130;
             // 
-            // columnHeader3
+            // uxPrtCurrentPriceCol
             // 
-            this.columnHeader3.Text = "Price Per Share";
-            this.columnHeader3.Width = 107;
+            this.uxPrtCurrentPriceCol.Text = "Price Per Share";
+            this.uxPrtCurrentPriceCol.Width = 107;
             // 
-            // columnHeader4
+            // uxPrtShareaOwnedCol
             // 
-            this.columnHeader4.Text = "Shares Owned";
-            this.columnHeader4.Width = 100;
+            this.uxPrtShareaOwnedCol.Text = "Shares Owned";
+            this.uxPrtShareaOwnedCol.Width = 100;
             // 
-            // columnHeader5
+            // uxPrtNetWorthCol
             // 
-            this.columnHeader5.Text = "Networth of Shares";
-            this.columnHeader5.Width = 124;
+            this.uxPrtNetWorthCol.Text = "Networth of Shares";
+            this.uxPrtNetWorthCol.Width = 124;
             // 
-            // columnHeader6
+            // uxPrtPositionBalCol
             // 
-            this.columnHeader6.Text = "Position Balance";
-            this.columnHeader6.Width = 114;
+            this.uxPrtPositionBalCol.Text = "Position Balance";
+            this.uxPrtPositionBalCol.Width = 114;
             // 
             // label16
             // 
@@ -567,21 +587,63 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
-            // toolStripButton1
+            // listView2
             // 
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(139, 24);
-            this.toolStripButton1.Text = "Open Ticker File";
+            this.listView2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.uxHmTickerNameCol,
+            this.uxHmCompanyNameCol,
+            this.uxHmCurrentPriceCol});
+            this.listView2.GridLines = true;
+            this.listView2.Location = new System.Drawing.Point(6, 33);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(460, 506);
+            this.listView2.TabIndex = 3;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.View = System.Windows.Forms.View.Details;
             // 
-            // toolStripButton2
+            // uxHmTickerNameCol
             // 
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(164, 24);
-            this.toolStripButton2.Text = "Update Stock Prices";
+            this.uxHmTickerNameCol.Text = "Ticker Name";
+            this.uxHmTickerNameCol.Width = 91;
+            // 
+            // uxHmCompanyNameCol
+            // 
+            this.uxHmCompanyNameCol.Text = "Company Name";
+            this.uxHmCompanyNameCol.Width = 130;
+            // 
+            // uxHmCurrentPriceCol
+            // 
+            this.uxHmCurrentPriceCol.Text = "Price Per Share";
+            this.uxHmCurrentPriceCol.Width = 107;
+            // 
+            // uxOpenTickerFile
+            // 
+            this.uxOpenTickerFile.Image = global::Portfolio_GUI.Properties.Resources.OpenFileImage;
+            this.uxOpenTickerFile.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.uxOpenTickerFile.Name = "uxOpenTickerFile";
+            this.uxOpenTickerFile.Size = new System.Drawing.Size(139, 24);
+            this.uxOpenTickerFile.Text = "Open Ticker File";
+            this.uxOpenTickerFile.Click += new System.EventHandler(this.uxOpenTickerFile_Click);
+            // 
+            // uxUpdateStockPrices
+            // 
+            this.uxUpdateStockPrices.Enabled = false;
+            this.uxUpdateStockPrices.Image = global::Portfolio_GUI.Properties.Resources.SimulateImage;
+            this.uxUpdateStockPrices.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.uxUpdateStockPrices.Name = "uxUpdateStockPrices";
+            this.uxUpdateStockPrices.Size = new System.Drawing.Size(164, 24);
+            this.uxUpdateStockPrices.Text = "Update Stock Prices";
+            // 
+            // uxExitProgram
+            // 
+            this.uxExitProgram.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.uxExitProgram.Image = global::Portfolio_GUI.Properties.Resources.ExitImage;
+            this.uxExitProgram.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.uxExitProgram.Name = "uxExitProgram";
+            this.uxExitProgram.Size = new System.Drawing.Size(128, 24);
+            this.uxExitProgram.Text = "Exit Ticker 501";
             // 
             // uxPortfolio1
             // 
@@ -725,12 +787,39 @@
             // 
             // helpToolStripButton
             // 
+            this.helpToolStripButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.helpToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.helpToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripButton.Image")));
             this.helpToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.helpToolStripButton.Name = "helpToolStripButton";
             this.helpToolStripButton.Size = new System.Drawing.Size(24, 24);
             this.helpToolStripButton.Text = "He&lp";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
+            // 
+            // uxOpenFileDialog
+            // 
+            this.uxOpenFileDialog.FileName = "openFileDialog1";
+            // 
+            // chart2
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart2.Legends.Add(legend1);
+            this.chart2.Location = new System.Drawing.Point(889, 323);
+            this.chart2.Name = "chart2";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart2.Series.Add(series1);
+            this.chart2.Size = new System.Drawing.Size(288, 173);
+            this.chart2.TabIndex = 24;
+            this.chart2.Text = "chart2";
             // 
             // UserInterface
             // 
@@ -744,8 +833,8 @@
             this.uxTabControl.ResumeLayout(false);
             this.uxHomeTab.ResumeLayout(false);
             this.uxHomeTab.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.uxHomeToolStrip.ResumeLayout(false);
+            this.uxHomeToolStrip.PerformLayout();
             this.uxAccountTab.ResumeLayout(false);
             this.uxAccountTab.PerformLayout();
             this.uxPortfolioTab.ResumeLayout(false);
@@ -753,6 +842,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.uxPortfolioToolStrip.ResumeLayout(false);
             this.uxPortfolioToolStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -778,12 +868,12 @@
         private System.Windows.Forms.ToolStripButton helpToolStripButton;
         private System.Windows.Forms.Label uxAccBalLabel;
         private System.Windows.Forms.ListView uxInfoListView;
-        private System.Windows.Forms.ColumnHeader uxTickerNameCol;
-        private System.Windows.Forms.ColumnHeader uxFullNameCol;
-        private System.Windows.Forms.ColumnHeader uxCurrentPriceCol;
-        private System.Windows.Forms.ColumnHeader uxNumOfSharesOwned;
-        private System.Windows.Forms.ColumnHeader uxNetworthOfSharesCol;
-        private System.Windows.Forms.ColumnHeader uxPositionBalCol;
+        private System.Windows.Forms.ColumnHeader uxAccTickerNameCol;
+        private System.Windows.Forms.ColumnHeader uxAccFullNameCol;
+        private System.Windows.Forms.ColumnHeader uxAccCurrentPriceCol;
+        private System.Windows.Forms.ColumnHeader uxAccNumOfSharesOwnedCol;
+        private System.Windows.Forms.ColumnHeader uxAccNetWorthCol;
+        private System.Windows.Forms.ColumnHeader uxAccPositionBalCol;
         private System.Windows.Forms.Label uxTotalInvestedLabel;
         private System.Windows.Forms.Label uxAccBalOutput;
         private System.Windows.Forms.Label uxTotalInvestedOutput;
@@ -803,12 +893,12 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader uxPrtTickerNameCol;
+        private System.Windows.Forms.ColumnHeader uxPrtCompanyNameCol;
+        private System.Windows.Forms.ColumnHeader uxPrtCurrentPriceCol;
+        private System.Windows.Forms.ColumnHeader uxPrtShareaOwnedCol;
+        private System.Windows.Forms.ColumnHeader uxPrtNetWorthCol;
+        private System.Windows.Forms.ColumnHeader uxPrtPositionBalCol;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.ToolStripMenuItem uxBuyStocks1;
@@ -819,9 +909,17 @@
         private System.Windows.Forms.ToolStripMenuItem uxSellStocks3;
         private System.Windows.Forms.Label uxPortfolioName;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStrip uxHomeToolStrip;
+        private System.Windows.Forms.ToolStripButton uxOpenTickerFile;
+        private System.Windows.Forms.ToolStripButton uxUpdateStockPrices;
+        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ColumnHeader uxHmTickerNameCol;
+        private System.Windows.Forms.ColumnHeader uxHmCompanyNameCol;
+        private System.Windows.Forms.ColumnHeader uxHmCurrentPriceCol;
+        private System.Windows.Forms.ToolStripButton uxExitProgram;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.OpenFileDialog uxOpenFileDialog;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
     }
 }
 

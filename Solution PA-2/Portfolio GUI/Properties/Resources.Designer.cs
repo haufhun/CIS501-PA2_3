@@ -93,6 +93,26 @@ namespace Portfolio_GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap ExitImage {
+            get {
+                object obj = ResourceManager.GetObject("ExitImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap OpenFileImage {
+            get {
+                object obj = ResourceManager.GetObject("OpenFileImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap PortfolioImage {
             get {
                 object obj = ResourceManager.GetObject("PortfolioImage", resourceCulture);
@@ -106,6 +126,26 @@ namespace Portfolio_GUI.Properties {
         public static System.Drawing.Bitmap SellStockImage {
             get {
                 object obj = ResourceManager.GetObject("SellStockImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap SimulateImage {
+            get {
+                object obj = ResourceManager.GetObject("SimulateImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap UpdateImage {
+            get {
+                object obj = ResourceManager.GetObject("UpdateImage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -45,7 +45,7 @@ namespace Portfolio_GUI
 
             var c = new GuiController(a);
 
-            var mainForm = new UserInterface();
+            var mainForm = new UserInterface(a);
 
             //c.Register()
 
