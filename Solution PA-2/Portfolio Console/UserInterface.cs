@@ -201,33 +201,6 @@ namespace Portfolio_Console
                 Console.WriteLine("\t" + i.Item1 + "\t" + i.Item2.PadRight(45) + i.Item3.ToString("c").PadLeft(10));
             }
             Console.Write("\t----------------------------------------------------------------");
-            //Console.WriteLine("\t-----------------------List of Tickers------------------------");
-            //Console.WriteLine("\tMSFT          Microsoft Corporation                    $259.90");
-            //Console.WriteLine("\tAAPL          Apple Inc.                               $203.20");
-            //Console.WriteLine("\tGOOG          Google Inc.                              $179.80");
-            //Console.WriteLine("\tCSCO          Cisco Systems, Inc.                      $150.40");
-            //Console.WriteLine("\tORCL          Oracle Corporation                       $127.60");
-            //Console.WriteLine("\tINTC          Intel Corporation                        $122.80");
-            //Console.WriteLine("\tVOD           Vodafone Group Plc(ADR)                  $119.80");
-            //Console.WriteLine("\tQCOM          QUALCOMM, Inc.                            $65.40");
-            //Console.WriteLine("\tAMZN          Amazon.com, Inc.                          $58.40");
-            //Console.WriteLine("\tAMGN          Amgen, Inc.                               $56.20");
-            //Console.WriteLine("\tTEVA          Teva Pharmaceutical Industries Ltd(ADR)   $55.30");
-            //Console.WriteLine("\tCMCSA         Comcast Corporation                       $49.90");
-            //Console.WriteLine("\tGILD          Gilead Sciences, Inc.                     $42.60");
-            //Console.WriteLine("\tRIMM          Research In Motion Limited                $41.40");
-            //Console.WriteLine("\tNWSA          News Corporation                          $36.70");
-            //Console.WriteLine("\tERIC          Telefonaktiebolaget LM Ericsson(ADR)      $35.50");
-            //Console.WriteLine("\tEBAY          eBay Inc.                                 $35.00");
-            //Console.WriteLine("\tINFY          Infosys Technologies Limited(ADR)         $34.90");
-            //Console.WriteLine("\tDTV           DIRECTV                                   $32.90");
-            //Console.WriteLine("\tMITSY         Mitsui & Co., Ltd. (ADR)                  $30.90");
-            //Console.WriteLine("\tCELG          Celgene Corporation                       $29.70");
-            //Console.WriteLine("\tDELL          Dell Inc.                                 $28.50");
-            //Console.WriteLine("\tESRX          Express Scripts, Inc.                     $27.30");
-            //Console.WriteLine("\tLSTZA         Liberty Media Corp                        $27.00");
-            //Console.WriteLine("\tCOST          Costco Wholesale Corporation              $26.90");
-            //Console.Write("\t--------------------------------------------------------------");
         }
         /// <summary>
         /// Asks the user for the name of the portfolio desired.
