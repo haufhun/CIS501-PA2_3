@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Windows.Forms;
 using Class_Library;
 
 namespace Portfolio_GUI
@@ -14,7 +16,7 @@ namespace Portfolio_GUI
             _observers = new List<Observer>();
         }
 
-        public void RegisterAccount(Observer o)
+        public void Register(Observer o)
         {
             _observers.Add(o);
         }
@@ -56,6 +58,7 @@ namespace Portfolio_GUI
             //validate isn't null
             //validate name doesn't already exist
             _account.AddPortfolio(portfolioName);
+           
         }
 
 
@@ -89,9 +92,23 @@ namespace Portfolio_GUI
         /// Reads the ticker information from a file.
         /// </summary>
         /// <param name="fileName"> The file to read</param>
-        public void ReadTickerFile(string fileName)
+        public void ReadTickerFile(OpenFileDialog openFile)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (openFile.ShowDialog() == DialogResult.OK)
+                {
+
+                    string fileName = openFile.FileName;
+                    DataBase.GetInfoFromFile(new StreamReader(fileName));
+                    SignalObservers();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
         }
 
 

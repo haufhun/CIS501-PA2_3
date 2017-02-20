@@ -58,15 +58,15 @@ namespace Portfolio_GUI
 
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
+        //private void label3_Click(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
-        private void label4_Click(object sender, EventArgs e)
-        {
+        //private void label4_Click(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
         private void uxTotalInvestedLabel_Click(object sender, EventArgs e)
         {
@@ -97,29 +97,43 @@ namespace Portfolio_GUI
         
         private void uxOpenTickerFile_Click(object sender, EventArgs e)
         {
-            ReadTickerFile();
+            _readFileHandler(uxOpenFileDialog);
+            
+            uxSimulateStockPrices.Enabled = true;
+            uxRadioBttnHigh.Enabled = true;
+            uxRadioBttnMedium.Enabled = true;
+            uxRadioBttnLow.Enabled = true;
         }
 
         private void uxAddPortfolio_Click(object sender, EventArgs e)
         {
-            
-            AddPortfolio();
+            _numOfPortolios++;
+            ShowMyBuyStocksForm();
+
+            ///Create Method
+            GetPortfolioNameForm getPortfolio = new GetPortfolioNameForm();
+            if (getPortfolio.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("IM A BA");
+            }
+            //_addPortfolioHandler();
+            //AddPortfolio();
 
         }
-
-
 
 
         private void AddPortfolio()
         {
             GetPortfolioNameForm PNameForm = new GetPortfolioNameForm();
             PNameForm.Show();
+      //     PNameForm.
 
             switch (_numOfPortolios)
             {
-                case 0:
+                case 0:                 
                     uxPortfolio1.Visible = true;
                     _numOfPortolios++;
+                    
                     break;
                 case 1:
                     uxPortfolio2.Visible = true;
@@ -138,18 +152,25 @@ namespace Portfolio_GUI
 
         }
 
-        private void ReadTickerFile()
+        public void DisplayHomeStockInfo()
         {
-            if (uxOpenFileDialog.ShowDialog() == DialogResult.OK)
+            uxHomeListInfo.BeginUpdate();
+            uxHomeListInfo.Items.Clear();
+           
+            foreach (var i in DataBase.PriceAndTickerName.Values)
             {
-                string fileName = uxOpenFileDialog.FileName;
+                string[] itemInfo = {i.Item1, i.Item2, i.Item3.ToString("C")};
+                var item = new ListViewItem(itemInfo);
 
-                _readFileHandler(fileName);
+                uxHomeListInfo.Items.Add(item);
             }
-        }
 
+            uxHomeListInfo.EndUpdate();
+        }
         public void ShowMyBuyStocksForm()
         {
+            
+            //if()
             //Form2 testDialog = new Form2();
 
             //// Show testDialog as a modal dialog and determine if DialogResult = OK.
@@ -165,5 +186,52 @@ namespace Portfolio_GUI
             //testDialog.Dispose();
         }
 
+        private void uxSimulateStockPrices_Click(object sender, EventArgs e)
+        {
+            if (uxRadioBttnHigh.Checked)
+            {
+                _simulateHandler(1);
+            }
+            else if (uxRadioBttnMedium.Checked)
+            {
+                _simulateHandler(2);
+            }
+            else if (uxRadioBttnLow.Checked)
+            {
+                _simulateHandler(3);
+            }
+            else
+            {
+                MessageBox.Show("No radio button is selected... This is impossible..");
+            }
+        }
+
+        public void DisplayAccount()
+        {
+            
+
+            var t = _account.GetAccountBalance();
+
+            uxAccBalOutput.Text = t.Item1.ToString("C");
+            uxAccNetWorthOutput.Text = t.Item3.ToString("C");
+            uxAccTotalInvestedOutput.Text = t.Item2.ToString("C");
+            uxAccNetWorthStocksOutput.Text = _account.GetCashBalance().ToString("C");
+            uxAccGainsLossesOutput.Text = _account.GetGainsAndLossesReport().ToString("C");
+
+            uxAccListInfo.BeginUpdate();
+            uxAccListInfo.Items.Clear();
+
+            var list = new List<Tuple<decimal, double, string, string>>();
+            _account.GetPositionsBalance(list);
+            foreach (var i in list)
+            {
+                //TickerName    Company Name    Price per share     Shares owned    Networth of shares   position balance
+                string[] itemInfo = { i.Item1.ToString("C"), i.Item2.ToString("P"), i.Item3,i.Item4 };
+                ListViewItem item = new ListViewItem(itemInfo);
+                uxAccListInfo.Items.Add(item);
+            }
+
+            uxAccListInfo.EndUpdate();
+        }
     }
 }

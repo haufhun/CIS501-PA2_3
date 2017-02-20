@@ -16,5 +16,7 @@ namespace Portfolio_GUI
         {
             InitializeComponent();
         }
+
+        
     }
 }
