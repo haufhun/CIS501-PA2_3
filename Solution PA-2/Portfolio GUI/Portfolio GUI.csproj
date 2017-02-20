@@ -85,6 +85,9 @@
     <EmbeddedResource Include="GetPortfolioNameForm.resx">
       <DependentUpon>GetPortfolioNameForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SellStockForm.resx">
+      <DependentUpon>SellStockForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserInterface.resx">
       <DependentUpon>UserInterface.cs</DependentUpon>
     </EmbeddedResource>

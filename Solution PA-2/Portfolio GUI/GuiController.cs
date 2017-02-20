@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Windows.Forms;
 using Class_Library;
 
 namespace Portfolio_GUI
@@ -8,13 +10,14 @@ namespace Portfolio_GUI
     {
         private Account _account;
         private List<Observer> _observers;
-        public GuiController(Account a)
+        
+        public GuiController(Account a )
         {
             this._account = a;
             _observers = new List<Observer>();
         }
 
-        public void RegisterAccount(Observer o)
+        public void Register(Observer o)
         {
             _observers.Add(o);
         }
@@ -51,11 +54,11 @@ namespace Portfolio_GUI
             SignalObservers();
         }
 
-        public void AddPortfolio(string portfolioName)
+        public void AddPortfolio(string portfolioName, AddPortfolioObserver addPrtMethod)
         {
-            //validate isn't null
-            //validate name doesn't already exist
             _account.AddPortfolio(portfolioName);
+            addPrtMethod(portfolioName);
+            SignalObservers();
         }
 
 
@@ -83,15 +86,30 @@ namespace Portfolio_GUI
                     break;
             }
             SignalObservers();
+            
         }
 
         /// <summary>
         /// Reads the ticker information from a file.
         /// </summary>
         /// <param name="fileName"> The file to read</param>
-        public void ReadTickerFile(string fileName)
+        public void ReadTickerFile(OpenFileDialog openFile)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (openFile.ShowDialog() == DialogResult.OK)
+                {
+
+                    string fileName = openFile.FileName;
+                    DataBase.GetInfoFromFile(new StreamReader(fileName));
+                    SignalObservers();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
         }
 
 

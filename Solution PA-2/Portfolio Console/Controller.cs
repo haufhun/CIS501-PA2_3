@@ -49,62 +49,71 @@ namespace Portfolio_Console
         /// </summary>
         private void RunAccountMenu()
         {
-            var response = _userInterface.AskForUserSelectionOfMainMenu(_account.CashBalance);
+            var response = -1;
+            try
+            {
+                response = _userInterface.AskForUserSelectionOfMainMenu(_account.CashBalance);
+            }
+            catch (FormatException)
+            {
+            }
 
             switch (response)
-            {
-                case 1:
+                {
+                    case 1:
                     {
                         Deposit();
                     }
-                    break;
-                case 2:
+                        break;
+                    case 2:
                     {
                         Withdraw();
                     }
-                    break;
-                case 3:
+                        break;
+                    case 3:
                     {
                         AccountBalance();
                     }
-                    break;
-                case 4:
+                        break;
+                    case 4:
                     {
                         CashAndPositionsBalance();
                     }
-                    break;
-                case 5:
+                        break;
+                    case 5:
                     {
                         GainsAndLossesReport();
                     }
-                    break;
-                case 6:
+                        break;
+                    case 6:
                     {
                         AddPortfolio();
                     }
-                    break;
-                case 7:
+                        break;
+                    case 7:
                     {
                         SelectPortfolio();
                     }
-                    break;
-                case 8:
+                        break;
+                    case 8:
                     {
+
                         Simulate();
                     }
-                    break;
-                case 9:
+                        break;
+                    case 9:
                     {
                         EndProgram();
                     }
-                    break;
-                default:
+                        break;
+                    default:
                     {
                         _userInterface.DisplayIncorrectOptionChosenMessage();
                         _userInterface.WaitForUserToPressEnter();
                     }
-                    break;
-            }
+                        break;
+                }
+          
         }
 
         /// <summary>
@@ -128,18 +137,47 @@ namespace Portfolio_Console
         /// </summary>
         private void Deposit()
         {
-            var cash = _userInterface.AskForFundsToAdd();
-            if (_userInterface.UserWantsToContinue(Account.TRANSFER_FEE))
+            decimal cash = 0;
+            try
             {
-                try
+                cash = Convert.ToDecimal(_userInterface.AskForFundsToAdd());
+                if(cash < Account.TRANSFER_FEE)
                 {
-                    _account.AddFundsToCashFund(cash);
-                    _userInterface.DisplayFundsWereAdded(cash - Account.TRANSFER_FEE);
+                    _userInterface.DisplayDepositTooSmall();
+                    _userInterface.WaitForUserToPressEnter();
+                    return;
                 }
-                catch (InsufficientAccountBalanceFundsException ex)
+            }
+            catch(FormatException)
+            {
+                _userInterface.DisplayIncorrectNumberInput();
+                _userInterface.WaitForUserToPressEnter();
+                return;
+            }
+            try
+            {
+                if (_userInterface.UserWantsToContinue(Account.TRANSFER_FEE))
                 {
-                    _userInterface.DisplayErrorMessage(ex.ToString());
+
+                    try
+                    {
+                        _account.AddFundsToCashFund(cash);
+                        _userInterface.DisplayFundsWereAdded(cash - Account.TRANSFER_FEE);
+                    }
+                    catch (InsufficientAccountBalanceFundsException ex)
+                    {
+                        _userInterface.DisplayErrorMessage(ex.ToString());
+                    }
                 }
+                else
+                {
+                    _userInterface.DisplayErrorMessage("No funds were added to your account.\n");
+                }
+
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                _userInterface.DisplayErrorMessage("No funds were added to your account.\n");
             }
             _userInterface.WaitForUserToPressEnter();
         }
@@ -155,13 +193,26 @@ namespace Portfolio_Console
                 _userInterface.WaitForUserToPressEnter();
                 return;
             }
-            var withdrawl = _userInterface.AskForFundsToWithdraw();
+            decimal withdrawl = 0;
 
-
-            while (withdrawl > _account.CashBalance + _account.InvestedBalance || withdrawl > _account.CashBalance - Account.TRANSFER_FEE)
+            bool validInput = false;
+            while (!validInput)
             {
-                Console.WriteLine("\nYou do not have sufficient funds in your account. Please try again.");
-                withdrawl = _userInterface.AskForFundsToWithdraw();
+                validInput = true;
+                try
+                {
+                    withdrawl = Convert.ToDecimal(_userInterface.AskForFundsToWithdraw());
+                    if (withdrawl > _account.CashBalance + _account.InvestedBalance || withdrawl > _account.CashBalance - Account.TRANSFER_FEE)
+                    {
+                        _userInterface.DisplayErrorMessage("\nYou do not have sufficient funds in your account. Please try again.");
+                        validInput = false;
+                    }
+                }
+                catch (FormatException)
+                {
+                    _userInterface.DisplayIncorrectNumberInput();
+                    validInput = false;
+                }
             }
 
             try
@@ -170,7 +221,7 @@ namespace Portfolio_Console
                 {
                     while (withdrawl > _account.CashBalance)
                     {
-                        Console.WriteLine(
+                        _userInterface.DisplayErrorMessage(
                             "\nYou do not have sufficient funds in your accout. You must sell some of your stocks.");
                         if (_userInterface.UserWantsToContinue())
                         {
@@ -181,20 +232,57 @@ namespace Portfolio_Console
                             else
                             {
                                 var names = _account.GetListOfPortfolioNames();
-                                var num = _userInterface.DisplayPortfoliosAndAskForPortfolioNumber(names);
+                                var num = HandlePortfolioSelection(names);
                                 SellStock(names[num - 1]);
                             }
                         }
                     }
-                    _account.WithdrawFunds(withdrawl);
-                    _userInterface.DisplayFundsWereWithdrawn(withdrawl - Account.TRANSFER_FEE);
+                    _account.WithdrawFunds(withdrawl); //=Account.TRANSFER_FEE);
+                    // _userInterface.DisplayFundsWereWithdrawn(withdrawl - Account.TRANSFER_FEE);
+                    _userInterface.DisplayFundsWereWithdrawn(withdrawl);
                 }
             }
             catch (InsufficientAccountBalanceFundsException ex)
             {
                 _userInterface.DisplayErrorMessage(ex.ToString());
             }
+            catch (IndexOutOfRangeException ex)
+            {
+                _userInterface.DisplayErrorMessage("No funds were withdrawn from your account.\n");
+            }
             _userInterface.WaitForUserToPressEnter();
+        }
+        /// <summary>
+        /// Receives a number from the user interface of which portfolio to select, then returns the
+        /// index of that portfolio if the input is correct.
+        /// </summary>
+        /// <param name="names">The list containing the names of the portfolios</param>
+        /// <returns>The index of the portfolio the user would like to select.</returns>
+        private int HandlePortfolioSelection(List<string> names)
+        {
+            bool valid = false;
+            int num = 0;
+            while (!valid)
+            {
+                    try
+                    {
+                        num = Convert.ToInt32(_userInterface.DisplayPortfoliosAndAskForPortfolioNumber(names));
+                        if (names[num-1] == null)
+                        {
+                            _userInterface.DisplayErrorMessage(
+                                "A portfolio at that spot does not exist. Enter a number that is displayed.");
+                        }
+                        else
+                        {
+                            valid = true;
+                        }
+                    }
+                    catch (FormatException)
+                    {
+                        _userInterface.DisplayIncorrectNumberInput();
+                    }
+            }
+            return num;
         }
         /// <summary>
         /// Displays the account balance.
@@ -202,7 +290,6 @@ namespace Portfolio_Console
         private void AccountBalance()
         {
             _userInterface.DisplayAccountBalance(_account.GetAccountBalance());
-            Console.WriteLine();
             _userInterface.WaitForUserToPressEnter();
         }
         /// <summary>
@@ -233,43 +320,55 @@ namespace Portfolio_Console
                 _userInterface.WaitForUserToPressEnter();
                 RunPortfolioMenu(name);
             }
-            Console.WriteLine();
         }
         /// <summary>
         /// Simulates stock market activity, either high, medium or low volatility based on user choice.
         /// </summary>
         private void Simulate()
         {
-            int volatility = _userInterface.AskForMarketVolatility();
-            if (_userInterface.UserWantsToContinue())
+            string volatility = _userInterface.AskForMarketVolatility();
+            while (volatility != "1" && volatility != "2" && volatility != "3")
             {
-                switch (volatility)
+                _userInterface.DisplayErrorMessage("\nIncorrect input. Try again. ");
+                volatility = _userInterface.AskForMarketVolatility();
+            }
+            int volValue = Convert.ToInt32(volatility);
+            try
+            {
+                if (_userInterface.UserWantsToContinue())
                 {
-                    case 1:
+                    switch (volValue)
+                    {
+                        case 1:
                         {
                             Simulator.SimulateHighVolatility();
                             _userInterface.DisplayMarketVolatilitySuccess(1);
 
                         }
-                        break;
-                    case 2:
+                            break;
+                        case 2:
                         {
                             Simulator.SimulateMediumVolatility();
                             _userInterface.DisplayMarketVolatilitySuccess(2);
                         }
-                        break;
-                    case 3:
+                            break;
+                        case 3:
                         {
                             Simulator.SimulateLowVolatility();
                             _userInterface.DisplayMarketVolatilitySuccess(3);
                         }
-                        break;
-                    default:
+                            break;
+                        default:
                         {
                             _userInterface.DisplayIncorrectOptionChosenMessage();
                         }
-                        break;
+                            break;
+                    }
                 }
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                _userInterface.DisplayErrorMessage(ex.ToString());
             }
             _userInterface.WaitForUserToPressEnter();
         }
@@ -286,7 +385,7 @@ namespace Portfolio_Console
             else
             {
                 var names = _account.GetListOfPortfolioNames();
-                var num = _userInterface.DisplayPortfoliosAndAskForPortfolioNumber(names);
+                int num = HandlePortfolioSelection(names);
                 _userInterface.WaitForUserToPressEnter();
                 RunPortfolioMenu(names[num - 1]);
             }
@@ -301,51 +400,62 @@ namespace Portfolio_Console
             do
             {
                 //var portfolio = _account.SelectPortfolio(portfolioName);
-                var portolioChoice = _userInterface.AskForUserSelectionOfPortfolio(portfolioName, _account.CashBalance);
-                switch (portolioChoice)
+                var portfolioChoice = -1;
+                try 
                 {
-                    case 1:
+                     portfolioChoice = _userInterface.AskForUserSelectionOfPortfolio(portfolioName,
+                        _account.CashBalance);
+                }
+                catch (FormatException)
+                {
+                    
+                }
+                switch (portfolioChoice)
+                    {
+                        case 1:
                         {
                             BuyStock(portfolioName);
                         }
-                        break;
-                    case 2:
+                            break;
+                        case 2:
                         {
                             SellStock(portfolioName);
                         }
-                        break;
-                    case 3:
+                            break;
+                        case 3:
                         {
                             PortfolioBalance(portfolioName);
                         }
-                        break;
-                    case 4:
+                            break;
+                        case 4:
                         {
                             PositionsBalance(portfolioName);
                         }
-                        break;
-                    case 5:
+                            break;
+                        case 5:
                         {
                             PortfolioGainsAndLossesReport(portfolioName);
                         }
-                        break;
-                    case 6:
+                            break;
+                        case 6:
                         {
                             portfolioIsSelected = DeletePortfolio(portfolioName);
                         }
-                        break;
-                    case 7:
+                            break;
+                        case 7:
                         {
                             Console.WriteLine();
                             portfolioIsSelected = false;
                         }
-                        break;
-                    default:
+                            break;
+                        default:
                         {
+                            _userInterface.DisplayIncorrectOptionChosenMessage();
                             _userInterface.WaitForUserToPressEnter();
                         }
-                        break;
-                }
+                            break;
+                    }
+                
             } while (portfolioIsSelected);
         }
         /// <summary>
@@ -357,9 +467,14 @@ namespace Portfolio_Console
         {
             var totalValue = _account.SelectPortfolio(portfolioName).GetCurrentValueOfAllStocks();
             _userInterface.DisplayPortolioValue(totalValue);
-
-            if (!_userInterface.UserWantsToContinue()) return true;
-
+            try
+            {
+                if (!_userInterface.UserWantsToContinue()) return true;
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                return true;
+            }
             _account.DeletePortfolio(portfolioName);
             _userInterface.DisplayPortfolioWasDeleted(portfolioName, totalValue);
             _userInterface.WaitForUserToPressEnter();
@@ -404,24 +519,63 @@ namespace Portfolio_Console
             {
                 try
                 {
-                    var tickerName = _userInterface.AskForStockName();
+                    string tickerName = UserStockName();
                     _userInterface.DisplayStockInfo(tickerName, DataBase.PriceAndTickerName[tickerName].Item2, 
                             DataBase.PriceAndTickerName[tickerName].Item3);
-                    var inputOption = _userInterface.AskForWayOfPurchasingStocks();
+                    
+                    int inputOption = _userInterface.AskForWayOfPurchasingStocks();
                     if (inputOption == 1)
                     {
-                        var shares = _userInterface.AskForNumberOfShares();
-                        if (_userInterface.UserWantsToContinue(Account.TRADE_FEE))
-                            _account.BuyStock(portfolioName, tickerName, shares);
-                        _userInterface.DisplayStockWasPurchased(shares, DataBase.PriceAndTickerName[tickerName].Item3, tickerName);
+                        int shares = UserNumberOfShares();
+                        try
+                        {
+                            if (_userInterface.UserWantsToContinue(Account.TRADE_FEE))
+                            {
+                                _account.BuyStock(portfolioName, tickerName, shares);
+                                _userInterface.DisplayStockWasPurchased(shares,
+                                    DataBase.PriceAndTickerName[tickerName].Item3, tickerName);
+                            }
+                        }
+                        catch (IndexOutOfRangeException ex)
+                        {
+                            _userInterface.DisplayErrorMessage("Transaction was not complete. No stock has been purchased.");
+                        }
+                       // _userInterface.DisplayStockWasPurchased(shares, DataBase.PriceAndTickerName[tickerName].Item3, tickerName);
                     }
                     else if (inputOption == 2)
                     {
-                        var dollars = _userInterface.AskForDollars();
+                        decimal dollars=0;
+                        bool valid = false;
+                        while (!valid)
+                        {
+                            try
+                            {
+                                dollars = Convert.ToDecimal(_userInterface.AskForDollars());
+                                valid = true;
+                            }
+                            catch (FormatException)
+                            {
+                                _userInterface.DisplayIncorrectNumberInput();
+                            }
+                        }
                         int shares = (int)(dollars / DataBase.PriceAndTickerName[tickerName].Item3);
-                        if (_userInterface.UserWantsToContinue(Account.TRADE_FEE))
-                            _account.BuyStock(portfolioName, tickerName, shares);
-                        _userInterface.DisplayStockWasPurchased(shares, DataBase.PriceAndTickerName[tickerName].Item3, tickerName);
+                        try
+                        {
+                            if (_userInterface.UserWantsToContinue(Account.TRADE_FEE))
+                            {
+                                _account.BuyStock(portfolioName, tickerName, shares);
+                                _userInterface.DisplayStockWasPurchased(shares, DataBase.PriceAndTickerName[tickerName].Item3, tickerName);
+                            }
+                        }
+                        catch (IndexOutOfRangeException ex)
+                        {
+                            _userInterface.DisplayErrorMessage("Transaction was not complete. No stock has been purchased.");
+                        }
+                        catch (DivideByZeroException)
+                        {
+                            Console.WriteLine("The price entered exceeds the price of one stock. Cannot continue transaction...");
+                        }
+                      //  _userInterface.DisplayStockWasPurchased(shares, DataBase.PriceAndTickerName[tickerName].Item3, tickerName);
                     }
                     else
                     {
@@ -440,6 +594,54 @@ namespace Portfolio_Console
             _userInterface.WaitForUserToPressEnter();
         }
         /// <summary>
+        /// Asks the user for the name of the stock.
+        /// </summary>
+        /// <returns>The name of the stock.</returns>
+        private string UserStockName()
+        {
+            bool valid = false;
+            string tickerName = "";
+            while (!valid)
+            {
+                tickerName = _userInterface.AskForStockName();
+                if (!DataBase.PriceAndTickerName.ContainsKey(tickerName))
+                {
+                    _userInterface.DisplayErrorMessage("This stock does not exist. Please enter a stock from the ticker file.");
+                }
+                else
+                {
+                    valid = true;
+                }
+            }
+            return tickerName;
+        }
+        /// <summary>
+        /// Gets the number of shares the user would like to select and handles any error.
+        /// </summary>
+        /// <returns>The number of shares</returns>
+        private int UserNumberOfShares()
+        {
+            bool valid = false;
+            int shares = 0;
+            while (!valid)
+            {
+                try
+                {
+                    shares = Convert.ToInt32(_userInterface.AskForNumberOfShares());
+                    if (shares <= 0)
+                    {
+                        _userInterface.DisplayIncorrectOptionChosenMessage();
+                    }
+                    else { valid = true; }
+                }
+                catch (FormatException)
+                {
+                    _userInterface.DisplayIncorrectNumberInput();
+                }
+            }
+            return shares;
+        }
+        /// <summary>
         /// Sells a stock of a portfolio.
         /// </summary>
         /// <param name="portfolioName">The portfolio name.</param>
@@ -447,7 +649,7 @@ namespace Portfolio_Console
         {
             if (_account.InvestedBalance > 0)
             {
-                var tickerName = _userInterface.AskForStockName();
+                var tickerName = UserStockName();
 
                 while (!_account.SelectPortfolio(portfolioName).ContainsStock(tickerName))
                 {
@@ -455,7 +657,7 @@ namespace Portfolio_Console
                     tickerName = _userInterface.AskForStockName();
                 }
 
-                var shares = _userInterface.AskForNumberOfShares();
+                var shares = UserNumberOfShares();
                 if (_userInterface.UserWantsToContinue(Account.TRADE_FEE))
                 {
                     _account.SellNumberOfStocks(portfolioName, tickerName, shares);
