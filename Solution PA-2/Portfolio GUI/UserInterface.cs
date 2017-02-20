@@ -14,20 +14,44 @@ namespace Portfolio_GUI
 {
     public partial class UserInterface : Form
     {
+        //defines the type of method that handles a deposit cash input event 
+        private DepositCashHandler _depositCashHandler;
+        // defines the type of method that handles a withdraw cash input event
+        private WithdrawCashHandler _withdrawCashHandler;
+        // defines the type of method that handles a buy stock input event 
+        private BuyStocksHandler _buyStocksHandler;
+        // defines the type of method that handles a sell stock input event
+        private SellStocksHandler _sellStocksHandler;
+        // defines the type of method that handles a add portfolio input event 
+        private AddPortfolioHandler _addPortfolioHandler;
+        // defines the type of method that handles a delete portfolio input event
+        private DeletePortfolioHandler _deletePortfolioHandler;
+        // defines the type of method that handles a simulate input event
+        private SimulateHandler _simulateHandler;
+        // defines the type of method that handles a read file input event
+        private ReadFileHandler _readFileHandler;
+
+
         private int _numOfPortolios = 0;
         private Account _account;
-        public UserInterface(Account a)
+
+
+        public UserInterface(Account a, ReadFileHandler readFileHandler, SimulateHandler simulate,
+            DeletePortfolioHandler deletePortfolio, AddPortfolioHandler addPortfolio, SellStocksHandler sellStocks,
+            BuyStocksHandler buyStocks, DepositCashHandler depositFunds, WithdrawCashHandler withdrawFunds)
         {
             _account = a;
+            _readFileHandler = readFileHandler;
+            _simulateHandler = simulate;
+            _deletePortfolioHandler = deletePortfolio;
+            _addPortfolioHandler = addPortfolio;
+            _sellStocksHandler = sellStocks;
+            _buyStocksHandler = buyStocks;
+            _depositCashHandler = depositFunds;
+            _withdrawCashHandler = withdrawFunds;
+
             InitializeComponent();
-
         }
-
-        //public UserInterface(EventHandler<EventArgs> handle)
-        //{
-
-        //    // throw new NotImplementedException();
-        //}
 
         private void uxAccountTab_Click(object sender, EventArgs e)
         {
@@ -70,24 +94,23 @@ namespace Portfolio_GUI
             uxPortfolioName.Text = uxPortfolio3.Text;
         }
 
-        public void ShowMyBuyStocksForm()
+        
+        private void uxOpenTickerFile_Click(object sender, EventArgs e)
         {
-            //Form2 testDialog = new Form2();
-
-            //// Show testDialog as a modal dialog and determine if DialogResult = OK.
-            //if (testDialog.ShowDialog(this) == DialogResult.OK)
-            //{
-            //    // Read the contents of testDialog's TextBox.
-            //    this.txtResult.Text = testDialog.TextBox1.Text;
-            //}
-            //else
-            //{
-            //    this.txtResult.Text = "Cancelled";
-            //}
-            //testDialog.Dispose();
+            ReadTickerFile();
         }
 
-        public void AddPortfolio()
+        private void uxAddPortfolio_Click(object sender, EventArgs e)
+        {
+            
+            AddPortfolio();
+
+        }
+
+
+
+
+        private void AddPortfolio()
         {
             GetPortfolioNameForm PNameForm = new GetPortfolioNameForm();
             PNameForm.Show();
@@ -115,22 +138,31 @@ namespace Portfolio_GUI
 
         }
 
-        private void uxAddPortfolio_Click(object sender, EventArgs e)
-        {
-            //ReadFilehand
-            AddPortfolio(); //For now
-
-        }
-
-        private void uxOpenTickerFile_Click(object sender, EventArgs e)
+        private void ReadTickerFile()
         {
             if (uxOpenFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string fileName = uxOpenFileDialog.FileName;
+
+                _readFileHandler(fileName);
             }
-            
-            //han
-            //OpenTickerFile();
+        }
+
+        public void ShowMyBuyStocksForm()
+        {
+            //Form2 testDialog = new Form2();
+
+            //// Show testDialog as a modal dialog and determine if DialogResult = OK.
+            //if (testDialog.ShowDialog(this) == DialogResult.OK)
+            //{
+            //    // Read the contents of testDialog's TextBox.
+            //    this.txtResult.Text = testDialog.TextBox1.Text;
+            //}
+            //else
+            //{
+            //    this.txtResult.Text = "Cancelled";
+            //}
+            //testDialog.Dispose();
         }
 
     }

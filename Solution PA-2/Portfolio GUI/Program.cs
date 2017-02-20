@@ -11,21 +11,21 @@ namespace Portfolio_GUI
     public delegate void Observer();
 
     //defines the type of method that handles a deposit cash input event 
-    public delegate void DepositCashHandler(object sender, EventArgs e); 
+    public delegate void DepositCashHandler(decimal cash); 
     // defines the type of method that handles a withdraw cash input event
-    public delegate void WithdrawCashHandler(object sender, EventArgs e);
+    public delegate void WithdrawCashHandler(decimal cash);
     // defines the type of method that handles a buy stock input event 
-    public delegate void BuyStocksHandler(object sender, EventArgs e);
+    public delegate void BuyStocksHandler(string portfolioName, string tickerName, int numberOfShares);
     // defines the type of method that handles a sell stock input event
-    public delegate void SellStocksHandler(object sender, EventArgs e);
+    public delegate void SellStocksHandler(string portfolioName, string tickerName, int numberOfShares);
     // defines the type of method that handles a add portfolio input event 
-    public delegate void AddPortfolioHandler(object sender, EventArgs e);
+    public delegate void AddPortfolioHandler(string portfolioName);
     // defines the type of method that handles a delete portfolio input event
-    public delegate void DeletePortfolioHandler(object sender, EventArgs e);
+    public delegate void DeletePortfolioHandler(string portfolioName);
     // defines the type of method that handles a simulate input event
-    public delegate void SimulateHandler(object sender, EventArgs e);
+    public delegate void SimulateHandler(int volatility);
     // defines the type of method that handles a read file input event
-    public delegate void ReadFileHandler(object sender, EventArgs e); 
+    public delegate void ReadFileHandler(string FileName); 
 
     /// <summary>
     /// Runs the program.
@@ -45,7 +45,7 @@ namespace Portfolio_GUI
 
             var c = new GuiController(a);
 
-            var mainForm = new UserInterface(a);
+            var mainForm = new UserInterface(a, c.ReadTickerFile, c.Simulate, c.DeletePortfolio, c.AddPortfolio, c.SellStocks, c.BuyStocks, c.DepositFunds, c.WithdrawFunds);
 
             //c.Register()
 

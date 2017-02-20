@@ -27,6 +27,11 @@ namespace Portfolio_GUI
             _account.AddFundsToCashFund(cash);
         }
 
+        public void WithdrawFunds(decimal cash)
+        {
+            throw new NotImplementedException();
+        }
+
         public void BuyStocks(string portfolioName, string tickerName, int numberOfShares)
         {
             //validate
@@ -52,6 +57,13 @@ namespace Portfolio_GUI
             //validate name doesn't already exist
             _account.AddPortfolio(portfolioName);
         }
+
+
+        public void DeletePortfolio(string portfolioName)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Simulates stock market activity, either high, medium or low volatility based on user choice.
         /// </summary>
@@ -72,6 +84,17 @@ namespace Portfolio_GUI
             }
             SignalObservers();
         }
+
+        /// <summary>
+        /// Reads the ticker information from a file.
+        /// </summary>
+        /// <param name="fileName"> The file to read</param>
+        public void ReadTickerFile(string fileName)
+        {
+            throw new NotImplementedException();
+        }
+
+
 
         /// <summary>
         /// Signals the observers to update fields of the user interface
