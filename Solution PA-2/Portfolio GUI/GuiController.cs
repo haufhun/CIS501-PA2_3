@@ -57,7 +57,8 @@ namespace Portfolio_GUI
         public void AddPortfolio(string portfolioName, AddPortfolioObserver addPrtMethod)
         {
             _account.AddPortfolio(portfolioName);
-            addPrtMethod();
+            addPrtMethod(portfolioName);
+            SignalObservers();
         }
 
 

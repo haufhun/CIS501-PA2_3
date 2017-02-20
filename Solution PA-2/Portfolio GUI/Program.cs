@@ -9,7 +9,7 @@ namespace Portfolio_GUI
 {
     // defines the type of method that observes model updates
     public delegate void Observer();
-    public delegate void AddPortfolioObserver();
+    public delegate void AddPortfolioObserver(string portfolioName);
 
     //defines the type of method that handles a deposit cash input event 
     public delegate void DepositCashHandler(decimal cash); 

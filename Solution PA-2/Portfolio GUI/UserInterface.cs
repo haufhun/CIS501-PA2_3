@@ -142,24 +142,29 @@ namespace Portfolio_GUI
                 _addPortfolioHandler(portfolioName, new AddPortfolioObserver(AddPortfolioToToolStrip));
             }
         }
+       
 
-
-        private void AddPortfolioToToolStrip()
+        private void AddPortfolioToToolStrip(string portfolioName)
         {
             _numOfPortolios++;
 
             switch (_numOfPortolios)
             {
-                case 0:                 
-                    uxPortfolio1.Visible = true;   
-                                     
-                    break;
-                case 1:
-                    uxPortfolio2.Visible = true;   
+                case 1:                 
+                    uxPortfolio1.Visible = true;
+                    uxPortfolio1.Text = portfolioName;
+                    DisplayPortfolio(portfolioName);     
                     break;
                 case 2:
-                    uxPortfolio3.Visible = true;
-                    uxAddPortfolio.Visible = false;    
+                    uxPortfolio2.Visible = true;
+                    uxPortfolio2.Text = portfolioName;
+                    DisplayPortfolio(portfolioName);
+                    break;
+                case 3:
+                    uxPortfolio3.Visible = true;            
+                    uxAddPortfolio.Visible = false;
+                    uxPortfolio3.Text = portfolioName;
+                    DisplayPortfolio(portfolioName);
                     break;
                 default:
                     MessageBox.Show("Somehow the add portfolio button was visible and you already have the maximum number of portfolios!");
@@ -210,9 +215,10 @@ namespace Portfolio_GUI
 
             uxAccListInfo.EndUpdate();
         }
-        public void DisplayPortfolio(string porfollioName)
+
+        private void DisplayPortfolio(string portfollioName)
         {
-            
+            uxPortfolioName.Text = portfollioName;
         }
 
         public void ShowMyBuyStocksForm()
