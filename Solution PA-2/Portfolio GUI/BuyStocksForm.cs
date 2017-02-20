@@ -29,9 +29,6 @@ namespace Portfolio_GUI
                 MessageBox.Show("Please select a stock!");
             }
         }
-        //private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-        //}
+
     }
 }

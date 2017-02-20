@@ -56,7 +56,7 @@
             this.uxBuyStockListInfo.Location = new System.Drawing.Point(25, 61);
             this.uxBuyStockListInfo.MultiSelect = false;
             this.uxBuyStockListInfo.Name = "uxBuyStockListInfo";
-            this.uxBuyStockListInfo.Size = new System.Drawing.Size(677, 285);
+            this.uxBuyStockListInfo.Size = new System.Drawing.Size(698, 285);
             this.uxBuyStockListInfo.TabIndex = 14;
             this.uxBuyStockListInfo.UseCompatibleStateImageBehavior = false;
             this.uxBuyStockListInfo.View = System.Windows.Forms.View.Details;
@@ -100,7 +100,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(724, 138);
+            this.label2.Location = new System.Drawing.Point(734, 138);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(276, 25);
             this.label2.TabIndex = 16;
@@ -120,7 +120,7 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(1006, 136);
+            this.numericUpDown1.Location = new System.Drawing.Point(1030, 136);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(110, 30);
             this.numericUpDown1.TabIndex = 20;

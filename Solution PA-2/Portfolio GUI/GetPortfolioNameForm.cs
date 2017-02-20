@@ -20,10 +20,5 @@ namespace Portfolio_GUI
 
         public string PortfolioName => uxPNameTxtBox.Text;
 
-        public void Clear()
-        {
-            uxPNameTxtBox.Clear();
-        }
-
     }
 }

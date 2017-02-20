@@ -52,9 +52,8 @@ namespace Portfolio_GUI
 
         
         private Account _account;
-        private uxGetPortfolioNameForm getPortfolioNameForm;
-        private uxBuyStocksForm buyStocksForm;
-        private uxSellStockForm sellStockForm;
+
+
 
         private int _numOfPortolios = 0;
 
@@ -78,15 +77,13 @@ void MyButtonClick(object sender, EventArgs e)
         /// <param name="buyStocks"></param>
         /// <param name="depositFunds"></param>
         /// <param name="withdrawFunds"></param>
-        public uxUserInterface(Account a , uxGetPortfolioNameForm getPNameForm, uxBuyStocksForm bStkForm, uxSellStockForm sStkForm,
-            ReadFileHandler readFileHandler, SimulateHandler simulate, DeletePortfolioHandler deletePortfolio, AddPortfolioHandler addPortfolio, 
-            SellStocksHandler sellStocks, BuyStocksHandler buyStocks, DepositCashHandler depositFunds, WithdrawCashHandler withdrawFunds)
+        public uxUserInterface(Account a , ReadFileHandler readFileHandler, SimulateHandler simulate, DeletePortfolioHandler deletePortfolio, 
+            AddPortfolioHandler addPortfolio, SellStocksHandler sellStocks, BuyStocksHandler buyStocks, DepositCashHandler depositFunds, 
+            WithdrawCashHandler withdrawFunds)
         {
-            ///Initializing account and inputForms///
+            ///Initializing account///
             _account = a;
-            getPortfolioNameForm = getPNameForm;
-            buyStocksForm = bStkForm;
-            sellStockForm = sStkForm;
+
 
             ///Initializing Delegates///
             _readFileHandler = readFileHandler;
@@ -100,6 +97,8 @@ void MyButtonClick(object sender, EventArgs e)
 
             
             InitializeComponent();
+
+            ///Makes All Buy Buttons Refrence the same buttonClick
             uxBuyStocks1.Click += Button_Click;
             uxBuyStocks2.Click += Button_Click;
             uxBuyStocks3.Click += Button_Click;
@@ -174,10 +173,11 @@ void MyButtonClick(object sender, EventArgs e)
         /// </summary>
         private void uxAddPortfolio_Click(object sender, EventArgs e)
         {
-            getPortfolioNameForm.Clear();
+            uxGetPortfolioNameForm getPortfolioNameForm = new uxGetPortfolioNameForm();
+
             if (getPortfolioNameForm.ShowDialog() == DialogResult.OK)
             { 
-                _addPortfolioHandler(getPortfolioNameForm.PortfolioName, new AddPortfolioObserver(AddPortfolioToToolStrip));
+                _addPortfolioHandler(getPortfolioNameForm.PortfolioName, AddPortfolioToToolStrip);
             }
         }
        
@@ -280,6 +280,7 @@ void MyButtonClick(object sender, EventArgs e)
             //    this.txtResult.Text = "Cancelled";
             //}
             //testDialog.Dispose();
+            uxBuyStocksForm buyStocksForm = new uxBuyStocksForm();
             buyStocksForm.Show();
         }
 
