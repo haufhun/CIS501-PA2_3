@@ -1,6 +1,6 @@
 ﻿namespace Portfolio_GUI
 {
-    partial class UserInterface
+    partial class uxUserInterface
     {
         /// <summary>
         /// Required designer variable.
@@ -28,15 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserInterface));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea15 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend15 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea16 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend16 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uxUserInterface));
             this.uxTabControl = new System.Windows.Forms.TabControl();
             this.uxHomeTab = new System.Windows.Forms.TabPage();
+            this.uxVolatilityGroup = new System.Windows.Forms.GroupBox();
+            this.uxRadioBttnMedium = new System.Windows.Forms.RadioButton();
+            this.uxRadioBttnLow = new System.Windows.Forms.RadioButton();
+            this.uxRadioBttnHigh = new System.Windows.Forms.RadioButton();
+            this.label18 = new System.Windows.Forms.Label();
             this.uxHomeListInfo = new System.Windows.Forms.ListView();
             this.uxHmTickerNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.uxHmCompanyNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -106,20 +111,15 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.uxOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.uxRadioBttnLow = new System.Windows.Forms.RadioButton();
-            this.uxRadioBttnHigh = new System.Windows.Forms.RadioButton();
-            this.uxRadioBttnMedium = new System.Windows.Forms.RadioButton();
-            this.label18 = new System.Windows.Forms.Label();
-            this.uxVolatilityGroup = new System.Windows.Forms.GroupBox();
             this.uxTabControl.SuspendLayout();
             this.uxHomeTab.SuspendLayout();
+            this.uxVolatilityGroup.SuspendLayout();
             this.uxHomeToolStrip.SuspendLayout();
             this.uxAccountTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.uxPortfolioTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.uxPortfolioToolStrip.SuspendLayout();
-            this.uxVolatilityGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // uxTabControl
@@ -150,6 +150,62 @@
             this.uxHomeTab.Text = "Home";
             this.uxHomeTab.UseVisualStyleBackColor = true;
             // 
+            // uxVolatilityGroup
+            // 
+            this.uxVolatilityGroup.Controls.Add(this.uxRadioBttnMedium);
+            this.uxVolatilityGroup.Controls.Add(this.uxRadioBttnLow);
+            this.uxVolatilityGroup.Controls.Add(this.uxRadioBttnHigh);
+            this.uxVolatilityGroup.Location = new System.Drawing.Point(553, 86);
+            this.uxVolatilityGroup.Name = "uxVolatilityGroup";
+            this.uxVolatilityGroup.Size = new System.Drawing.Size(437, 151);
+            this.uxVolatilityGroup.TabIndex = 8;
+            this.uxVolatilityGroup.TabStop = false;
+            // 
+            // uxRadioBttnMedium
+            // 
+            this.uxRadioBttnMedium.AutoSize = true;
+            this.uxRadioBttnMedium.Enabled = false;
+            this.uxRadioBttnMedium.Location = new System.Drawing.Point(18, 63);
+            this.uxRadioBttnMedium.Name = "uxRadioBttnMedium";
+            this.uxRadioBttnMedium.Size = new System.Drawing.Size(415, 21);
+            this.uxRadioBttnMedium.TabIndex = 6;
+            this.uxRadioBttnMedium.Text = "Medium-volatility- Increment/decrement the price from 2%-8%";
+            this.uxRadioBttnMedium.UseVisualStyleBackColor = true;
+            // 
+            // uxRadioBttnLow
+            // 
+            this.uxRadioBttnLow.AutoSize = true;
+            this.uxRadioBttnLow.Enabled = false;
+            this.uxRadioBttnLow.Location = new System.Drawing.Point(18, 88);
+            this.uxRadioBttnLow.Name = "uxRadioBttnLow";
+            this.uxRadioBttnLow.Size = new System.Drawing.Size(391, 21);
+            this.uxRadioBttnLow.TabIndex = 4;
+            this.uxRadioBttnLow.Text = "Low-volatility- Increment/decrement the price from 1%-4%";
+            this.uxRadioBttnLow.UseVisualStyleBackColor = true;
+            // 
+            // uxRadioBttnHigh
+            // 
+            this.uxRadioBttnHigh.AutoSize = true;
+            this.uxRadioBttnHigh.Checked = true;
+            this.uxRadioBttnHigh.Enabled = false;
+            this.uxRadioBttnHigh.Location = new System.Drawing.Point(18, 36);
+            this.uxRadioBttnHigh.Name = "uxRadioBttnHigh";
+            this.uxRadioBttnHigh.Size = new System.Drawing.Size(403, 21);
+            this.uxRadioBttnHigh.TabIndex = 5;
+            this.uxRadioBttnHigh.TabStop = true;
+            this.uxRadioBttnHigh.Text = "High-volatility- Increment/decrement the price from 3%-15%";
+            this.uxRadioBttnHigh.UseVisualStyleBackColor = true;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(547, 52);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(318, 31);
+            this.label18.TabIndex = 7;
+            this.label18.Text = "Simulate Stock Options";
+            // 
             // uxHomeListInfo
             // 
             this.uxHomeListInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -161,7 +217,7 @@
             this.uxHomeListInfo.GridLines = true;
             this.uxHomeListInfo.Location = new System.Drawing.Point(6, 33);
             this.uxHomeListInfo.Name = "uxHomeListInfo";
-            this.uxHomeListInfo.Size = new System.Drawing.Size(491, 506);
+            this.uxHomeListInfo.Size = new System.Drawing.Size(535, 506);
             this.uxHomeListInfo.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.uxHomeListInfo.TabIndex = 3;
             this.uxHomeListInfo.UseCompatibleStateImageBehavior = false;
@@ -180,7 +236,7 @@
             // uxHmCurrentPriceCol
             // 
             this.uxHmCurrentPriceCol.Text = "Price Per Share";
-            this.uxHmCurrentPriceCol.Width = 112;
+            this.uxHmCurrentPriceCol.Width = 221;
             // 
             // uxHomeToolStrip
             // 
@@ -254,17 +310,17 @@
             // 
             // chart2
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart2.Legends.Add(legend3);
+            chartArea15.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea15);
+            legend15.Name = "Legend1";
+            this.chart2.Legends.Add(legend15);
             this.chart2.Location = new System.Drawing.Point(889, 327);
             this.chart2.Name = "chart2";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart2.Series.Add(series3);
+            series15.ChartArea = "ChartArea1";
+            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series15.Legend = "Legend1";
+            series15.Name = "Series1";
+            this.chart2.Series.Add(series15);
             this.chart2.Size = new System.Drawing.Size(288, 173);
             this.chart2.TabIndex = 24;
             this.chart2.Text = "chart2";
@@ -368,7 +424,6 @@
             this.uxTotalInvestedLabel.Size = new System.Drawing.Size(133, 20);
             this.uxTotalInvestedLabel.TabIndex = 3;
             this.uxTotalInvestedLabel.Text = "Total Invested:";
-            this.uxTotalInvestedLabel.Click += new System.EventHandler(this.uxTotalInvestedLabel_Click);
             // 
             // uxAccListInfo
             // 
@@ -479,17 +534,17 @@
             // 
             // chart1
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chart1.Legends.Add(legend4);
+            chartArea16.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea16);
+            legend16.Name = "Legend1";
+            this.chart1.Legends.Add(legend16);
             this.chart1.Location = new System.Drawing.Point(900, 337);
             this.chart1.Name = "chart1";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chart1.Series.Add(series4);
+            series16.ChartArea = "ChartArea1";
+            series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series16.Legend = "Legend1";
+            series16.Name = "Series1";
+            this.chart1.Series.Add(series16);
             this.chart1.Size = new System.Drawing.Size(288, 173);
             this.chart1.TabIndex = 23;
             this.chart1.Text = "chart1";
@@ -606,6 +661,7 @@
             this.uxPrtPositionBalCol});
             this.uxPrtListInfo.GridLines = true;
             this.uxPrtListInfo.Location = new System.Drawing.Point(6, 106);
+            this.uxPrtListInfo.MultiSelect = false;
             this.uxPrtListInfo.Name = "uxPrtListInfo";
             this.uxPrtListInfo.Size = new System.Drawing.Size(873, 286);
             this.uxPrtListInfo.TabIndex = 13;
@@ -693,6 +749,7 @@
             this.uxBuyStocks1.Name = "uxBuyStocks1";
             this.uxBuyStocks1.Size = new System.Drawing.Size(185, 26);
             this.uxBuyStocks1.Text = "Buy Stocks";
+            this.uxBuyStocks1.Click += new System.EventHandler(this.uxBuyStocks1_Click);
             // 
             // uxSellStocks1
             // 
@@ -829,74 +886,20 @@
             // 
             this.uxOpenFileDialog.FileName = "Ticker.txt";
             // 
-            // uxRadioBttnLow
-            // 
-            this.uxRadioBttnLow.AutoSize = true;
-            this.uxRadioBttnLow.Enabled = false;
-            this.uxRadioBttnLow.Location = new System.Drawing.Point(18, 88);
-            this.uxRadioBttnLow.Name = "uxRadioBttnLow";
-            this.uxRadioBttnLow.Size = new System.Drawing.Size(391, 21);
-            this.uxRadioBttnLow.TabIndex = 4;
-            this.uxRadioBttnLow.Text = "Low-volatility- Increment/decrement the price from 1%-4%";
-            this.uxRadioBttnLow.UseVisualStyleBackColor = true;
-            // 
-            // uxRadioBttnHigh
-            // 
-            this.uxRadioBttnHigh.AutoSize = true;
-            this.uxRadioBttnHigh.Checked = true;
-            this.uxRadioBttnHigh.Enabled = false;
-            this.uxRadioBttnHigh.Location = new System.Drawing.Point(18, 36);
-            this.uxRadioBttnHigh.Name = "uxRadioBttnHigh";
-            this.uxRadioBttnHigh.Size = new System.Drawing.Size(403, 21);
-            this.uxRadioBttnHigh.TabIndex = 5;
-            this.uxRadioBttnHigh.TabStop = true;
-            this.uxRadioBttnHigh.Text = "High-volatility- Increment/decrement the price from 3%-15%";
-            this.uxRadioBttnHigh.UseVisualStyleBackColor = true;
-            // 
-            // uxRadioBttnMedium
-            // 
-            this.uxRadioBttnMedium.AutoSize = true;
-            this.uxRadioBttnMedium.Enabled = false;
-            this.uxRadioBttnMedium.Location = new System.Drawing.Point(18, 63);
-            this.uxRadioBttnMedium.Name = "uxRadioBttnMedium";
-            this.uxRadioBttnMedium.Size = new System.Drawing.Size(415, 21);
-            this.uxRadioBttnMedium.TabIndex = 6;
-            this.uxRadioBttnMedium.Text = "Medium-volatility- Increment/decrement the price from 2%-8%";
-            this.uxRadioBttnMedium.UseVisualStyleBackColor = true;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(547, 52);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(318, 31);
-            this.label18.TabIndex = 7;
-            this.label18.Text = "Simulate Stock Options";
-            // 
-            // uxVolatilityGroup
-            // 
-            this.uxVolatilityGroup.Controls.Add(this.uxRadioBttnMedium);
-            this.uxVolatilityGroup.Controls.Add(this.uxRadioBttnLow);
-            this.uxVolatilityGroup.Controls.Add(this.uxRadioBttnHigh);
-            this.uxVolatilityGroup.Location = new System.Drawing.Point(553, 86);
-            this.uxVolatilityGroup.Name = "uxVolatilityGroup";
-            this.uxVolatilityGroup.Size = new System.Drawing.Size(437, 151);
-            this.uxVolatilityGroup.TabIndex = 8;
-            this.uxVolatilityGroup.TabStop = false;
-            // 
-            // UserInterface
+            // uxUserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1245, 571);
             this.Controls.Add(this.uxTabControl);
             this.MinimumSize = new System.Drawing.Size(1201, 618);
-            this.Name = "UserInterface";
+            this.Name = "uxUserInterface";
             this.Text = "Ticker 501";
             this.uxTabControl.ResumeLayout(false);
             this.uxHomeTab.ResumeLayout(false);
             this.uxHomeTab.PerformLayout();
+            this.uxVolatilityGroup.ResumeLayout(false);
+            this.uxVolatilityGroup.PerformLayout();
             this.uxHomeToolStrip.ResumeLayout(false);
             this.uxHomeToolStrip.PerformLayout();
             this.uxAccountTab.ResumeLayout(false);
@@ -907,8 +910,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.uxPortfolioToolStrip.ResumeLayout(false);
             this.uxPortfolioToolStrip.PerformLayout();
-            this.uxVolatilityGroup.ResumeLayout(false);
-            this.uxVolatilityGroup.PerformLayout();
             this.ResumeLayout(false);
 
         }

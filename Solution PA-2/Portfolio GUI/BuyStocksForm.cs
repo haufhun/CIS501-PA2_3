@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Portfolio_GUI
 {
-    public partial class BuyStocksForm : Form
+    public partial class uxBuyStocksForm : Form
     {
-        public BuyStocksForm()
+        public uxBuyStocksForm()
         {
             InitializeComponent();
         }

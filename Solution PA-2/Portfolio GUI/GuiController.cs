@@ -10,7 +10,8 @@ namespace Portfolio_GUI
     {
         private Account _account;
         private List<Observer> _observers;
-        public GuiController(Account a)
+        
+        public GuiController(Account a )
         {
             this._account = a;
             _observers = new List<Observer>();
@@ -53,12 +54,11 @@ namespace Portfolio_GUI
             SignalObservers();
         }
 
-        public void AddPortfolio(string portfolioName)
+        public void AddPortfolio(string portfolioName, AddPortfolioObserver addPrtMethod)
         {
-            //validate isn't null
-            //validate name doesn't already exist
             _account.AddPortfolio(portfolioName);
-           
+            addPrtMethod(portfolioName);
+            SignalObservers();
         }
 
 
@@ -86,6 +86,7 @@ namespace Portfolio_GUI
                     break;
             }
             SignalObservers();
+            
         }
 
         /// <summary>

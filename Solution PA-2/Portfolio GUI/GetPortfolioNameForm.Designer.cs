@@ -1,6 +1,6 @@
 ﻿namespace Portfolio_GUI
 {
-    partial class GetPortfolioNameForm
+    partial class uxGetPortfolioNameForm
     {
         /// <summary>
         /// Required designer variable.
@@ -59,7 +59,7 @@
             this.uxOK.Text = "OK";
             this.uxOK.UseVisualStyleBackColor = true;
             // 
-            // GetPortfolioNameForm
+            // uxGetPortfolioNameForm
             // 
             this.AcceptButton = this.uxOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -71,7 +71,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "GetPortfolioNameForm";
+            this.Name = "uxGetPortfolioNameForm";
             this.Text = "InputForm";
             this.ResumeLayout(false);
             this.PerformLayout();

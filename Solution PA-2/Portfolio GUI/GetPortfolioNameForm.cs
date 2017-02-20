@@ -10,13 +10,16 @@ using System.Windows.Forms;
 
 namespace Portfolio_GUI
 {
-    public partial class GetPortfolioNameForm : Form
+    public partial class uxGetPortfolioNameForm : Form
     {
-        public GetPortfolioNameForm()
+        public uxGetPortfolioNameForm()
         {
             InitializeComponent();
         }
 
-        
+        public string PortfolioName
+        {
+            get { return uxPNameTxtBox.Text; }
+        }
     }
 }
