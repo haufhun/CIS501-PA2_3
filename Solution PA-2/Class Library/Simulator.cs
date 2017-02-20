@@ -40,8 +40,8 @@ namespace Class_Library
                 var randomPercent = RandomPercent.Next(-8, 8);
                 while (randomPercent > -2 && randomPercent < 2)
                     randomPercent = RandomPercent.Next(-8, 8);
-                decimal newPrice = t.Item3 * randomPercent * .01m;
-                newDb.Add(t.Item1, new Tuple<string, string, decimal>(t.Item1, t.Item2, newPrice));
+                decimal change = t.Item3 * randomPercent * .01m;
+                newDb.Add(t.Item1, new Tuple<string, string, decimal>(t.Item1, t.Item2, t.Item3- change));
             }
             DataBase.SetNewDictionary(newDb);
         }
@@ -56,8 +56,8 @@ namespace Class_Library
                 var randomPercent = RandomPercent.Next(-4, 4);
                 while (randomPercent == 0)
                     randomPercent = RandomPercent.Next(-4, 4);
-                decimal newPrice = t.Item3 * randomPercent * .01m;
-                newDb.Add(t.Item1, new Tuple<string, string, decimal>(t.Item1, t.Item2, newPrice));
+                decimal change = t.Item3 * randomPercent * .01m;
+                newDb.Add(t.Item1, new Tuple<string, string, decimal>(t.Item1, t.Item2, t.Item3 - change));
             }
             DataBase.SetNewDictionary(newDb);
         }
