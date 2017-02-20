@@ -58,15 +58,15 @@ namespace Portfolio_GUI
 
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
+        //private void label3_Click(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
-        private void label4_Click(object sender, EventArgs e)
-        {
+        //private void label4_Click(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
         private void uxTotalInvestedLabel_Click(object sender, EventArgs e)
         {
@@ -97,29 +97,35 @@ namespace Portfolio_GUI
         
         private void uxOpenTickerFile_Click(object sender, EventArgs e)
         {
-            ReadTickerFile();
+            _readFileHandler(uxOpenFileDialog);
+            
+            uxSimulateStockPrices.Enabled = true;
+            uxRadioBttnHigh.Enabled = true;
+            uxRadioBttnMedium.Enabled = true;
+            uxRadioBttnLow.Enabled = true;
         }
 
         private void uxAddPortfolio_Click(object sender, EventArgs e)
         {
-            
-            AddPortfolio();
+            _numOfPortolios++;
+            //_addPortfolioHandler();
+            //AddPortfolio();
 
         }
-
-
 
 
         private void AddPortfolio()
         {
             GetPortfolioNameForm PNameForm = new GetPortfolioNameForm();
             PNameForm.Show();
+      //     PNameForm.
 
             switch (_numOfPortolios)
             {
-                case 0:
+                case 0:                 
                     uxPortfolio1.Visible = true;
                     _numOfPortolios++;
+                    
                     break;
                 case 1:
                     uxPortfolio2.Visible = true;
@@ -138,16 +144,21 @@ namespace Portfolio_GUI
 
         }
 
-        private void ReadTickerFile()
+        public void DisplayHomeStockInfo()
         {
-            if (uxOpenFileDialog.ShowDialog() == DialogResult.OK)
+            uxHomeListInfo.BeginUpdate();
+            uxHomeListInfo.Items.Clear();
+           
+            foreach (var i in DataBase.PriceAndTickerName.Values)
             {
-                string fileName = uxOpenFileDialog.FileName;
+                string[] itemInfo = {i.Item1, i.Item2, i.Item3.ToString("C")};
+                var item = new ListViewItem(itemInfo);
 
-                _readFileHandler(fileName);
+                uxHomeListInfo.Items.Add(item);
             }
-        }
 
+            uxHomeListInfo.EndUpdate();
+        }
         public void ShowMyBuyStocksForm()
         {
             //Form2 testDialog = new Form2();
@@ -165,5 +176,48 @@ namespace Portfolio_GUI
             //testDialog.Dispose();
         }
 
+        private void uxSimulateStockPrices_Click(object sender, EventArgs e)
+        {
+            if (uxRadioBttnHigh.Checked)
+            {
+                _simulateHandler(1);
+            }
+            else if (uxRadioBttnMedium.Checked)
+            {
+                _simulateHandler(2);
+            }
+            else if (uxRadioBttnLow.Checked)
+            {
+                _simulateHandler(3);
+            }
+            else
+            {
+                MessageBox.Show("No radio button is selected... This is impossible..");
+            }
+        }
+
+        public void DisplayAccount()
+        {
+            uxAccListInfo.BeginUpdate();
+            uxAccListInfo.Items.Clear();
+
+            var t = _account.GetAccountBalance();
+
+            uxAccBalOutput.Text = t.Item1.ToString("C");
+            uxAccNetWorthOutput.Text = t.Item3.ToString("C");
+            uxAccTotalInvestedOutput.Text = t.Item2.ToString("C");
+            uxAccNetWorthStocksOutput.Text = _account.GetCashBalance().ToString("C");
+            uxAccGainsLossesOutput.Text = _account.GetGainsAndLossesReport().ToString("C");
+
+            //foreach (var i in DataBase.PriceAndTickerName.Values)
+            //{
+            //    string[] itemInfo = { i.Item1, i.Item2, i.Item3.ToString("C") };
+            //    ListViewItem item = new ListViewItem(itemInfo);
+
+            //    uxAccListInfo.Items.Add(item);
+            //}
+
+            uxAccListInfo.EndUpdate();
+        }
     }
 }
