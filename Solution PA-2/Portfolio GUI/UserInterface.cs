@@ -42,7 +42,26 @@ namespace Portfolio_GUI
 
         private int _numOfPortolios = 0;
 
-
+void MyButtonClick(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            //here you can check which button was clicked by the sender
+        }
+        /// <summary>
+        /// Constructor for User interface
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="getPNameForm"></param>
+        /// <param name="bStkForm"></param>
+        /// <param name="sStkForm"></param>
+        /// <param name="readFileHandler"></param>
+        /// <param name="simulate"></param>
+        /// <param name="deletePortfolio"></param>
+        /// <param name="addPortfolio"></param>
+        /// <param name="sellStocks"></param>
+        /// <param name="buyStocks"></param>
+        /// <param name="depositFunds"></param>
+        /// <param name="withdrawFunds"></param>
         public uxUserInterface(Account a , uxGetPortfolioNameForm getPNameForm, uxBuyStocksForm bStkForm, uxSellStockForm sStkForm,
             ReadFileHandler readFileHandler, SimulateHandler simulate, DeletePortfolioHandler deletePortfolio, AddPortfolioHandler addPortfolio, 
             SellStocksHandler sellStocks, BuyStocksHandler buyStocks, DepositCashHandler depositFunds, WithdrawCashHandler withdrawFunds)
@@ -63,8 +82,10 @@ namespace Portfolio_GUI
             _depositCashHandler = depositFunds;
             _withdrawCashHandler = withdrawFunds;
 
-
+            
             InitializeComponent();
+            uxBuyStocks1.Click += Button_Click;
+
         }
 
         private void uxAccountTab_Click(object sender, EventArgs e)
@@ -110,7 +131,7 @@ namespace Portfolio_GUI
         ///    into the simulateHandler delegate based on radio button choice.
         /// </summary>
         private void uxSimulateStockPrices_Click(object sender, EventArgs e)
-        {
+        { 
             if (uxRadioBttnHigh.Checked)
             {
                 _simulateHandler(1);
@@ -223,6 +244,10 @@ namespace Portfolio_GUI
 
         public void ShowMyBuyStocksForm()
         {
+            foreach (ListViewItem l in uxHomeListInfo.SelectedItems)
+            {
+                MessageBox.Show(l.ToString());
+            }
             
             //if()
             //Form2 testDialog = new Form2();
@@ -240,6 +265,21 @@ namespace Portfolio_GUI
             //testDialog.Dispose();
         }
 
+        private void uxBuyStocks1_Click(object sender, EventArgs e)
+        {
+            
+            
+        }
 
+        private void Button_Click(object sender, EventArgs e)
+        {
+            ShowMyBuyStocksForm();
+            //string buttonText = ((Button)sender).Text;
+
+            //switch (buttonText)
+            //{
+       
+            //}
     }
+}
 }

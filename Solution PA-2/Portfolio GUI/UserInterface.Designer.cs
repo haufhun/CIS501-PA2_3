@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea15 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend15 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea16 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend16 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uxUserInterface));
             this.uxTabControl = new System.Windows.Forms.TabControl();
             this.uxHomeTab = new System.Windows.Forms.TabPage();
@@ -217,7 +217,7 @@
             this.uxHomeListInfo.GridLines = true;
             this.uxHomeListInfo.Location = new System.Drawing.Point(6, 33);
             this.uxHomeListInfo.Name = "uxHomeListInfo";
-            this.uxHomeListInfo.Size = new System.Drawing.Size(520, 506);
+            this.uxHomeListInfo.Size = new System.Drawing.Size(535, 506);
             this.uxHomeListInfo.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.uxHomeListInfo.TabIndex = 3;
             this.uxHomeListInfo.UseCompatibleStateImageBehavior = false;
@@ -236,7 +236,7 @@
             // uxHmCurrentPriceCol
             // 
             this.uxHmCurrentPriceCol.Text = "Price Per Share";
-            this.uxHmCurrentPriceCol.Width = 112;
+            this.uxHmCurrentPriceCol.Width = 221;
             // 
             // uxHomeToolStrip
             // 
@@ -310,17 +310,17 @@
             // 
             // chart2
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart2.Legends.Add(legend1);
+            chartArea15.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea15);
+            legend15.Name = "Legend1";
+            this.chart2.Legends.Add(legend15);
             this.chart2.Location = new System.Drawing.Point(889, 327);
             this.chart2.Name = "chart2";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart2.Series.Add(series1);
+            series15.ChartArea = "ChartArea1";
+            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series15.Legend = "Legend1";
+            series15.Name = "Series1";
+            this.chart2.Series.Add(series15);
             this.chart2.Size = new System.Drawing.Size(288, 173);
             this.chart2.TabIndex = 24;
             this.chart2.Text = "chart2";
@@ -534,17 +534,17 @@
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea16.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea16);
+            legend16.Name = "Legend1";
+            this.chart1.Legends.Add(legend16);
             this.chart1.Location = new System.Drawing.Point(900, 337);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
+            series16.ChartArea = "ChartArea1";
+            series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series16.Legend = "Legend1";
+            series16.Name = "Series1";
+            this.chart1.Series.Add(series16);
             this.chart1.Size = new System.Drawing.Size(288, 173);
             this.chart1.TabIndex = 23;
             this.chart1.Text = "chart1";
@@ -661,6 +661,7 @@
             this.uxPrtPositionBalCol});
             this.uxPrtListInfo.GridLines = true;
             this.uxPrtListInfo.Location = new System.Drawing.Point(6, 106);
+            this.uxPrtListInfo.MultiSelect = false;
             this.uxPrtListInfo.Name = "uxPrtListInfo";
             this.uxPrtListInfo.Size = new System.Drawing.Size(873, 286);
             this.uxPrtListInfo.TabIndex = 13;
@@ -748,6 +749,7 @@
             this.uxBuyStocks1.Name = "uxBuyStocks1";
             this.uxBuyStocks1.Size = new System.Drawing.Size(185, 26);
             this.uxBuyStocks1.Text = "Buy Stocks";
+            this.uxBuyStocks1.Click += new System.EventHandler(this.uxBuyStocks1_Click);
             // 
             // uxSellStocks1
             // 

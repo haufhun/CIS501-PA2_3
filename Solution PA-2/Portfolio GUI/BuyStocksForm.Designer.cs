@@ -28,34 +28,65 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.uxBuyStockListInfo = new System.Windows.Forms.ListView();
+            this.uxTickerNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.uxCompanyNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.uxCurrentPriceCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.uxShareaOwnedCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.uxNetWorthCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
-            // comboBox1
+            // uxBuyStockListInfo
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(711, 124);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(341, 24);
-            this.comboBox1.TabIndex = 0;
+            this.uxBuyStockListInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.uxBuyStockListInfo.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.uxTickerNameCol,
+            this.uxCompanyNameCol,
+            this.uxCurrentPriceCol,
+            this.uxShareaOwnedCol,
+            this.uxNetWorthCol});
+            this.uxBuyStockListInfo.FullRowSelect = true;
+            this.uxBuyStockListInfo.GridLines = true;
+            this.uxBuyStockListInfo.Location = new System.Drawing.Point(0, -1);
+            this.uxBuyStockListInfo.MultiSelect = false;
+            this.uxBuyStockListInfo.Name = "uxBuyStockListInfo";
+            this.uxBuyStockListInfo.Size = new System.Drawing.Size(677, 286);
+            this.uxBuyStockListInfo.TabIndex = 14;
+            this.uxBuyStockListInfo.UseCompatibleStateImageBehavior = false;
+            this.uxBuyStockListInfo.View = System.Windows.Forms.View.Details;
             // 
-            // listBox1
+            // uxTickerNameCol
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(251, 95);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(352, 180);
-            this.listBox1.TabIndex = 1;
+            this.uxTickerNameCol.Text = "Ticker Name";
+            this.uxTickerNameCol.Width = 91;
+            // 
+            // uxCompanyNameCol
+            // 
+            this.uxCompanyNameCol.Text = "Company Name";
+            this.uxCompanyNameCol.Width = 130;
+            // 
+            // uxCurrentPriceCol
+            // 
+            this.uxCurrentPriceCol.Text = "Price Per Share";
+            this.uxCurrentPriceCol.Width = 107;
+            // 
+            // uxShareaOwnedCol
+            // 
+            this.uxShareaOwnedCol.Text = "Shares Owned";
+            this.uxShareaOwnedCol.Width = 100;
+            // 
+            // uxNetWorthCol
+            // 
+            this.uxNetWorthCol.Text = "Networth of Shares";
+            this.uxNetWorthCol.Width = 124;
             // 
             // uxBuyStocksForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1161, 455);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.uxBuyStockListInfo);
             this.Name = "uxBuyStocksForm";
             this.Text = "Buy Stocks Form";
             this.ResumeLayout(false);
@@ -64,7 +95,11 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListView uxBuyStockListInfo;
+        private System.Windows.Forms.ColumnHeader uxTickerNameCol;
+        private System.Windows.Forms.ColumnHeader uxCompanyNameCol;
+        private System.Windows.Forms.ColumnHeader uxCurrentPriceCol;
+        private System.Windows.Forms.ColumnHeader uxShareaOwnedCol;
+        private System.Windows.Forms.ColumnHeader uxNetWorthCol;
     }
 }

@@ -86,6 +86,7 @@ namespace Portfolio_GUI
                     break;
             }
             SignalObservers();
+            
         }
 
         /// <summary>
