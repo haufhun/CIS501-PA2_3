@@ -42,7 +42,8 @@
         {
             _totalNumberOfShares += numberOfShares;
             _totalInvested += numberOfShares * buyPrice;
-            _averageSharePrice = _totalInvested / _totalNumberOfShares;
+            _averageSharePrice = _totalInvested/_totalNumberOfShares;
+            
         }
         /// <summary>
         /// Sells a certain number of shares of this stock.
