@@ -49,62 +49,70 @@ namespace Portfolio_Console
         /// </summary>
         private void RunAccountMenu()
         {
-            var response = _userInterface.AskForUserSelectionOfMainMenu(_account.CashBalance);
+            var response = -1;
+            try
+            {
+                response = _userInterface.AskForUserSelectionOfMainMenu(_account.CashBalance);
+            }
+            catch (FormatException)
+            {
+            }
 
             switch (response)
-            {
-                case 1:
+                {
+                    case 1:
                     {
                         Deposit();
                     }
-                    break;
-                case 2:
+                        break;
+                    case 2:
                     {
                         Withdraw();
                     }
-                    break;
-                case 3:
+                        break;
+                    case 3:
                     {
                         AccountBalance();
                     }
-                    break;
-                case 4:
+                        break;
+                    case 4:
                     {
                         CashAndPositionsBalance();
                     }
-                    break;
-                case 5:
+                        break;
+                    case 5:
                     {
                         GainsAndLossesReport();
                     }
-                    break;
-                case 6:
+                        break;
+                    case 6:
                     {
                         AddPortfolio();
                     }
-                    break;
-                case 7:
+                        break;
+                    case 7:
                     {
                         SelectPortfolio();
                     }
-                    break;
-                case 8:
+                        break;
+                    case 8:
                     {
                         Simulate();
                     }
-                    break;
-                case 9:
+                        break;
+                    case 9:
                     {
                         EndProgram();
                     }
-                    break;
-                default:
+                        break;
+                    default:
                     {
                         _userInterface.DisplayIncorrectOptionChosenMessage();
                         _userInterface.WaitForUserToPressEnter();
                     }
-                    break;
-            }
+                        break;
+                }
+          
         }
 
         /// <summary>
@@ -160,11 +168,15 @@ namespace Portfolio_Console
                         _userInterface.DisplayErrorMessage(ex.ToString());
                     }
                 }
+                else
+                {
+                    _userInterface.DisplayErrorMessage("No funds were added to your account.\n");
+                }
 
             }
             catch (IndexOutOfRangeException ex)
             {
-                _userInterface.DisplayErrorMessage(ex.ToString());
+                _userInterface.DisplayErrorMessage("No funds were added your account.\n");
             }
             _userInterface.WaitForUserToPressEnter();
         }
@@ -449,7 +461,7 @@ namespace Portfolio_Console
             }
             catch (IndexOutOfRangeException ex)
             {
-                _userInterface.DisplayErrorMessage(ex.ToString());
+                return true;
             }
             _account.DeletePortfolio(portfolioName);
             _userInterface.DisplayPortfolioWasDeleted(portfolioName, totalValue);

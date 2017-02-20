@@ -119,15 +119,16 @@ namespace Portfolio_Console
                           + "8) Simulate\n"
                           + "9) Exit\n"
                           + "Please select an option: ");
-            try
-            {
-                return Convert.ToInt32(Console.ReadLine());
-            }
-            catch (FormatException)
-            {
-                DisplayIncorrectOptionChosenMessage();
-            }
-            return -1;
+            //try
+            //{
+               return Convert.ToInt32(Console.ReadLine());
+            //}
+            //catch (FormatException)
+            //{
+            //    //DisplayIncorrectOptionChosenMessage();
+            //    return -1;
+            //}
+            
         }
         /// <summary>
         /// Displays to the user the portfolio menu options.
