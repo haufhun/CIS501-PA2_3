@@ -209,7 +209,6 @@ namespace Portfolio_Console
         /// </summary>
         public void DisplayListOfTickers()
         {
-
             Console.WriteLine("\t-----------------------List of Tickers------------------------");
             Console.WriteLine("\tMSFT          Microsoft Corporation                    $259.90");
             Console.WriteLine("\tAAPL          Apple Inc.                               $203.20");
