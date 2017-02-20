@@ -124,19 +124,14 @@ namespace Portfolio_GUI
 
         private void uxOpenTickerFile_Click(object sender, EventArgs e)
         {
+            if (uxOpenFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = uxOpenFileDialog.FileName;
+            }
             
             //han
             //OpenTickerFile();
         }
 
-        private void OpenTickerFile()
-        {
-            if (uxOpenFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                
-
-
-            }
-        }
     }
 }
