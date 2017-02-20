@@ -34,7 +34,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserInterface));
             this.uxTabControl = new System.Windows.Forms.TabControl();
             this.uxHomeTab = new System.Windows.Forms.TabPage();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.uxAccountTab = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.uxTotalInvestedOutput = new System.Windows.Forms.Label();
+            this.uxAccBalOutput = new System.Windows.Forms.Label();
+            this.uxTotalInvestedLabel = new System.Windows.Forms.Label();
             this.uxInfoListView = new System.Windows.Forms.ListView();
             this.uxTickerNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.uxFullNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -44,17 +54,9 @@
             this.uxPositionBalCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.uxAccBalLabel = new System.Windows.Forms.Label();
             this.uxPortfolioTab = new System.Windows.Forms.TabPage();
-            this.uxPortfolioToolStrip = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.uxTotalInvestedLabel = new System.Windows.Forms.Label();
-            this.uxAccBalOutput = new System.Windows.Forms.Label();
-            this.uxTotalInvestedOutput = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.uxPortfolioName = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -72,36 +74,34 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label16 = new System.Windows.Forms.Label();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.uxPortfolioName = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.uxPortfolioToolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.uxPortfolio1 = new System.Windows.Forms.ToolStripSplitButton();
-            this.buyStocksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sellStocksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uxBuyStocks1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.uxSellStocks1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.deletePortfolioToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.uxDeletePortfolio1 = new System.Windows.Forms.ToolStripMenuItem();
             this.uxPortfolio2 = new System.Windows.Forms.ToolStripSplitButton();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.uxBuyStocks2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.uxSellStocks2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.deletePortfolioToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.uxDeletePortfolio2 = new System.Windows.Forms.ToolStripMenuItem();
             this.uxPortfolio3 = new System.Windows.Forms.ToolStripSplitButton();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.uxBuyStocks3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.uxSellStocks3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.deletePortfolioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uxDeletePortfolio3 = new System.Windows.Forms.ToolStripMenuItem();
             this.uxAddPortfolio = new System.Windows.Forms.ToolStripButton();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.uxTabControl.SuspendLayout();
             this.uxHomeTab.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.uxAccountTab.SuspendLayout();
             this.uxPortfolioTab.SuspendLayout();
-            this.uxPortfolioToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            this.toolStrip1.SuspendLayout();
+            this.uxPortfolioToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // uxTabControl
@@ -129,6 +129,18 @@
             this.uxHomeTab.Text = "Home";
             this.uxHomeTab.UseVisualStyleBackColor = true;
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1,
+            this.toolStripButton2});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 3);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1231, 27);
+            this.toolStrip1.TabIndex = 0;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
             // uxAccountTab
             // 
             this.uxAccountTab.Controls.Add(this.label5);
@@ -150,6 +162,109 @@
             this.uxAccountTab.Text = "Account";
             this.uxAccountTab.UseVisualStyleBackColor = true;
             this.uxAccountTab.Click += new System.EventHandler(this.uxAccountTab_Click);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(1109, 226);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(49, 20);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "$0.00";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(919, 226);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(162, 20);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Account Standing:";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(1109, 73);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 20);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "$0.00";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(885, 73);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(196, 20);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Net Worth of Account:";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(1109, 118);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 20);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "$0.00";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(896, 118);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(185, 20);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Net Worth of Stocks:";
+            // 
+            // uxTotalInvestedOutput
+            // 
+            this.uxTotalInvestedOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.uxTotalInvestedOutput.AutoSize = true;
+            this.uxTotalInvestedOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxTotalInvestedOutput.Location = new System.Drawing.Point(1109, 189);
+            this.uxTotalInvestedOutput.Name = "uxTotalInvestedOutput";
+            this.uxTotalInvestedOutput.Size = new System.Drawing.Size(49, 20);
+            this.uxTotalInvestedOutput.TabIndex = 5;
+            this.uxTotalInvestedOutput.Text = "$0.00";
+            this.uxTotalInvestedOutput.Click += new System.EventHandler(this.uxTotalInvestedOutput_Click);
+            // 
+            // uxAccBalOutput
+            // 
+            this.uxAccBalOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.uxAccBalOutput.AutoSize = true;
+            this.uxAccBalOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxAccBalOutput.Location = new System.Drawing.Point(1109, 3);
+            this.uxAccBalOutput.Name = "uxAccBalOutput";
+            this.uxAccBalOutput.Size = new System.Drawing.Size(49, 20);
+            this.uxAccBalOutput.TabIndex = 4;
+            this.uxAccBalOutput.Text = "$0.00";
+            // 
+            // uxTotalInvestedLabel
+            // 
+            this.uxTotalInvestedLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.uxTotalInvestedLabel.AutoSize = true;
+            this.uxTotalInvestedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxTotalInvestedLabel.Location = new System.Drawing.Point(948, 189);
+            this.uxTotalInvestedLabel.Name = "uxTotalInvestedLabel";
+            this.uxTotalInvestedLabel.Size = new System.Drawing.Size(133, 20);
+            this.uxTotalInvestedLabel.TabIndex = 3;
+            this.uxTotalInvestedLabel.Text = "Total Invested:";
+            this.uxTotalInvestedLabel.Click += new System.EventHandler(this.uxTotalInvestedLabel_Click);
             // 
             // uxInfoListView
             // 
@@ -234,130 +349,44 @@
             this.uxPortfolioTab.Text = "Portfolios";
             this.uxPortfolioTab.UseVisualStyleBackColor = true;
             // 
-            // uxPortfolioToolStrip
+            // uxPortfolioName
             // 
-            this.uxPortfolioToolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.uxPortfolioToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.uxPortfolio1,
-            this.uxPortfolio2,
-            this.uxPortfolio3,
-            this.toolStripSeparator1,
-            this.uxAddPortfolio,
-            this.helpToolStripButton});
-            this.uxPortfolioToolStrip.Location = new System.Drawing.Point(3, 3);
-            this.uxPortfolioToolStrip.Name = "uxPortfolioToolStrip";
-            this.uxPortfolioToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.uxPortfolioToolStrip.Size = new System.Drawing.Size(1231, 27);
-            this.uxPortfolioToolStrip.TabIndex = 3;
-            this.uxPortfolioToolStrip.Text = "toolStrip1";
+            this.uxPortfolioName.AutoSize = true;
+            this.uxPortfolioName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxPortfolioName.Location = new System.Drawing.Point(4, 36);
+            this.uxPortfolioName.Name = "uxPortfolioName";
+            this.uxPortfolioName.Size = new System.Drawing.Size(376, 39);
+            this.uxPortfolioName.TabIndex = 24;
+            this.uxPortfolioName.Text = "Please Add a Portfolio";
+            this.uxPortfolioName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // toolStripSeparator1
+            // label17
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(19, 81);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(1205, 2);
+            this.label17.TabIndex = 25;
             // 
-            // uxTotalInvestedLabel
+            // chart1
             // 
-            this.uxTotalInvestedLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.uxTotalInvestedLabel.AutoSize = true;
-            this.uxTotalInvestedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxTotalInvestedLabel.Location = new System.Drawing.Point(948, 189);
-            this.uxTotalInvestedLabel.Name = "uxTotalInvestedLabel";
-            this.uxTotalInvestedLabel.Size = new System.Drawing.Size(133, 20);
-            this.uxTotalInvestedLabel.TabIndex = 3;
-            this.uxTotalInvestedLabel.Text = "Total Invested:";
-            this.uxTotalInvestedLabel.Click += new System.EventHandler(this.uxTotalInvestedLabel_Click);
-            // 
-            // uxAccBalOutput
-            // 
-            this.uxAccBalOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.uxAccBalOutput.AutoSize = true;
-            this.uxAccBalOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxAccBalOutput.Location = new System.Drawing.Point(1109, 3);
-            this.uxAccBalOutput.Name = "uxAccBalOutput";
-            this.uxAccBalOutput.Size = new System.Drawing.Size(49, 20);
-            this.uxAccBalOutput.TabIndex = 4;
-            this.uxAccBalOutput.Text = "$0.00";
-            // 
-            // uxTotalInvestedOutput
-            // 
-            this.uxTotalInvestedOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.uxTotalInvestedOutput.AutoSize = true;
-            this.uxTotalInvestedOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxTotalInvestedOutput.Location = new System.Drawing.Point(1109, 189);
-            this.uxTotalInvestedOutput.Name = "uxTotalInvestedOutput";
-            this.uxTotalInvestedOutput.Size = new System.Drawing.Size(49, 20);
-            this.uxTotalInvestedOutput.TabIndex = 5;
-            this.uxTotalInvestedOutput.Text = "$0.00";
-            this.uxTotalInvestedOutput.Click += new System.EventHandler(this.uxTotalInvestedOutput_Click);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1109, 118);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 20);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "$0.00";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(896, 118);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(185, 20);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Net Worth of Stocks:";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1109, 73);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 20);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "$0.00";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(885, 73);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(196, 20);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Net Worth of Account:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(1109, 226);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 20);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "$0.00";
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(919, 226);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(162, 20);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Account Standing:";
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
+            this.chart1.Location = new System.Drawing.Point(900, 337);
+            this.chart1.Name = "chart1";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
+            this.chart1.Size = new System.Drawing.Size(288, 173);
+            this.chart1.TabIndex = 23;
+            this.chart1.Text = "chart1";
             // 
             // label7
             // 
@@ -468,7 +497,7 @@
             this.columnHeader5,
             this.columnHeader6});
             this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(0, 106);
+            this.listView1.Location = new System.Drawing.Point(6, 106);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(859, 286);
             this.listView1.TabIndex = 13;
@@ -510,62 +539,33 @@
             this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(924, 33);
+            this.label16.Location = new System.Drawing.Point(924, 36);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(157, 20);
             this.label16.TabIndex = 12;
             this.label16.Text = "Account Balance:";
             // 
-            // chart1
+            // uxPortfolioToolStrip
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(900, 337);
-            this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(288, 173);
-            this.chart1.TabIndex = 23;
-            this.chart1.Text = "chart1";
+            this.uxPortfolioToolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.uxPortfolioToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.uxPortfolio1,
+            this.uxPortfolio2,
+            this.uxPortfolio3,
+            this.uxAddPortfolio,
+            this.toolStripSeparator1,
+            this.helpToolStripButton});
+            this.uxPortfolioToolStrip.Location = new System.Drawing.Point(3, 3);
+            this.uxPortfolioToolStrip.Name = "uxPortfolioToolStrip";
+            this.uxPortfolioToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.uxPortfolioToolStrip.Size = new System.Drawing.Size(1231, 27);
+            this.uxPortfolioToolStrip.TabIndex = 3;
+            this.uxPortfolioToolStrip.Text = "toolStrip1";
             // 
-            // uxPortfolioName
+            // toolStripSeparator1
             // 
-            this.uxPortfolioName.AutoSize = true;
-            this.uxPortfolioName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxPortfolioName.Location = new System.Drawing.Point(8, 36);
-            this.uxPortfolioName.Name = "uxPortfolioName";
-            this.uxPortfolioName.Size = new System.Drawing.Size(256, 39);
-            this.uxPortfolioName.TabIndex = 24;
-            this.uxPortfolioName.Text = "Portfolio Name";
-            this.uxPortfolioName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label17
-            // 
-            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(19, 81);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(1205, 2);
-            this.label17.TabIndex = 25;
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripButton2});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 3);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1231, 27);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // toolStripButton1
             // 
@@ -575,14 +575,22 @@
             this.toolStripButton1.Size = new System.Drawing.Size(139, 24);
             this.toolStripButton1.Text = "Open Ticker File";
             // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(164, 24);
+            this.toolStripButton2.Text = "Update Stock Prices";
+            // 
             // uxPortfolio1
             // 
             this.uxPortfolio1.BackColor = System.Drawing.Color.Maroon;
             this.uxPortfolio1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.buyStocksToolStripMenuItem,
-            this.sellStocksToolStripMenuItem,
+            this.uxBuyStocks1,
+            this.uxSellStocks1,
             this.toolStripMenuItem2,
-            this.deletePortfolioToolStripMenuItem2});
+            this.uxDeletePortfolio1});
             this.uxPortfolio1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.uxPortfolio1.Image = ((System.Drawing.Image)(resources.GetObject("uxPortfolio1.Image")));
             this.uxPortfolio1.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -592,17 +600,19 @@
             this.uxPortfolio1.Visible = false;
             this.uxPortfolio1.ButtonClick += new System.EventHandler(this.uxPortfolio1_ButtonClick);
             // 
-            // buyStocksToolStripMenuItem
+            // uxBuyStocks1
             // 
-            this.buyStocksToolStripMenuItem.Name = "buyStocksToolStripMenuItem";
-            this.buyStocksToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
-            this.buyStocksToolStripMenuItem.Text = "Buy Stocks";
+            this.uxBuyStocks1.Image = global::Portfolio_GUI.Properties.Resources.BuyStockImage;
+            this.uxBuyStocks1.Name = "uxBuyStocks1";
+            this.uxBuyStocks1.Size = new System.Drawing.Size(185, 26);
+            this.uxBuyStocks1.Text = "Buy Stocks";
             // 
-            // sellStocksToolStripMenuItem
+            // uxSellStocks1
             // 
-            this.sellStocksToolStripMenuItem.Name = "sellStocksToolStripMenuItem";
-            this.sellStocksToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
-            this.sellStocksToolStripMenuItem.Text = "Sell Stocks";
+            this.uxSellStocks1.Image = global::Portfolio_GUI.Properties.Resources.SellStockImage;
+            this.uxSellStocks1.Name = "uxSellStocks1";
+            this.uxSellStocks1.Size = new System.Drawing.Size(185, 26);
+            this.uxSellStocks1.Text = "Sell Stocks";
             // 
             // toolStripMenuItem2
             // 
@@ -611,19 +621,20 @@
             this.toolStripMenuItem2.Size = new System.Drawing.Size(185, 26);
             this.toolStripMenuItem2.Text = " ";
             // 
-            // deletePortfolioToolStripMenuItem2
+            // uxDeletePortfolio1
             // 
-            this.deletePortfolioToolStripMenuItem2.Name = "deletePortfolioToolStripMenuItem2";
-            this.deletePortfolioToolStripMenuItem2.Size = new System.Drawing.Size(185, 26);
-            this.deletePortfolioToolStripMenuItem2.Text = "DeletePortfolio";
+            this.uxDeletePortfolio1.Image = global::Portfolio_GUI.Properties.Resources.DeleteImage;
+            this.uxDeletePortfolio1.Name = "uxDeletePortfolio1";
+            this.uxDeletePortfolio1.Size = new System.Drawing.Size(185, 26);
+            this.uxDeletePortfolio1.Text = "DeletePortfolio";
             // 
             // uxPortfolio2
             // 
             this.uxPortfolio2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem5,
-            this.toolStripMenuItem1,
+            this.uxBuyStocks2,
+            this.uxSellStocks2,
             this.toolStripMenuItem3,
-            this.deletePortfolioToolStripMenuItem1});
+            this.uxDeletePortfolio2});
             this.uxPortfolio2.Image = ((System.Drawing.Image)(resources.GetObject("uxPortfolio2.Image")));
             this.uxPortfolio2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.uxPortfolio2.Name = "uxPortfolio2";
@@ -632,17 +643,19 @@
             this.uxPortfolio2.Visible = false;
             this.uxPortfolio2.ButtonClick += new System.EventHandler(this.uxPortfolio2_ButtonClick);
             // 
-            // toolStripMenuItem5
+            // uxBuyStocks2
             // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(189, 26);
-            this.toolStripMenuItem5.Text = "Buy Stocks";
+            this.uxBuyStocks2.Image = global::Portfolio_GUI.Properties.Resources.BuyStockImage;
+            this.uxBuyStocks2.Name = "uxBuyStocks2";
+            this.uxBuyStocks2.Size = new System.Drawing.Size(189, 26);
+            this.uxBuyStocks2.Text = "Buy Stocks";
             // 
-            // toolStripMenuItem1
+            // uxSellStocks2
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(189, 26);
-            this.toolStripMenuItem1.Text = "Sell Stocks";
+            this.uxSellStocks2.Image = global::Portfolio_GUI.Properties.Resources.SellStockImage;
+            this.uxSellStocks2.Name = "uxSellStocks2";
+            this.uxSellStocks2.Size = new System.Drawing.Size(189, 26);
+            this.uxSellStocks2.Text = "Sell Stocks";
             // 
             // toolStripMenuItem3
             // 
@@ -651,19 +664,20 @@
             this.toolStripMenuItem3.Size = new System.Drawing.Size(189, 26);
             this.toolStripMenuItem3.Text = " ";
             // 
-            // deletePortfolioToolStripMenuItem1
+            // uxDeletePortfolio2
             // 
-            this.deletePortfolioToolStripMenuItem1.Name = "deletePortfolioToolStripMenuItem1";
-            this.deletePortfolioToolStripMenuItem1.Size = new System.Drawing.Size(189, 26);
-            this.deletePortfolioToolStripMenuItem1.Text = "Delete Portfolio";
+            this.uxDeletePortfolio2.Image = global::Portfolio_GUI.Properties.Resources.DeleteImage;
+            this.uxDeletePortfolio2.Name = "uxDeletePortfolio2";
+            this.uxDeletePortfolio2.Size = new System.Drawing.Size(189, 26);
+            this.uxDeletePortfolio2.Text = "Delete Portfolio";
             // 
             // uxPortfolio3
             // 
             this.uxPortfolio3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem6,
-            this.toolStripMenuItem7,
+            this.uxBuyStocks3,
+            this.uxSellStocks3,
             this.toolStripMenuItem4,
-            this.deletePortfolioToolStripMenuItem});
+            this.uxDeletePortfolio3});
             this.uxPortfolio3.Image = ((System.Drawing.Image)(resources.GetObject("uxPortfolio3.Image")));
             this.uxPortfolio3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.uxPortfolio3.Name = "uxPortfolio3";
@@ -672,17 +686,19 @@
             this.uxPortfolio3.Visible = false;
             this.uxPortfolio3.ButtonClick += new System.EventHandler(this.uxPortfolio3_ButtonClick);
             // 
-            // toolStripMenuItem6
+            // uxBuyStocks3
             // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(189, 26);
-            this.toolStripMenuItem6.Text = "Buy Stocks";
+            this.uxBuyStocks3.Image = global::Portfolio_GUI.Properties.Resources.BuyStockImage;
+            this.uxBuyStocks3.Name = "uxBuyStocks3";
+            this.uxBuyStocks3.Size = new System.Drawing.Size(189, 26);
+            this.uxBuyStocks3.Text = "Buy Stocks";
             // 
-            // toolStripMenuItem7
+            // uxSellStocks3
             // 
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(189, 26);
-            this.toolStripMenuItem7.Text = "Sell Stocks";
+            this.uxSellStocks3.Image = global::Portfolio_GUI.Properties.Resources.SellStockImage;
+            this.uxSellStocks3.Name = "uxSellStocks3";
+            this.uxSellStocks3.Size = new System.Drawing.Size(189, 26);
+            this.uxSellStocks3.Text = "Sell Stocks";
             // 
             // toolStripMenuItem4
             // 
@@ -691,14 +707,16 @@
             this.toolStripMenuItem4.Size = new System.Drawing.Size(189, 26);
             this.toolStripMenuItem4.Text = " ";
             // 
-            // deletePortfolioToolStripMenuItem
+            // uxDeletePortfolio3
             // 
-            this.deletePortfolioToolStripMenuItem.Name = "deletePortfolioToolStripMenuItem";
-            this.deletePortfolioToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
-            this.deletePortfolioToolStripMenuItem.Text = "Delete Portfolio";
+            this.uxDeletePortfolio3.Image = global::Portfolio_GUI.Properties.Resources.DeleteImage;
+            this.uxDeletePortfolio3.Name = "uxDeletePortfolio3";
+            this.uxDeletePortfolio3.Size = new System.Drawing.Size(189, 26);
+            this.uxDeletePortfolio3.Text = "Delete Portfolio";
             // 
             // uxAddPortfolio
             // 
+            this.uxAddPortfolio.Image = global::Portfolio_GUI.Properties.Resources.AddPortfolioImage;
             this.uxAddPortfolio.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.uxAddPortfolio.Name = "uxAddPortfolio";
             this.uxAddPortfolio.Size = new System.Drawing.Size(122, 24);
@@ -714,14 +732,6 @@
             this.helpToolStripButton.Size = new System.Drawing.Size(24, 24);
             this.helpToolStripButton.Text = "He&lp";
             // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(164, 24);
-            this.toolStripButton2.Text = "Update Stock Prices";
-            // 
             // UserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -734,15 +744,15 @@
             this.uxTabControl.ResumeLayout(false);
             this.uxHomeTab.ResumeLayout(false);
             this.uxHomeTab.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.uxAccountTab.ResumeLayout(false);
             this.uxAccountTab.PerformLayout();
             this.uxPortfolioTab.ResumeLayout(false);
             this.uxPortfolioTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.uxPortfolioToolStrip.ResumeLayout(false);
             this.uxPortfolioToolStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -756,13 +766,13 @@
         private System.Windows.Forms.ToolStrip uxPortfolioToolStrip;
         private System.Windows.Forms.ToolStripSplitButton uxPortfolio1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem deletePortfolioToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem uxDeletePortfolio1;
         private System.Windows.Forms.ToolStripSplitButton uxPortfolio2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem deletePortfolioToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem uxDeletePortfolio2;
         private System.Windows.Forms.ToolStripSplitButton uxPortfolio3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem deletePortfolioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem uxDeletePortfolio3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton uxAddPortfolio;
         private System.Windows.Forms.ToolStripButton helpToolStripButton;
@@ -801,12 +811,12 @@
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.ToolStripMenuItem buyStocksToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sellStocksToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
+        private System.Windows.Forms.ToolStripMenuItem uxBuyStocks1;
+        private System.Windows.Forms.ToolStripMenuItem uxSellStocks1;
+        private System.Windows.Forms.ToolStripMenuItem uxBuyStocks2;
+        private System.Windows.Forms.ToolStripMenuItem uxSellStocks2;
+        private System.Windows.Forms.ToolStripMenuItem uxBuyStocks3;
+        private System.Windows.Forms.ToolStripMenuItem uxSellStocks3;
         private System.Windows.Forms.Label uxPortfolioName;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ToolStrip toolStrip1;
