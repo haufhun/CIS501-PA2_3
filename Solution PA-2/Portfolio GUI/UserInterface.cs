@@ -85,6 +85,8 @@ void MyButtonClick(object sender, EventArgs e)
             
             InitializeComponent();
             uxBuyStocks1.Click += Button_Click;
+            uxBuyStocks2.Click += Button_Click;
+            uxBuyStocks3.Click += Button_Click;
 
         }
 
@@ -244,10 +246,10 @@ void MyButtonClick(object sender, EventArgs e)
 
         public void ShowMyBuyStocksForm()
         {
-            foreach (ListViewItem l in uxHomeListInfo.SelectedItems)
-            {
-                MessageBox.Show(l.ToString());
-            }
+            //foreach (ListViewItem l in uxHomeListInfo.SelectedItems)
+            //{
+            //    MessageBox.Show(l.ToString());
+            //}
             
             //if()
             //Form2 testDialog = new Form2();
@@ -263,6 +265,7 @@ void MyButtonClick(object sender, EventArgs e)
             //    this.txtResult.Text = "Cancelled";
             //}
             //testDialog.Dispose();
+            buyStocksForm.Show();
         }
 
         private void uxBuyStocks1_Click(object sender, EventArgs e)
