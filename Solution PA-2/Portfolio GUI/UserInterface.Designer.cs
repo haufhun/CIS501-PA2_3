@@ -368,7 +368,7 @@
             this.uxTotalInvestedLabel.Size = new System.Drawing.Size(133, 20);
             this.uxTotalInvestedLabel.TabIndex = 3;
             this.uxTotalInvestedLabel.Text = "Total Invested:";
-            this.uxTotalInvestedLabel.Click += new System.EventHandler(this.uxTotalInvestedLabel_Click);
+            //this.uxTotalInvestedLabel.Click += new System.EventHandler(this.uxTotalInvestedLabel_Click);
             // 
             // uxAccListInfo
             // 
