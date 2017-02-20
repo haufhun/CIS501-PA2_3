@@ -97,6 +97,7 @@ namespace Portfolio_Console
                         break;
                     case 8:
                     {
+
                         Simulate();
                     }
                         break;
