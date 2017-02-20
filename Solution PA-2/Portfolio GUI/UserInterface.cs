@@ -108,6 +108,14 @@ namespace Portfolio_GUI
         private void uxAddPortfolio_Click(object sender, EventArgs e)
         {
             _numOfPortolios++;
+            ShowMyBuyStocksForm();
+
+            ///Create Method
+            GetPortfolioNameForm getPortfolio = new GetPortfolioNameForm();
+            if (getPortfolio.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("IM A BA");
+            }
             //_addPortfolioHandler();
             //AddPortfolio();
 
@@ -161,6 +169,8 @@ namespace Portfolio_GUI
         }
         public void ShowMyBuyStocksForm()
         {
+            
+            //if()
             //Form2 testDialog = new Form2();
 
             //// Show testDialog as a modal dialog and determine if DialogResult = OK.

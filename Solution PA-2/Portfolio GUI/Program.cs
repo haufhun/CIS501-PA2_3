@@ -43,7 +43,6 @@ namespace Portfolio_GUI
 
             var a = new Account();
             
-
             var c = new GuiController(a);
 
             var mainForm = new UserInterface(a, c.ReadTickerFile, c.Simulate, c.DeletePortfolio, c.AddPortfolio, c.SellStocks, c.BuyStocks, c.DepositFunds, c.WithdrawFunds);
@@ -51,7 +50,8 @@ namespace Portfolio_GUI
             c.Register(mainForm.DisplayHomeStockInfo);
             c.Register(mainForm.DisplayAccount);
 
-           // c.Register(mainForm.);
+            // c.Register(mainForm.);
+
             Application.Run(mainForm);
             
                                                         //Deck d = new Deck();

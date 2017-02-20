@@ -30,7 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.uxPNameTxtBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.uxOK = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -49,23 +49,28 @@
             this.uxPNameTxtBox.Size = new System.Drawing.Size(127, 22);
             this.uxPNameTxtBox.TabIndex = 1;
             // 
-            // button1
+            // uxOK
             // 
-            this.button1.Location = new System.Drawing.Point(191, 44);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(76, 35);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "OK";
-            this.button1.UseVisualStyleBackColor = true;
+            this.uxOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.uxOK.Location = new System.Drawing.Point(191, 44);
+            this.uxOK.Name = "uxOK";
+            this.uxOK.Size = new System.Drawing.Size(76, 35);
+            this.uxOK.TabIndex = 2;
+            this.uxOK.Text = "OK";
+            this.uxOK.UseVisualStyleBackColor = true;
             // 
             // GetPortfolioNameForm
             // 
+            this.AcceptButton = this.uxOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(476, 91);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.uxOK);
             this.Controls.Add(this.uxPNameTxtBox);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "GetPortfolioNameForm";
             this.Text = "InputForm";
             this.ResumeLayout(false);
@@ -77,6 +82,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox uxPNameTxtBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button uxOK;
     }
 }
