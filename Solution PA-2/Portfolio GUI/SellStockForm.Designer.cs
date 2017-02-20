@@ -1,6 +1,6 @@
 ﻿namespace Portfolio_GUI
 {
-    partial class Form1
+    partial class uxSellStockForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // uxSellStockForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(406, 347);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(282, 253);
+            this.Name = "uxSellStockForm";
+            this.Text = "Sell Stocks Form";
             this.ResumeLayout(false);
 
         }
@@ -44,4 +44,3 @@
         #endregion
     }
 }
-
