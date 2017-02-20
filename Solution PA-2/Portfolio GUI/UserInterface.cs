@@ -15,22 +15,38 @@ namespace Portfolio_GUI
 {
     public partial class uxUserInterface : Form
     {
-       
-        //defines the type of method that handles a deposit cash input event 
+
+        /// <summary>
+        /// Defines the type of method that handles a deposit cash input event 
+        /// </summary>
         private DepositCashHandler _depositCashHandler;
-        // defines the type of method that handles a withdraw cash input event
+        /// <summary>
+        /// Defines the type of method that handles a withdraw cash input event
+        /// </summary>
         private WithdrawCashHandler _withdrawCashHandler;
-        // defines the type of method that handles a buy stock input event 
+        /// <summary>
+        /// Defines the type of method that handles a buy stock input event 
+        /// </summary>
         private BuyStocksHandler _buyStocksHandler;
-        // defines the type of method that handles a sell stock input event
+        /// <summary>
+        /// Defines the type of method that handles a sell stock input event
+        /// </summary>
         private SellStocksHandler _sellStocksHandler;
-        // defines the type of method that handles a add portfolio input event 
+        /// <summary>
+        ///  Defines the type of method that handles a add portfolio input event 
+        /// </summary>
         private AddPortfolioHandler _addPortfolioHandler;
-        // defines the type of method that handles a delete portfolio input event
+        /// <summary>
+        /// Defines the type of method that handles a delete portfolio input event
+        /// </summary>
         private DeletePortfolioHandler _deletePortfolioHandler;
-        // defines the type of method that handles a simulate input event
+        /// <summary>
+        /// Defines the type of method that handles a simulate input event
+        /// </summary>
         private SimulateHandler _simulateHandler;
-        // defines the type of method that handles a read file input event
+        /// <summary>
+        /// Defines the type of method that handles a read file input event
+        /// </summary>
         private ReadFileHandler _readFileHandler;
 
 
@@ -85,6 +101,8 @@ void MyButtonClick(object sender, EventArgs e)
             
             InitializeComponent();
             uxBuyStocks1.Click += Button_Click;
+            uxBuyStocks2.Click += Button_Click;
+            uxBuyStocks3.Click += Button_Click;
 
         }
 
@@ -156,11 +174,10 @@ void MyButtonClick(object sender, EventArgs e)
         /// </summary>
         private void uxAddPortfolio_Click(object sender, EventArgs e)
         {
+            getPortfolioNameForm.Clear();
             if (getPortfolioNameForm.ShowDialog() == DialogResult.OK)
-            {
-                string portfolioName = getPortfolioNameForm.PortfolioName;
-
-                _addPortfolioHandler(portfolioName, new AddPortfolioObserver(AddPortfolioToToolStrip));
+            { 
+                _addPortfolioHandler(getPortfolioNameForm.PortfolioName, new AddPortfolioObserver(AddPortfolioToToolStrip));
             }
         }
        
@@ -244,10 +261,10 @@ void MyButtonClick(object sender, EventArgs e)
 
         public void ShowMyBuyStocksForm()
         {
-            foreach (ListViewItem l in uxHomeListInfo.SelectedItems)
-            {
-                MessageBox.Show(l.ToString());
-            }
+            //foreach (ListViewItem l in uxHomeListInfo.SelectedItems)
+            //{
+            //    MessageBox.Show(l.ToString());
+            //}
             
             //if()
             //Form2 testDialog = new Form2();
@@ -263,6 +280,7 @@ void MyButtonClick(object sender, EventArgs e)
             //    this.txtResult.Text = "Cancelled";
             //}
             //testDialog.Dispose();
+            buyStocksForm.Show();
         }
 
         private void uxBuyStocks1_Click(object sender, EventArgs e)
