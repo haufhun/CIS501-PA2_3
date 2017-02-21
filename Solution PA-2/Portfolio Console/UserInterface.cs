@@ -265,12 +265,13 @@ namespace Portfolio_Console
         public void DisplayPositionsBalance(List<Tuple<string, string, decimal, int, decimal, double>> list)
         {
             Console.WriteLine("\nPositions balance:");
-            Console.WriteLine("Ticker\tFull\tCurrent Price\t#\tValue\t(Percent)");
+            Console.WriteLine("Ticker".PadRight(10) + "Full".PadRight(30) + "Current Price".PadRight(20).PadLeft(10) + "#".PadRight(20).PadLeft(10) + "Value".PadRight(20).PadLeft(10) + "(Percent)".PadLeft(10));
             if (list.Count > 0)
             {
                 foreach (var t in list)
                 {
-                    Console.WriteLine(t.Item1 + "\t" + t.Item2 + "\t" + t.Item3.ToString("C") + t.Item4 + "\t" + t.Item5.ToString("c") + "(" + t.Item6.ToString("P") + ")");
+                    Console.WriteLine(t.Item1.PadRight(10) + t.Item2.PadRight(30) + t.Item3.ToString("C").PadRight(20).PadLeft(10) + t.Item4 + "".PadRight(20).PadLeft(10) + t.Item5.ToString("c").PadRight(20).PadLeft(10) + "(" + t.Item6.ToString("P") + ")");
+
                 }
             }
             else

@@ -662,10 +662,18 @@ namespace Portfolio_Console
                 }
 
                 var shares = UserNumberOfShares();
-                if (_userInterface.UserWantsToContinue(Account.TRADE_FEE))
+                try
                 {
-                    _account.SellNumberOfStocks(portfolioName, tickerName, shares);
-                    _userInterface.DisplayStockWasSold(shares, DataBase.PriceAndTickerName[tickerName].Item3, tickerName);
+                    if (_userInterface.UserWantsToContinue(Account.TRADE_FEE))
+                    {
+                        _account.SellNumberOfStocks(portfolioName, tickerName, shares);
+                        _userInterface.DisplayStockWasSold(shares, DataBase.PriceAndTickerName[tickerName].Item3,
+                            tickerName);
+                    }
+                }
+                catch (IndexOutOfRangeException ex)
+                {
+                    _userInterface.DisplayErrorMessage("Invalid entry. No stock has been sold.");
                 }
             }
             else
