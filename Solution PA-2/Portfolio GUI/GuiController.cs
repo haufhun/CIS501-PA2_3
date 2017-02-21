@@ -40,14 +40,29 @@ namespace Portfolio_GUI
 
         public void WithdrawFunds(decimal cash)
         {
-            throw new NotImplementedException();
-            SignalObservers();
+            try
+            {
+                _account.WithdrawFunds(cash);
+                SignalObservers();
+            }
+            catch (InsufficientAccountBalanceFundsException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void BuyStocks(string portfolioName, string tickerName, int numberOfShares)
         {
-            _account.BuyStock(portfolioName, tickerName, numberOfShares);
-            SignalObservers();
+            try
+            {
+                _account.BuyStock(portfolioName, tickerName, numberOfShares);
+                SignalObservers();
+            }
+            catch (InsufficientAccountBalanceFundsException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         public void SellStocks(string portfolioName, string tickerName, int numberOfShares)
@@ -71,7 +86,7 @@ namespace Portfolio_GUI
 
         public void DeletePortfolio(string portfolioName)
         {
-            throw new NotImplementedException();
+            _account.DeletePortfolio(portfolioName);
             SignalObservers();
         }
 
@@ -114,7 +129,7 @@ namespace Portfolio_GUI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message);
             }
 
         }
