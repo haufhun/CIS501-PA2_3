@@ -143,6 +143,7 @@ namespace Class_Library
                 var shares = s.TotalNumberOfShares;
                 var value = secondList[index].Item1;
                 var percent = secondList[index].Item2;
+                index++;
 
                 list.Add(new Tuple<string, string, decimal, int, decimal, double>(tickerName, fullName, price, shares, value, percent));
             }
@@ -176,6 +177,7 @@ namespace Class_Library
                 var shares = s.TotalNumberOfShares;
                 var value = secondList[index].Item1;
                 var percent = secondList[index].Item2;
+                index++;
 
                 list.Add(new Tuple<string, string, decimal, int, decimal, double>(tickerName, fullName, price, shares, value, percent));
             }
