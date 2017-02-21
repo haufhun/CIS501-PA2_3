@@ -160,5 +160,25 @@ namespace Class_Library
                 list.Add(new Tuple<decimal, double, string, string>(d, i / totalNumberOfShares, ticker, name));
             }
         }
+
+        public void GetAllAccountStockInfo(List<Tuple<string, string, decimal, int, decimal, double>> list, int totalNumberOfShares)
+        {
+            var secondList = new List<Tuple<decimal, double, string, string>>();
+            GetTotalAccountPositionsBalance(secondList, totalNumberOfShares);
+
+            int index = 0;
+
+            foreach (var s in _stocks.Values)
+            {
+                var tickerName = secondList[index].Item3;
+                var fullName = secondList[index].Item4;
+                var price = DataBase.PriceAndTickerName[tickerName].Item3;
+                var shares = s.TotalNumberOfShares;
+                var value = secondList[index].Item1;
+                var percent = secondList[index].Item2;
+
+                list.Add(new Tuple<string, string, decimal, int, decimal, double>(tickerName, fullName, price, shares, value, percent));
+            }
+        }
     }
 }

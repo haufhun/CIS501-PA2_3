@@ -294,9 +294,8 @@ namespace Portfolio_Console
         /// </summary>
         private void CashAndPositionsBalance()
         {
-            var list = new List<Tuple<decimal, double, string, string>>();
             var cash = _account.GetCashBalance();
-            _account.GetTotalAccountPositionsBalance(list);
+            var list = _account.GetAllAccountStockInfoTuple();
             _userInterface.DisplayCashAndPositionsBalance(cash, list);
             _userInterface.WaitForUserToPressEnter();
         }

@@ -269,6 +269,16 @@ namespace Class_Library
             //TIckername companyName pricePerShare sharesOwned networthOfShares positionBalance
             return _portfolios[portfolioName].GetAllPortfolioStockInfo();
         }
+        public List<Tuple<string, string, decimal, int, decimal, double>> GetAllAccountStockInfoTuple()
+        {
+            //TIckername companyName pricePerShare sharesOwned networthOfShares positionBalance
+            var list = new List<Tuple<string, string, decimal, int, decimal, double>>();
+            foreach (var p in _portfolios.Values)
+            {
+                p.GetAllAccountStockInfo(list, _totalNumberOfShares);
+            }
+            return list;
+        }
 
         public int GetMaxSharesToBuy(decimal currentPrice)
         {

@@ -254,10 +254,10 @@ namespace Portfolio_Console
         /// </summary>
         /// <param name="cash">The total value of all the stocks at current market price if sold right now.</param>
         /// <param name="list">A list of the info about the stocks.</param>
-        public void DisplayCashAndPositionsBalance(decimal cash, List<Tuple<decimal, double, string, string>> list)
+        public void DisplayCashAndPositionsBalance(decimal cash, List<Tuple<string, string, decimal, int, decimal, double>> list)
         {
-            Console.WriteLine("\nNet worth of all your stocks at the current prices: " + cash.ToString("c", CultureInfo.CreateSpecificCulture("en-US")));
-            //DisplayPositionsBalance(list);
+            Console.WriteLine("\nNet worth of all your stocks at the current prices: " + cash.ToString("c"));
+            DisplayPositionsBalance(list);
         }
         /// <summary>
         /// Displays the position information.
