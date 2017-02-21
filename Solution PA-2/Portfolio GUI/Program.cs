@@ -9,8 +9,9 @@ namespace Portfolio_GUI
 {
     // defines the type of method that observes model updates
     public delegate void Observer();
-    public delegate void AddPortfolioObserver(string portfolioName);
 
+    public delegate void AddPortfolioObserver(string portfolioName);
+    
     //defines the type of method that handles a deposit cash input event 
     public delegate void DepositCashHandler(decimal cash); 
     // defines the type of method that handles a withdraw cash input event
@@ -44,11 +45,8 @@ namespace Portfolio_GUI
 
             var account = new Account();
             var controller = new GuiController(account);
-            var getPrtNameForm = new uxGetPortfolioNameForm();
-            var buyStockForm = new uxBuyStocksForm();
-            var sellStockForm = new uxSellStockForm();
 
-            var mainForm = new uxUserInterface(account,getPrtNameForm, buyStockForm, sellStockForm, controller.ReadTickerFile, controller.Simulate, controller.DeletePortfolio, controller.AddPortfolio, controller.SellStocks, controller.BuyStocks, controller.DepositFunds, controller.WithdrawFunds);
+            var mainForm = new uxUserInterface(account, controller.ReadTickerFile, controller.Simulate, controller.DeletePortfolio, controller.AddPortfolio, controller.SellStocks, controller.BuyStocks, controller.DepositFunds, controller.WithdrawFunds);
 
             controller.Register(mainForm.DisplayHomeStockInfo);
             controller.Register(mainForm.DisplayAccount);

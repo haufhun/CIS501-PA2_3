@@ -15,30 +15,46 @@ namespace Portfolio_GUI
 {
     public partial class uxUserInterface : Form
     {
-       
-        //defines the type of method that handles a deposit cash input event 
+
+        /// <summary>
+        /// Defines the type of method that handles a deposit cash input event 
+        /// </summary>
         private DepositCashHandler _depositCashHandler;
-        // defines the type of method that handles a withdraw cash input event
+        /// <summary>
+        /// Defines the type of method that handles a withdraw cash input event
+        /// </summary>
         private WithdrawCashHandler _withdrawCashHandler;
-        // defines the type of method that handles a buy stock input event 
+        /// <summary>
+        /// Defines the type of method that handles a buy stock input event 
+        /// </summary>
         private BuyStocksHandler _buyStocksHandler;
-        // defines the type of method that handles a sell stock input event
+        /// <summary>
+        /// Defines the type of method that handles a sell stock input event
+        /// </summary>
         private SellStocksHandler _sellStocksHandler;
-        // defines the type of method that handles a add portfolio input event 
+        /// <summary>
+        ///  Defines the type of method that handles a add portfolio input event 
+        /// </summary>
         private AddPortfolioHandler _addPortfolioHandler;
-        // defines the type of method that handles a delete portfolio input event
+        /// <summary>
+        /// Defines the type of method that handles a delete portfolio input event
+        /// </summary>
         private DeletePortfolioHandler _deletePortfolioHandler;
-        // defines the type of method that handles a simulate input event
+        /// <summary>
+        /// Defines the type of method that handles a simulate input event
+        /// </summary>
         private SimulateHandler _simulateHandler;
-        // defines the type of method that handles a read file input event
+        /// <summary>
+        /// Defines the type of method that handles a read file input event
+        /// </summary>
         private ReadFileHandler _readFileHandler;
 
 
         
         private Account _account;
-        private uxGetPortfolioNameForm getPortfolioNameForm;
-        private uxBuyStocksForm buyStocksForm;
-        private uxSellStockForm sellStockForm;
+
+
+
 
         private int _numOfPortolios = 0;
 
@@ -62,15 +78,13 @@ void MyButtonClick(object sender, EventArgs e)
         /// <param name="buyStocks"></param>
         /// <param name="depositFunds"></param>
         /// <param name="withdrawFunds"></param>
-        public uxUserInterface(Account a , uxGetPortfolioNameForm getPNameForm, uxBuyStocksForm bStkForm, uxSellStockForm sStkForm,
-            ReadFileHandler readFileHandler, SimulateHandler simulate, DeletePortfolioHandler deletePortfolio, AddPortfolioHandler addPortfolio, 
-            SellStocksHandler sellStocks, BuyStocksHandler buyStocks, DepositCashHandler depositFunds, WithdrawCashHandler withdrawFunds)
+        public uxUserInterface(Account a , ReadFileHandler readFileHandler, SimulateHandler simulate, DeletePortfolioHandler deletePortfolio, 
+            AddPortfolioHandler addPortfolio, SellStocksHandler sellStocks, BuyStocksHandler buyStocks, DepositCashHandler depositFunds, 
+            WithdrawCashHandler withdrawFunds)
         {
-            ///Initializing account and inputForms///
+            ///Initializing account///
             _account = a;
-            getPortfolioNameForm = getPNameForm;
-            buyStocksForm = bStkForm;
-            sellStockForm = sStkForm;
+
 
             ///Initializing Delegates///
             _readFileHandler = readFileHandler;
@@ -84,7 +98,11 @@ void MyButtonClick(object sender, EventArgs e)
 
             
             InitializeComponent();
-            uxBuyStocks1.Click += Button_Click;
+
+            ///Makes All Buy Buttons Refrence the same buttonClick
+            uxBuyStocks1.Click += BuyStockButton_Click;
+            uxBuyStocks2.Click += BuyStockButton_Click;
+            uxBuyStocks3.Click += BuyStockButton_Click;
 
         }
 
@@ -156,11 +174,11 @@ void MyButtonClick(object sender, EventArgs e)
         /// </summary>
         private void uxAddPortfolio_Click(object sender, EventArgs e)
         {
-            if (getPortfolioNameForm.ShowDialog() == DialogResult.OK)
-            {
-                string portfolioName = getPortfolioNameForm.PortfolioName;
+            uxGetPortfolioNameForm getPortfolioNameForm = new uxGetPortfolioNameForm();
 
-                _addPortfolioHandler(portfolioName, new AddPortfolioObserver(AddPortfolioToToolStrip));
+            if (getPortfolioNameForm.ShowDialog() == DialogResult.OK)
+            { 
+                _addPortfolioHandler(getPortfolioNameForm.PortfolioName, AddPortfolioToToolStrip);
             }
         }
        
@@ -210,6 +228,7 @@ void MyButtonClick(object sender, EventArgs e)
 
             uxHomeListInfo.EndUpdate();
         }
+
         public void DisplayAccount()
         {
 
@@ -242,44 +261,33 @@ void MyButtonClick(object sender, EventArgs e)
             uxPortfolioName.Text = portfollioName;
         }
 
-        public void ShowMyBuyStocksForm()
+        private void BuyStockButton_Click(object sender, EventArgs e)
         {
-            foreach (ListViewItem l in uxHomeListInfo.SelectedItems)
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+            string portfolioName;
+            string clickedButtonsName = item.Name;
+
+            switch (clickedButtonsName)
             {
-                MessageBox.Show(l.ToString());
+                case "uxBuyStocks1":
+                    portfolioName = uxPortfolio1.Text;                  
+                    break;
+                case "uxBuyStocks2":
+                    portfolioName = uxPortfolio2.Text;
+                    break;
+                case "uxBuyStocks3":
+                    portfolioName = uxPortfolio3.Text;
+                    break;
+                default:
+                    portfolioName = "Error finding portfolio";
+                    break;
+
             }
+            uxBuyStocksForm buyStocksForm = new uxBuyStocksForm(portfolioName, _buyStocksHandler, _account);
+            buyStocksForm.Show();
             
-            //if()
-            //Form2 testDialog = new Form2();
 
-            //// Show testDialog as a modal dialog and determine if DialogResult = OK.
-            //if (testDialog.ShowDialog(this) == DialogResult.OK)
-            //{
-            //    // Read the contents of testDialog's TextBox.
-            //    this.txtResult.Text = testDialog.TextBox1.Text;
-            //}
-            //else
-            //{
-            //    this.txtResult.Text = "Cancelled";
-            //}
-            //testDialog.Dispose();
         }
 
-        private void uxBuyStocks1_Click(object sender, EventArgs e)
-        {
-            
-            
-        }
-
-        private void Button_Click(object sender, EventArgs e)
-        {
-            ShowMyBuyStocksForm();
-            //string buttonText = ((Button)sender).Text;
-
-            //switch (buttonText)
-            //{
-       
-            //}
     }
-}
 }

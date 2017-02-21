@@ -27,11 +27,6 @@ namespace Class_Library
         public decimal TotalInvested => _totalInvested;
 
         /// <summary>
-        /// The total number of shares in the portfolio.
-        /// </summary>
-        public int TotalNumberOfShares => _totalNumberOfShares;
-
-        /// <summary>
         /// COnstructor initializes the stocks dictionary, total invested, and total number of shares.
         /// </summary>
         public Portfolio()
@@ -67,7 +62,6 @@ namespace Class_Library
         {
             var total = _stocks.Values.Sum(s => s.SellNumberOfShares(s.TotalNumberOfShares));
             _stocks.Clear();
-            _totalInvested -= total;
             return total;
         }
         /// <summary>
@@ -108,10 +102,10 @@ namespace Class_Library
         {
             foreach (var s in _stocks.Values)
             {
-                decimal d = s.GetCurrentMarketValue();
+                var d = s.GetCurrentMarketValue();
                 double i = s.TotalNumberOfShares;
-                string ticker = s.TickerName;
-                string name = DataBase.PriceAndTickerName[ticker].Item2;
+                var ticker = s.TickerName;
+                var name = DataBase.PriceAndTickerName[ticker].Item2;
                 list.Add(new Tuple<decimal, double, string, string>(d, i / _totalNumberOfShares, ticker, name));
             }
         }
@@ -125,16 +119,26 @@ namespace Class_Library
             return _stocks.ContainsKey(tickerName);
         }
 
-        public void GetTotalAccountPositionsBalance(List<Tuple<decimal, double, string, string>> list, int totalNumberOfShares)
+        public List<Tuple<string, string, decimal, int, decimal, double>> GetAllPortfolioStockInfo()
         {
+            var list = new List<Tuple<string, string, decimal, int, decimal, double>>();
+            var secondList = new List<Tuple<decimal, double, string, string>>();
+            GetPositionsBalance(secondList);
+
+            int index = 0;
+
             foreach (var s in _stocks.Values)
             {
-                decimal d = s.GetCurrentMarketValue();
-                double i = s.TotalNumberOfShares;
-                string ticker = s.TickerName;
-                string name = DataBase.PriceAndTickerName[ticker].Item2;
-                list.Add(new Tuple<decimal, double, string, string>(d, i / totalNumberOfShares, ticker, name));
+                var tickerName = secondList[index].Item3;
+                var fullName = secondList[index].Item4;
+                var price = DataBase.PriceAndTickerName[tickerName].Item3;
+                var shares = s.TotalNumberOfShares;
+                var value = secondList[index].Item1;
+                var percent = secondList[index].Item2;
+
+                list.Add(new Tuple<string, string, decimal, int, decimal, double>(tickerName, fullName, price, shares, value, percent));
             }
+            return list;
         }
     }
 }
