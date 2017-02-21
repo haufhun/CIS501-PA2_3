@@ -15,6 +15,20 @@ namespace Portfolio_GUI
         public uxBuyStocksForm()
         {
             InitializeComponent();
+            
         }
+
+        private void uxBuyStockBttn_Click(object sender, EventArgs e)
+        {
+            if (uxBuyStockListInfo.SelectedItems.Count > 0)
+            {
+                
+            }
+            else
+            {
+                MessageBox.Show("Please select a stock!");
+            }
+        }
+
     }
 }
