@@ -124,6 +124,8 @@ namespace Class_Library
         /// <param name="portfolioName">The name of the dictioanry.</param>
         public void AddPortfolio(string portfolioName)
         {
+            if (_portfolios.ContainsKey(portfolioName))
+                throw new SamePortfolioNameException();
             _portfolios.Add(portfolioName, new Portfolio());
         }
 
@@ -244,6 +246,16 @@ namespace Class_Library
                 throw new InsufficientAccountBalanceFundsException("");
             return true;
         }
+
+        public List<Tuple<string, string, decimal, int, decimal, double>> GetAllPortfolioStockInfoTuple(string portfolioName)
+        {
+            //TIckername companyName pricePerShare sharesOwned networthOfShares positionBalance
+            return _portfolios[portfolioName].GetAllPortfolioStockInfo();
+        }
+    }
+
+    public class SamePortfolioNameException : Exception
+    {
     }
 
     /// <summary>
