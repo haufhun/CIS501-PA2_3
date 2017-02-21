@@ -27,6 +27,11 @@ namespace Class_Library
         public decimal TotalInvested => _totalInvested;
 
         /// <summary>
+        /// The total number of shares in the portfolio.
+        /// </summary>
+        public int TotalNumberOfShares => _totalNumberOfShares;
+
+        /// <summary>
         /// COnstructor initializes the stocks dictionary, total invested, and total number of shares.
         /// </summary>
         public Portfolio()
@@ -62,6 +67,7 @@ namespace Class_Library
         {
             var total = _stocks.Values.Sum(s => s.SellNumberOfShares(s.TotalNumberOfShares));
             _stocks.Clear();
+            _totalInvested -= total;
             return total;
         }
         /// <summary>
@@ -117,6 +123,18 @@ namespace Class_Library
         public bool ContainsStock(string tickerName)
         {
             return _stocks.ContainsKey(tickerName);
+        }
+
+        public void GetTotalAccountPositionsBalance(List<Tuple<decimal, double, string, string>> list, int totalNumberOfShares)
+        {
+            foreach (var s in _stocks.Values)
+            {
+                decimal d = s.GetCurrentMarketValue();
+                double i = s.TotalNumberOfShares;
+                string ticker = s.TickerName;
+                string name = DataBase.PriceAndTickerName[ticker].Item2;
+                list.Add(new Tuple<decimal, double, string, string>(d, i / totalNumberOfShares, ticker, name));
+            }
         }
     }
 }

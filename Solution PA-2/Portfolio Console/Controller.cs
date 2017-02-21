@@ -299,7 +299,7 @@ namespace Portfolio_Console
         {
             var list = new List<Tuple<decimal, double, string, string>>();
             var cash = _account.GetCashBalance();
-            _account.GetPositionsBalance(list);
+            _account.GetTotalAccountPositionsBalance(list);
             _userInterface.DisplayCashAndPositionsBalance(cash, list);
             _userInterface.WaitForUserToPressEnter();
         }
