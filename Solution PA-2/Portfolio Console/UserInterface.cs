@@ -257,23 +257,21 @@ namespace Portfolio_Console
         public void DisplayCashAndPositionsBalance(decimal cash, List<Tuple<decimal, double, string, string>> list)
         {
             Console.WriteLine("\nNet worth of all your stocks at the current prices: " + cash.ToString("c", CultureInfo.CreateSpecificCulture("en-US")));
-            DisplayPositionsBalance(list);
+            //DisplayPositionsBalance(list);
         }
         /// <summary>
         /// Displays the position information.
         /// </summary>
         /// <param name="list">A list of the positions info, such as amount invested, percent, ticker name and full name.</param>
-        public void DisplayPositionsBalance(List<Tuple<decimal, double, string, string>> list)
+        public void DisplayPositionsBalance(List<Tuple<string, string, decimal, int, decimal, double>> list)
         {
             Console.WriteLine("\nPositions balance:");
+            Console.WriteLine("Ticker\tFull\tCurrent Price\t#\tValue\t(Percent)");
             if (list.Count > 0)
             {
                 foreach (var t in list)
                 {
-                    Console.WriteLine(t.Item1.ToString("c", CultureInfo.CreateSpecificCulture("en-US")) + "\t"
-                                      + "- (" + t.Item2.ToString("P") + ") "
-                                      + t.Item3 + " "
-                                      + t.Item4);
+                    Console.WriteLine(t.Item1 + "\t" + t.Item2 + "\t" + t.Item3.ToString("C") + t.Item4 + "\t" + t.Item5.ToString("c") + "(" + t.Item6.ToString("P") + ")");
                 }
             }
             else

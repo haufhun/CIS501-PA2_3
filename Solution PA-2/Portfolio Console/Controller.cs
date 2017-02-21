@@ -492,9 +492,9 @@ namespace Portfolio_Console
         /// <param name="portfolioName"></param>
         private void PositionsBalance(string portfolioName)
         {
-            var list = new List<Tuple<decimal, double, string, string>>();
-            _account.SelectPortfolio(portfolioName).GetPositionsBalance(list);
-            _userInterface.DisplayPositionsBalance(list);
+            //_account.SelectPortfolio(portfolioName).GetPositionsBalance(list);
+            var secondList = _account.GetAllPortfolioStockInfoTuple(portfolioName);
+            _userInterface.DisplayPositionsBalance(secondList);
             _userInterface.WaitForUserToPressEnter();
         }
         /// <summary>

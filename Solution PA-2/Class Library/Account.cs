@@ -49,7 +49,6 @@ namespace Class_Library
         /// Public property for the number of portfolios.
         /// </summary>
         public int NumberOfPortfolios => _portfolios.Count;
-        public int TotalNumberOfShares => _totalNumberOfShares;
 
         /// <summary>
         /// Construcotr initializes the portfolios, the initial funds, cash balance, and invested balance.
