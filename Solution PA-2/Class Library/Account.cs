@@ -31,11 +31,14 @@ namespace Class_Library
         /// </summary>
         private decimal _investedBalance;
         /// <summary>
+        /// The total number of shares owned in the account.
+        /// </summary>
+        private int _totalNumberOfShares;
+        /// <summary>
         /// The dictionary holding the portfolios, keyed by their name. 
         /// </summary>
         private Dictionary<string, Portfolio> _portfolios;
-
-        private int _totalNumberOfShares;
+       
 
         /// <summary>
         /// Public property allowing get of the cash.
@@ -198,7 +201,7 @@ namespace Class_Library
         /// <summary>
         /// Updates the invested balance by looking at the balance of each of the portfolios. 
         /// </summary>
-        public void UpdateInvestedBalance()
+        private void UpdateInvestedBalance()
         {
             _investedBalance = 0;
             foreach (var p in _portfolios.Values)
@@ -264,6 +267,13 @@ namespace Class_Library
             }
         }
 
+        /// <summary>
+        /// Gets all information about each stock in a certain portfolio, and returns a list.
+        /// </summary>
+        /// <param name="portfolioName">The desired portfolio to </param>
+        /// <returns>A list of tuples with information about each stock, namely
+        /// ticker name, full name, current price per share, shares owned, 
+        /// net worth of shares, and the percent of how many shares that stock is in the portfolio.</returns>
         public List<Tuple<string, string, decimal, int, decimal, double>> GetAllPortfolioStockInfoTuple(string portfolioName)
         {
             //TIckername companyName pricePerShare sharesOwned networthOfShares positionBalance
