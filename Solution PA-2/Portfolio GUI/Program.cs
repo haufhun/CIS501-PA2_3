@@ -11,7 +11,7 @@ namespace Portfolio_GUI
     public delegate void Observer();
 
     public delegate void AddPortfolioObserver(string portfolioName);
-
+    
     //defines the type of method that handles a deposit cash input event 
     public delegate void DepositCashHandler(decimal cash); 
     // defines the type of method that handles a withdraw cash input event

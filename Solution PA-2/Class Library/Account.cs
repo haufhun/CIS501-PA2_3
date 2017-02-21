@@ -244,6 +244,11 @@ namespace Class_Library
                 throw new InsufficientAccountBalanceFundsException("");
             return true;
         }
+
+        public int GetMaxSharesToBuy(decimal currentPrice)
+        {
+            return Convert.ToInt32(_cashFund / currentPrice);
+        }
     }
 
     /// <summary>

@@ -37,8 +37,6 @@ namespace Portfolio_GUI
 
         public void BuyStocks(string portfolioName, string tickerName, int numberOfShares)
         {
-            //validate
-
             _account.BuyStock(portfolioName, tickerName, numberOfShares);
             SignalObservers();
         }
