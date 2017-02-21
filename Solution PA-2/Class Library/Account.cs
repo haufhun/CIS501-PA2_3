@@ -35,6 +35,8 @@ namespace Class_Library
         /// </summary>
         private Dictionary<string, Portfolio> _portfolios;
 
+        private int _totalNumberOfShares;
+
         /// <summary>
         /// Public property allowing get of the cash.
         /// </summary>
@@ -47,6 +49,7 @@ namespace Class_Library
         /// Public property for the number of portfolios.
         /// </summary>
         public int NumberOfPortfolios => _portfolios.Count;
+        public int TotalNumberOfShares => _totalNumberOfShares;
 
         /// <summary>
         /// Construcotr initializes the portfolios, the initial funds, cash balance, and invested balance.
@@ -54,6 +57,7 @@ namespace Class_Library
         public Account()
         {
             _portfolios = new Dictionary<string, Portfolio>();
+            _totalNumberOfShares = 0;
             _initalFunds = 0;
             _cashFund = 0;
             _investedBalance = 0;
@@ -245,6 +249,17 @@ namespace Class_Library
             if (cash > _cashFund)
                 throw new InsufficientAccountBalanceFundsException("");
             return true;
+        }
+        /// <summary>
+        /// Gets the position balance for each stock and puts the info into a string.
+        /// </summary>
+        /// <param name="list">A list of the positions info, including price percent, ticker name and full name.</param>
+        public void GetTotalAccountPositionsBalance(List<Tuple<decimal, double, string, string>> list)
+        {
+            foreach (var p in _portfolios.Values)
+            {
+                p.GetTotalAccountPositionsBalance(list, _totalNumberOfShares);
+            }
         }
 
         public List<Tuple<string, string, decimal, int, decimal, double>> GetAllPortfolioStockInfoTuple(string portfolioName)

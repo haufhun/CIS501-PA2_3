@@ -140,5 +140,17 @@ namespace Class_Library
             }
             return list;
         }
+
+        public void GetTotalAccountPositionsBalance(List<Tuple<decimal, double, string, string>> list, int totalNumberOfShares)
+        {
+            foreach (var s in _stocks.Values)
+            {
+                decimal d = s.GetCurrentMarketValue();
+                double i = s.TotalNumberOfShares;
+                string ticker = s.TickerName;
+                string name = DataBase.PriceAndTickerName[ticker].Item2;
+                list.Add(new Tuple<decimal, double, string, string>(d, i / totalNumberOfShares, ticker, name));
+            }
+        }
     }
 }
