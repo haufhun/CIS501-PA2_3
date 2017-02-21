@@ -185,7 +185,6 @@ namespace Portfolio_Console
         /// <returns>The name of the stock the user wants.</returns>
         public string AskForStockName()
         {
-            DisplayListOfTickers();
             Console.Write("\nEnter Ticker Name of the stock: ");
             var ticker = Console.ReadLine().Trim().ToUpper();
             return ticker;
@@ -254,26 +253,25 @@ namespace Portfolio_Console
         /// </summary>
         /// <param name="cash">The total value of all the stocks at current market price if sold right now.</param>
         /// <param name="list">A list of the info about the stocks.</param>
-        public void DisplayCashAndPositionsBalance(decimal cash, List<Tuple<decimal, double, string, string>> list)
+        public void DisplayCashAndPositionsBalance(decimal cash, List<Tuple<string, string, decimal, int, decimal, double>> list)
         {
-            Console.WriteLine("\nNet worth of all your stocks at the current prices: " + cash.ToString("c", CultureInfo.CreateSpecificCulture("en-US")));
+            Console.WriteLine("\nNet worth of all your stocks at the current prices: " + cash.ToString("c"));
             DisplayPositionsBalance(list);
         }
         /// <summary>
         /// Displays the position information.
         /// </summary>
         /// <param name="list">A list of the positions info, such as amount invested, percent, ticker name and full name.</param>
-        public void DisplayPositionsBalance(List<Tuple<decimal, double, string, string>> list)
+        public void DisplayPositionsBalance(List<Tuple<string, string, decimal, int, decimal, double>> list)
         {
             Console.WriteLine("\nPositions balance:");
+            Console.WriteLine("Ticker".PadRight(10) + "Full".PadRight(30) + "Current Price".PadRight(20).PadLeft(10) + "#".PadRight(20).PadLeft(10) + "Value".PadRight(20).PadLeft(10) + "(Percent)".PadLeft(10));
             if (list.Count > 0)
             {
                 foreach (var t in list)
                 {
-                    Console.WriteLine(t.Item1.ToString("c", CultureInfo.CreateSpecificCulture("en-US")) + "\t"
-                                      + "- (" + t.Item2.ToString("P") + ") "
-                                      + t.Item3 + " "
-                                      + t.Item4);
+                    Console.WriteLine(t.Item1.PadRight(10) + t.Item2.PadRight(30) + t.Item3.ToString("C").PadRight(20).PadLeft(10) + t.Item4 + "".PadRight(20).PadLeft(10) + t.Item5.ToString("c").PadRight(20).PadLeft(10) + "(" + t.Item6.ToString("P") + ")");
+
                 }
             }
             else

@@ -264,23 +264,20 @@ namespace Portfolio_Console
             int num = 0;
             while (!valid)
             {
-                    try
-                    {
-                        num = Convert.ToInt32(_userInterface.DisplayPortfoliosAndAskForPortfolioNumber(names));
-                        if (names[num-1] == null)
-                        {
-                            _userInterface.DisplayErrorMessage(
-                                "A portfolio at that spot does not exist. Enter a number that is displayed.");
-                        }
-                        else
-                        {
-                            valid = true;
-                        }
-                    }
-                    catch (FormatException)
-                    {
+                string input = _userInterface.DisplayPortfoliosAndAskForPortfolioNumber(names);
+                if (input != "1" && input != "2" && input != "3")
+                {
                         _userInterface.DisplayIncorrectNumberInput();
-                    }
+                }
+                else if (Convert.ToInt32(input) > _account.NumberOfPortfolios)
+                {
+                    _userInterface.DisplayErrorMessage("A portfolio at that spot does not exist. Enter a number that is displayed.");
+                }
+                else
+                {
+                    num = Convert.ToInt32(input);
+                    valid = true;
+                }
             }
             return num;
         }
@@ -297,9 +294,8 @@ namespace Portfolio_Console
         /// </summary>
         private void CashAndPositionsBalance()
         {
-            var list = new List<Tuple<decimal, double, string, string>>();
             var cash = _account.GetCashBalance();
-            _account.GetPositionsBalance(list);
+            var list = _account.GetAllAccountStockInfoTuple();
             _userInterface.DisplayCashAndPositionsBalance(cash, list);
             _userInterface.WaitForUserToPressEnter();
         }
@@ -495,9 +491,9 @@ namespace Portfolio_Console
         /// <param name="portfolioName"></param>
         private void PositionsBalance(string portfolioName)
         {
-            var list = new List<Tuple<decimal, double, string, string>>();
-            _account.SelectPortfolio(portfolioName).GetPositionsBalance(list);
-            _userInterface.DisplayPositionsBalance(list);
+            //_account.SelectPortfolio(portfolioName).GetPositionsBalance(list);
+            var secondList = _account.GetAllPortfolioStockInfoTuple(portfolioName);
+            _userInterface.DisplayPositionsBalance(secondList);
             _userInterface.WaitForUserToPressEnter();
         }
         /// <summary>
@@ -519,7 +515,7 @@ namespace Portfolio_Console
             {
                 try
                 {
-                    string tickerName = UserStockName();
+                    string tickerName = UserStockName(portfolioName, 0);
                     _userInterface.DisplayStockInfo(tickerName, DataBase.PriceAndTickerName[tickerName].Item2, 
                             DataBase.PriceAndTickerName[tickerName].Item3);
                     
@@ -597,12 +593,20 @@ namespace Portfolio_Console
         /// Asks the user for the name of the stock.
         /// </summary>
         /// <returns>The name of the stock.</returns>
-        private string UserStockName()
+        private string UserStockName(string portfolioName, int buyOrSell)
         {
             bool valid = false;
             string tickerName = "";
             while (!valid)
             {
+                if (buyOrSell == 0)
+                {
+                    _userInterface.DisplayListOfTickers();
+                }
+                else
+                {
+                    _userInterface.DisplayPositionsBalance(_account.GetAllPortfolioStockInfoTuple(portfolioName));
+                }
                 tickerName = _userInterface.AskForStockName();
                 if (!DataBase.PriceAndTickerName.ContainsKey(tickerName))
                 {
@@ -649,7 +653,7 @@ namespace Portfolio_Console
         {
             if (_account.InvestedBalance > 0)
             {
-                var tickerName = UserStockName();
+                var tickerName = UserStockName(portfolioName, 1);
 
                 while (!_account.SelectPortfolio(portfolioName).ContainsStock(tickerName))
                 {
@@ -658,10 +662,18 @@ namespace Portfolio_Console
                 }
 
                 var shares = UserNumberOfShares();
-                if (_userInterface.UserWantsToContinue(Account.TRADE_FEE))
+                try
                 {
-                    _account.SellNumberOfStocks(portfolioName, tickerName, shares);
-                    _userInterface.DisplayStockWasSold(shares, DataBase.PriceAndTickerName[tickerName].Item3, tickerName);
+                    if (_userInterface.UserWantsToContinue(Account.TRADE_FEE))
+                    {
+                        _account.SellNumberOfStocks(portfolioName, tickerName, shares);
+                        _userInterface.DisplayStockWasSold(shares, DataBase.PriceAndTickerName[tickerName].Item3,
+                            tickerName);
+                    }
+                }
+                catch (IndexOutOfRangeException ex)
+                {
+                    _userInterface.DisplayErrorMessage("Invalid entry. No stock has been sold.");
                 }
             }
             else

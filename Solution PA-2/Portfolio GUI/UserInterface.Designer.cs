@@ -749,7 +749,7 @@
             this.uxBuyStocks1.Name = "uxBuyStocks1";
             this.uxBuyStocks1.Size = new System.Drawing.Size(185, 26);
             this.uxBuyStocks1.Text = "Buy Stocks";
-            this.uxBuyStocks1.Click += new System.EventHandler(this.uxBuyStocks1_Click);
+           // this.uxBuyStocks1.Click += new System.EventHandler(this.uxBuyStocks1_Click);
             // 
             // uxSellStocks1
             // 

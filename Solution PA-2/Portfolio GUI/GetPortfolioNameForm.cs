@@ -12,14 +12,13 @@ namespace Portfolio_GUI
 {
     public partial class uxGetPortfolioNameForm : Form
     {
+        private List<string> _portfolioNames = new List<string>();
         public uxGetPortfolioNameForm()
         {
             InitializeComponent();
         }
 
-        public string PortfolioName
-        {
-            get { return uxPNameTxtBox.Text; }
-        }
+        public string PortfolioName => uxPNameTxtBox.Text;
+
     }
 }

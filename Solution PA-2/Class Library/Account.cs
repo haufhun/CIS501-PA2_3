@@ -35,6 +35,8 @@ namespace Class_Library
         /// </summary>
         private Dictionary<string, Portfolio> _portfolios;
 
+        private int _totalNumberOfShares;
+
         /// <summary>
         /// Public property allowing get of the cash.
         /// </summary>
@@ -54,6 +56,7 @@ namespace Class_Library
         public Account()
         {
             _portfolios = new Dictionary<string, Portfolio>();
+            _totalNumberOfShares = 0;
             _initalFunds = 0;
             _cashFund = 0;
             _investedBalance = 0;
@@ -124,6 +127,8 @@ namespace Class_Library
         /// <param name="portfolioName">The name of the dictioanry.</param>
         public void AddPortfolio(string portfolioName)
         {
+            if (_portfolios.ContainsKey(portfolioName))
+                throw new SamePortfolioNameException();
             _portfolios.Add(portfolioName, new Portfolio());
         }
 
@@ -134,8 +139,9 @@ namespace Class_Library
         public void DeletePortfolio(string portfolioName)
         {
             _cashFund += _portfolios[portfolioName].DeletePortfolio() - TRADE_FEE;
-            UpdateInvestedBalance();
+            _totalNumberOfShares -= _portfolios[portfolioName].TotalNumberOfShares;
             _portfolios.Remove(portfolioName);
+            UpdateInvestedBalance();
         }
 
         /// <summary>
@@ -152,6 +158,7 @@ namespace Class_Library
                 throw new InsufficientAccountBalanceFundsException();
             _portfolios[portfolioName].AddStock(tickerName, numberOfShares);
             _cashFund -= (TRADE_FEE + cost);
+            _totalNumberOfShares += numberOfShares;
             UpdateInvestedBalance();
         }
 
@@ -166,6 +173,7 @@ namespace Class_Library
             _portfolios[portfolioName].SellStock(tickerName, numberOfStocks);
             UpdateInvestedBalance();
             _cashFund += numberOfStocks * DataBase.PriceAndTickerName[tickerName].Item3 - TRADE_FEE;
+            _totalNumberOfShares -= numberOfStocks;
         }
 
         /// <summary>
@@ -244,6 +252,42 @@ namespace Class_Library
                 throw new InsufficientAccountBalanceFundsException("");
             return true;
         }
+        /// <summary>
+        /// Gets the position balance for each stock and puts the info into a string.
+        /// </summary>
+        /// <param name="list">A list of the positions info, including price percent, ticker name and full name.</param>
+        public void GetTotalAccountPositionsBalance(List<Tuple<decimal, double, string, string>> list)
+        {
+            foreach (var p in _portfolios.Values)
+            {
+                p.GetTotalAccountPositionsBalance(list, _totalNumberOfShares);
+            }
+        }
+
+        public List<Tuple<string, string, decimal, int, decimal, double>> GetAllPortfolioStockInfoTuple(string portfolioName)
+        {
+            //TIckername companyName pricePerShare sharesOwned networthOfShares positionBalance
+            return _portfolios[portfolioName].GetAllPortfolioStockInfo();
+        }
+        public List<Tuple<string, string, decimal, int, decimal, double>> GetAllAccountStockInfoTuple()
+        {
+            //TIckername companyName pricePerShare sharesOwned networthOfShares positionBalance
+            var list = new List<Tuple<string, string, decimal, int, decimal, double>>();
+            foreach (var p in _portfolios.Values)
+            {
+                p.GetAllAccountStockInfo(list, _totalNumberOfShares);
+            }
+            return list;
+        }
+
+        public int GetMaxSharesToBuy(decimal currentPrice)
+        {
+            return (int)(_cashFund / currentPrice);
+        }
+    }
+
+    public class SamePortfolioNameException : Exception
+    {
     }
 
     /// <summary>
