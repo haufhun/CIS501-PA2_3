@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea15 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend15 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea16 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend16 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uxUserInterface));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.uxTabControl = new System.Windows.Forms.TabControl();
             this.uxHomeTab = new System.Windows.Forms.TabPage();
             this.uxVolatilityGroup = new System.Windows.Forms.GroupBox();
@@ -52,6 +52,11 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.uxExitProgram = new System.Windows.Forms.ToolStripButton();
             this.uxAccountTab = new System.Windows.Forms.TabPage();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.uxAddFunds = new System.Windows.Forms.ToolStripButton();
+            this.uxWithdrawFunds = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.helpToolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.uxAccGainsLossesOutput = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -74,14 +79,14 @@
             this.uxPortfolioName = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.label7 = new System.Windows.Forms.Label();
+            this.uxPrtGainsLossesOutput = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.uxPrtPercentageOfAccountOutput = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.uxPrtNetWorthOutput = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.uxPrtTotalInvestedOuput = new System.Windows.Forms.Label();
+            this.uxPrtBalOutput = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.uxPrtListInfo = new System.Windows.Forms.ListView();
             this.uxPrtTickerNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -116,6 +121,7 @@
             this.uxVolatilityGroup.SuspendLayout();
             this.uxHomeToolStrip.SuspendLayout();
             this.uxAccountTab.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.uxPortfolioTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -287,6 +293,7 @@
             // 
             // uxAccountTab
             // 
+            this.uxAccountTab.Controls.Add(this.toolStrip1);
             this.uxAccountTab.Controls.Add(this.chart2);
             this.uxAccountTab.Controls.Add(this.uxAccGainsLossesOutput);
             this.uxAccountTab.Controls.Add(this.label6);
@@ -308,19 +315,65 @@
             this.uxAccountTab.UseVisualStyleBackColor = true;
             this.uxAccountTab.Click += new System.EventHandler(this.uxAccountTab_Click);
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.uxAddFunds,
+            this.uxWithdrawFunds,
+            this.toolStripSeparator3,
+            this.helpToolStripButton1});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 3);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1231, 27);
+            this.toolStrip1.TabIndex = 25;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // uxAddFunds
+            // 
+            this.uxAddFunds.Image = global::Portfolio_GUI.Properties.Resources.AddFunds2;
+            this.uxAddFunds.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.uxAddFunds.Name = "uxAddFunds";
+            this.uxAddFunds.Size = new System.Drawing.Size(103, 24);
+            this.uxAddFunds.Text = "Add Funds";
+            this.uxAddFunds.Click += new System.EventHandler(this.uxAddFunds_Click);
+            // 
+            // uxWithdrawFunds
+            // 
+            this.uxWithdrawFunds.Image = global::Portfolio_GUI.Properties.Resources.WithdrawFund1;
+            this.uxWithdrawFunds.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.uxWithdrawFunds.Name = "uxWithdrawFunds";
+            this.uxWithdrawFunds.Size = new System.Drawing.Size(139, 24);
+            this.uxWithdrawFunds.Text = "Withdraw Funds";
+            this.uxWithdrawFunds.Click += new System.EventHandler(this.uxWithdrawFunds_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
+            // 
+            // helpToolStripButton1
+            // 
+            this.helpToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.helpToolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripButton1.Image")));
+            this.helpToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.helpToolStripButton1.Name = "helpToolStripButton1";
+            this.helpToolStripButton1.Size = new System.Drawing.Size(24, 24);
+            this.helpToolStripButton1.Text = "He&lp";
+            // 
             // chart2
             // 
-            chartArea15.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea15);
-            legend15.Name = "Legend1";
-            this.chart2.Legends.Add(legend15);
+            chartArea1.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart2.Legends.Add(legend1);
             this.chart2.Location = new System.Drawing.Point(889, 327);
             this.chart2.Name = "chart2";
-            series15.ChartArea = "ChartArea1";
-            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series15.Legend = "Legend1";
-            series15.Name = "Series1";
-            this.chart2.Series.Add(series15);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart2.Series.Add(series1);
             this.chart2.Size = new System.Drawing.Size(288, 173);
             this.chart2.TabIndex = 24;
             this.chart2.Text = "chart2";
@@ -330,7 +383,7 @@
             this.uxAccGainsLossesOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.uxAccGainsLossesOutput.AutoSize = true;
             this.uxAccGainsLossesOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxAccGainsLossesOutput.Location = new System.Drawing.Point(1109, 226);
+            this.uxAccGainsLossesOutput.Location = new System.Drawing.Point(1109, 259);
             this.uxAccGainsLossesOutput.Name = "uxAccGainsLossesOutput";
             this.uxAccGainsLossesOutput.Size = new System.Drawing.Size(49, 20);
             this.uxAccGainsLossesOutput.TabIndex = 11;
@@ -341,7 +394,7 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(945, 226);
+            this.label6.Location = new System.Drawing.Point(945, 259);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(136, 20);
             this.label6.TabIndex = 10;
@@ -352,7 +405,7 @@
             this.uxAccNetWorthOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.uxAccNetWorthOutput.AutoSize = true;
             this.uxAccNetWorthOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxAccNetWorthOutput.Location = new System.Drawing.Point(1109, 73);
+            this.uxAccNetWorthOutput.Location = new System.Drawing.Point(1109, 106);
             this.uxAccNetWorthOutput.Name = "uxAccNetWorthOutput";
             this.uxAccNetWorthOutput.Size = new System.Drawing.Size(49, 20);
             this.uxAccNetWorthOutput.TabIndex = 9;
@@ -363,7 +416,7 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(885, 73);
+            this.label4.Location = new System.Drawing.Point(885, 106);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(196, 20);
             this.label4.TabIndex = 8;
@@ -374,7 +427,7 @@
             this.uxAccNetWorthStocksOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.uxAccNetWorthStocksOutput.AutoSize = true;
             this.uxAccNetWorthStocksOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxAccNetWorthStocksOutput.Location = new System.Drawing.Point(1109, 118);
+            this.uxAccNetWorthStocksOutput.Location = new System.Drawing.Point(1109, 151);
             this.uxAccNetWorthStocksOutput.Name = "uxAccNetWorthStocksOutput";
             this.uxAccNetWorthStocksOutput.Size = new System.Drawing.Size(49, 20);
             this.uxAccNetWorthStocksOutput.TabIndex = 7;
@@ -385,7 +438,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(896, 118);
+            this.label2.Location = new System.Drawing.Point(896, 151);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(185, 20);
             this.label2.TabIndex = 6;
@@ -396,7 +449,7 @@
             this.uxAccTotalInvestedOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.uxAccTotalInvestedOutput.AutoSize = true;
             this.uxAccTotalInvestedOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxAccTotalInvestedOutput.Location = new System.Drawing.Point(1109, 189);
+            this.uxAccTotalInvestedOutput.Location = new System.Drawing.Point(1109, 222);
             this.uxAccTotalInvestedOutput.Name = "uxAccTotalInvestedOutput";
             this.uxAccTotalInvestedOutput.Size = new System.Drawing.Size(49, 20);
             this.uxAccTotalInvestedOutput.TabIndex = 5;
@@ -408,7 +461,7 @@
             this.uxAccBalOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.uxAccBalOutput.AutoSize = true;
             this.uxAccBalOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxAccBalOutput.Location = new System.Drawing.Point(1109, 3);
+            this.uxAccBalOutput.Location = new System.Drawing.Point(1109, 41);
             this.uxAccBalOutput.Name = "uxAccBalOutput";
             this.uxAccBalOutput.Size = new System.Drawing.Size(49, 20);
             this.uxAccBalOutput.TabIndex = 4;
@@ -419,7 +472,7 @@
             this.uxTotalInvestedLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.uxTotalInvestedLabel.AutoSize = true;
             this.uxTotalInvestedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxTotalInvestedLabel.Location = new System.Drawing.Point(948, 189);
+            this.uxTotalInvestedLabel.Location = new System.Drawing.Point(948, 222);
             this.uxTotalInvestedLabel.Name = "uxTotalInvestedLabel";
             this.uxTotalInvestedLabel.Size = new System.Drawing.Size(133, 20);
             this.uxTotalInvestedLabel.TabIndex = 3;
@@ -437,7 +490,7 @@
             this.uxAccNetWorthCol,
             this.uxAccPositionBalCol});
             this.uxAccListInfo.GridLines = true;
-            this.uxAccListInfo.Location = new System.Drawing.Point(3, 3);
+            this.uxAccListInfo.Location = new System.Drawing.Point(3, 33);
             this.uxAccListInfo.Name = "uxAccListInfo";
             this.uxAccListInfo.Size = new System.Drawing.Size(873, 286);
             this.uxAccListInfo.TabIndex = 2;
@@ -479,7 +532,7 @@
             this.uxAccBalLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.uxAccBalLabel.AutoSize = true;
             this.uxAccBalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxAccBalLabel.Location = new System.Drawing.Point(924, 0);
+            this.uxAccBalLabel.Location = new System.Drawing.Point(924, 41);
             this.uxAccBalLabel.Name = "uxAccBalLabel";
             this.uxAccBalLabel.Size = new System.Drawing.Size(157, 20);
             this.uxAccBalLabel.TabIndex = 0;
@@ -490,14 +543,14 @@
             this.uxPortfolioTab.Controls.Add(this.uxPortfolioName);
             this.uxPortfolioTab.Controls.Add(this.label17);
             this.uxPortfolioTab.Controls.Add(this.chart1);
-            this.uxPortfolioTab.Controls.Add(this.label7);
+            this.uxPortfolioTab.Controls.Add(this.uxPrtGainsLossesOutput);
             this.uxPortfolioTab.Controls.Add(this.label8);
-            this.uxPortfolioTab.Controls.Add(this.label9);
+            this.uxPortfolioTab.Controls.Add(this.uxPrtPercentageOfAccountOutput);
             this.uxPortfolioTab.Controls.Add(this.label10);
-            this.uxPortfolioTab.Controls.Add(this.label11);
+            this.uxPortfolioTab.Controls.Add(this.uxPrtNetWorthOutput);
             this.uxPortfolioTab.Controls.Add(this.label12);
-            this.uxPortfolioTab.Controls.Add(this.label13);
-            this.uxPortfolioTab.Controls.Add(this.label14);
+            this.uxPortfolioTab.Controls.Add(this.uxPrtTotalInvestedOuput);
+            this.uxPortfolioTab.Controls.Add(this.uxPrtBalOutput);
             this.uxPortfolioTab.Controls.Add(this.label15);
             this.uxPortfolioTab.Controls.Add(this.uxPrtListInfo);
             this.uxPortfolioTab.Controls.Add(this.label16);
@@ -534,31 +587,31 @@
             // 
             // chart1
             // 
-            chartArea16.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea16);
-            legend16.Name = "Legend1";
-            this.chart1.Legends.Add(legend16);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(900, 337);
             this.chart1.Name = "chart1";
-            series16.ChartArea = "ChartArea1";
-            series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series16.Legend = "Legend1";
-            series16.Name = "Series1";
-            this.chart1.Series.Add(series16);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(288, 173);
             this.chart1.TabIndex = 23;
             this.chart1.Text = "chart1";
             // 
-            // label7
+            // uxPrtGainsLossesOutput
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(1109, 259);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 20);
-            this.label7.TabIndex = 22;
-            this.label7.Text = "$0.00";
+            this.uxPrtGainsLossesOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.uxPrtGainsLossesOutput.AutoSize = true;
+            this.uxPrtGainsLossesOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxPrtGainsLossesOutput.Location = new System.Drawing.Point(1109, 259);
+            this.uxPrtGainsLossesOutput.Name = "uxPrtGainsLossesOutput";
+            this.uxPrtGainsLossesOutput.Size = new System.Drawing.Size(49, 20);
+            this.uxPrtGainsLossesOutput.TabIndex = 22;
+            this.uxPrtGainsLossesOutput.Text = "$0.00";
             // 
             // label8
             // 
@@ -571,16 +624,16 @@
             this.label8.TabIndex = 21;
             this.label8.Text = "Net Gain/Loss:";
             // 
-            // label9
+            // uxPrtPercentageOfAccountOutput
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(1109, 106);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(78, 20);
-            this.label9.TabIndex = 20;
-            this.label9.Text = "100.00 %";
+            this.uxPrtPercentageOfAccountOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.uxPrtPercentageOfAccountOutput.AutoSize = true;
+            this.uxPrtPercentageOfAccountOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxPrtPercentageOfAccountOutput.Location = new System.Drawing.Point(1109, 106);
+            this.uxPrtPercentageOfAccountOutput.Name = "uxPrtPercentageOfAccountOutput";
+            this.uxPrtPercentageOfAccountOutput.Size = new System.Drawing.Size(78, 20);
+            this.uxPrtPercentageOfAccountOutput.TabIndex = 20;
+            this.uxPrtPercentageOfAccountOutput.Text = "100.00 %";
             // 
             // label10
             // 
@@ -593,16 +646,16 @@
             this.label10.TabIndex = 19;
             this.label10.Text = "Percentage of Account:";
             // 
-            // label11
+            // uxPrtNetWorthOutput
             // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(1109, 151);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(49, 20);
-            this.label11.TabIndex = 18;
-            this.label11.Text = "$0.00";
+            this.uxPrtNetWorthOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.uxPrtNetWorthOutput.AutoSize = true;
+            this.uxPrtNetWorthOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxPrtNetWorthOutput.Location = new System.Drawing.Point(1109, 151);
+            this.uxPrtNetWorthOutput.Name = "uxPrtNetWorthOutput";
+            this.uxPrtNetWorthOutput.Size = new System.Drawing.Size(49, 20);
+            this.uxPrtNetWorthOutput.TabIndex = 18;
+            this.uxPrtNetWorthOutput.Text = "$0.00";
             // 
             // label12
             // 
@@ -615,27 +668,27 @@
             this.label12.TabIndex = 17;
             this.label12.Text = "Net Worth of Stocks:";
             // 
-            // label13
+            // uxPrtTotalInvestedOuput
             // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(1109, 222);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(49, 20);
-            this.label13.TabIndex = 16;
-            this.label13.Text = "$0.00";
+            this.uxPrtTotalInvestedOuput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.uxPrtTotalInvestedOuput.AutoSize = true;
+            this.uxPrtTotalInvestedOuput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxPrtTotalInvestedOuput.Location = new System.Drawing.Point(1109, 222);
+            this.uxPrtTotalInvestedOuput.Name = "uxPrtTotalInvestedOuput";
+            this.uxPrtTotalInvestedOuput.Size = new System.Drawing.Size(49, 20);
+            this.uxPrtTotalInvestedOuput.TabIndex = 16;
+            this.uxPrtTotalInvestedOuput.Text = "$0.00";
             // 
-            // label14
+            // uxPrtBalOutput
             // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(1109, 36);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(49, 20);
-            this.label14.TabIndex = 15;
-            this.label14.Text = "$0.00";
+            this.uxPrtBalOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.uxPrtBalOutput.AutoSize = true;
+            this.uxPrtBalOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxPrtBalOutput.Location = new System.Drawing.Point(1109, 36);
+            this.uxPrtBalOutput.Name = "uxPrtBalOutput";
+            this.uxPrtBalOutput.Size = new System.Drawing.Size(49, 20);
+            this.uxPrtBalOutput.TabIndex = 15;
+            this.uxPrtBalOutput.Text = "$0.00";
             // 
             // label15
             // 
@@ -749,7 +802,6 @@
             this.uxBuyStocks1.Name = "uxBuyStocks1";
             this.uxBuyStocks1.Size = new System.Drawing.Size(185, 26);
             this.uxBuyStocks1.Text = "Buy Stocks";
-           // this.uxBuyStocks1.Click += new System.EventHandler(this.uxBuyStocks1_Click);
             // 
             // uxSellStocks1
             // 
@@ -904,6 +956,8 @@
             this.uxHomeToolStrip.PerformLayout();
             this.uxAccountTab.ResumeLayout(false);
             this.uxAccountTab.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.uxPortfolioTab.ResumeLayout(false);
             this.uxPortfolioTab.PerformLayout();
@@ -950,14 +1004,14 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label uxAccGainsLossesOutput;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label uxPrtGainsLossesOutput;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label uxPrtPercentageOfAccountOutput;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label uxPrtNetWorthOutput;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label uxPrtTotalInvestedOuput;
+        private System.Windows.Forms.Label uxPrtBalOutput;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ListView uxPrtListInfo;
         private System.Windows.Forms.ColumnHeader uxPrtTickerNameCol;
@@ -992,6 +1046,11 @@
         private System.Windows.Forms.RadioButton uxRadioBttnHigh;
         private System.Windows.Forms.RadioButton uxRadioBttnLow;
         private System.Windows.Forms.GroupBox uxVolatilityGroup;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton uxAddFunds;
+        private System.Windows.Forms.ToolStripButton uxWithdrawFunds;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton helpToolStripButton1;
     }
 }
 

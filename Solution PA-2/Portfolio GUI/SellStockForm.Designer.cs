@@ -60,6 +60,7 @@
             this.uxSellStockListInfo.TabIndex = 21;
             this.uxSellStockListInfo.UseCompatibleStateImageBehavior = false;
             this.uxSellStockListInfo.View = System.Windows.Forms.View.Details;
+            this.uxSellStockListInfo.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.uxSellStockListInfo_ItemSelectionChanged);
             // 
             // uxTickerNameCol
             // 
@@ -89,7 +90,7 @@
             // uxNumberOfShares
             // 
             this.uxNumberOfShares.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxNumberOfShares.Location = new System.Drawing.Point(994, 129);
+            this.uxNumberOfShares.Location = new System.Drawing.Point(1003, 129);
             this.uxNumberOfShares.Name = "uxNumberOfShares";
             this.uxNumberOfShares.Size = new System.Drawing.Size(110, 30);
             this.uxNumberOfShares.TabIndex = 25;
@@ -97,12 +98,13 @@
             // uxSellStockBttn
             // 
             this.uxSellStockBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxSellStockBttn.Location = new System.Drawing.Point(716, 199);
+            this.uxSellStockBttn.Location = new System.Drawing.Point(729, 200);
             this.uxSellStockBttn.Name = "uxSellStockBttn";
             this.uxSellStockBttn.Size = new System.Drawing.Size(420, 44);
             this.uxSellStockBttn.TabIndex = 24;
             this.uxSellStockBttn.Text = "Sell Shares";
             this.uxSellStockBttn.UseVisualStyleBackColor = true;
+            this.uxSellStockBttn.Click += new System.EventHandler(this.uxSellStockBttn_Click);
             // 
             // uxNumberLabel
             // 

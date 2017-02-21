@@ -10,16 +10,23 @@ namespace Portfolio_GUI
     {
         private Account _account;
         private List<Observer> _observers;
-        
-        public GuiController(Account a )
+        private List<PortfolioObserver> _portfolioObservers;
+
+        public GuiController(Account a)
         {
             this._account = a;
             _observers = new List<Observer>();
+            _portfolioObservers = new List<PortfolioObserver>();
         }
 
         public void Register(Observer o)
         {
             _observers.Add(o);
+        }
+
+        public void PortfoioRegister(PortfolioObserver o)
+        {
+            _portfolioObservers.Add(o);
         }
 
         public void DepositFunds(decimal cash)
@@ -28,11 +35,13 @@ namespace Portfolio_GUI
             //validate 
 
             _account.AddFundsToCashFund(cash);
+            SignalObservers();
         }
 
         public void WithdrawFunds(decimal cash)
         {
             throw new NotImplementedException();
+            SignalObservers();
         }
 
         public void BuyStocks(string portfolioName, string tickerName, int numberOfShares)
@@ -63,6 +72,7 @@ namespace Portfolio_GUI
         public void DeletePortfolio(string portfolioName)
         {
             throw new NotImplementedException();
+            SignalObservers();
         }
 
         /// <summary>
@@ -84,7 +94,6 @@ namespace Portfolio_GUI
                     break;
             }
             SignalObservers();
-            
         }
 
         /// <summary>
@@ -120,6 +129,13 @@ namespace Portfolio_GUI
             foreach (var o in _observers)
             {
                 o();
+            }
+            if (_account.GetListOfPortfolioNames().Count > 0)
+            {
+                foreach (var prtO in _portfolioObservers)
+                {
+                    prtO();
+                }
             }
         }
     }

@@ -52,17 +52,9 @@ namespace Portfolio_GUI
 
         
         private Account _account;
-
-
-
-
+        
         private int _numOfPortolios = 0;
-
-void MyButtonClick(object sender, EventArgs e)
-        {
-            Button button = sender as Button;
-            //here you can check which button was clicked by the sender
-        }
+        private string _currentPortfolio;
         /// <summary>
         /// Constructor for User interface
         /// </summary>
@@ -78,13 +70,14 @@ void MyButtonClick(object sender, EventArgs e)
         /// <param name="buyStocks"></param>
         /// <param name="depositFunds"></param>
         /// <param name="withdrawFunds"></param>
-        public uxUserInterface(Account a , ReadFileHandler readFileHandler, SimulateHandler simulate, DeletePortfolioHandler deletePortfolio, 
-            AddPortfolioHandler addPortfolio, SellStocksHandler sellStocks, BuyStocksHandler buyStocks, DepositCashHandler depositFunds, 
-            WithdrawCashHandler withdrawFunds)
+        public uxUserInterface(Account a , ReadFileHandler readFileHandler, SimulateHandler simulate, 
+                                DeletePortfolioHandler deletePortfolio,  AddPortfolioHandler addPortfolio, 
+                                SellStocksHandler sellStocks, BuyStocksHandler buyStocks, DepositCashHandler depositFunds, 
+                                WithdrawCashHandler withdrawFunds)
         {
             ///Initializing account///
             _account = a;
-
+            _currentPortfolio = null;
 
             ///Initializing Delegates///
             _readFileHandler = readFileHandler;
@@ -95,7 +88,7 @@ void MyButtonClick(object sender, EventArgs e)
             _buyStocksHandler = buyStocks;
             _depositCashHandler = depositFunds;
             _withdrawCashHandler = withdrawFunds;
-
+            
             
             InitializeComponent();
 
@@ -103,6 +96,9 @@ void MyButtonClick(object sender, EventArgs e)
             uxBuyStocks1.Click += BuyStockButton_Click;
             uxBuyStocks2.Click += BuyStockButton_Click;
             uxBuyStocks3.Click += BuyStockButton_Click;
+            uxSellStocks1.Click += SellStockButton_Click;
+            uxSellStocks2.Click += SellStockButton_Click;
+            uxSellStocks3.Click += SellStockButton_Click;
 
         }
 
@@ -121,18 +117,21 @@ void MyButtonClick(object sender, EventArgs e)
         private void uxPortfolio1_ButtonClick(object sender, EventArgs e)
         {
             uxPortfolioName.Text = uxPortfolio1.Text;
+            _currentPortfolio = uxPortfolio1.Text;
         }
 
         private void uxPortfolio2_ButtonClick(object sender, EventArgs e)
         {
             uxPortfolioName.Text = uxPortfolio2.Text;
+            _currentPortfolio = uxPortfolio2.Text;
         }
 
         private void uxPortfolio3_ButtonClick(object sender, EventArgs e)
         {
             uxPortfolioName.Text = uxPortfolio3.Text;
-        }
-
+            _currentPortfolio = uxPortfolio3.Text;
+        } 
+        //////////////////////////////////////////////////////////
         
         private void uxOpenTickerFile_Click(object sender, EventArgs e)
         {
@@ -174,15 +173,73 @@ void MyButtonClick(object sender, EventArgs e)
         /// </summary>
         private void uxAddPortfolio_Click(object sender, EventArgs e)
         {
-            uxGetPortfolioNameForm getPortfolioNameForm = new uxGetPortfolioNameForm();
+            var getPortfolioNameForm = new uxGetPortfolioNameForm();
 
             if (getPortfolioNameForm.ShowDialog() == DialogResult.OK)
             { 
                 _addPortfolioHandler(getPortfolioNameForm.PortfolioName, AddPortfolioToToolStrip);
             }
         }
-       
 
+        private void BuyStockButton_Click(object sender, EventArgs e)
+        {
+            var item = sender as ToolStripMenuItem;
+            string portfolioName;
+            string clickedButtonsName = item.Name;
+
+            switch (clickedButtonsName)
+            {
+                case "uxBuyStocks1":
+                    portfolioName = uxPortfolio1.Text;
+                    break;
+                case "uxBuyStocks2":
+                    portfolioName = uxPortfolio2.Text;
+                    break;
+                case "uxBuyStocks3":
+                    portfolioName = uxPortfolio3.Text;
+                    break;
+                default:
+                    portfolioName = "Error finding portfolio";
+                    break;
+
+            }
+            uxBuyStocksForm buyStocksForm = new uxBuyStocksForm(portfolioName, _buyStocksHandler, _account);
+            buyStocksForm.Show();
+
+
+        }
+
+        private void SellStockButton_Click(object sender, EventArgs e)
+        {
+            var item = sender as ToolStripMenuItem;
+            string portfolioName;
+            string clickedButtonsName = item.Name;
+
+            switch (clickedButtonsName)
+            {
+                case "uxSellStocks1":
+                    portfolioName = uxPortfolio1.Text;
+                    break;
+                case "uxSellStocks2":
+                    portfolioName = uxPortfolio2.Text;
+                    break;
+                case "uxSellStocks3":
+                    portfolioName = uxPortfolio3.Text;
+                    break;
+                default:
+                    portfolioName = "Error finding portfolio";
+                    break;
+
+            }
+            var sellStocksForm = new uxSellStockForm(portfolioName, _sellStocksHandler, _account);
+            sellStocksForm.Show();
+        }
+        
+
+        /// <summary>
+        /// Adds a portfolio to toolstrip and opens the portfolio
+        /// </summary>
+        /// <param name="portfolioName">Name of portfolio to create and display</param>
         private void AddPortfolioToToolStrip(string portfolioName)
         {
             _numOfPortolios++;
@@ -192,18 +249,21 @@ void MyButtonClick(object sender, EventArgs e)
                 case 1:                 
                     uxPortfolio1.Visible = true;
                     uxPortfolio1.Text = portfolioName;
-                    DisplayPortfolio(portfolioName);     
+                    _currentPortfolio = uxPortfolio1.Text;
+                    DisplayPortfolio();     
                     break;
                 case 2:
                     uxPortfolio2.Visible = true;
                     uxPortfolio2.Text = portfolioName;
-                    DisplayPortfolio(portfolioName);
+                    _currentPortfolio = uxPortfolio2.Text;
+                    DisplayPortfolio();
                     break;
                 case 3:
                     uxPortfolio3.Visible = true;            
                     uxAddPortfolio.Visible = false;
                     uxPortfolio3.Text = portfolioName;
-                    DisplayPortfolio(portfolioName);
+                    _currentPortfolio = uxPortfolio3.Text;
+                    DisplayPortfolio();
                     break;
                 default:
                     MessageBox.Show("Somehow the add portfolio button was visible and you already have the maximum number of portfolios!");
@@ -256,38 +316,52 @@ void MyButtonClick(object sender, EventArgs e)
             uxAccListInfo.EndUpdate();
         }
 
-        private void DisplayPortfolio(string portfollioName)
+        public void DisplayPortfolio()
         {
-            uxPortfolioName.Text = portfollioName;
-        }
+            uxPortfolioName.Text = _currentPortfolio;
+            var info = _account.GetPortfolioBalance(_currentPortfolio);
 
-        private void BuyStockButton_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem item = sender as ToolStripMenuItem;
-            string portfolioName;
-            string clickedButtonsName = item.Name;
+            uxPrtBalOutput.Text = _account.CashBalance.ToString("C");
+            uxPrtPercentageOfAccountOutput.Text = info.Item3.ToString("P");
+            uxPrtTotalInvestedOuput.Text = info.Item2.ToString("C");
 
-            switch (clickedButtonsName)
+            //USe method he created getcurrentvalueofportfolio  //uxPrtNetWorthOutput.Text = _account.ToString("C");//
+            // use method getgainsandlossesofportfolio //uxPrtGainsLossesOutput.Text = _account.g.ToString("C");//
+
+            var infoList = _account.GetAllPortfolioStockInfoTuple(_currentPortfolio);
+
+            uxPrtListInfo.BeginUpdate();
+            uxPrtListInfo.Items.Clear();
+
+            foreach (var i in infoList)
             {
-                case "uxBuyStocks1":
-                    portfolioName = uxPortfolio1.Text;                  
-                    break;
-                case "uxBuyStocks2":
-                    portfolioName = uxPortfolio2.Text;
-                    break;
-                case "uxBuyStocks3":
-                    portfolioName = uxPortfolio3.Text;
-                    break;
-                default:
-                    portfolioName = "Error finding portfolio";
-                    break;
+                //  Tickername, companyName, pricePerShare, sharesOwned, networthOfShares, PositionBalance
+                string[] itemInfo = { i.Item1, i.Item2, i.Item3.ToString("C"), i.Item4.ToString(), i.Item5.ToString("C"), i.Item6.ToString("P") };
 
+                uxPrtListInfo.Items.Add(new ListViewItem(itemInfo));
             }
-            uxBuyStocksForm buyStocksForm = new uxBuyStocksForm(portfolioName, _buyStocksHandler, _account);
-            buyStocksForm.Show();
-            
 
+            uxPrtListInfo.EndUpdate();
         }
 
+        private void uxAddFunds_Click(object sender, EventArgs e)
+        {
+            var addWithdrawFundsForm = new uxAddWithdrawFundsForm(1);
+            
+            if (addWithdrawFundsForm.ShowDialog() == DialogResult.OK)
+            {
+                _depositCashHandler(addWithdrawFundsForm.Amount);
+            }
+        }
+
+        private void uxWithdrawFunds_Click(object sender, EventArgs e)
+        {
+            var addWithdrawFundsForm = new uxAddWithdrawFundsForm(2);
+
+            if (addWithdrawFundsForm.ShowDialog() == DialogResult.OK)
+            {
+                _withdrawCashHandler(addWithdrawFundsForm.Amount);
+            }
+        }
     }
 }

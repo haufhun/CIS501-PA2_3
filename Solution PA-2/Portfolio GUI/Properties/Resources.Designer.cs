@@ -63,6 +63,36 @@ namespace Portfolio_GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap AddFunds {
+            get {
+                object obj = ResourceManager.GetObject("AddFunds", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap AddFunds1 {
+            get {
+                object obj = ResourceManager.GetObject("AddFunds1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap AddFunds2 {
+            get {
+                object obj = ResourceManager.GetObject("AddFunds2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap AddPortfolioImage {
             get {
                 object obj = ResourceManager.GetObject("AddPortfolioImage", resourceCulture);
@@ -146,6 +176,26 @@ namespace Portfolio_GUI.Properties {
         public static System.Drawing.Bitmap UpdateImage {
             get {
                 object obj = ResourceManager.GetObject("UpdateImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap WithdrawFund {
+            get {
+                object obj = ResourceManager.GetObject("WithdrawFund", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap WithdrawFund1 {
+            get {
+                object obj = ResourceManager.GetObject("WithdrawFund1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

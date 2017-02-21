@@ -20,6 +20,7 @@ namespace Portfolio_GUI
 
         public uxBuyStocksForm(string portfolioName, BuyStocksHandler handler, Account a)
         {
+            _portfolioName = portfolioName;
             _buyStocksHandler = handler;
             _account = a;
             InitializeComponent();
@@ -33,10 +34,10 @@ namespace Portfolio_GUI
 
             foreach (var i in DataBase.PriceAndTickerName.Values)
             {
+                //Tickername, companyName, pricePerShare
                 string[] itemInfo = {i.Item1, i.Item2, i.Item3.ToString("C")};
-                var item = new ListViewItem(itemInfo);
                 
-                uxBuyStockListInfo.Items.Add(item);
+                uxBuyStockListInfo.Items.Add(new ListViewItem(itemInfo));
                 
             }
 
@@ -48,12 +49,10 @@ namespace Portfolio_GUI
         {
             if (uxBuyStockListInfo.SelectedItems.Count > 0)
             {
-
                 string tickerName = uxBuyStockListInfo.SelectedItems[0].SubItems[0].Text;
                 
                 int numberOfShares = Convert.ToInt32(uxNumberOfShares.Value);
                 _buyStocksHandler(_portfolioName, tickerName, numberOfShares);
-
             }
             else
             {
