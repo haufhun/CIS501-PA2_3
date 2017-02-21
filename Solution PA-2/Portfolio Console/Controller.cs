@@ -515,7 +515,7 @@ namespace Portfolio_Console
             {
                 try
                 {
-                    string tickerName = UserStockName();
+                    string tickerName = UserStockName(portfolioName, 0);
                     _userInterface.DisplayStockInfo(tickerName, DataBase.PriceAndTickerName[tickerName].Item2, 
                             DataBase.PriceAndTickerName[tickerName].Item3);
                     
@@ -593,12 +593,20 @@ namespace Portfolio_Console
         /// Asks the user for the name of the stock.
         /// </summary>
         /// <returns>The name of the stock.</returns>
-        private string UserStockName()
+        private string UserStockName(string portfolioName, int buyOrSell)
         {
             bool valid = false;
             string tickerName = "";
             while (!valid)
             {
+                if (buyOrSell == 0)
+                {
+                    _userInterface.DisplayListOfTickers();
+                }
+                else
+                {
+                    _userInterface.DisplayPositionsBalance(_account.GetAllPortfolioStockInfoTuple(portfolioName));
+                }
                 tickerName = _userInterface.AskForStockName();
                 if (!DataBase.PriceAndTickerName.ContainsKey(tickerName))
                 {
@@ -645,7 +653,7 @@ namespace Portfolio_Console
         {
             if (_account.InvestedBalance > 0)
             {
-                var tickerName = UserStockName();
+                var tickerName = UserStockName(portfolioName, 1);
 
                 while (!_account.SelectPortfolio(portfolioName).ContainsStock(tickerName))
                 {

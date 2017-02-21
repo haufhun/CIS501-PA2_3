@@ -185,7 +185,6 @@ namespace Portfolio_Console
         /// <returns>The name of the stock the user wants.</returns>
         public string AskForStockName()
         {
-            DisplayListOfTickers();
             Console.Write("\nEnter Ticker Name of the stock: ");
             var ticker = Console.ReadLine().Trim().ToUpper();
             return ticker;
