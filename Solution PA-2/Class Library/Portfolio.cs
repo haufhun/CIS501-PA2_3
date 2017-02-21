@@ -27,6 +27,11 @@ namespace Class_Library
         public decimal TotalInvested => _totalInvested;
 
         /// <summary>
+        /// The total number of shares in the portfolio.
+        /// </summary>
+        public int TotalNumberOfShares => _totalNumberOfShares;
+
+        /// <summary>
         /// COnstructor initializes the stocks dictionary, total invested, and total number of shares.
         /// </summary>
         public Portfolio()
@@ -83,7 +88,10 @@ namespace Class_Library
             var totalPrice = _stocks[tickerName].SellNumberOfShares(numberOfShares);
             _totalNumberOfShares -= numberOfShares;
             _totalInvested -= totalPrice;
-            _stocks.Remove(tickerName);
+            if (numberOfShares >= _stocks[tickerName].TotalNumberOfShares)
+            {
+                _stocks.Remove(tickerName);
+            }
             return totalPrice;
         }
         /// <summary>

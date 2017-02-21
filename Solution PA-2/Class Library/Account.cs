@@ -141,6 +141,7 @@ namespace Class_Library
         {
             _cashFund += _portfolios[portfolioName].DeletePortfolio() - TRADE_FEE;
             UpdateInvestedBalance();
+            _totalNumberOfShares -= _portfolios[portfolioName].TotalNumberOfShares;
             _portfolios.Remove(portfolioName);
         }
 
@@ -158,6 +159,7 @@ namespace Class_Library
                 throw new InsufficientAccountBalanceFundsException();
             _portfolios[portfolioName].AddStock(tickerName, numberOfShares);
             _cashFund -= (TRADE_FEE + cost);
+            _totalNumberOfShares += numberOfShares;
             UpdateInvestedBalance();
         }
 
@@ -172,6 +174,7 @@ namespace Class_Library
             _portfolios[portfolioName].SellStock(tickerName, numberOfStocks);
             UpdateInvestedBalance();
             _cashFund += numberOfStocks * DataBase.PriceAndTickerName[tickerName].Item3 - TRADE_FEE;
+            _totalNumberOfShares -= numberOfStocks;
         }
 
         /// <summary>
