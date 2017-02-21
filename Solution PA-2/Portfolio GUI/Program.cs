@@ -9,7 +9,7 @@ namespace Portfolio_GUI
 {
     // defines the type of method that observes model updates
     public delegate void Observer();
-
+    public delegate void PortfolioObserver();
     public delegate void AddPortfolioObserver(string portfolioName);
     
     //defines the type of method that handles a deposit cash input event 
@@ -50,6 +50,7 @@ namespace Portfolio_GUI
 
             controller.Register(mainForm.DisplayHomeStockInfo);
             controller.Register(mainForm.DisplayAccount);
+            controller.PortfoioRegister(mainForm.DisplayPortfolio);
 
             // c.Register(mainForm.);
 

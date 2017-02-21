@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddWithdrawFundsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddWithdrawFundsForm.Designer.cs">
+      <DependentUpon>AddWithdrawFundsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="BuyStocksForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +85,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddWithdrawFundsForm.resx">
+      <DependentUpon>AddWithdrawFundsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BuyStocksForm.resx">
       <DependentUpon>BuyStocksForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,6 +128,11 @@
     <None Include="Resources\UpdateImage.png" />
     <None Include="Resources\SimulateImage.png" />
     <None Include="Resources\ExitImage.png" />
+    <None Include="Resources\AddFunds.png" />
+    <None Include="Resources\AddFunds.jpg" />
+    <None Include="Resources\WithdrawFund.png" />
+    <None Include="Resources\WithdrawFund1.png" />
+    <None Include="Resources\AddFunds1.jpg" />
     <Content Include="Ticker.txt" />
   </ItemGroup>
   <ItemGroup>
