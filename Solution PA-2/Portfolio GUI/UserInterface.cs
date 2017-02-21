@@ -55,6 +55,7 @@ namespace Portfolio_GUI
 
 
 
+
         private int _numOfPortolios = 0;
 
 void MyButtonClick(object sender, EventArgs e)
@@ -99,9 +100,9 @@ void MyButtonClick(object sender, EventArgs e)
             InitializeComponent();
 
             ///Makes All Buy Buttons Refrence the same buttonClick
-            uxBuyStocks1.Click += Button_Click;
-            uxBuyStocks2.Click += Button_Click;
-            uxBuyStocks3.Click += Button_Click;
+            uxBuyStocks1.Click += BuyStockButton_Click;
+            uxBuyStocks2.Click += BuyStockButton_Click;
+            uxBuyStocks3.Click += BuyStockButton_Click;
 
         }
 
@@ -227,6 +228,7 @@ void MyButtonClick(object sender, EventArgs e)
 
             uxHomeListInfo.EndUpdate();
         }
+
         public void DisplayAccount()
         {
 
@@ -259,46 +261,33 @@ void MyButtonClick(object sender, EventArgs e)
             uxPortfolioName.Text = portfollioName;
         }
 
-        public void ShowMyBuyStocksForm()
+        private void BuyStockButton_Click(object sender, EventArgs e)
         {
-            //foreach (ListViewItem l in uxHomeListInfo.SelectedItems)
-            //{
-            //    MessageBox.Show(l.ToString());
-            //}
-            
-            //if()
-            //Form2 testDialog = new Form2();
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+            string portfolioName;
+            string clickedButtonsName = item.Name;
 
-            //// Show testDialog as a modal dialog and determine if DialogResult = OK.
-            //if (testDialog.ShowDialog(this) == DialogResult.OK)
-            //{
-            //    // Read the contents of testDialog's TextBox.
-            //    this.txtResult.Text = testDialog.TextBox1.Text;
-            //}
-            //else
-            //{
-            //    this.txtResult.Text = "Cancelled";
-            //}
-            //testDialog.Dispose();
-            uxBuyStocksForm buyStocksForm = new uxBuyStocksForm();
+            switch (clickedButtonsName)
+            {
+                case "uxBuyStocks1":
+                    portfolioName = uxPortfolio1.Text;                  
+                    break;
+                case "uxBuyStocks2":
+                    portfolioName = uxPortfolio2.Text;
+                    break;
+                case "uxBuyStocks3":
+                    portfolioName = uxPortfolio3.Text;
+                    break;
+                default:
+                    portfolioName = "Error finding portfolio";
+                    break;
+
+            }
+            uxBuyStocksForm buyStocksForm = new uxBuyStocksForm(portfolioName, _buyStocksHandler, _account);
             buyStocksForm.Show();
+            
+
         }
 
-        private void uxBuyStocks1_Click(object sender, EventArgs e)
-        {
-            
-            
-        }
-
-        private void Button_Click(object sender, EventArgs e)
-        {
-            ShowMyBuyStocksForm();
-            //string buttonText = ((Button)sender).Text;
-
-            //switch (buttonText)
-            //{
-       
-            //}
     }
-}
 }
