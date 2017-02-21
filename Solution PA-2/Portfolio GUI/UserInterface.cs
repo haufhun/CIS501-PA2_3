@@ -112,7 +112,7 @@ namespace Portfolio_GUI
 
         }
 
-        ///Porfolio Button clicks are under this Expanding tab
+        ///Porfolio Button clicks are under this Expanding tab///
         
         private void uxPortfolio1_ButtonClick(object sender, EventArgs e)
         {
@@ -131,16 +131,18 @@ namespace Portfolio_GUI
             uxPortfolioName.Text = uxPortfolio3.Text;
             _currentPortfolio = uxPortfolio3.Text;
         } 
-        //////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////
         
         private void uxOpenTickerFile_Click(object sender, EventArgs e)
         {
-            _readFileHandler(uxOpenFileDialog);
-            
-            uxSimulateStockPrices.Enabled = true;
-            uxRadioBttnHigh.Enabled = true;
-            uxRadioBttnMedium.Enabled = true;
-            uxRadioBttnLow.Enabled = true;
+           if( _readFileHandler(uxOpenFileDialog))
+           {
+               uxSimulateStockPrices.Enabled = true;
+               uxRadioBttnHigh.Enabled = true;
+               uxRadioBttnMedium.Enabled = true;
+               uxRadioBttnLow.Enabled = true;
+           }
+
         }
 
         /// <summary>
@@ -361,6 +363,15 @@ namespace Portfolio_GUI
             if (addWithdrawFundsForm.ShowDialog() == DialogResult.OK)
             {
                 _withdrawCashHandler(addWithdrawFundsForm.Amount);
+            }
+        }
+
+        private void uxTabControl_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            if (e.TabPage == uxPortfolioTab && uxSimulateStockPrices.Enabled == false)
+            {
+                e.Cancel = true;
+                MessageBox.Show("Please Open a ticker file first.");
             }
         }
     }

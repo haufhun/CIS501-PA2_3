@@ -27,7 +27,7 @@ namespace Portfolio_GUI
     // defines the type of method that handles a simulate input event
     public delegate void SimulateHandler(int volatility);
     // defines the type of method that handles a read file input event
-    public delegate void ReadFileHandler(OpenFileDialog openFile);
+    public delegate bool ReadFileHandler(OpenFileDialog openFile);
 
     /// <summary>
     /// Runs the program.

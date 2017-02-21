@@ -72,6 +72,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "uxGetPortfolioNameForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "InputForm";
             this.ResumeLayout(false);
             this.PerformLayout();

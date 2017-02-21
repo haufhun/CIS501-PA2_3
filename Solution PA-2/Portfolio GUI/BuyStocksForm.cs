@@ -70,5 +70,17 @@ namespace Portfolio_GUI
 
 
         }
+
+        private void uxCloseBttn_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !e.KeyChar.Equals('.');
+            
+
+        }
     }
 }

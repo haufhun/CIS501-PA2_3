@@ -38,6 +38,7 @@
             this.uxSellStockBttn = new System.Windows.Forms.Button();
             this.uxNumberLabel = new System.Windows.Forms.Label();
             this.uxInstructionLabel = new System.Windows.Forms.Label();
+            this.uxCloseBttn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.uxNumberOfShares)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,7 +91,7 @@
             // uxNumberOfShares
             // 
             this.uxNumberOfShares.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxNumberOfShares.Location = new System.Drawing.Point(1003, 129);
+            this.uxNumberOfShares.Location = new System.Drawing.Point(1007, 92);
             this.uxNumberOfShares.Name = "uxNumberOfShares";
             this.uxNumberOfShares.Size = new System.Drawing.Size(110, 30);
             this.uxNumberOfShares.TabIndex = 25;
@@ -98,7 +99,7 @@
             // uxSellStockBttn
             // 
             this.uxSellStockBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxSellStockBttn.Location = new System.Drawing.Point(729, 200);
+            this.uxSellStockBttn.Location = new System.Drawing.Point(733, 163);
             this.uxSellStockBttn.Name = "uxSellStockBttn";
             this.uxSellStockBttn.Size = new System.Drawing.Size(420, 44);
             this.uxSellStockBttn.TabIndex = 24;
@@ -110,7 +111,7 @@
             // 
             this.uxNumberLabel.AutoSize = true;
             this.uxNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxNumberLabel.Location = new System.Drawing.Point(764, 131);
+            this.uxNumberLabel.Location = new System.Drawing.Point(768, 94);
             this.uxNumberLabel.Name = "uxNumberLabel";
             this.uxNumberLabel.Size = new System.Drawing.Size(224, 25);
             this.uxNumberLabel.TabIndex = 23;
@@ -126,17 +127,31 @@
             this.uxInstructionLabel.TabIndex = 22;
             this.uxInstructionLabel.Text = "Please select a stock";
             // 
+            // uxCloseBttn
+            // 
+            this.uxCloseBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxCloseBttn.Location = new System.Drawing.Point(845, 332);
+            this.uxCloseBttn.Name = "uxCloseBttn";
+            this.uxCloseBttn.Size = new System.Drawing.Size(203, 44);
+            this.uxCloseBttn.TabIndex = 26;
+            this.uxCloseBttn.Text = "&Close";
+            this.uxCloseBttn.UseVisualStyleBackColor = true;
+            this.uxCloseBttn.Click += new System.EventHandler(this.uxCloseBttn_Click);
+            // 
             // uxSellStockForm
             // 
+            this.AcceptButton = this.uxSellStockBttn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1161, 388);
+            this.ClientSize = new System.Drawing.Size(1173, 388);
+            this.Controls.Add(this.uxCloseBttn);
             this.Controls.Add(this.uxSellStockListInfo);
             this.Controls.Add(this.uxNumberOfShares);
             this.Controls.Add(this.uxSellStockBttn);
             this.Controls.Add(this.uxNumberLabel);
             this.Controls.Add(this.uxInstructionLabel);
             this.Name = "uxSellStockForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Sell Stocks Form";
             ((System.ComponentModel.ISupportInitialize)(this.uxNumberOfShares)).EndInit();
             this.ResumeLayout(false);
@@ -156,5 +171,6 @@
         private System.Windows.Forms.Button uxSellStockBttn;
         private System.Windows.Forms.Label uxNumberLabel;
         private System.Windows.Forms.Label uxInstructionLabel;
+        private System.Windows.Forms.Button uxCloseBttn;
     }
 }

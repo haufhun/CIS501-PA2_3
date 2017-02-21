@@ -29,14 +29,16 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uxUserInterface));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.uxTabControl = new System.Windows.Forms.TabControl();
             this.uxHomeTab = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.uxVolatilityGroup = new System.Windows.Forms.GroupBox();
             this.uxRadioBttnMedium = new System.Windows.Forms.RadioButton();
             this.uxRadioBttnLow = new System.Windows.Forms.RadioButton();
@@ -141,9 +143,12 @@
             this.uxTabControl.SelectedIndex = 0;
             this.uxTabControl.Size = new System.Drawing.Size(1245, 571);
             this.uxTabControl.TabIndex = 2;
+            this.uxTabControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.uxTabControl_Selecting);
             // 
             // uxHomeTab
             // 
+            this.uxHomeTab.Controls.Add(this.label3);
+            this.uxHomeTab.Controls.Add(this.label5);
             this.uxHomeTab.Controls.Add(this.uxVolatilityGroup);
             this.uxHomeTab.Controls.Add(this.label18);
             this.uxHomeTab.Controls.Add(this.uxHomeListInfo);
@@ -156,12 +161,34 @@
             this.uxHomeTab.Text = "Home";
             this.uxHomeTab.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(816, 293);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 20);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "$0.00";
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(634, 293);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(136, 20);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Net Gain/Loss:";
+            // 
             // uxVolatilityGroup
             // 
             this.uxVolatilityGroup.Controls.Add(this.uxRadioBttnMedium);
             this.uxVolatilityGroup.Controls.Add(this.uxRadioBttnLow);
             this.uxVolatilityGroup.Controls.Add(this.uxRadioBttnHigh);
-            this.uxVolatilityGroup.Location = new System.Drawing.Point(553, 86);
+            this.uxVolatilityGroup.Location = new System.Drawing.Point(638, 86);
             this.uxVolatilityGroup.Name = "uxVolatilityGroup";
             this.uxVolatilityGroup.Size = new System.Drawing.Size(437, 151);
             this.uxVolatilityGroup.TabIndex = 8;
@@ -171,22 +198,22 @@
             // 
             this.uxRadioBttnMedium.AutoSize = true;
             this.uxRadioBttnMedium.Enabled = false;
-            this.uxRadioBttnMedium.Location = new System.Drawing.Point(18, 63);
+            this.uxRadioBttnMedium.Location = new System.Drawing.Point(12, 63);
             this.uxRadioBttnMedium.Name = "uxRadioBttnMedium";
             this.uxRadioBttnMedium.Size = new System.Drawing.Size(415, 21);
             this.uxRadioBttnMedium.TabIndex = 6;
-            this.uxRadioBttnMedium.Text = "Medium-volatility- Increment/decrement the price from 2%-8%";
+            this.uxRadioBttnMedium.Text = "&Medium-volatility- Increment/decrement the price from 2%-8%";
             this.uxRadioBttnMedium.UseVisualStyleBackColor = true;
             // 
             // uxRadioBttnLow
             // 
             this.uxRadioBttnLow.AutoSize = true;
             this.uxRadioBttnLow.Enabled = false;
-            this.uxRadioBttnLow.Location = new System.Drawing.Point(18, 88);
+            this.uxRadioBttnLow.Location = new System.Drawing.Point(12, 88);
             this.uxRadioBttnLow.Name = "uxRadioBttnLow";
             this.uxRadioBttnLow.Size = new System.Drawing.Size(391, 21);
             this.uxRadioBttnLow.TabIndex = 4;
-            this.uxRadioBttnLow.Text = "Low-volatility- Increment/decrement the price from 1%-4%";
+            this.uxRadioBttnLow.Text = "&Low-volatility- Increment/decrement the price from 1%-4%";
             this.uxRadioBttnLow.UseVisualStyleBackColor = true;
             // 
             // uxRadioBttnHigh
@@ -194,19 +221,19 @@
             this.uxRadioBttnHigh.AutoSize = true;
             this.uxRadioBttnHigh.Checked = true;
             this.uxRadioBttnHigh.Enabled = false;
-            this.uxRadioBttnHigh.Location = new System.Drawing.Point(18, 36);
+            this.uxRadioBttnHigh.Location = new System.Drawing.Point(12, 36);
             this.uxRadioBttnHigh.Name = "uxRadioBttnHigh";
             this.uxRadioBttnHigh.Size = new System.Drawing.Size(403, 21);
             this.uxRadioBttnHigh.TabIndex = 5;
             this.uxRadioBttnHigh.TabStop = true;
-            this.uxRadioBttnHigh.Text = "High-volatility- Increment/decrement the price from 3%-15%";
+            this.uxRadioBttnHigh.Text = "&High-volatility- Increment/decrement the price from 3%-15%";
             this.uxRadioBttnHigh.UseVisualStyleBackColor = true;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(547, 52);
+            this.label18.Location = new System.Drawing.Point(632, 52);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(318, 31);
             this.label18.TabIndex = 7;
@@ -221,9 +248,9 @@
             this.uxHmCompanyNameCol,
             this.uxHmCurrentPriceCol});
             this.uxHomeListInfo.GridLines = true;
-            this.uxHomeListInfo.Location = new System.Drawing.Point(6, 33);
+            this.uxHomeListInfo.Location = new System.Drawing.Point(6, 37);
             this.uxHomeListInfo.Name = "uxHomeListInfo";
-            this.uxHomeListInfo.Size = new System.Drawing.Size(535, 506);
+            this.uxHomeListInfo.Size = new System.Drawing.Size(507, 506);
             this.uxHomeListInfo.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.uxHomeListInfo.TabIndex = 3;
             this.uxHomeListInfo.UseCompatibleStateImageBehavior = false;
@@ -242,7 +269,7 @@
             // uxHmCurrentPriceCol
             // 
             this.uxHmCurrentPriceCol.Text = "Price Per Share";
-            this.uxHmCurrentPriceCol.Width = 221;
+            this.uxHmCurrentPriceCol.Width = 201;
             // 
             // uxHomeToolStrip
             // 
@@ -264,7 +291,7 @@
             this.uxOpenTickerFile.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.uxOpenTickerFile.Name = "uxOpenTickerFile";
             this.uxOpenTickerFile.Size = new System.Drawing.Size(139, 24);
-            this.uxOpenTickerFile.Text = "Open Ticker File";
+            this.uxOpenTickerFile.Text = "&Open Ticker File";
             this.uxOpenTickerFile.Click += new System.EventHandler(this.uxOpenTickerFile_Click);
             // 
             // uxSimulateStockPrices
@@ -274,7 +301,7 @@
             this.uxSimulateStockPrices.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.uxSimulateStockPrices.Name = "uxSimulateStockPrices";
             this.uxSimulateStockPrices.Size = new System.Drawing.Size(173, 24);
-            this.uxSimulateStockPrices.Text = "Simulate Stock Prices";
+            this.uxSimulateStockPrices.Text = "&Simulate Stock Prices";
             this.uxSimulateStockPrices.Click += new System.EventHandler(this.uxSimulateStockPrices_Click);
             // 
             // toolStripSeparator2
@@ -335,7 +362,7 @@
             this.uxAddFunds.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.uxAddFunds.Name = "uxAddFunds";
             this.uxAddFunds.Size = new System.Drawing.Size(103, 24);
-            this.uxAddFunds.Text = "Add Funds";
+            this.uxAddFunds.Text = "&Add Funds";
             this.uxAddFunds.Click += new System.EventHandler(this.uxAddFunds_Click);
             // 
             // uxWithdrawFunds
@@ -344,7 +371,7 @@
             this.uxWithdrawFunds.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.uxWithdrawFunds.Name = "uxWithdrawFunds";
             this.uxWithdrawFunds.Size = new System.Drawing.Size(139, 24);
-            this.uxWithdrawFunds.Text = "Withdraw Funds";
+            this.uxWithdrawFunds.Text = "&Withdraw Funds";
             this.uxWithdrawFunds.Click += new System.EventHandler(this.uxWithdrawFunds_Click);
             // 
             // toolStripSeparator3
@@ -363,17 +390,17 @@
             // 
             // chart2
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart2.Legends.Add(legend1);
+            chartArea9.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea9);
+            legend9.Name = "Legend1";
+            this.chart2.Legends.Add(legend9);
             this.chart2.Location = new System.Drawing.Point(889, 327);
             this.chart2.Name = "chart2";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart2.Series.Add(series1);
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series9.Legend = "Legend1";
+            series9.Name = "Series1";
+            this.chart2.Series.Add(series9);
             this.chart2.Size = new System.Drawing.Size(288, 173);
             this.chart2.TabIndex = 24;
             this.chart2.Text = "chart2";
@@ -587,17 +614,17 @@
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea10.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea10);
+            legend10.Name = "Legend1";
+            this.chart1.Legends.Add(legend10);
             this.chart1.Location = new System.Drawing.Point(900, 337);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
+            series10.ChartArea = "ChartArea1";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series10.Legend = "Legend1";
+            series10.Name = "Series1";
+            this.chart1.Series.Add(series10);
             this.chart1.Size = new System.Drawing.Size(288, 173);
             this.chart1.TabIndex = 23;
             this.chart1.Text = "chart1";
@@ -1051,6 +1078,8 @@
         private System.Windows.Forms.ToolStripButton uxWithdrawFunds;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton helpToolStripButton1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
     }
 }
 
