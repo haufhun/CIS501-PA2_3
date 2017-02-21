@@ -143,9 +143,9 @@ namespace Class_Library
         public void DeletePortfolio(string portfolioName)
         {
             _cashFund += _portfolios[portfolioName].DeletePortfolio() - TRADE_FEE;
+            _totalNumberOfShares -= _portfolios[portfolioName].TotalNumberOfShares;
             UpdateInvestedBalance();
             _portfolios.Remove(portfolioName);
-            _totalNumberOfShares -= _portfolios[portfolioName].TotalNumberOfShares;
         }
 
         /// <summary>

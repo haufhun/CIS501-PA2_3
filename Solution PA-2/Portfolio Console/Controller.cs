@@ -264,23 +264,20 @@ namespace Portfolio_Console
             int num = 0;
             while (!valid)
             {
-                    try
-                    {
-                        num = Convert.ToInt32(_userInterface.DisplayPortfoliosAndAskForPortfolioNumber(names));
-                        if (names[num-1] == null)
-                        {
-                            _userInterface.DisplayErrorMessage(
-                                "A portfolio at that spot does not exist. Enter a number that is displayed.");
-                        }
-                        else
-                        {
-                            valid = true;
-                        }
-                    }
-                    catch (FormatException)
-                    {
+                string input = _userInterface.DisplayPortfoliosAndAskForPortfolioNumber(names);
+                if (input != "1" && input != "2" && input != "3")
+                {
                         _userInterface.DisplayIncorrectNumberInput();
-                    }
+                }
+                else if (Convert.ToInt32(input) > _account.NumberOfPortfolios)
+                {
+                    _userInterface.DisplayErrorMessage("A portfolio at that spot does not exist. Enter a number that is displayed.");
+                }
+                else
+                {
+                    num = Convert.ToInt32(input);
+                    valid = true;
+                }
             }
             return num;
         }
