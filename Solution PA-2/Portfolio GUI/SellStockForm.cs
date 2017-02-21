@@ -69,5 +69,10 @@ namespace Portfolio_GUI
                 MessageBox.Show("Please select a stock!");
             }
         }
+
+        private void uxCloseBttn_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

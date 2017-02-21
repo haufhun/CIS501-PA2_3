@@ -115,7 +115,7 @@ namespace Portfolio_GUI
         /// Reads the ticker information from a file.
         /// </summary>
         /// <param name="fileName"> The file to read</param>
-        public void ReadTickerFile(OpenFileDialog openFile)
+        public bool ReadTickerFile(OpenFileDialog openFile)
         {
             try
             {
@@ -125,12 +125,14 @@ namespace Portfolio_GUI
                     string fileName = openFile.FileName;
                     DataBase.GetInfoFromFile(new StreamReader(fileName));
                     SignalObservers();
+                    return true;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            return false;
 
         }
 

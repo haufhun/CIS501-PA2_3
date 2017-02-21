@@ -36,6 +36,11 @@
             this.uxNumberLabel = new System.Windows.Forms.Label();
             this.uxBuyStockBttn = new System.Windows.Forms.Button();
             this.uxNumberOfShares = new System.Windows.Forms.NumericUpDown();
+            this.uxCloseBttn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.uxBuyBySharesOrPrice = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.uxNumberOfShares)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,7 +92,7 @@
             // 
             this.uxNumberLabel.AutoSize = true;
             this.uxNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxNumberLabel.Location = new System.Drawing.Point(627, 142);
+            this.uxNumberLabel.Location = new System.Drawing.Point(552, 86);
             this.uxNumberLabel.Name = "uxNumberLabel";
             this.uxNumberLabel.Size = new System.Drawing.Size(276, 25);
             this.uxNumberLabel.TabIndex = 16;
@@ -96,28 +101,81 @@
             // uxBuyStockBttn
             // 
             this.uxBuyStockBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxBuyStockBttn.Location = new System.Drawing.Point(622, 210);
+            this.uxBuyStockBttn.Location = new System.Drawing.Point(538, 184);
             this.uxBuyStockBttn.Name = "uxBuyStockBttn";
             this.uxBuyStockBttn.Size = new System.Drawing.Size(420, 44);
             this.uxBuyStockBttn.TabIndex = 18;
-            this.uxBuyStockBttn.Text = "Buy Shares";
+            this.uxBuyStockBttn.Text = "&Buy Shares";
             this.uxBuyStockBttn.UseVisualStyleBackColor = true;
             this.uxBuyStockBttn.Click += new System.EventHandler(this.uxBuyStockBttn_Click);
             // 
             // uxNumberOfShares
             // 
             this.uxNumberOfShares.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxNumberOfShares.Location = new System.Drawing.Point(923, 140);
+            this.uxNumberOfShares.Location = new System.Drawing.Point(848, 84);
             this.uxNumberOfShares.Name = "uxNumberOfShares";
             this.uxNumberOfShares.Size = new System.Drawing.Size(110, 30);
             this.uxNumberOfShares.TabIndex = 20;
+            // 
+            // uxCloseBttn
+            // 
+            this.uxCloseBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxCloseBttn.Location = new System.Drawing.Point(653, 301);
+            this.uxCloseBttn.Name = "uxCloseBttn";
+            this.uxCloseBttn.Size = new System.Drawing.Size(203, 44);
+            this.uxCloseBttn.TabIndex = 21;
+            this.uxCloseBttn.Text = "&Close";
+            this.uxCloseBttn.UseVisualStyleBackColor = true;
+            this.uxCloseBttn.Click += new System.EventHandler(this.uxCloseBttn_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(630, 131);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 17);
+            this.label1.TabIndex = 22;
+            // 
+            // uxBuyBySharesOrPrice
+            // 
+            this.uxBuyBySharesOrPrice.FormattingEnabled = true;
+            this.uxBuyBySharesOrPrice.Items.AddRange(new object[] {
+            "Buy by number of shares",
+            "Buy by price"});
+            this.uxBuyBySharesOrPrice.Location = new System.Drawing.Point(557, 17);
+            this.uxBuyBySharesOrPrice.Name = "uxBuyBySharesOrPrice";
+            this.uxBuyBySharesOrPrice.Size = new System.Drawing.Size(197, 24);
+            this.uxBuyBySharesOrPrice.TabIndex = 23;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(552, 131);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(321, 25);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "Dollar amount of stocks to purchase";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(909, 131);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(109, 22);
+            this.textBox1.TabIndex = 25;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // uxBuyStocksForm
             // 
             this.AcceptButton = this.uxBuyStockBttn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1077, 388);
+            this.ClientSize = new System.Drawing.Size(1085, 388);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.uxBuyBySharesOrPrice);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.uxCloseBttn);
             this.Controls.Add(this.uxNumberOfShares);
             this.Controls.Add(this.uxBuyStockBttn);
             this.Controls.Add(this.uxNumberLabel);
@@ -125,6 +183,7 @@
             this.Controls.Add(this.uxBuyStockListInfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "uxBuyStocksForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Buy Stocks Form";
             ((System.ComponentModel.ISupportInitialize)(this.uxNumberOfShares)).EndInit();
             this.ResumeLayout(false);
@@ -142,5 +201,10 @@
         private System.Windows.Forms.Label uxNumberLabel;
         private System.Windows.Forms.Button uxBuyStockBttn;
         private System.Windows.Forms.NumericUpDown uxNumberOfShares;
+        private System.Windows.Forms.Button uxCloseBttn;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox uxBuyBySharesOrPrice;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
