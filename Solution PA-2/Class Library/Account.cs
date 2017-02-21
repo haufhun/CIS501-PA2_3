@@ -252,6 +252,11 @@ namespace Class_Library
             //TIckername companyName pricePerShare sharesOwned networthOfShares positionBalance
             return _portfolios[portfolioName].GetAllPortfolioStockInfo();
         }
+
+        public int GetMaxSharesToBuy(decimal currentPrice)
+        {
+            return (int)(_cashFund / currentPrice);
+        }
     }
 
     public class SamePortfolioNameException : Exception
