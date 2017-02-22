@@ -11,6 +11,7 @@ namespace Portfolio_GUI
         private Account _account;
         private List<Observer> _observers;
         private List<PortfolioObserver> _portfolioObservers;
+        private DisplayErrorMessageObserver diplayDisplayErrorMessageObserver;
 
         public GuiController(Account a)
         {
@@ -28,6 +29,13 @@ namespace Portfolio_GUI
         {
             _portfolioObservers.Add(o);
         }
+
+        public void ErrorMessageRegister(DisplayErrorMessageObserver o)
+        {
+            diplayDisplayErrorMessageObserver = o;
+        }
+
+        
 
         public void DepositFunds(decimal cash)
         {
@@ -135,8 +143,6 @@ namespace Portfolio_GUI
             return false;
 
         }
-
-
 
         /// <summary>
         /// Signals the observers to update fields of the user interface

@@ -236,7 +236,35 @@ namespace Portfolio_GUI
             var sellStocksForm = new uxSellStockForm(portfolioName, _sellStocksHandler, _account);
             sellStocksForm.Show();
         }
-        
+
+        private void uxAddFunds_Click(object sender, EventArgs e)
+        {
+            var addWithdrawFundsForm = new uxAddWithdrawFundsForm(1);
+
+            if (addWithdrawFundsForm.ShowDialog() == DialogResult.OK)
+            {
+                _depositCashHandler(addWithdrawFundsForm.Amount);
+            }
+        }
+
+        private void uxWithdrawFunds_Click(object sender, EventArgs e)
+        {
+            var addWithdrawFundsForm = new uxAddWithdrawFundsForm(2);
+
+            if (addWithdrawFundsForm.ShowDialog() == DialogResult.OK)
+            {
+                _withdrawCashHandler(addWithdrawFundsForm.Amount);
+            }
+        }
+
+        private void uxTabControl_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            if (e.TabPage == uxPortfolioTab && uxSimulateStockPrices.Enabled == false)
+            {
+                e.Cancel = true;
+                MessageBox.Show("Please Open a ticker file first.");
+            }
+        }
 
         /// <summary>
         /// Adds a portfolio to toolstrip and opens the portfolio
@@ -346,33 +374,50 @@ namespace Portfolio_GUI
             uxPrtListInfo.EndUpdate();
         }
 
-        private void uxAddFunds_Click(object sender, EventArgs e)
+
+
+        public void DisplayErrorMessage(string message)
         {
-            var addWithdrawFundsForm = new uxAddWithdrawFundsForm(1);
-            
-            if (addWithdrawFundsForm.ShowDialog() == DialogResult.OK)
+            MessageBox.Show(message);
+        }
+
+        public void SetButtonsBasedOnSufficentfunds()
+        {
+            uxWithdrawFunds.Enabled = _account.CashBalance > Account.TRANSFER_FEE;
+
+            if (_account.CashBalance > Account.TRADE_FEE)
             {
-                _depositCashHandler(addWithdrawFundsForm.Amount);
+                uxBuyStocks1.Enabled = true;
+                uxBuyStocks2.Enabled = true;
+                uxBuyStocks3.Enabled = true;
+            }
+            else
+            {
+                uxBuyStocks1.Enabled = false;
+                uxBuyStocks2.Enabled = false;
+                uxBuyStocks3.Enabled = false;
             }
         }
 
-        private void uxWithdrawFunds_Click(object sender, EventArgs e)
+        public void SetSellStockButtonBasedOnNumberOfStocks()
         {
-            var addWithdrawFundsForm = new uxAddWithdrawFundsForm(2);
-
-            if (addWithdrawFundsForm.ShowDialog() == DialogResult.OK)
+            if (_account.TotalNumberOfShares > 0)
             {
-                _withdrawCashHandler(addWithdrawFundsForm.Amount);
+                uxSellStocks1.Enabled = true;
+                uxSellStocks2.Enabled = true;
+                uxSellStocks3.Enabled = true;
+            }
+            else
+            {
+                uxSellStocks1.Enabled = false;
+                uxSellStocks2.Enabled = false;
+                uxSellStocks3.Enabled = false;
             }
         }
 
-        private void uxTabControl_Selecting(object sender, TabControlCancelEventArgs e)
+        private void uxExitProgram_Click(object sender, EventArgs e)
         {
-            if (e.TabPage == uxPortfolioTab && uxSimulateStockPrices.Enabled == false)
-            {
-                e.Cancel = true;
-                MessageBox.Show("Please Open a ticker file first.");
-            }
+            Close();
         }
     }
 }

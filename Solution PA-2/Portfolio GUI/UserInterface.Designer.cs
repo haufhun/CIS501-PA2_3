@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uxUserInterface));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea13 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend13 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend14 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.uxTabControl = new System.Windows.Forms.TabControl();
             this.uxHomeTab = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
@@ -250,7 +250,7 @@
             this.uxHomeListInfo.GridLines = true;
             this.uxHomeListInfo.Location = new System.Drawing.Point(6, 37);
             this.uxHomeListInfo.Name = "uxHomeListInfo";
-            this.uxHomeListInfo.Size = new System.Drawing.Size(507, 506);
+            this.uxHomeListInfo.Size = new System.Drawing.Size(553, 506);
             this.uxHomeListInfo.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.uxHomeListInfo.TabIndex = 3;
             this.uxHomeListInfo.UseCompatibleStateImageBehavior = false;
@@ -269,7 +269,7 @@
             // uxHmCurrentPriceCol
             // 
             this.uxHmCurrentPriceCol.Text = "Price Per Share";
-            this.uxHmCurrentPriceCol.Width = 201;
+            this.uxHmCurrentPriceCol.Width = 132;
             // 
             // uxHomeToolStrip
             // 
@@ -317,6 +317,7 @@
             this.uxExitProgram.Name = "uxExitProgram";
             this.uxExitProgram.Size = new System.Drawing.Size(128, 24);
             this.uxExitProgram.Text = "Exit Ticker 501";
+            this.uxExitProgram.Click += new System.EventHandler(this.uxExitProgram_Click);
             // 
             // uxAccountTab
             // 
@@ -367,6 +368,7 @@
             // 
             // uxWithdrawFunds
             // 
+            this.uxWithdrawFunds.Enabled = false;
             this.uxWithdrawFunds.Image = global::Portfolio_GUI.Properties.Resources.WithdrawFund1;
             this.uxWithdrawFunds.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.uxWithdrawFunds.Name = "uxWithdrawFunds";
@@ -381,6 +383,7 @@
             // 
             // helpToolStripButton1
             // 
+            this.helpToolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.helpToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.helpToolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripButton1.Image")));
             this.helpToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -390,17 +393,17 @@
             // 
             // chart2
             // 
-            chartArea13.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea13);
-            legend13.Name = "Legend1";
-            this.chart2.Legends.Add(legend13);
+            chartArea1.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart2.Legends.Add(legend1);
             this.chart2.Location = new System.Drawing.Point(889, 327);
             this.chart2.Name = "chart2";
-            series13.ChartArea = "ChartArea1";
-            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series13.Legend = "Legend1";
-            series13.Name = "Series1";
-            this.chart2.Series.Add(series13);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart2.Series.Add(series1);
             this.chart2.Size = new System.Drawing.Size(288, 173);
             this.chart2.TabIndex = 24;
             this.chart2.Text = "chart2";
@@ -614,17 +617,17 @@
             // 
             // chart1
             // 
-            chartArea14.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea14);
-            legend14.Name = "Legend1";
-            this.chart1.Legends.Add(legend14);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(900, 337);
             this.chart1.Name = "chart1";
-            series14.ChartArea = "ChartArea1";
-            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series14.Legend = "Legend1";
-            series14.Name = "Series1";
-            this.chart1.Series.Add(series14);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(288, 173);
             this.chart1.TabIndex = 23;
             this.chart1.Text = "chart1";
@@ -639,6 +642,7 @@
             this.uxPrtGainsLossesOutput.Size = new System.Drawing.Size(49, 20);
             this.uxPrtGainsLossesOutput.TabIndex = 22;
             this.uxPrtGainsLossesOutput.Text = "$0.00";
+            this.uxPrtGainsLossesOutput.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label8
             // 
@@ -683,6 +687,7 @@
             this.uxPrtNetWorthOutput.Size = new System.Drawing.Size(49, 20);
             this.uxPrtNetWorthOutput.TabIndex = 18;
             this.uxPrtNetWorthOutput.Text = "$0.00";
+            this.uxPrtNetWorthOutput.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label12
             // 
@@ -705,6 +710,7 @@
             this.uxPrtTotalInvestedOuput.Size = new System.Drawing.Size(49, 20);
             this.uxPrtTotalInvestedOuput.TabIndex = 16;
             this.uxPrtTotalInvestedOuput.Text = "$0.00";
+            this.uxPrtTotalInvestedOuput.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // uxPrtBalOutput
             // 
@@ -716,6 +722,7 @@
             this.uxPrtBalOutput.Size = new System.Drawing.Size(49, 20);
             this.uxPrtBalOutput.TabIndex = 15;
             this.uxPrtBalOutput.Text = "$0.00";
+            this.uxPrtBalOutput.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label15
             // 

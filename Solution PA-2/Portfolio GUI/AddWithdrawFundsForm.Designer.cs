@@ -31,6 +31,7 @@
             this.uxOK = new System.Windows.Forms.Button();
             this.uxAmountTxtBox = new System.Windows.Forms.TextBox();
             this.uxInfoLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // uxOK
@@ -59,12 +60,22 @@
             this.uxInfoLabel.Size = new System.Drawing.Size(0, 17);
             this.uxInfoLabel.TabIndex = 3;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(304, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(16, 17);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "$";
+            // 
             // uxAddWithdrawFundsForm
             // 
             this.AcceptButton = this.uxOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(476, 91);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.uxOK);
             this.Controls.Add(this.uxAmountTxtBox);
             this.Controls.Add(this.uxInfoLabel);
@@ -81,5 +92,6 @@
         private System.Windows.Forms.Button uxOK;
         private System.Windows.Forms.TextBox uxAmountTxtBox;
         private System.Windows.Forms.Label uxInfoLabel;
+        private System.Windows.Forms.Label label1;
     }
 }
