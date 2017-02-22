@@ -363,7 +363,7 @@ namespace Portfolio_Console
         public void DisplayStockWasPurchased(int shares, decimal cash, string tickerName)
         {
             Console.WriteLine(shares + " shares of " + tickerName + " stock were bought for "
-                            + (cash * shares).ToString("c"));
+                            + (cash * shares).ToString("c")+". A total of "+(cash*shares+Convert.ToDecimal(9.99)).ToString("c")+" has been removed from your account");
         }
         /// <summary>
         /// Displays to the user that shares were sold.
@@ -374,7 +374,7 @@ namespace Portfolio_Console
         public void DisplayStockWasSold(int shares, decimal cash, string tickerName)
         {
             Console.WriteLine(shares + " shares of " + tickerName + " stock were sold for "
-                                        + (cash * shares).ToString("c"));
+                                        + (cash * shares).ToString("c")+". A total of "+ (cash * shares - Convert.ToDecimal(9.99)).ToString("c")+" has been added to your account.");
         }
         /// <summary>
         /// Waits for user to press enter before continuing.
