@@ -60,6 +60,7 @@ namespace Portfolio_GUI
         /// The instance of the account.
         /// </summary>
         private Account _account;
+       // private int _portfolioCount
 
         /// <summary>
         /// A list of all the portfolio buttons on the tool strip menu.
@@ -222,6 +223,7 @@ namespace Portfolio_GUI
             {
                 _addPortfolioHandler(getPortfolioNameForm.PortfolioName, AddPortfolioToToolStrip);
             }
+            if (_account.NumberOfPortfolios >= 3) uxAddPortfolio.Visible = false;
         }
 
         /// <summary>
@@ -340,6 +342,14 @@ namespace Portfolio_GUI
         /// <param name="portfolioName">Name of portfolio to create and display</param>
         private void AddPortfolioToToolStrip(string portfolioName)
         {
+            //var count = 0;
+            //foreach (var p in _listOfPortfolioButtons)
+            //{
+            //    if (p.Visible)
+            //    {
+            //        count++;
+            //    }
+            //}
                 foreach (var p in _listOfPortfolioButtons)
                 {
                     if (!p.Visible)
@@ -351,6 +361,8 @@ namespace Portfolio_GUI
                         return;
                     }
                 }
+            //if (count == 2) uxAddPortfolio.Visible = false;
+
         }
 
         /// <summary>
@@ -451,6 +463,7 @@ namespace Portfolio_GUI
             var name = parent.Text;
             _account.DeletePortfolio(name);
             parent.Visible = false;
+            if (_account.NumberOfPortfolios < 3) uxAddPortfolio.Visible = true;
             _portfolioCount--;
         }
 
