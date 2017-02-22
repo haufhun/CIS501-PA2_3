@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Class_Library;
 
 namespace Portfolio_GUI
 {
@@ -60,7 +61,18 @@ namespace Portfolio_GUI
 
         private void uxAmountTxtBox_TextChanged(object sender, EventArgs e)
         {
-            uxOK.Enabled = (sender as TextBox).Text.Length > 0;
+            var text = (sender as TextBox).Text;
+            if (text.Length > 0)
+            {
+                if (Convert.ToDecimal(text) > Account.TRANSFER_FEE)
+                {
+                    uxOK.Enabled = true;
+                }
+            }
+            else
+            {
+                uxOK.Enabled = false;
+            }
         }
     }
 }

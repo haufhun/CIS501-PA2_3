@@ -61,6 +61,12 @@ namespace Portfolio_GUI
 
                 int numberOfShares = Convert.ToInt32(uxNumberOfShares.Value);
                 _sellStocksHandler(_portfolioName, tickerName, numberOfShares);
+                var cost =
+                (numberOfShares *
+                 Convert.ToDecimal(uxSellStockListInfo.SelectedItems[0].SubItems[2].Text.Substring(1))).ToString(
+                    "c");
+                uxResultLabel.Text = "You sold " + numberOfShares + " share(s) of " + tickerName +
+                                      " for a total of " + cost;
                 DisplayListView();
 
             }
@@ -79,8 +85,18 @@ namespace Portfolio_GUI
         {
             if (uxSellStockListInfo.SelectedItems.Count > 0)
             {
-                //var currentPrice = Convert.ToDecimal(uxSellStockListInfo.SelectedItems[0].SubItems[2].Text.Substring(1));
                 uxNumberOfShares.Maximum = Convert.ToDecimal(uxSellStockListInfo.SelectedItems[0].SubItems[3].Text);
+                var currentPrice = Convert.ToDecimal(uxSellStockListInfo.SelectedItems[0].SubItems[2].Text.Substring(1));
+                uxPotentialAmount.Text = "Potential Profit: " + (currentPrice * uxNumberOfShares.Value).ToString("C");
+            }
+        }
+
+        private void uxNumberOfShares_ValueChanged(object sender, EventArgs e)
+        {
+            if (uxSellStockListInfo.SelectedItems.Count > 0)
+            {
+                var currentPrice = Convert.ToDecimal(uxSellStockListInfo.SelectedItems[0].SubItems[2].Text.Substring(1));
+                uxPotentialAmount.Text = "Potential Profit: " + (currentPrice * uxNumberOfShares.Value).ToString("C");
             }
         }
     }
