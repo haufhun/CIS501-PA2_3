@@ -51,18 +51,20 @@ namespace Portfolio_GUI
         {
             if (uxBuyStockListInfo.SelectedItems.Count > 0)
             {
+
                 string tickerName = uxBuyStockListInfo.SelectedItems[0].SubItems[0].Text;
 
                 int numberOfShares = Convert.ToInt32(uxNumberOfShares.Value);
                 _buyStocksHandler(_portfolioName, tickerName, numberOfShares);
                 var cost =
-                    (numberOfShares * Convert.ToDecimal(uxBuyStockListInfo.SelectedItems[0].SubItems[2].Text.Substring(1))).ToString(
-                        "c");
+                (numberOfShares *
+                 Convert.ToDecimal(uxBuyStockListInfo.SelectedItems[0].SubItems[2].Text.Substring(1))).ToString(
+                    "c");
                 uxResultLabel.Text = "You bought " + numberOfShares + " share(s) of " + tickerName +
                                      " for a total of " + cost;
             }
             else
-            { 
+            {
                 MessageBox.Show("Please select a stock!");
             }
         }
@@ -72,7 +74,16 @@ namespace Portfolio_GUI
             if (uxBuyStockListInfo.SelectedItems.Count > 0)
             {
                 var currentPrice = Convert.ToDecimal(uxBuyStockListInfo.SelectedItems[0].SubItems[2].Text.Substring(1));
-                uxNumberOfShares.Maximum = _account.GetMaxSharesToBuy(currentPrice);
+                var maxSharesToBuy = _account.GetMaxSharesToBuy(currentPrice);
+
+                if (maxSharesToBuy < 1)
+                {
+                    uxNumberOfShares.Maximum = maxSharesToBuy + 1;
+                }
+                else
+                {
+                    uxNumberOfShares.Maximum = maxSharesToBuy;
+                }
 
                 switch (uxBuyBySharesOrPrice.SelectedIndex)
                 {

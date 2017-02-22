@@ -53,7 +53,7 @@ namespace Portfolio_GUI
                 _account.WithdrawFunds(cash);
                 SignalObservers();
             }
-            catch (InsufficientAccountBalanceFundsException ex)
+            catch (AccountExceptions ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -66,9 +66,9 @@ namespace Portfolio_GUI
                 _account.BuyStock(portfolioName, tickerName, numberOfShares);
                 SignalObservers();
             }
-            catch (InsufficientAccountBalanceFundsException ex)
+            catch (AccountExceptions)
             {
-                MessageBox.Show(ex.Message);
+                diplayDisplayErrorMessageObserver("You currently do not have enought funds to perform this action");
             }
 
         }
@@ -86,9 +86,16 @@ namespace Portfolio_GUI
 
         public void AddPortfolio(string portfolioName, AddPortfolioObserver addPrtMethod)
         {
-            _account.AddPortfolio(portfolioName);
-            addPrtMethod(portfolioName);
-            SignalObservers();
+            try
+            {
+                _account.AddPortfolio(portfolioName);
+                addPrtMethod(portfolioName);
+                SignalObservers();
+            }
+            catch (SamePortfolioNameException)
+            {
+                diplayDisplayErrorMessageObserver("You already have a portfolio named \"" + portfolioName + "\".");
+            }
         }
 
 

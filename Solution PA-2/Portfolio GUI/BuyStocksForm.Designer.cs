@@ -67,7 +67,6 @@
             this.uxBuyStockListInfo.UseCompatibleStateImageBehavior = false;
             this.uxBuyStockListInfo.View = System.Windows.Forms.View.Details;
             this.uxBuyStockListInfo.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.uxBuyStockListInfo_ItemSelectionChanged);
-          //  this.uxBuyStockListInfo.Leave += new System.EventHandler(this.uxBuyStockListInfo_Leave);
             // 
             // uxTickerNameCol
             // 
@@ -119,9 +118,19 @@
             // 
             this.uxNumberOfShares.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uxNumberOfShares.Location = new System.Drawing.Point(848, 84);
+            this.uxNumberOfShares.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.uxNumberOfShares.Name = "uxNumberOfShares";
             this.uxNumberOfShares.Size = new System.Drawing.Size(110, 30);
             this.uxNumberOfShares.TabIndex = 20;
+            this.uxNumberOfShares.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.uxNumberOfShares.ValueChanged += new System.EventHandler(this.uxNumberOfShares_ValueChanged);
             // 
             // uxCloseBttn

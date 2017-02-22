@@ -37,6 +37,7 @@
             // uxOK
             // 
             this.uxOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.uxOK.Enabled = false;
             this.uxOK.Location = new System.Drawing.Point(202, 47);
             this.uxOK.Name = "uxOK";
             this.uxOK.Size = new System.Drawing.Size(76, 35);
@@ -50,6 +51,7 @@
             this.uxAmountTxtBox.Name = "uxAmountTxtBox";
             this.uxAmountTxtBox.Size = new System.Drawing.Size(127, 22);
             this.uxAmountTxtBox.TabIndex = 4;
+            this.uxAmountTxtBox.TextChanged += new System.EventHandler(this.uxAmountTxtBox_TextChanged);
             this.uxAmountTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.uxAmountTxtBox_KeyPress);
             // 
             // uxInfoLabel

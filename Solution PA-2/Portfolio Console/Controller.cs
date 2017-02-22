@@ -164,7 +164,7 @@ namespace Portfolio_Console
                         _account.AddFundsToCashFund(cash);
                         _userInterface.DisplayFundsWereAdded(cash - Account.TRANSFER_FEE);
                     }
-                    catch (InsufficientAccountBalanceFundsException ex)
+                    catch (AccountException ex)
                     {
                         _userInterface.DisplayErrorMessage(ex.ToString());
                     }
@@ -242,7 +242,7 @@ namespace Portfolio_Console
                     _userInterface.DisplayFundsWereWithdrawn(withdrawl);
                 }
             }
-            catch (InsufficientAccountBalanceFundsException ex)
+            catch (AccountException ex)
             {
                 _userInterface.DisplayErrorMessage(ex.ToString());
             }
@@ -578,7 +578,7 @@ namespace Portfolio_Console
                         _userInterface.DisplayIncorrectOptionChosenMessage();
                     }
                 }
-                catch (InsufficientAccountBalanceFundsException)
+                catch (AccountException)
                 {
                     Console.WriteLine("\nInsufficient funds in your account. Deposit more money before continuing!");
                 }

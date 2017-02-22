@@ -57,5 +57,10 @@ namespace Portfolio_GUI
                 e.Handled = true;
             }
         }
+
+        private void uxAmountTxtBox_TextChanged(object sender, EventArgs e)
+        {
+            uxOK.Enabled = (sender as TextBox).Text.Length > 0;
+        }
     }
 }
