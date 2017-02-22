@@ -54,6 +54,11 @@ namespace Class_Library
         public int NumberOfPortfolios => _portfolios.Count;
 
         /// <summary>
+        /// The total number of shares owned in the account.
+        /// </summary>
+        public int TotalNumberOfShares => _totalNumberOfShares;
+
+        /// <summary>
         /// Construcotr initializes the portfolios, the initial funds, cash balance, and invested balance.
         /// </summary>
         public Account()
@@ -158,7 +163,7 @@ namespace Class_Library
         {
             var cost = numberOfShares * DataBase.PriceAndTickerName[tickerName].Item3;
             if (cost > _cashFund - TRADE_FEE)
-                throw new InsufficientAccountBalanceFundsException();
+                throw new AccountException();
             _portfolios[portfolioName].AddStock(tickerName, numberOfShares);
             _cashFund -= (TRADE_FEE + cost);
             _totalNumberOfShares += numberOfShares;
@@ -236,7 +241,7 @@ namespace Class_Library
         public bool CheckForSufficientDepositFunds(decimal cash)
         {
             if (_cashFund - TRANSFER_FEE + cash < 0)
-                throw new InsufficientAccountBalanceFundsException();
+                throw new AccountException();
             return true;
         }
 
@@ -248,11 +253,11 @@ namespace Class_Library
         public bool CheckForSufficientWithdrawlFunds(decimal cash)
         {
             if (cash + TRANSFER_FEE > _cashFund)
-                throw new InsufficientAccountBalanceFundsException();
+                throw new AccountException();
             if (cash > _cashFund + _investedBalance)
-                throw new InsufficientAccountBalanceFundsException();
+                throw new AccountException();
             if (cash > _cashFund)
-                throw new InsufficientAccountBalanceFundsException("");
+                throw new AccountException("");
             return true;
         }
         /// <summary>
@@ -308,7 +313,7 @@ namespace Class_Library
     /// <summary>
     /// Exception
     /// </summary>
-    public class SamePortfolioNameException : Exception
+    public class SamePortfolioNameException : AccountExceptions
     {
     }
 
@@ -331,16 +336,16 @@ namespace Class_Library
     /// <summary>
     /// An exception class inheriting the account exceptions.
     /// </summary>
-    public class InsufficientAccountBalanceFundsException : AccountExceptions
+    public class AccountException : AccountExceptions
     {
         /// <summary>
         /// General insufficent account balance funds exception constructor.
         /// </summary>
-        public InsufficientAccountBalanceFundsException() { }
+        public AccountException() { }
         /// <summary>
         /// Overload insufficient account balance funds exception with a message.
         /// </summary>
         /// <param name="message"></param>
-        public InsufficientAccountBalanceFundsException(string message) : base(message) { }
+        public AccountException(string message) : base(message) { }
     }
 }

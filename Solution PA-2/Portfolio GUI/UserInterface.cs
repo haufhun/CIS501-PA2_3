@@ -50,11 +50,10 @@ namespace Portfolio_GUI
         private ReadFileHandler _readFileHandler;
 
 
-        
-        private Account _account;
-        
+        private Account _account;     
         private int _numOfPortolios = 0;
         private string _currentPortfolio;
+
         /// <summary>
         /// Constructor for User interface
         /// </summary>
@@ -102,10 +101,7 @@ namespace Portfolio_GUI
 
         }
 
-        private void uxAccountTab_Click(object sender, EventArgs e)
-        {
-
-        }
+     
 
         private void uxTotalInvestedOutput_Click(object sender, EventArgs e)
         {
@@ -118,21 +114,25 @@ namespace Portfolio_GUI
         {
             uxPortfolioName.Text = uxPortfolio1.Text;
             _currentPortfolio = uxPortfolio1.Text;
+            DisplayPortfolio();
         }
 
         private void uxPortfolio2_ButtonClick(object sender, EventArgs e)
         {
             uxPortfolioName.Text = uxPortfolio2.Text;
             _currentPortfolio = uxPortfolio2.Text;
+            DisplayPortfolio();
         }
 
         private void uxPortfolio3_ButtonClick(object sender, EventArgs e)
         {
             uxPortfolioName.Text = uxPortfolio3.Text;
             _currentPortfolio = uxPortfolio3.Text;
-        } 
+            DisplayPortfolio();
+
+        }
         /////////////////////////////////////////////////////////
-        
+
         private void uxOpenTickerFile_Click(object sender, EventArgs e)
         {
            if( _readFileHandler(uxOpenFileDialog))
@@ -205,6 +205,7 @@ namespace Portfolio_GUI
                     break;
 
             }
+            _currentPortfolio = portfolioName;
             uxBuyStocksForm buyStocksForm = new uxBuyStocksForm(portfolioName, _buyStocksHandler, _account);
             buyStocksForm.Show();
 
@@ -233,10 +234,39 @@ namespace Portfolio_GUI
                     break;
 
             }
+            _currentPortfolio = portfolioName;
             var sellStocksForm = new uxSellStockForm(portfolioName, _sellStocksHandler, _account);
             sellStocksForm.Show();
         }
-        
+
+        private void uxAddFunds_Click(object sender, EventArgs e)
+        {
+            var addWithdrawFundsForm = new uxAddWithdrawFundsForm(1);
+
+            if (addWithdrawFundsForm.ShowDialog() == DialogResult.OK)
+            {
+                _depositCashHandler(addWithdrawFundsForm.Amount);
+            }
+        }
+
+        private void uxWithdrawFunds_Click(object sender, EventArgs e)
+        {
+            var addWithdrawFundsForm = new uxAddWithdrawFundsForm(2);
+
+            if (addWithdrawFundsForm.ShowDialog() == DialogResult.OK)
+            {
+                _withdrawCashHandler(addWithdrawFundsForm.Amount);
+            }
+        }
+
+        private void uxTabControl_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            if (e.TabPage == uxPortfolioTab && uxSimulateStockPrices.Enabled == false)
+            {
+                e.Cancel = true;
+                MessageBox.Show("Please Open a ticker file first.");
+            }
+        }
 
         /// <summary>
         /// Adds a portfolio to toolstrip and opens the portfolio
@@ -326,9 +356,8 @@ namespace Portfolio_GUI
             uxPrtBalOutput.Text = _account.CashBalance.ToString("C");
             uxPrtPercentageOfAccountOutput.Text = info.Item3.ToString("P");
             uxPrtTotalInvestedOuput.Text = info.Item2.ToString("C");
-
-            //USe method he created getcurrentvalueofportfolio  //uxPrtNetWorthOutput.Text = _account.ToString("C");//
-            // use method getgainsandlossesofportfolio //uxPrtGainsLossesOutput.Text = _account.g.ToString("C");//
+            uxPrtNetWorthOutput.Text = _account.SelectPortfolio(_currentPortfolio).GetCurrentValueOfAllStocks().ToString("c");
+            uxPrtGainsLossesOutput.Text = _account.SelectPortfolio(_currentPortfolio).GetGainsAndLossesReport().ToString("C");
 
             var infoList = _account.GetAllPortfolioStockInfoTuple(_currentPortfolio);
 
@@ -346,33 +375,50 @@ namespace Portfolio_GUI
             uxPrtListInfo.EndUpdate();
         }
 
-        private void uxAddFunds_Click(object sender, EventArgs e)
+
+
+        public void DisplayErrorMessage(string message)
         {
-            var addWithdrawFundsForm = new uxAddWithdrawFundsForm(1);
-            
-            if (addWithdrawFundsForm.ShowDialog() == DialogResult.OK)
+            MessageBox.Show(message);
+        }
+
+        public void SetButtonsBasedOnSufficentfunds()
+        {
+            uxWithdrawFunds.Enabled = _account.CashBalance > Account.TRANSFER_FEE;
+
+            if (_account.CashBalance > Account.TRADE_FEE)
             {
-                _depositCashHandler(addWithdrawFundsForm.Amount);
+                uxBuyStocks1.Enabled = true;
+                uxBuyStocks2.Enabled = true;
+                uxBuyStocks3.Enabled = true;
+            }
+            else
+            {
+                uxBuyStocks1.Enabled = false;
+                uxBuyStocks2.Enabled = false;
+                uxBuyStocks3.Enabled = false;
             }
         }
 
-        private void uxWithdrawFunds_Click(object sender, EventArgs e)
+        public void SetSellStockButtonBasedOnNumberOfStocks()
         {
-            var addWithdrawFundsForm = new uxAddWithdrawFundsForm(2);
-
-            if (addWithdrawFundsForm.ShowDialog() == DialogResult.OK)
+            if (_account.TotalNumberOfShares > 0)
             {
-                _withdrawCashHandler(addWithdrawFundsForm.Amount);
+                uxSellStocks1.Enabled = true;
+                uxSellStocks2.Enabled = true;
+                uxSellStocks3.Enabled = true;
+            }
+            else
+            {
+                uxSellStocks1.Enabled = false;
+                uxSellStocks2.Enabled = false;
+                uxSellStocks3.Enabled = false;
             }
         }
 
-        private void uxTabControl_Selecting(object sender, TabControlCancelEventArgs e)
+        private void uxExitProgram_Click(object sender, EventArgs e)
         {
-            if (e.TabPage == uxPortfolioTab && uxSimulateStockPrices.Enabled == false)
-            {
-                e.Cancel = true;
-                MessageBox.Show("Please Open a ticker file first.");
-            }
+            Close();
         }
     }
 }

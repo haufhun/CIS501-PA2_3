@@ -11,6 +11,7 @@ namespace Portfolio_GUI
         private Account _account;
         private List<Observer> _observers;
         private List<PortfolioObserver> _portfolioObservers;
+        private DisplayErrorMessageObserver diplayDisplayErrorMessageObserver;
 
         public GuiController(Account a)
         {
@@ -29,6 +30,13 @@ namespace Portfolio_GUI
             _portfolioObservers.Add(o);
         }
 
+        public void ErrorMessageRegister(DisplayErrorMessageObserver o)
+        {
+            diplayDisplayErrorMessageObserver = o;
+        }
+
+        
+
         public void DepositFunds(decimal cash)
         {
             //validate cash isn't null
@@ -45,7 +53,7 @@ namespace Portfolio_GUI
                 _account.WithdrawFunds(cash);
                 SignalObservers();
             }
-            catch (InsufficientAccountBalanceFundsException ex)
+            catch (AccountExceptions ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -57,10 +65,11 @@ namespace Portfolio_GUI
             {
                 _account.BuyStock(portfolioName, tickerName, numberOfShares);
                 SignalObservers();
+                
             }
-            catch (InsufficientAccountBalanceFundsException ex)
+            catch (AccountExceptions)
             {
-                MessageBox.Show(ex.Message);
+                diplayDisplayErrorMessageObserver("You currently do not have enought funds to perform this action");
             }
 
         }
@@ -78,9 +87,16 @@ namespace Portfolio_GUI
 
         public void AddPortfolio(string portfolioName, AddPortfolioObserver addPrtMethod)
         {
-            _account.AddPortfolio(portfolioName);
-            addPrtMethod(portfolioName);
-            SignalObservers();
+            try
+            {
+                _account.AddPortfolio(portfolioName);
+                addPrtMethod(portfolioName);
+                SignalObservers();
+            }
+            catch (SamePortfolioNameException)
+            {
+                diplayDisplayErrorMessageObserver("You already have a portfolio named \"" + portfolioName + "\".");
+            }
         }
 
 
@@ -135,8 +151,6 @@ namespace Portfolio_GUI
             return false;
 
         }
-
-
 
         /// <summary>
         /// Signals the observers to update fields of the user interface
