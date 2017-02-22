@@ -42,9 +42,6 @@ namespace Portfolio_GUI
             
             if (uxSellStockListInfo.SelectedItems.Count > 0)
             {
-                var listViewItem = uxSellStockListInfo.SelectedItems[0];
-                int i = listViewItem.Index;
-
                 string tickerName = uxSellStockListInfo.SelectedItems[0].SubItems[0].Text;
 
                 int numberOfShares = Convert.ToInt32(uxNumberOfShares.Value);
@@ -57,10 +54,7 @@ namespace Portfolio_GUI
                                       " for a total of " + cost;
 
                 DisplayListView();
-                //listViewItem.Selected = true;
-                if (uxSellStockListInfo.SelectedItems.Count > 0)
-                    uxSellStockListInfo.Items[i].Selected = true;
-            }//
+            }
             else
             {
                 MessageBox.Show("Please select a stock!");
