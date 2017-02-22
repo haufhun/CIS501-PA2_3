@@ -57,6 +57,7 @@ namespace Portfolio_GUI
             controller.PortfoioRegister(mainForm.DisplayPortfolio);
             controller.ErrorMessageRegister(mainForm.DisplayErrorMessage);
             controller.Register(mainForm.SetSellStockButtonBasedOnNumberOfStocks);
+            controller.Register(mainForm.UpdateHomeGainsLosses);
             
 
             Application.Run(mainForm);

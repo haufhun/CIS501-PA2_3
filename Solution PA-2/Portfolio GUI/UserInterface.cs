@@ -50,8 +50,8 @@ namespace Portfolio_GUI
         private ReadFileHandler _readFileHandler;
 
 
-        private Account _account;     
-        private int _numOfPortolios = 0;
+        private Account _account;
+        private List<ToolStripSplitButton> _listOfPortfolioButtons;
         private string _currentPortfolio;
 
         /// <summary>
@@ -99,7 +99,13 @@ namespace Portfolio_GUI
             uxSellStocks2.Click += SellStockButton_Click;
             uxSellStocks3.Click += SellStockButton_Click;
 
-        }
+            _listOfPortfolioButtons = new List<ToolStripSplitButton>();
+            _listOfPortfolioButtons.Add(uxPortfolio1);
+            _listOfPortfolioButtons.Add(uxPortfolio2);
+            _listOfPortfolioButtons.Add(uxPortfolio3);
+
+
+    }
 
      
 
@@ -274,35 +280,17 @@ namespace Portfolio_GUI
         /// <param name="portfolioName">Name of portfolio to create and display</param>
         private void AddPortfolioToToolStrip(string portfolioName)
         {
-            _numOfPortolios++;
-
-            switch (_numOfPortolios)
+            foreach (var p in _listOfPortfolioButtons)
             {
-                case 1:                 
-                    uxPortfolio1.Visible = true;
-                    uxPortfolio1.Text = portfolioName;
-                    _currentPortfolio = uxPortfolio1.Text;
-                    DisplayPortfolio();     
-                    break;
-                case 2:
-                    uxPortfolio2.Visible = true;
-                    uxPortfolio2.Text = portfolioName;
-                    _currentPortfolio = uxPortfolio2.Text;
+                if (!p.Visible)
+                {
+                    p.Visible = true;
+                    p.Text = portfolioName;
+                    _currentPortfolio = portfolioName;
                     DisplayPortfolio();
-                    break;
-                case 3:
-                    uxPortfolio3.Visible = true;            
-                    uxAddPortfolio.Visible = false;
-                    uxPortfolio3.Text = portfolioName;
-                    _currentPortfolio = uxPortfolio3.Text;
-                    DisplayPortfolio();
-                    break;
-                default:
-                    MessageBox.Show("Somehow the add portfolio button was visible and you already have the maximum number of portfolios!");
-                    _numOfPortolios--;
-                    break;
+                    return;
+                }
             }
-
         }
 
         public void DisplayHomeStockInfo()
@@ -419,6 +407,25 @@ namespace Portfolio_GUI
         private void uxExitProgram_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        /// <summary>
+        /// Delete the contents of the whole portfolio, getting the name of the portfolio
+        /// from the proper parent.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DeletePortfolio(object sender, EventArgs e)
+        {
+            var parent = (sender as ToolStripMenuItem).OwnerItem;
+            var name = parent.Text;
+            _account.DeletePortfolio(name);
+            parent.Visible = false;
+        }
+
+        public void UpdateHomeGainsLosses()
+        {
+            uxHomeGainsLosses.Text = _account.GetGainsAndLossesReport().ToString("c");
         }
     }
 }
