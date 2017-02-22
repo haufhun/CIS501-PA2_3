@@ -39,8 +39,12 @@ namespace Portfolio_GUI
         /// </summary>
         private void uxSellStockBttn_Click(object sender, EventArgs e)
         {
+            
             if (uxSellStockListInfo.SelectedItems.Count > 0)
             {
+                var listViewItem = uxSellStockListInfo.SelectedItems[0];
+                int i = listViewItem.Index;
+
                 string tickerName = uxSellStockListInfo.SelectedItems[0].SubItems[0].Text;
 
                 int numberOfShares = Convert.ToInt32(uxNumberOfShares.Value);
@@ -51,9 +55,12 @@ namespace Portfolio_GUI
                     "c");
                 uxResultLabel.Text = "You sold " + numberOfShares + " share(s) of " + tickerName +
                                       " for a total of " + cost;
-                DisplayListView();
 
-            }
+                DisplayListView();
+                //listViewItem.Selected = true;
+                if (uxSellStockListInfo.SelectedItems.Count > 0)
+                    uxSellStockListInfo.Items[i].Selected = true;
+            }//
             else
             {
                 MessageBox.Show("Please select a stock!");
