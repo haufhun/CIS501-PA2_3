@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uxUserInterface));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.uxTabControl = new System.Windows.Forms.TabControl();
             this.uxHomeTab = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
+            this.uxHomeGainsLosses = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.uxVolatilityGroup = new System.Windows.Forms.GroupBox();
             this.uxRadioBttnMedium = new System.Windows.Forms.RadioButton();
@@ -147,7 +147,7 @@
             // 
             // uxHomeTab
             // 
-            this.uxHomeTab.Controls.Add(this.label3);
+            this.uxHomeTab.Controls.Add(this.uxHomeGainsLosses);
             this.uxHomeTab.Controls.Add(this.label5);
             this.uxHomeTab.Controls.Add(this.uxVolatilityGroup);
             this.uxHomeTab.Controls.Add(this.label18);
@@ -161,16 +161,16 @@
             this.uxHomeTab.Text = "Home";
             this.uxHomeTab.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // uxHomeGainsLosses
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(816, 293);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 20);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "$0.00";
+            this.uxHomeGainsLosses.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.uxHomeGainsLosses.AutoSize = true;
+            this.uxHomeGainsLosses.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxHomeGainsLosses.Location = new System.Drawing.Point(816, 293);
+            this.uxHomeGainsLosses.Name = "uxHomeGainsLosses";
+            this.uxHomeGainsLosses.Size = new System.Drawing.Size(49, 20);
+            this.uxHomeGainsLosses.TabIndex = 13;
+            this.uxHomeGainsLosses.Text = "$0.00";
             // 
             // label5
             // 
@@ -341,7 +341,6 @@
             this.uxAccountTab.TabIndex = 1;
             this.uxAccountTab.Text = "Account";
             this.uxAccountTab.UseVisualStyleBackColor = true;
-           // this.uxAccountTab.Click += new System.EventHandler(this.uxAccountTab_Click);
             // 
             // toolStrip1
             // 
@@ -393,17 +392,17 @@
             // 
             // chart2
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart2.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart2.Legends.Add(legend3);
             this.chart2.Location = new System.Drawing.Point(889, 327);
             this.chart2.Name = "chart2";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart2.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart2.Series.Add(series3);
             this.chart2.Size = new System.Drawing.Size(288, 173);
             this.chart2.TabIndex = 24;
             this.chart2.Text = "chart2";
@@ -617,17 +616,17 @@
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea4.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chart1.Legends.Add(legend4);
             this.chart1.Location = new System.Drawing.Point(900, 337);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chart1.Series.Add(series4);
             this.chart1.Size = new System.Drawing.Size(288, 173);
             this.chart1.TabIndex = 23;
             this.chart1.Text = "chart1";
@@ -857,6 +856,7 @@
             this.uxDeletePortfolio1.Name = "uxDeletePortfolio1";
             this.uxDeletePortfolio1.Size = new System.Drawing.Size(185, 26);
             this.uxDeletePortfolio1.Text = "DeletePortfolio";
+            this.uxDeletePortfolio1.Click += new System.EventHandler(this.DeletePortfolio);
             // 
             // uxPortfolio2
             // 
@@ -900,6 +900,7 @@
             this.uxDeletePortfolio2.Name = "uxDeletePortfolio2";
             this.uxDeletePortfolio2.Size = new System.Drawing.Size(189, 26);
             this.uxDeletePortfolio2.Text = "Delete Portfolio";
+            this.uxDeletePortfolio2.Click += new System.EventHandler(this.DeletePortfolio);
             // 
             // uxPortfolio3
             // 
@@ -943,6 +944,7 @@
             this.uxDeletePortfolio3.Name = "uxDeletePortfolio3";
             this.uxDeletePortfolio3.Size = new System.Drawing.Size(189, 26);
             this.uxDeletePortfolio3.Text = "Delete Portfolio";
+            this.uxDeletePortfolio3.Click += new System.EventHandler(this.DeletePortfolio);
             // 
             // uxAddPortfolio
             // 
@@ -1085,7 +1087,7 @@
         private System.Windows.Forms.ToolStripButton uxWithdrawFunds;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton helpToolStripButton1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label uxHomeGainsLosses;
         private System.Windows.Forms.Label label5;
     }
 }
