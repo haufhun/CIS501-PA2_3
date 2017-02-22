@@ -20,38 +20,55 @@ namespace Portfolio_GUI
         /// Defines the type of method that handles a deposit cash input event 
         /// </summary>
         private DepositCashHandler _depositCashHandler;
+
         /// <summary>
         /// Defines the type of method that handles a withdraw cash input event
         /// </summary>
         private WithdrawCashHandler _withdrawCashHandler;
+
         /// <summary>
         /// Defines the type of method that handles a buy stock input event 
         /// </summary>
         private BuyStocksHandler _buyStocksHandler;
+
         /// <summary>
         /// Defines the type of method that handles a sell stock input event
         /// </summary>
         private SellStocksHandler _sellStocksHandler;
+
         /// <summary>
         ///  Defines the type of method that handles a add portfolio input event 
         /// </summary>
         private AddPortfolioHandler _addPortfolioHandler;
+
         /// <summary>
         /// Defines the type of method that handles a delete portfolio input event
         /// </summary>
         private DeletePortfolioHandler _deletePortfolioHandler;
+
         /// <summary>
         /// Defines the type of method that handles a simulate input event
         /// </summary>
         private SimulateHandler _simulateHandler;
+
         /// <summary>
         /// Defines the type of method that handles a read file input event
         /// </summary>
         private ReadFileHandler _readFileHandler;
 
-
+        /// <summary>
+        /// The instance of the account.
+        /// </summary>
         private Account _account;
+
+        /// <summary>
+        /// A list of all the portfolio buttons on the tool strip menu.
+        /// </summary>
         private List<ToolStripSplitButton> _listOfPortfolioButtons;
+
+        /// <summary>
+        /// A string holding the current portoflio selected.
+        /// </summary>
         private string _currentPortfolio;
 
         /// <summary>
@@ -69,10 +86,10 @@ namespace Portfolio_GUI
         /// <param name="buyStocks"></param>
         /// <param name="depositFunds"></param>
         /// <param name="withdrawFunds"></param>
-        public uxUserInterface(Account a , ReadFileHandler readFileHandler, SimulateHandler simulate, 
-                                DeletePortfolioHandler deletePortfolio,  AddPortfolioHandler addPortfolio, 
-                                SellStocksHandler sellStocks, BuyStocksHandler buyStocks, DepositCashHandler depositFunds, 
-                                WithdrawCashHandler withdrawFunds)
+        public uxUserInterface(Account a, ReadFileHandler readFileHandler, SimulateHandler simulate,
+            DeletePortfolioHandler deletePortfolio, AddPortfolioHandler addPortfolio,
+            SellStocksHandler sellStocks, BuyStocksHandler buyStocks, DepositCashHandler depositFunds,
+            WithdrawCashHandler withdrawFunds)
         {
             ///Initializing account///
             _account = a;
@@ -87,8 +104,8 @@ namespace Portfolio_GUI
             _buyStocksHandler = buyStocks;
             _depositCashHandler = depositFunds;
             _withdrawCashHandler = withdrawFunds;
-            
-            
+
+
             InitializeComponent();
 
             ///Makes All Buy Buttons Refrence the same buttonClick
@@ -105,17 +122,15 @@ namespace Portfolio_GUI
             _listOfPortfolioButtons.Add(uxPortfolio3);
 
 
-    }
-
-     
-
-        private void uxTotalInvestedOutput_Click(object sender, EventArgs e)
-        {
-
         }
 
-        ///Porfolio Button clicks are under this Expanding tab///
-        
+        //Porfolio Button clicks are under this Expanding tab
+
+        /// <summary>
+        /// Handles if the user selects portfolio 1 on the portfolio tab.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uxPortfolio1_ButtonClick(object sender, EventArgs e)
         {
             uxPortfolioName.Text = uxPortfolio1.Text;
@@ -123,6 +138,11 @@ namespace Portfolio_GUI
             DisplayPortfolio();
         }
 
+        /// <summary>
+        /// Hanldes if the user selects portfolio 2 on the portfolio tab.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uxPortfolio2_ButtonClick(object sender, EventArgs e)
         {
             uxPortfolioName.Text = uxPortfolio2.Text;
@@ -130,6 +150,11 @@ namespace Portfolio_GUI
             DisplayPortfolio();
         }
 
+        /// <summary>
+        /// handles if the user selects portfolio 3 on the portfolio tab.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uxPortfolio3_ButtonClick(object sender, EventArgs e)
         {
             uxPortfolioName.Text = uxPortfolio3.Text;
@@ -137,17 +162,22 @@ namespace Portfolio_GUI
             DisplayPortfolio();
 
         }
-        /////////////////////////////////////////////////////////
 
+        /////////////////////////////////////////////////////////
+        /// <summary>
+        /// Handles the user clicking the open file button on the home tab.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uxOpenTickerFile_Click(object sender, EventArgs e)
         {
-           if( _readFileHandler(uxOpenFileDialog))
-           {
-               uxSimulateStockPrices.Enabled = true;
-               uxRadioBttnHigh.Enabled = true;
-               uxRadioBttnMedium.Enabled = true;
-               uxRadioBttnLow.Enabled = true;
-           }
+            if (_readFileHandler(uxOpenFileDialog))
+            {
+                uxSimulateStockPrices.Enabled = true;
+                uxRadioBttnHigh.Enabled = true;
+                uxRadioBttnMedium.Enabled = true;
+                uxRadioBttnLow.Enabled = true;
+            }
 
         }
 
@@ -156,7 +186,7 @@ namespace Portfolio_GUI
         ///    into the simulateHandler delegate based on radio button choice.
         /// </summary>
         private void uxSimulateStockPrices_Click(object sender, EventArgs e)
-        { 
+        {
             if (uxRadioBttnHigh.Checked)
             {
                 _simulateHandler(1);
@@ -184,11 +214,16 @@ namespace Portfolio_GUI
             var getPortfolioNameForm = new uxGetPortfolioNameForm();
 
             if (getPortfolioNameForm.ShowDialog() == DialogResult.OK)
-            { 
+            {
                 _addPortfolioHandler(getPortfolioNameForm.PortfolioName, AddPortfolioToToolStrip);
             }
         }
 
+        /// <summary>
+        /// Handles the user clicking buy stock button on the portolio tab.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BuyStockButton_Click(object sender, EventArgs e)
         {
             var item = sender as ToolStripMenuItem;
@@ -218,6 +253,11 @@ namespace Portfolio_GUI
 
         }
 
+        /// <summary>
+        /// Handles the user clicking the sell stock button on the portfolio tab.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SellStockButton_Click(object sender, EventArgs e)
         {
             var item = sender as ToolStripMenuItem;
@@ -245,6 +285,11 @@ namespace Portfolio_GUI
             sellStocksForm.Show();
         }
 
+        /// <summary>
+        /// Handles the user clicking add funds on the account tab.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uxAddFunds_Click(object sender, EventArgs e)
         {
             var addWithdrawFundsForm = new uxAddWithdrawFundsForm(1);
@@ -255,6 +300,11 @@ namespace Portfolio_GUI
             }
         }
 
+        /// <summary>
+        /// Handles the user clicking withdraw funds on the account tab.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uxWithdrawFunds_Click(object sender, EventArgs e)
         {
             var addWithdrawFundsForm = new uxAddWithdrawFundsForm(2);
@@ -265,6 +315,11 @@ namespace Portfolio_GUI
             }
         }
 
+        /// <summary>
+        /// Disables the suer from being able to open the portfolio tab if they haven't iported a stock database.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uxTabControl_Selecting(object sender, TabControlCancelEventArgs e)
         {
             if (e.TabPage == uxPortfolioTab && uxSimulateStockPrices.Enabled == false)
@@ -293,11 +348,14 @@ namespace Portfolio_GUI
             }
         }
 
+        /// <summary>
+        /// Updates all the information on the Home tab.
+        /// </summary>
         public void DisplayHomeStockInfo()
         {
             uxHomeListInfo.BeginUpdate();
             uxHomeListInfo.Items.Clear();
-           
+
             foreach (var i in DataBase.PriceAndTickerName.Values)
             {
                 string[] itemInfo = {i.Item1, i.Item2, i.Item3.ToString("C")};
@@ -307,8 +365,12 @@ namespace Portfolio_GUI
             }
 
             uxHomeListInfo.EndUpdate();
+            uxHomeGainsLosses.Text = _account.GetGainsAndLossesReport().ToString("c");
         }
 
+        /// <summary>
+        /// Updates all the information on the Account tab.
+        /// </summary>
         public void DisplayAccount()
         {
 
@@ -328,7 +390,7 @@ namespace Portfolio_GUI
             foreach (var i in list)
             {
                 //TickerName    Company Name    Price per share     Shares owned    Networth of shares   position balance
-                string[] itemInfo = { i.Item1.ToString("C"), i.Item2.ToString("P"), i.Item3, i.Item4 };
+                string[] itemInfo = {i.Item1.ToString("C"), i.Item2.ToString("P"), i.Item3, i.Item4};
                 ListViewItem item = new ListViewItem(itemInfo);
                 uxAccListInfo.Items.Add(item);
             }
@@ -336,6 +398,9 @@ namespace Portfolio_GUI
             uxAccListInfo.EndUpdate();
         }
 
+        /// <summary>
+        /// Updates all the information on the Portfolio tab.
+        /// </summary>
         public void DisplayPortfolio()
         {
             uxPortfolioName.Text = _currentPortfolio;
@@ -344,8 +409,10 @@ namespace Portfolio_GUI
             uxPrtBalOutput.Text = _account.CashBalance.ToString("C");
             uxPrtPercentageOfAccountOutput.Text = info.Item3.ToString("P");
             uxPrtTotalInvestedOuput.Text = info.Item2.ToString("C");
-            uxPrtNetWorthOutput.Text = _account.SelectPortfolio(_currentPortfolio).GetCurrentValueOfAllStocks().ToString("c");
-            uxPrtGainsLossesOutput.Text = _account.SelectPortfolio(_currentPortfolio).GetGainsAndLossesReport().ToString("C");
+            uxPrtNetWorthOutput.Text =
+                _account.SelectPortfolio(_currentPortfolio).GetCurrentValueOfAllStocks().ToString("c");
+            uxPrtGainsLossesOutput.Text =
+                _account.SelectPortfolio(_currentPortfolio).GetGainsAndLossesReport().ToString("C");
 
             var infoList = _account.GetAllPortfolioStockInfoTuple(_currentPortfolio);
 
@@ -355,7 +422,11 @@ namespace Portfolio_GUI
             foreach (var i in infoList)
             {
                 //  Tickername, companyName, pricePerShare, sharesOwned, networthOfShares, PositionBalance
-                string[] itemInfo = { i.Item1, i.Item2, i.Item3.ToString("C"), i.Item4.ToString(), i.Item5.ToString("C"), i.Item6.ToString("P") };
+                string[] itemInfo =
+                {
+                    i.Item1, i.Item2, i.Item3.ToString("C"), i.Item4.ToString(), i.Item5.ToString("C"),
+                    i.Item6.ToString("P")
+                };
 
                 uxPrtListInfo.Items.Add(new ListViewItem(itemInfo));
             }
@@ -363,13 +434,33 @@ namespace Portfolio_GUI
             uxPrtListInfo.EndUpdate();
         }
 
+        /// <summary>
+        /// Delete the contents of the whole portfolio, getting the name of the portfolio
+        /// from the proper parent.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DeletePortfolio(object sender, EventArgs e)
+        {
+            var parent = (sender as ToolStripMenuItem).OwnerItem;
+            var name = parent.Text;
+            _account.DeletePortfolio(name);
+            parent.Visible = false;
+        }
 
-
+        /// <summary>
+        /// Displays an error message to the user with the given string.
+        /// </summary>
+        /// <param name="message">The message to be displayed to the user in a message box.</param>
         public void DisplayErrorMessage(string message)
         {
             MessageBox.Show(message);
         }
 
+        /// <summary>
+        /// Sets if the withdraw funds button and the buy stocks buttons are 
+        /// enabled based on if the user has more money than the trade or transfer fee in their account.
+        /// </summary>
         public void SetButtonsBasedOnSufficentfunds()
         {
             uxWithdrawFunds.Enabled = _account.CashBalance > Account.TRANSFER_FEE;
@@ -388,6 +479,9 @@ namespace Portfolio_GUI
             }
         }
 
+        /// <summary>
+        /// Changes the sell stock button to true or false based on if the user has stocks or not.
+        /// </summary>
         public void SetSellStockButtonBasedOnNumberOfStocks()
         {
             if (_account.TotalNumberOfShares > 0)
@@ -404,28 +498,14 @@ namespace Portfolio_GUI
             }
         }
 
-        private void uxExitProgram_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         /// <summary>
-        /// Delete the contents of the whole portfolio, getting the name of the portfolio
-        /// from the proper parent.
+        /// Exits the program if the user clicks the exit button.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DeletePortfolio(object sender, EventArgs e)
+        private void uxExitProgram_Click(object sender, EventArgs e)
         {
-            var parent = (sender as ToolStripMenuItem).OwnerItem;
-            var name = parent.Text;
-            _account.DeletePortfolio(name);
-            parent.Visible = false;
-        }
-
-        public void UpdateHomeGainsLosses()
-        {
-            uxHomeGainsLosses.Text = _account.GetGainsAndLossesReport().ToString("c");
+            Close();
         }
     }
 }

@@ -483,7 +483,7 @@
             this.uxAccTotalInvestedOutput.Size = new System.Drawing.Size(49, 20);
             this.uxAccTotalInvestedOutput.TabIndex = 5;
             this.uxAccTotalInvestedOutput.Text = "$0.00";
-            this.uxAccTotalInvestedOutput.Click += new System.EventHandler(this.uxTotalInvestedOutput_Click);
+            //this.uxAccTotalInvestedOutput.Click += new System.EventHandler(this.uxTotalInvestedOutput_Click);
             // 
             // uxAccBalOutput
             // 
