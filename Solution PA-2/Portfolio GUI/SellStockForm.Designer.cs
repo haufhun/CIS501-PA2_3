@@ -39,6 +39,8 @@
             this.uxNumberLabel = new System.Windows.Forms.Label();
             this.uxInstructionLabel = new System.Windows.Forms.Label();
             this.uxCloseBttn = new System.Windows.Forms.Button();
+            this.uxTotalAmountProfited = new System.Windows.Forms.Label();
+            this.uxPotentialAmount = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.uxNumberOfShares)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,6 +56,7 @@
             this.uxNetWorthCol});
             this.uxSellStockListInfo.FullRowSelect = true;
             this.uxSellStockListInfo.GridLines = true;
+            this.uxSellStockListInfo.HideSelection = false;
             this.uxSellStockListInfo.Location = new System.Drawing.Point(12, 53);
             this.uxSellStockListInfo.MultiSelect = false;
             this.uxSellStockListInfo.Name = "uxSellStockListInfo";
@@ -149,12 +152,30 @@
             this.uxCloseBttn.UseVisualStyleBackColor = true;
             this.uxCloseBttn.Click += new System.EventHandler(this.uxCloseBttn_Click);
             // 
+            // uxTotalAmountProfited
+            // 
+            this.uxTotalAmountProfited.AutoSize = true;
+            this.uxTotalAmountProfited.Location = new System.Drawing.Point(801, 250);
+            this.uxTotalAmountProfited.Name = "uxTotalAmountProfited";
+            this.uxTotalAmountProfited.Size = new System.Drawing.Size(0, 17);
+            this.uxTotalAmountProfited.TabIndex = 27;
+            // 
+            // uxPotentialAmount
+            // 
+            this.uxPotentialAmount.AutoSize = true;
+            this.uxPotentialAmount.Location = new System.Drawing.Point(809, 136);
+            this.uxPotentialAmount.Name = "uxPotentialAmount";
+            this.uxPotentialAmount.Size = new System.Drawing.Size(0, 17);
+            this.uxPotentialAmount.TabIndex = 28;
+            // 
             // uxSellStockForm
             // 
             this.AcceptButton = this.uxSellStockBttn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1173, 388);
+            this.Controls.Add(this.uxPotentialAmount);
+            this.Controls.Add(this.uxTotalAmountProfited);
             this.Controls.Add(this.uxCloseBttn);
             this.Controls.Add(this.uxSellStockListInfo);
             this.Controls.Add(this.uxNumberOfShares);
@@ -183,5 +204,7 @@
         private System.Windows.Forms.Label uxNumberLabel;
         private System.Windows.Forms.Label uxInstructionLabel;
         private System.Windows.Forms.Button uxCloseBttn;
+        private System.Windows.Forms.Label uxTotalAmountProfited;
+        private System.Windows.Forms.Label uxPotentialAmount;
     }
 }
