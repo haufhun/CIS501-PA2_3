@@ -67,6 +67,11 @@ namespace Portfolio_GUI
         private List<ToolStripSplitButton> _listOfPortfolioButtons;
 
         /// <summary>
+        /// count of portfolios.
+        /// </summary>
+        private int _portfolioCount = 0;
+
+        /// <summary>
         /// A string holding the current portoflio selected.
         /// </summary>
         private string _currentPortfolio;
@@ -335,17 +340,17 @@ namespace Portfolio_GUI
         /// <param name="portfolioName">Name of portfolio to create and display</param>
         private void AddPortfolioToToolStrip(string portfolioName)
         {
-            foreach (var p in _listOfPortfolioButtons)
-            {
-                if (!p.Visible)
+                foreach (var p in _listOfPortfolioButtons)
                 {
-                    p.Visible = true;
-                    p.Text = portfolioName;
-                    _currentPortfolio = portfolioName;
-                    DisplayPortfolio();
-                    return;
+                    if (!p.Visible)
+                    {
+                        p.Visible = true;
+                        p.Text = portfolioName;
+                        _currentPortfolio = portfolioName;
+                        DisplayPortfolio();
+                        return;
+                    }
                 }
-            }
         }
 
         /// <summary>
@@ -365,7 +370,7 @@ namespace Portfolio_GUI
             }
 
             uxHomeListInfo.EndUpdate();
-            uxHomeGainsLosses.Text = _account.GetGainsAndLossesReport().ToString("c");
+            DisplayGainsAndLossesPretty(uxHomeGainsLosses, _account.GetGainsAndLossesReport());
         }
 
         /// <summary>
@@ -380,7 +385,7 @@ namespace Portfolio_GUI
             uxAccNetWorthOutput.Text = t.Item3.ToString("C");
             uxAccTotalInvestedOutput.Text = t.Item2.ToString("C");
             uxAccNetWorthStocksOutput.Text = _account.GetCashBalance().ToString("C");
-            uxAccGainsLossesOutput.Text = _account.GetGainsAndLossesReport().ToString("C");
+            DisplayGainsAndLossesPretty(uxAccGainsLossesOutput, _account.GetGainsAndLossesReport());
 
             uxAccListInfo.BeginUpdate();
             uxAccListInfo.Items.Clear();
@@ -411,8 +416,8 @@ namespace Portfolio_GUI
             uxPrtTotalInvestedOuput.Text = info.Item2.ToString("C");
             uxPrtNetWorthOutput.Text =
                 _account.SelectPortfolio(_currentPortfolio).GetCurrentValueOfAllStocks().ToString("c");
-            uxPrtGainsLossesOutput.Text =
-                _account.SelectPortfolio(_currentPortfolio).GetGainsAndLossesReport().ToString("C");
+
+            DisplayGainsAndLossesPretty(uxPrtGainsLossesOutput, _account.SelectPortfolio(_currentPortfolio).GetGainsAndLossesReport());
 
             var infoList = _account.GetAllPortfolioStockInfoTuple(_currentPortfolio);
 
@@ -446,6 +451,7 @@ namespace Portfolio_GUI
             var name = parent.Text;
             _account.DeletePortfolio(name);
             parent.Visible = false;
+            _portfolioCount--;
         }
 
         /// <summary>
@@ -506,6 +512,19 @@ namespace Portfolio_GUI
         private void uxExitProgram_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        public void DisplayGainsAndLossesPretty(Label l, decimal cash)
+        { 
+            l.Text = cash.ToString("c");
+            if(cash < 0)
+            {
+                l.ForeColor = Color.Red;
+            }
+            else if (cash > 0)
+            {
+                l.ForeColor = Color.SeaGreen;
+            }
         }
     }
 }
