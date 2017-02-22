@@ -5,8 +5,10 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Class_Library;
 
 namespace Portfolio_GUI
 {
@@ -43,7 +45,34 @@ namespace Portfolio_GUI
 
         private void uxAmountTxtBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
+            if (Regex.IsMatch((sender as TextBox).Text, @"\.\d\d") && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void uxAmountTxtBox_TextChanged(object sender, EventArgs e)
+        {
+            var text = (sender as TextBox).Text;
+            if (text.Length > 0)
+            {
+                if (Convert.ToDecimal(text) > Account.TRANSFER_FEE)
+                {
+                    uxOK.Enabled = true;
+                }
+            }
+            else
+            {
+                uxOK.Enabled = false;
+            }
         }
     }
 }

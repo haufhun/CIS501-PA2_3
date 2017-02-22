@@ -37,6 +37,8 @@
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.uxTabControl = new System.Windows.Forms.TabControl();
             this.uxHomeTab = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.uxVolatilityGroup = new System.Windows.Forms.GroupBox();
             this.uxRadioBttnMedium = new System.Windows.Forms.RadioButton();
             this.uxRadioBttnLow = new System.Windows.Forms.RadioButton();
@@ -141,9 +143,12 @@
             this.uxTabControl.SelectedIndex = 0;
             this.uxTabControl.Size = new System.Drawing.Size(1245, 571);
             this.uxTabControl.TabIndex = 2;
+            this.uxTabControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.uxTabControl_Selecting);
             // 
             // uxHomeTab
             // 
+            this.uxHomeTab.Controls.Add(this.label3);
+            this.uxHomeTab.Controls.Add(this.label5);
             this.uxHomeTab.Controls.Add(this.uxVolatilityGroup);
             this.uxHomeTab.Controls.Add(this.label18);
             this.uxHomeTab.Controls.Add(this.uxHomeListInfo);
@@ -156,12 +161,34 @@
             this.uxHomeTab.Text = "Home";
             this.uxHomeTab.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(816, 293);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 20);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "$0.00";
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(634, 293);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(136, 20);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Net Gain/Loss:";
+            // 
             // uxVolatilityGroup
             // 
             this.uxVolatilityGroup.Controls.Add(this.uxRadioBttnMedium);
             this.uxVolatilityGroup.Controls.Add(this.uxRadioBttnLow);
             this.uxVolatilityGroup.Controls.Add(this.uxRadioBttnHigh);
-            this.uxVolatilityGroup.Location = new System.Drawing.Point(553, 86);
+            this.uxVolatilityGroup.Location = new System.Drawing.Point(638, 86);
             this.uxVolatilityGroup.Name = "uxVolatilityGroup";
             this.uxVolatilityGroup.Size = new System.Drawing.Size(437, 151);
             this.uxVolatilityGroup.TabIndex = 8;
@@ -171,22 +198,22 @@
             // 
             this.uxRadioBttnMedium.AutoSize = true;
             this.uxRadioBttnMedium.Enabled = false;
-            this.uxRadioBttnMedium.Location = new System.Drawing.Point(18, 63);
+            this.uxRadioBttnMedium.Location = new System.Drawing.Point(12, 63);
             this.uxRadioBttnMedium.Name = "uxRadioBttnMedium";
             this.uxRadioBttnMedium.Size = new System.Drawing.Size(415, 21);
             this.uxRadioBttnMedium.TabIndex = 6;
-            this.uxRadioBttnMedium.Text = "Medium-volatility- Increment/decrement the price from 2%-8%";
+            this.uxRadioBttnMedium.Text = "&Medium-volatility- Increment/decrement the price from 2%-8%";
             this.uxRadioBttnMedium.UseVisualStyleBackColor = true;
             // 
             // uxRadioBttnLow
             // 
             this.uxRadioBttnLow.AutoSize = true;
             this.uxRadioBttnLow.Enabled = false;
-            this.uxRadioBttnLow.Location = new System.Drawing.Point(18, 88);
+            this.uxRadioBttnLow.Location = new System.Drawing.Point(12, 88);
             this.uxRadioBttnLow.Name = "uxRadioBttnLow";
             this.uxRadioBttnLow.Size = new System.Drawing.Size(391, 21);
             this.uxRadioBttnLow.TabIndex = 4;
-            this.uxRadioBttnLow.Text = "Low-volatility- Increment/decrement the price from 1%-4%";
+            this.uxRadioBttnLow.Text = "&Low-volatility- Increment/decrement the price from 1%-4%";
             this.uxRadioBttnLow.UseVisualStyleBackColor = true;
             // 
             // uxRadioBttnHigh
@@ -194,19 +221,19 @@
             this.uxRadioBttnHigh.AutoSize = true;
             this.uxRadioBttnHigh.Checked = true;
             this.uxRadioBttnHigh.Enabled = false;
-            this.uxRadioBttnHigh.Location = new System.Drawing.Point(18, 36);
+            this.uxRadioBttnHigh.Location = new System.Drawing.Point(12, 36);
             this.uxRadioBttnHigh.Name = "uxRadioBttnHigh";
             this.uxRadioBttnHigh.Size = new System.Drawing.Size(403, 21);
             this.uxRadioBttnHigh.TabIndex = 5;
             this.uxRadioBttnHigh.TabStop = true;
-            this.uxRadioBttnHigh.Text = "High-volatility- Increment/decrement the price from 3%-15%";
+            this.uxRadioBttnHigh.Text = "&High-volatility- Increment/decrement the price from 3%-15%";
             this.uxRadioBttnHigh.UseVisualStyleBackColor = true;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(547, 52);
+            this.label18.Location = new System.Drawing.Point(632, 52);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(318, 31);
             this.label18.TabIndex = 7;
@@ -221,9 +248,9 @@
             this.uxHmCompanyNameCol,
             this.uxHmCurrentPriceCol});
             this.uxHomeListInfo.GridLines = true;
-            this.uxHomeListInfo.Location = new System.Drawing.Point(6, 33);
+            this.uxHomeListInfo.Location = new System.Drawing.Point(6, 37);
             this.uxHomeListInfo.Name = "uxHomeListInfo";
-            this.uxHomeListInfo.Size = new System.Drawing.Size(535, 506);
+            this.uxHomeListInfo.Size = new System.Drawing.Size(553, 506);
             this.uxHomeListInfo.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.uxHomeListInfo.TabIndex = 3;
             this.uxHomeListInfo.UseCompatibleStateImageBehavior = false;
@@ -242,7 +269,7 @@
             // uxHmCurrentPriceCol
             // 
             this.uxHmCurrentPriceCol.Text = "Price Per Share";
-            this.uxHmCurrentPriceCol.Width = 221;
+            this.uxHmCurrentPriceCol.Width = 132;
             // 
             // uxHomeToolStrip
             // 
@@ -264,7 +291,7 @@
             this.uxOpenTickerFile.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.uxOpenTickerFile.Name = "uxOpenTickerFile";
             this.uxOpenTickerFile.Size = new System.Drawing.Size(139, 24);
-            this.uxOpenTickerFile.Text = "Open Ticker File";
+            this.uxOpenTickerFile.Text = "&Open Ticker File";
             this.uxOpenTickerFile.Click += new System.EventHandler(this.uxOpenTickerFile_Click);
             // 
             // uxSimulateStockPrices
@@ -274,7 +301,7 @@
             this.uxSimulateStockPrices.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.uxSimulateStockPrices.Name = "uxSimulateStockPrices";
             this.uxSimulateStockPrices.Size = new System.Drawing.Size(173, 24);
-            this.uxSimulateStockPrices.Text = "Simulate Stock Prices";
+            this.uxSimulateStockPrices.Text = "&Simulate Stock Prices";
             this.uxSimulateStockPrices.Click += new System.EventHandler(this.uxSimulateStockPrices_Click);
             // 
             // toolStripSeparator2
@@ -290,6 +317,7 @@
             this.uxExitProgram.Name = "uxExitProgram";
             this.uxExitProgram.Size = new System.Drawing.Size(128, 24);
             this.uxExitProgram.Text = "Exit Ticker 501";
+            this.uxExitProgram.Click += new System.EventHandler(this.uxExitProgram_Click);
             // 
             // uxAccountTab
             // 
@@ -313,7 +341,7 @@
             this.uxAccountTab.TabIndex = 1;
             this.uxAccountTab.Text = "Account";
             this.uxAccountTab.UseVisualStyleBackColor = true;
-            this.uxAccountTab.Click += new System.EventHandler(this.uxAccountTab_Click);
+           // this.uxAccountTab.Click += new System.EventHandler(this.uxAccountTab_Click);
             // 
             // toolStrip1
             // 
@@ -335,16 +363,17 @@
             this.uxAddFunds.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.uxAddFunds.Name = "uxAddFunds";
             this.uxAddFunds.Size = new System.Drawing.Size(103, 24);
-            this.uxAddFunds.Text = "Add Funds";
+            this.uxAddFunds.Text = "&Add Funds";
             this.uxAddFunds.Click += new System.EventHandler(this.uxAddFunds_Click);
             // 
             // uxWithdrawFunds
             // 
+            this.uxWithdrawFunds.Enabled = false;
             this.uxWithdrawFunds.Image = global::Portfolio_GUI.Properties.Resources.WithdrawFund1;
             this.uxWithdrawFunds.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.uxWithdrawFunds.Name = "uxWithdrawFunds";
             this.uxWithdrawFunds.Size = new System.Drawing.Size(139, 24);
-            this.uxWithdrawFunds.Text = "Withdraw Funds";
+            this.uxWithdrawFunds.Text = "&Withdraw Funds";
             this.uxWithdrawFunds.Click += new System.EventHandler(this.uxWithdrawFunds_Click);
             // 
             // toolStripSeparator3
@@ -354,6 +383,7 @@
             // 
             // helpToolStripButton1
             // 
+            this.helpToolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.helpToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.helpToolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripButton1.Image")));
             this.helpToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -612,6 +642,7 @@
             this.uxPrtGainsLossesOutput.Size = new System.Drawing.Size(49, 20);
             this.uxPrtGainsLossesOutput.TabIndex = 22;
             this.uxPrtGainsLossesOutput.Text = "$0.00";
+            this.uxPrtGainsLossesOutput.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label8
             // 
@@ -656,6 +687,7 @@
             this.uxPrtNetWorthOutput.Size = new System.Drawing.Size(49, 20);
             this.uxPrtNetWorthOutput.TabIndex = 18;
             this.uxPrtNetWorthOutput.Text = "$0.00";
+            this.uxPrtNetWorthOutput.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label12
             // 
@@ -678,6 +710,7 @@
             this.uxPrtTotalInvestedOuput.Size = new System.Drawing.Size(49, 20);
             this.uxPrtTotalInvestedOuput.TabIndex = 16;
             this.uxPrtTotalInvestedOuput.Text = "$0.00";
+            this.uxPrtTotalInvestedOuput.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // uxPrtBalOutput
             // 
@@ -689,6 +722,7 @@
             this.uxPrtBalOutput.Size = new System.Drawing.Size(49, 20);
             this.uxPrtBalOutput.TabIndex = 15;
             this.uxPrtBalOutput.Text = "$0.00";
+            this.uxPrtBalOutput.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label15
             // 
@@ -1051,6 +1085,8 @@
         private System.Windows.Forms.ToolStripButton uxWithdrawFunds;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton helpToolStripButton1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
     }
 }
 

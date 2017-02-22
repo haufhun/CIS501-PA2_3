@@ -11,6 +11,7 @@ namespace Portfolio_GUI
         private Account _account;
         private List<Observer> _observers;
         private List<PortfolioObserver> _portfolioObservers;
+        private DisplayErrorMessageObserver diplayDisplayErrorMessageObserver;
 
         public GuiController(Account a)
         {
@@ -29,6 +30,13 @@ namespace Portfolio_GUI
             _portfolioObservers.Add(o);
         }
 
+        public void ErrorMessageRegister(DisplayErrorMessageObserver o)
+        {
+            diplayDisplayErrorMessageObserver = o;
+        }
+
+        
+
         public void DepositFunds(decimal cash)
         {
             //validate cash isn't null
@@ -40,14 +48,30 @@ namespace Portfolio_GUI
 
         public void WithdrawFunds(decimal cash)
         {
-            throw new NotImplementedException();
-            SignalObservers();
+            try
+            {
+                _account.WithdrawFunds(cash);
+                SignalObservers();
+            }
+            catch (AccountExceptions ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void BuyStocks(string portfolioName, string tickerName, int numberOfShares)
         {
-            _account.BuyStock(portfolioName, tickerName, numberOfShares);
-            SignalObservers();
+            try
+            {
+                _account.BuyStock(portfolioName, tickerName, numberOfShares);
+                SignalObservers();
+                
+            }
+            catch (AccountExceptions)
+            {
+                diplayDisplayErrorMessageObserver("You currently do not have enought funds to perform this action");
+            }
+
         }
 
         public void SellStocks(string portfolioName, string tickerName, int numberOfShares)
@@ -63,15 +87,22 @@ namespace Portfolio_GUI
 
         public void AddPortfolio(string portfolioName, AddPortfolioObserver addPrtMethod)
         {
-            _account.AddPortfolio(portfolioName);
-            addPrtMethod(portfolioName);
-            SignalObservers();
+            try
+            {
+                _account.AddPortfolio(portfolioName);
+                addPrtMethod(portfolioName);
+                SignalObservers();
+            }
+            catch (SamePortfolioNameException)
+            {
+                diplayDisplayErrorMessageObserver("You already have a portfolio named \"" + portfolioName + "\".");
+            }
         }
 
 
         public void DeletePortfolio(string portfolioName)
         {
-            throw new NotImplementedException();
+            _account.DeletePortfolio(portfolioName);
             SignalObservers();
         }
 
@@ -100,7 +131,7 @@ namespace Portfolio_GUI
         /// Reads the ticker information from a file.
         /// </summary>
         /// <param name="fileName"> The file to read</param>
-        public void ReadTickerFile(OpenFileDialog openFile)
+        public bool ReadTickerFile(OpenFileDialog openFile)
         {
             try
             {
@@ -110,16 +141,16 @@ namespace Portfolio_GUI
                     string fileName = openFile.FileName;
                     DataBase.GetInfoFromFile(new StreamReader(fileName));
                     SignalObservers();
+                    return true;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message);
             }
+            return false;
 
         }
-
-
 
         /// <summary>
         /// Signals the observers to update fields of the user interface

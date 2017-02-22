@@ -20,5 +20,9 @@ namespace Portfolio_GUI
 
         public string PortfolioName => uxPNameTxtBox.Text;
 
+        private void uxPNameTxtBox_TextChanged(object sender, EventArgs e)
+        {
+            uxOK.Enabled = (sender as TextBox).Text.Length > 0;
+        }
     }
 }

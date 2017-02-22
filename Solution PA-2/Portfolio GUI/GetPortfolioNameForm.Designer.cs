@@ -48,10 +48,12 @@
             this.uxPNameTxtBox.Name = "uxPNameTxtBox";
             this.uxPNameTxtBox.Size = new System.Drawing.Size(127, 22);
             this.uxPNameTxtBox.TabIndex = 1;
+            this.uxPNameTxtBox.TextChanged += new System.EventHandler(this.uxPNameTxtBox_TextChanged);
             // 
             // uxOK
             // 
             this.uxOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.uxOK.Enabled = false;
             this.uxOK.Location = new System.Drawing.Point(191, 44);
             this.uxOK.Name = "uxOK";
             this.uxOK.Size = new System.Drawing.Size(76, 35);
@@ -72,6 +74,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "uxGetPortfolioNameForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "InputForm";
             this.ResumeLayout(false);
             this.PerformLayout();
