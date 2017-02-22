@@ -182,6 +182,7 @@
             this.uxAmount.Name = "uxAmount";
             this.uxAmount.Size = new System.Drawing.Size(115, 30);
             this.uxAmount.TabIndex = 25;
+            this.uxAmount.Text = "0.00";
             this.uxAmount.TextChanged += new System.EventHandler(this.uxAmount_TextChanged);
             this.uxAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 

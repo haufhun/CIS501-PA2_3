@@ -163,7 +163,5 @@ namespace Portfolio_GUI
                 }
             }
         }
-
-
     }
 }

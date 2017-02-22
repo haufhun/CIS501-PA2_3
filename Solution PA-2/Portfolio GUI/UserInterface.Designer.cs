@@ -341,7 +341,7 @@
             this.uxAccountTab.TabIndex = 1;
             this.uxAccountTab.Text = "Account";
             this.uxAccountTab.UseVisualStyleBackColor = true;
-            this.uxAccountTab.Click += new System.EventHandler(this.uxAccountTab_Click);
+           // this.uxAccountTab.Click += new System.EventHandler(this.uxAccountTab_Click);
             // 
             // toolStrip1
             // 

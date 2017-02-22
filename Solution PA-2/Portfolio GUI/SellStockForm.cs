@@ -24,7 +24,6 @@ namespace Portfolio_GUI
             _sellStocksHandler = handler;
             InitializeComponent();
             DisplayListView();
-
         }
 
         private void DisplayListView()
@@ -37,7 +36,7 @@ namespace Portfolio_GUI
             foreach (var i in infoList)
             {
                 //  Tickername, companyName, pricePerShare, sharesOwned, networthOfShares
-                string[] itemInfo = {  i.Item1, i.Item2, i.Item3.ToString("C"), i.Item4.ToString(), i.Item5.ToString("C") };
+                string[] itemInfo = {i.Item1, i.Item2, i.Item3.ToString("C"), i.Item4.ToString(), i.Item5.ToString("C")};
 
                 uxSellStockListInfo.Items.Add(new ListViewItem(itemInfo));
             }
@@ -49,8 +48,8 @@ namespace Portfolio_GUI
         {
             if (uxSellStockListInfo.SelectedItems.Count > 0)
             {
-                var numOfSharesOwned = uxSellStockListInfo.SelectedItems[0].SubItems[3];
-                uxNumberOfShares.Maximum = Convert.ToInt32(numOfSharesOwned);
+                var numOfSharesOwned = uxSellStockListInfo.SelectedItems[0].SubItems[3].Text;
+                uxNumberOfShares.Maximum = Convert.ToDecimal(numOfSharesOwned);
             }
         }
 
@@ -62,6 +61,7 @@ namespace Portfolio_GUI
 
                 int numberOfShares = Convert.ToInt32(uxNumberOfShares.Value);
                 _sellStocksHandler(_portfolioName, tickerName, numberOfShares);
+                DisplayListView();
 
             }
             else
@@ -73,6 +73,15 @@ namespace Portfolio_GUI
         private void uxCloseBttn_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void uxSellStockListInfo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (uxSellStockListInfo.SelectedItems.Count > 0)
+            {
+                //var currentPrice = Convert.ToDecimal(uxSellStockListInfo.SelectedItems[0].SubItems[2].Text.Substring(1));
+                uxNumberOfShares.Maximum = Convert.ToDecimal(uxSellStockListInfo.SelectedItems[0].SubItems[3].Text);
+            }
         }
     }
 }

@@ -50,11 +50,10 @@ namespace Portfolio_GUI
         private ReadFileHandler _readFileHandler;
 
 
-        
-        private Account _account;
-        
+        private Account _account;     
         private int _numOfPortolios = 0;
         private string _currentPortfolio;
+
         /// <summary>
         /// Constructor for User interface
         /// </summary>
@@ -102,10 +101,7 @@ namespace Portfolio_GUI
 
         }
 
-        private void uxAccountTab_Click(object sender, EventArgs e)
-        {
-
-        }
+     
 
         private void uxTotalInvestedOutput_Click(object sender, EventArgs e)
         {
@@ -118,21 +114,25 @@ namespace Portfolio_GUI
         {
             uxPortfolioName.Text = uxPortfolio1.Text;
             _currentPortfolio = uxPortfolio1.Text;
+            DisplayPortfolio();
         }
 
         private void uxPortfolio2_ButtonClick(object sender, EventArgs e)
         {
             uxPortfolioName.Text = uxPortfolio2.Text;
             _currentPortfolio = uxPortfolio2.Text;
+            DisplayPortfolio();
         }
 
         private void uxPortfolio3_ButtonClick(object sender, EventArgs e)
         {
             uxPortfolioName.Text = uxPortfolio3.Text;
             _currentPortfolio = uxPortfolio3.Text;
-        } 
+            DisplayPortfolio();
+
+        }
         /////////////////////////////////////////////////////////
-        
+
         private void uxOpenTickerFile_Click(object sender, EventArgs e)
         {
            if( _readFileHandler(uxOpenFileDialog))
@@ -205,6 +205,7 @@ namespace Portfolio_GUI
                     break;
 
             }
+            _currentPortfolio = portfolioName;
             uxBuyStocksForm buyStocksForm = new uxBuyStocksForm(portfolioName, _buyStocksHandler, _account);
             buyStocksForm.Show();
 
@@ -233,6 +234,7 @@ namespace Portfolio_GUI
                     break;
 
             }
+            _currentPortfolio = portfolioName;
             var sellStocksForm = new uxSellStockForm(portfolioName, _sellStocksHandler, _account);
             sellStocksForm.Show();
         }
@@ -354,9 +356,8 @@ namespace Portfolio_GUI
             uxPrtBalOutput.Text = _account.CashBalance.ToString("C");
             uxPrtPercentageOfAccountOutput.Text = info.Item3.ToString("P");
             uxPrtTotalInvestedOuput.Text = info.Item2.ToString("C");
-
-            //USe method he created getcurrentvalueofportfolio  //uxPrtNetWorthOutput.Text = _account.ToString("C");//
-            // use method getgainsandlossesofportfolio //uxPrtGainsLossesOutput.Text = _account.g.ToString("C");//
+            uxPrtNetWorthOutput.Text = _account.SelectPortfolio(_currentPortfolio).GetCurrentValueOfAllStocks().ToString("c");
+            uxPrtGainsLossesOutput.Text = _account.SelectPortfolio(_currentPortfolio).GetGainsAndLossesReport().ToString("C");
 
             var infoList = _account.GetAllPortfolioStockInfoTuple(_currentPortfolio);
 

@@ -65,6 +65,7 @@ namespace Portfolio_GUI
             {
                 _account.BuyStock(portfolioName, tickerName, numberOfShares);
                 SignalObservers();
+                
             }
             catch (AccountExceptions)
             {
