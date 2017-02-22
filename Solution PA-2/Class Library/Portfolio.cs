@@ -88,7 +88,7 @@ namespace Class_Library
             var totalPrice = _stocks[tickerName].SellNumberOfShares(numberOfShares);
             _totalNumberOfShares -= numberOfShares;
             _totalInvested -= totalPrice;
-            if (numberOfShares >= _stocks[tickerName].TotalNumberOfShares)
+            if (_stocks[tickerName].TotalNumberOfShares == 0)
             {
                 _stocks.Remove(tickerName);
             }

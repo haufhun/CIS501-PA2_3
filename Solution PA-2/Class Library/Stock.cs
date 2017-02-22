@@ -10,15 +10,19 @@
         /// Private field that holds the amount that has been invested in this stock.
         /// </summary>
         private decimal _totalInvested;
+        /// <summary>
+        /// The total number of shares.
+        /// </summary>
         private int _totalNumberOfShares;
-        private decimal _averageSharePrice;
 
         /// <summary>
         /// Returns the total balance of the amount in the stock
         /// </summary>
         public decimal TotalInvested => _totalInvested;
+        /// <summary>
+        /// The total number of shares.
+        /// </summary>
         public int TotalNumberOfShares => _totalNumberOfShares;
-        public decimal AverageSharePrice => _averageSharePrice;
 
         /// <summary>
         /// Initializes a new Stock object, adds the value to the TotalInvested field, and adds
@@ -42,8 +46,6 @@
         {
             _totalNumberOfShares += numberOfShares;
             _totalInvested += numberOfShares * buyPrice;
-            _averageSharePrice = _totalInvested/_totalNumberOfShares;
-            
         }
         /// <summary>
         /// Sells a certain number of shares of this stock.
@@ -55,10 +57,11 @@
             if (numberOfShares > _totalNumberOfShares)
                 numberOfShares = _totalNumberOfShares;
 
-            _totalInvested -= numberOfShares * _averageSharePrice;
+            var price = numberOfShares * DataBase.PriceAndTickerName[TickerName].Item3;
+            _totalInvested -= price;
             _totalNumberOfShares -= numberOfShares;
 
-            return _averageSharePrice * numberOfShares;
+            return price;
         }
         /// <summary>
         /// Gets the current market value of this stock for all the shares.

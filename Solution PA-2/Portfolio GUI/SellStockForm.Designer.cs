@@ -66,7 +66,6 @@
             this.uxSellStockListInfo.UseCompatibleStateImageBehavior = false;
             this.uxSellStockListInfo.View = System.Windows.Forms.View.Details;
             this.uxSellStockListInfo.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.uxSellStockListInfo_ItemSelectionChanged);
-           // this.uxSellStockListInfo.SelectedIndexChanged += new System.EventHandler(this.uxSellStockListInfo_SelectedIndexChanged);
             // 
             // uxTickerNameCol
             // 
@@ -178,7 +177,7 @@
             this.AcceptButton = this.uxSellStockBttn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1173, 388);
+            this.ClientSize = new System.Drawing.Size(1251, 388);
             this.Controls.Add(this.uxPotentialAmount);
             this.Controls.Add(this.uxResultLabel);
             this.Controls.Add(this.uxCloseBttn);
