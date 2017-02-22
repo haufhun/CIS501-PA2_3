@@ -127,7 +127,7 @@ namespace Portfolio_GUI
             _listOfPortfolioButtons.Add(uxPortfolio2);
             _listOfPortfolioButtons.Add(uxPortfolio3);
 
-
+            ClearPortfolioPage();
         }
 
         //Porfolio Button clicks are under this Expanding tab
@@ -402,12 +402,12 @@ namespace Portfolio_GUI
             uxAccListInfo.BeginUpdate();
             uxAccListInfo.Items.Clear();
 
-            var list = new List<Tuple<decimal, double, string, string>>();
-            _account.GetPositionsBalance(list);
+            var list = _account.GetAllAccountStockInfoTuple();
+
             foreach (var i in list)
             {
                 //TickerName    Company Name    Price per share     Shares owned    Networth of shares   position balance
-                string[] itemInfo = {i.Item1.ToString("C"), i.Item2.ToString("P"), i.Item3, i.Item4};
+                string[] itemInfo = {i.Item1, i.Item2, i.Item3.ToString("c"), i.Item4.ToString(), i.Item5.ToString("c"), i.Item6.ToString("p")};
                 ListViewItem item = new ListViewItem(itemInfo);
                 uxAccListInfo.Items.Add(item);
             }
@@ -465,6 +465,21 @@ namespace Portfolio_GUI
             parent.Visible = false;
             if (_account.NumberOfPortfolios < 3) uxAddPortfolio.Visible = true;
             _portfolioCount--;
+            ClearPortfolioPage();
+        }
+
+        private void ClearPortfolioPage()
+        {
+            uxPrtBalOutput.Text = "$0.00";
+            uxPrtPercentageOfAccountOutput.Text = "0.00 %";
+            uxPrtTotalInvestedOuput.Text = "$0.00";
+            uxPrtNetWorthOutput.Text = "$0.00";
+            uxPortfolioName.Text = "Please Select a Portfolio";
+            DisplayGainsAndLossesPretty(uxPrtGainsLossesOutput, 0.00m);
+
+            uxPrtListInfo.BeginUpdate();
+            uxPrtListInfo.Items.Clear();
+            uxPrtListInfo.EndUpdate();
         }
 
         /// <summary>
