@@ -362,8 +362,10 @@ namespace Portfolio_Console
         /// <param name="tickerName">The stock ticker name.</param>
         public void DisplayStockWasPurchased(int shares, decimal cash, string tickerName)
         {
+            decimal altogether = Convert.ToDecimal(9.99);
+            altogether += shares * cash;
             Console.WriteLine(shares + " shares of " + tickerName + " stock were bought for "
-                            + (cash * shares).ToString("c"));
+                            + (altogether ).ToString("c"));
         }
         /// <summary>
         /// Displays to the user that shares were sold.

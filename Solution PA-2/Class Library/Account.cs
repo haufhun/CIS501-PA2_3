@@ -284,6 +284,10 @@ namespace Class_Library
             //TIckername companyName pricePerShare sharesOwned networthOfShares positionBalance
             return _portfolios[portfolioName].GetAllPortfolioStockInfo();
         }
+        /// <summary>
+        /// This methods holds the tuple to get the stock information.
+        /// </summary>
+        /// <returns>List of stock info.</returns>
         public List<Tuple<string, string, decimal, int, decimal, double>> GetAllAccountStockInfoTuple()
         {
             //TIckername companyName pricePerShare sharesOwned networthOfShares positionBalance
@@ -295,12 +299,20 @@ namespace Class_Library
             return list;
         }
 
+        /// <summary>
+        /// This method gets max shares we are able to buy from dollar amount option.
+        /// </summary>
+        /// <param name="currentPrice">Current price of the stock.</param>
+        /// <returns>An integer is returned with the result.</returns>
         public int GetMaxSharesToBuy(decimal currentPrice)
         {
             return (int)(_cashFund / currentPrice);
         }
     }
 
+    /// <summary>
+    /// Exception
+    /// </summary>
     public class SamePortfolioNameException : AccountExceptions
     {
     }
