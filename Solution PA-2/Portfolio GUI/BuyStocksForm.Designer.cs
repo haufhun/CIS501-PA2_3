@@ -184,7 +184,7 @@
             this.uxAmount.TabIndex = 25;
             this.uxAmount.Text = "0.00";
             this.uxAmount.TextChanged += new System.EventHandler(this.uxAmount_TextChanged);
-            this.uxAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.uxAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.uxAmount_KeyPress);
             // 
             // label2
             // 

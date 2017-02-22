@@ -13,10 +13,18 @@ namespace Portfolio_GUI
 {
     public partial class uxSellStockForm : Form
     {
+        //private fields for contructors.////////////
         private SellStocksHandler _sellStocksHandler;
         private string _portfolioName;
         private Account _account;
+        /////////////////////////////////////////////
 
+        /// <summary>
+        /// Contructor for buy stocks form.
+        /// </summary>
+        /// <param name="portfolioName">Portfolio name</param>
+        /// <param name="handler">sell stock handler delegate</param>
+        /// <param name="a">the account object</param>
         public uxSellStockForm(string portfolioName, SellStocksHandler handler, Account a)
         {
             _portfolioName = portfolioName;
@@ -26,33 +34,9 @@ namespace Portfolio_GUI
             DisplayListView();
         }
 
-        private void DisplayListView()
-        {
-            var infoList = _account.GetAllPortfolioStockInfoTuple(_portfolioName);
-
-            uxSellStockListInfo.BeginUpdate();
-            uxSellStockListInfo.Items.Clear();
-
-            foreach (var i in infoList)
-            {
-                //  Tickername, companyName, pricePerShare, sharesOwned, networthOfShares
-                string[] itemInfo = {i.Item1, i.Item2, i.Item3.ToString("C"), i.Item4.ToString(), i.Item5.ToString("C")};
-
-                uxSellStockListInfo.Items.Add(new ListViewItem(itemInfo));
-            }
-
-            uxSellStockListInfo.EndUpdate();
-        }
-
-        private void uxSellStockListInfo_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
-        {
-            if (uxSellStockListInfo.SelectedItems.Count > 0)
-            {
-                var numOfSharesOwned = uxSellStockListInfo.SelectedItems[0].SubItems[3].Text;
-                uxNumberOfShares.Maximum = Convert.ToDecimal(numOfSharesOwned);
-            }
-        }
-
+        /// <summary>
+        /// Click handler for the sell stock button the main handle event.
+        /// </summary>
         private void uxSellStockBttn_Click(object sender, EventArgs e)
         {
             if (uxSellStockListInfo.SelectedItems.Count > 0)
@@ -76,21 +60,55 @@ namespace Portfolio_GUI
             }
         }
 
+        /// <summary>
+        /// Click handler for Close buton. Closes the program
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uxCloseBttn_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void uxSellStockListInfo_SelectedIndexChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Displays the info to the listView.
+        /// </summary>
+        private void DisplayListView()
+        {
+            var infoList = _account.GetAllPortfolioStockInfoTuple(_portfolioName);
+
+            uxSellStockListInfo.BeginUpdate();
+            uxSellStockListInfo.Items.Clear();
+
+            foreach (var i in infoList)
+            {
+                //  Tickername, companyName, pricePerShare, sharesOwned, networthOfShares
+                string[] itemInfo = {i.Item1, i.Item2, i.Item3.ToString("C"), i.Item4.ToString(), i.Item5.ToString("C")};
+
+                uxSellStockListInfo.Items.Add(new ListViewItem(itemInfo));
+            }
+
+            uxSellStockListInfo.EndUpdate();
+        }
+
+        /// <summary>
+        /// Updates info when an item is selected in the list view.
+        /// </summary>
+        private void uxSellStockListInfo_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             if (uxSellStockListInfo.SelectedItems.Count > 0)
             {
-                uxNumberOfShares.Maximum = Convert.ToDecimal(uxSellStockListInfo.SelectedItems[0].SubItems[3].Text);
+                var numOfSharesOwned = uxSellStockListInfo.SelectedItems[0].SubItems[3].Text;
+                uxNumberOfShares.Maximum = Convert.ToDecimal(numOfSharesOwned);
+
                 var currentPrice = Convert.ToDecimal(uxSellStockListInfo.SelectedItems[0].SubItems[2].Text.Substring(1));
                 uxPotentialAmount.Text = "Potential Profit: " + (currentPrice * uxNumberOfShares.Value).ToString("C");
             }
         }
 
+        /// <summary>
+        /// updates information when number of shares are changed.
+        /// </summary>
         private void uxNumberOfShares_ValueChanged(object sender, EventArgs e)
         {
             if (uxSellStockListInfo.SelectedItems.Count > 0)
@@ -99,5 +117,17 @@ namespace Portfolio_GUI
                 uxPotentialAmount.Text = "Potential Profit: " + (currentPrice * uxNumberOfShares.Value).ToString("C");
             }
         }
+
+        //private void uxSellStockListInfo_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if (uxSellStockListInfo.SelectedItems.Count > 0)
+        //    {
+        //       // uxNumberOfShares.Maximum = Convert.ToDecimal(uxSellStockListInfo.SelectedItems[0].SubItems[3].Text);
+        //        var currentPrice = Convert.ToDecimal(uxSellStockListInfo.SelectedItems[0].SubItems[2].Text.Substring(1));
+        //        uxPotentialAmount.Text = "Potential Profit: " + (currentPrice * uxNumberOfShares.Value).ToString("C");
+        //    }
+        //}
+
+
     }
 }

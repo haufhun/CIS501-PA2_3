@@ -66,7 +66,7 @@
             this.uxSellStockListInfo.UseCompatibleStateImageBehavior = false;
             this.uxSellStockListInfo.View = System.Windows.Forms.View.Details;
             this.uxSellStockListInfo.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.uxSellStockListInfo_ItemSelectionChanged);
-            this.uxSellStockListInfo.SelectedIndexChanged += new System.EventHandler(this.uxSellStockListInfo_SelectedIndexChanged);
+           // this.uxSellStockListInfo.SelectedIndexChanged += new System.EventHandler(this.uxSellStockListInfo_SelectedIndexChanged);
             // 
             // uxTickerNameCol
             // 

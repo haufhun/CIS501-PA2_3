@@ -14,11 +14,19 @@ namespace Portfolio_GUI
 {
     public partial class uxBuyStocksForm : Form
     {
-        
+        //private fields for contructors.//////////
         private BuyStocksHandler _buyStocksHandler;
         private string _portfolioName;
         private Account _account;
-
+        ///////////////////////////////////////////
+        
+        /// 
+        /// <summary>
+        /// Contructor for buy stocks form.
+        /// </summary>
+        /// <param name="portfolioName">Portfoliio name</param>
+        /// <param name="handler">the buy stock hander delegate</param>
+        /// <param name="a">the account object</param>
         public uxBuyStocksForm(string portfolioName, BuyStocksHandler handler, Account a)
         {
             _portfolioName = portfolioName;
@@ -29,24 +37,9 @@ namespace Portfolio_GUI
             DisplayListView();
         }
 
-        private void DisplayListView()
-        {
-            uxBuyStockListInfo.BeginUpdate();
-            uxBuyStockListInfo.Items.Clear();
-
-            foreach (var i in DataBase.PriceAndTickerName.Values)
-            {
-                //Tickername, companyName, pricePerShare
-                string[] itemInfo = {i.Item1, i.Item2, i.Item3.ToString("C")};
-                
-                uxBuyStockListInfo.Items.Add(new ListViewItem(itemInfo));
-                
-            }
-
-            uxBuyStockListInfo.EndUpdate();
-        }
-
-
+        /// <summary>
+        /// Click handler for the buy stock button main handle event.
+        /// </summary>
         private void uxBuyStockBttn_Click(object sender, EventArgs e)
         {
             if (uxBuyStockListInfo.SelectedItems.Count > 0)
@@ -69,6 +62,37 @@ namespace Portfolio_GUI
             }
         }
 
+        /// <summary>
+        /// Click handler for Close buton. Closes the program
+        /// </summary>
+        private void uxCloseBttn_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        /// <summary>
+        /// Displays the info to the listView
+        /// </summary>
+        private void DisplayListView()
+        {
+            uxBuyStockListInfo.BeginUpdate();
+            uxBuyStockListInfo.Items.Clear();
+
+            foreach (var i in DataBase.PriceAndTickerName.Values)
+            {
+                //Tickername, companyName, pricePerShare
+                string[] itemInfo = {i.Item1, i.Item2, i.Item3.ToString("C")};
+                
+                uxBuyStockListInfo.Items.Add(new ListViewItem(itemInfo));
+                
+            }
+
+            uxBuyStockListInfo.EndUpdate();
+        }
+
+        /// <summary>
+        /// Updates info when an item is selected in the list view.
+        /// </summary>
         private void uxBuyStockListInfo_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             if (uxBuyStockListInfo.SelectedItems.Count > 0)
@@ -102,13 +126,28 @@ namespace Portfolio_GUI
 
 
         }
-
-        private void uxCloseBttn_Click(object sender, EventArgs e)
+      
+        /// <summary>
+        /// updates information when number of shares are changed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uxNumberOfShares_ValueChanged(object sender, EventArgs e)
         {
-            Close();
+            if (uxBuyBySharesOrPrice.SelectedIndex == 0 && uxBuyStockListInfo.SelectedItems.Count > 0)
+            {
+                var currentPrice = Convert.ToDecimal(uxBuyStockListInfo.SelectedItems[0].SubItems[2].Text.Substring(1));
+                uxAmount.Text = (uxNumberOfShares.Value * currentPrice).ToString("F");
+            }
         }
 
-        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+       
+        /// <summary>
+        /// Makes sure you can only input a correct money value int textbox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uxAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
             {
@@ -124,6 +163,9 @@ namespace Portfolio_GUI
             }
         }
 
+        /// <summary>
+        /// Changes form to either buy stocks by shares or by cash amount.
+        /// </summary>
         private void uxBuyBySharesOrPrice_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (uxBuyBySharesOrPrice.SelectedIndex)
@@ -143,15 +185,10 @@ namespace Portfolio_GUI
             }
         }
 
-        private void uxNumberOfShares_ValueChanged(object sender, EventArgs e)
-        {
-            if (uxBuyBySharesOrPrice.SelectedIndex == 0 && uxBuyStockListInfo.SelectedItems.Count > 0)
-            {
-                var currentPrice = Convert.ToDecimal(uxBuyStockListInfo.SelectedItems[0].SubItems[2].Text.Substring(1));
-                uxAmount.Text = (uxNumberOfShares.Value * currentPrice).ToString("F");
-            }
-        }
-
+        
+        /// <summary>
+        /// Updates the number of shares able to purchase when inputing the cash amount.
+        /// </summary>
         private void uxAmount_TextChanged(object sender, EventArgs e)
         {
             if (uxBuyBySharesOrPrice.SelectedIndex == 1 && uxBuyStockListInfo.SelectedItems.Count > 0)
@@ -163,5 +200,7 @@ namespace Portfolio_GUI
                 }
             }
         }
+
+
     }
 }
