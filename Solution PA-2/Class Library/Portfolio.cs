@@ -127,6 +127,10 @@ namespace Class_Library
             return _stocks.ContainsKey(tickerName);
         }
 
+        /// <summary>
+        /// This method gets the information for the stocks.
+        /// </summary>
+        /// <returns>Returns the list which contains the info.</returns>
         public List<Tuple<string, string, decimal, int, decimal, double>> GetAllPortfolioStockInfo()
         {
             var list = new List<Tuple<string, string, decimal, int, decimal, double>>();
@@ -150,6 +154,11 @@ namespace Class_Library
             return list;
         }
 
+        /// <summary>
+        /// This method gets the positions balance for the total account.
+        /// </summary>
+        /// <param name="list">List of stocks.</param>
+        /// <param name="totalNumberOfShares">Number of shares for that stock.</param>
         public void GetTotalAccountPositionsBalance(List<Tuple<decimal, double, string, string>> list, int totalNumberOfShares)
         {
             foreach (var s in _stocks.Values)
@@ -162,6 +171,11 @@ namespace Class_Library
             }
         }
 
+        /// <summary>
+        /// This method gets all the account stock information.
+        /// </summary>
+        /// <param name="list">List of stocks.</param>
+        /// <param name="totalNumberOfShares">The total number of shares of the stocks</param>
         public void GetAllAccountStockInfo(List<Tuple<string, string, decimal, int, decimal, double>> list, int totalNumberOfShares)
         {
             var secondList = new List<Tuple<decimal, double, string, string>>();
