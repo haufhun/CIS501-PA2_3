@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portfolio Console", "Portfo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portfolio GUI", "Portfolio GUI\Portfolio GUI.csproj", "{1F19A4AA-9821-4FC5-9AD8-04E7A930FA8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ticker501-MVC", "Ticker501-MVC\Ticker501-MVC.csproj", "{EE53CC40-EC88-4197-B259-76C8E014E1A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1F19A4AA-9821-4FC5-9AD8-04E7A930FA8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F19A4AA-9821-4FC5-9AD8-04E7A930FA8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F19A4AA-9821-4FC5-9AD8-04E7A930FA8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE53CC40-EC88-4197-B259-76C8E014E1A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE53CC40-EC88-4197-B259-76C8E014E1A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE53CC40-EC88-4197-B259-76C8E014E1A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE53CC40-EC88-4197-B259-76C8E014E1A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
