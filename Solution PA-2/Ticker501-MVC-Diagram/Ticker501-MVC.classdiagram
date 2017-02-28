@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="6978d6f2-44b2-4d3c-bbc8-abc2b7d915fe" name="Ticker501-MVC" linkedPackageId="c2e7ffec-82aa-426d-a0b3-a5cd4f191ad1" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="8aeaf506-1905-4a3e-9540-ba4227309f00">
+      <profileInstance Id="f7f9e9ba-8fa7-4a69-bb3f-a08c73bd91d2" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="a1f970f5-ad2e-4a45-9808-2234020c4eb9">
+      <profileInstance Id="54616f95-0322-4616-a97a-533ee8e50e81" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="9cdc3527-1cbf-4cdc-ae03-4054ee2633a8" name="UserInterface-V" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6f7a2fe1-63e5-4d42-a1e5-cb5ca2d3ccc8" />
+        <suppliersInternal>
+          <dependency Id="f5f86411-dbfa-4a22-86f7-e65c40e59488">
+            <interfaceMoniker Id="365eab36-ae74-4990-ae9e-9baeec18ed76" LastKnownName="Interface1" />
+            <elementDefinition Id="213757ee-2ac5-4e97-a020-523ae0cbe30d" />
+          </dependency>
+        </suppliersInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="85fee84c-a25c-4274-b48c-7af34c3a0c07" name="Controller-C" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="734c5fae-de6d-47c2-8410-ddd4a70e3e57" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="6d6b2851-ef4f-4a91-a2da-f6856f69ae20" name="Account-M" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="4102967c-c50f-4c7a-a996-2a1f21d4786f" />
+        <suppliersInternal>
+          <interfaceRealization Id="6512eed2-6176-4035-bbba-1cc31bb4d5d7">
+            <interfaceMoniker Id="3571ac6c-dc7c-40e5-8610-477981e21afd" LastKnownName="Interface2" />
+            <elementDefinition Id="ee717442-d09e-40cd-b8c9-2c7d2cffa189" />
+          </interfaceRealization>
+        </suppliersInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="7a79a4fd-f447-47a7-8dee-c11312964f42" name="Portfolio-M" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="b34a28e7-2f7d-41f0-abc5-8baebac2d16e" />
+        <suppliersInternal>
+          <interfaceRealization Id="6c57598a-95ee-4b04-abf9-15928cf29a98">
+            <interfaceMoniker Id="9833345f-3a05-4b4d-a4d4-b1daf40e0197" LastKnownName="Interface3" />
+            <elementDefinition Id="3de9b905-26c0-4647-ae71-be26100eb707" />
+          </interfaceRealization>
+        </suppliersInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="83049a05-abe4-45e8-9a15-e3795e416641" name="Stock-M" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="ec0b5f9e-9072-4a24-9d7b-3850f3983a7f" />
+        <suppliersInternal>
+          <interfaceRealization Id="7b00b692-5ddc-406e-a3a9-56cf69ba0d59">
+            <interfaceMoniker Id="5611639c-2d74-4d4d-92b9-d845d2a367a2" LastKnownName="Interface4" />
+            <elementDefinition Id="c14fe9ce-5cff-4367-a0a5-62c73fd18174" />
+          </interfaceRealization>
+        </suppliersInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="365eab36-ae74-4990-ae9e-9baeec18ed76" name="Interface1" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="5d1c9dae-1d05-4a6c-9152-e81870ccc56e" />
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="3571ac6c-dc7c-40e5-8610-477981e21afd" name="Interface2" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4f4e5f86-1aae-4882-9608-f9363daaabc5" />
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="9833345f-3a05-4b4d-a4d4-b1daf40e0197" name="Interface3" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f0f3b375-aa47-4d97-8836-9b9a492a3788" />
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="5611639c-2d74-4d4d-92b9-d845d2a367a2" name="Interface4" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d9449469-6a82-41c2-8a82-90a9845f3ba4" />
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="c2e7ffec-82aa-426d-a0b3-a5cd4f191ad1" name="Ticker501-MVC-Diagram">
+    <elementDefinition Id="d5fd6ce1-d9c7-4b3c-96f9-6d61b19f6938" />
+  </package>
+</logicalClassDesignerModel>
