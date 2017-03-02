@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="fffd2ded-a176-4370-9df0-728100d34cca"
+  name="Model" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="4102967c-c50f-4c7a-a996-2a1f21d4786f"
+        name="Account-M"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="ee717442-d09e-40cd-b8c9-2c7d2cffa189">
+            <interfaceMoniker
+              Id="4f4e5f86-1aae-4882-9608-f9363daaabc5"
+              LastKnownName="Interface2"
+              LastKnownLocation="Package_1927.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="4f4e5f86-1aae-4882-9608-f9363daaabc5"
+        name="Interface2"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="b34a28e7-2f7d-41f0-abc5-8baebac2d16e"
+        name="Portfolio-M"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="3de9b905-26c0-4647-ae71-be26100eb707">
+            <interfaceMoniker
+              Id="f0f3b375-aa47-4d97-8836-9b9a492a3788"
+              LastKnownName="Interface3"
+              LastKnownLocation="Package_1927.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="f0f3b375-aa47-4d97-8836-9b9a492a3788"
+        name="Interface3"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="ec0b5f9e-9072-4a24-9d7b-3850f3983a7f"
+        name="Stock-M"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="c14fe9ce-5cff-4367-a0a5-62c73fd18174">
+            <interfaceMoniker
+              Id="d9449469-6a82-41c2-8a82-90a9845f3ba4"
+              LastKnownName="Interface4"
+              LastKnownLocation="Package_1927.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="d9449469-6a82-41c2-8a82-90a9845f3ba4"
+        name="Interface4"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

@@ -26,105 +26,1001 @@
         isLeaf="false"
         isActiveClass="false">
         <suppliersInternal>
-          <dependency
-            Id="213757ee-2ac5-4e97-a020-523ae0cbe30d">
+          <interfaceRealization
+            Id="abeb58d6-e786-416c-899a-0007795ae735">
+            <interfaceMoniker
+              Id="0f51fcf3-0923-46ef-810f-1510ccf46d11"
+              LastKnownName="Observer"
+              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="15490749-2705-44eb-ba46-125f4b309618">
+            <interfaceMoniker
+              Id="0db35dd8-a395-4451-aa48-faa694c92306"
+              LastKnownName="AddPortfolioObserver"
+              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="f77e7bd9-f1f1-47d4-9a44-1d361620fff0">
+            <interfaceMoniker
+              Id="61d85b86-ce5b-438d-b080-763ba1c7506c"
+              LastKnownName="DisplayErrorMessageObserver"
+              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <targetEnds>
+          <association
+            Id="6b7d7b46-5b70-448a-93bd-d23489e7aa47"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName="Interface2"
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="4f4e5f86-1aae-4882-9608-f9363daaabc5"
+              LastKnownName="Interface2"
+              LastKnownLocation="Package_1927.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b12d0f00-ba77-469a-b2a7-fc16a1f97129"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2f330d79-2c26-43a6-8e73-86aeb77e0ea6"
+                  name="Interface2"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="aa449ef8-e120-49ca-8367-470032a1ae7b"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName="Interface3"
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="f0f3b375-aa47-4d97-8836-9b9a492a3788"
+              LastKnownName="Interface3"
+              LastKnownLocation="Package_1927.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9506d500-7fea-418d-9bc3-f91754d744a7"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2b5ce961-3fda-4e33-bc28-771dcad49a0e"
+                  name="Interface3"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="8058f70c-987d-4224-a2ea-f50621fddae4"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName="Interface4"
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="d9449469-6a82-41c2-8a82-90a9845f3ba4"
+              LastKnownName="Interface4"
+              LastKnownLocation="Package_1927.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="098df678-fdad-4639-af58-49fbeafa7b3c"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a8ced70e-109f-422a-aa6b-f1ff926602aa"
+                  name="Interface4"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="646265f8-8288-4c9f-9fe6-b257afd3ecf4"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="dcb452a3-5943-4f7c-9eaf-00e097883b28"
+              LastKnownName="SellStockForm-V"
+              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="55a87831-cdc7-48a2-a837-0fd2b4dfbef5"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ce3a3472-bf41-4d58-9a17-b8adfbd5dc1f"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="3c7e0305-eaac-4dee-8e5d-de6859c76070"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="6fd52449-fa85-413b-857d-39624247dadf"
+              LastKnownName="BuyStocksForm-V"
+              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a6159670-5204-4e91-8495-59d642c28d58"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="caca2e82-0129-42ca-acb0-2ba3082151f0"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="400a96a4-39f9-4bb3-a4d0-6ebfcffac049"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="3757f012-e9c6-4697-8a59-e17a69b9ae44"
+              LastKnownName="GetPortfolioNameForm-V"
+              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="08c20f40-ed3e-48ed-a90e-944ba30c6705"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c5400ab6-0a8e-4c68-8ecb-666415ed794e"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="9f7d4138-7473-49c3-b1f1-81b12f2cc0f8"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="ef1ac8c7-7543-41a1-b219-853f8cc1e0fa"
+              LastKnownName="AddWithdrawFundsForm"
+              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e03b6083-325c-4cbd-a732-9345df001a03"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a96e15c2-c581-49b4-8ca8-82af6871d0b9"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="dd8559ca-db0d-4509-86f2-00f64fa9645f"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
             <interfaceMoniker
               Id="5d1c9dae-1d05-4a6c-9152-e81870ccc56e"
-              LastKnownName="Interface1"
+              LastKnownName="DepositCashHandler"
               LastKnownLocation="Ticker501-MVC-Diagram.uml" />
-          </dependency>
-        </suppliersInternal>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="682ea802-9d92-4694-9a3a-33e845fae816"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="730bdc90-f1d4-4b3e-982e-05af93e30eff"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="c6d9a6bf-c9f7-4b70-aa59-eebb4129a47e"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="18287127-93b2-4fff-abf0-b2df42364ddd"
+              LastKnownName="WithdrawCashHandler"
+              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="db5588b5-9f22-4b23-944b-2425c6ed154c"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6f2caaf8-a831-4e64-98ed-f0a2a93cd40c"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="b576dc3e-9321-4108-bcbf-6a95eae5fddb"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="9a9f9f76-2d75-4c96-9840-32ee3cbc0eaa"
+              LastKnownName="BuyStocksHandler"
+              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e3dcfe82-7cc9-438b-8775-57669e933505"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="bbf9c94c-af76-4af0-832d-2198d61e89ee"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="19abbd2d-1b93-48a4-8b72-a892403a791a"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="e07cf2fe-c016-4290-b553-740f909e1c49"
+              LastKnownName="SellStocksHandler"
+              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d1a14c49-c083-4239-b448-ffa59942c6c4"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a4065f88-6a10-4fec-9e7d-5cdbefbff043"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="4442c5ab-e939-4f09-9a38-875647e02371"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="b62aa2fa-0449-4e43-af29-068d7ea8544e"
+              LastKnownName="AddPortfolioHandler"
+              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="84e586b4-683c-4cfa-a709-b504d8c7bf62"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="469ba9e2-132d-45ab-866f-2c1367c8b6da"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="07d0dd57-8b87-429c-979b-b1a64928353c"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="69fd05a0-7908-41d6-bcd4-35a6d48f28ac"
+              LastKnownName="DeletePortfolioHandler"
+              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c63150c0-4cec-42e3-977f-f74b1e94a7b2"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="27c9d0a0-00bd-43cb-b2d4-83f99a1f1b51"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="d49984eb-2796-44b6-a4ef-838bafbd1830"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="96596f55-3c36-4413-b1ec-2901e2a6ae3a"
+              LastKnownName="SimulateHandler"
+              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="36f16b59-d564-43cc-a845-2b3cf046885a"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="60854820-2fbf-48ad-8e88-c87a14e4095a"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="83ae62d1-d00f-444d-8e2c-38b2e351d95d"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="08fb49a6-34be-4294-90b8-0de0cdc855e9"
+              LastKnownName="ReadFileHandler"
+              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="06451dee-a123-4b37-b358-1f2c21e54645"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="46599139-34b2-45c3-b92a-58c24d7b8845"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <class
         Id="734c5fae-de6d-47c2-8410-ddd4a70e3e57"
-        name="Controller-C"
+        name="CentralCommandCenterAkaJarvis-C"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="900ad056-bbf1-47fa-a3fd-7677e7770ee0">
+            <interfaceMoniker
+              Id="5d1c9dae-1d05-4a6c-9152-e81870ccc56e"
+              LastKnownName="DepositCashHandler"
+              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="44becfc1-4303-4f77-bb14-8e7f4cfdc08b">
+            <interfaceMoniker
+              Id="18287127-93b2-4fff-abf0-b2df42364ddd"
+              LastKnownName="WithdrawCashHandler"
+              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="da480e1c-6640-4c89-8253-48f396684d11">
+            <interfaceMoniker
+              Id="9a9f9f76-2d75-4c96-9840-32ee3cbc0eaa"
+              LastKnownName="BuyStocksHandler"
+              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="3dc15904-4881-4a2d-8fa4-9ee6f2c07e13">
+            <interfaceMoniker
+              Id="e07cf2fe-c016-4290-b553-740f909e1c49"
+              LastKnownName="SellStocksHandler"
+              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="244a11be-546a-4156-9c5e-5af51d520bee">
+            <interfaceMoniker
+              Id="b62aa2fa-0449-4e43-af29-068d7ea8544e"
+              LastKnownName="AddPortfolioHandler"
+              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="3578bcc5-203e-4cd8-9365-14afb8f59f40">
+            <interfaceMoniker
+              Id="69fd05a0-7908-41d6-bcd4-35a6d48f28ac"
+              LastKnownName="DeletePortfolioHandler"
+              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="6ce4aa50-4451-4c20-964e-3acf11230c2b">
+            <interfaceMoniker
+              Id="96596f55-3c36-4413-b1ec-2901e2a6ae3a"
+              LastKnownName="SimulateHandler"
+              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="cbab545e-fa23-43a2-9f1d-1a927f1668d1">
+            <interfaceMoniker
+              Id="08fb49a6-34be-4294-90b8-0de0cdc855e9"
+              LastKnownName="ReadFileHandler"
+              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <targetEnds>
+          <association
+            Id="ab90762e-a0a4-4bc7-83fb-1fbd66dac22f"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="4f4e5f86-1aae-4882-9608-f9363daaabc5"
+              LastKnownName="Interface2"
+              LastKnownLocation="Package_1927.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ee0c949c-cbe8-4b26-92b7-cfe2f1253417"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6777072b-8219-434f-8369-13bc7bdbe234"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="fec81709-69eb-4d3b-b2a8-0c2822d9958b"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="f0f3b375-aa47-4d97-8836-9b9a492a3788"
+              LastKnownName="Interface3"
+              LastKnownLocation="Package_1927.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5c667fcd-98c1-4805-a6c9-3480bb9d9b82"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="cb4c94b8-87f7-450c-b860-c3324f9589a2"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="f75d8333-6839-4b51-894d-c46c68df4b2d"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="d9449469-6a82-41c2-8a82-90a9845f3ba4"
+              LastKnownName="Interface4"
+              LastKnownLocation="Package_1927.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4fefad3b-52b5-4fdd-93c0-abe3beb670fa"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5df939a6-9093-4a6f-9adc-ef158c3d770d"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="a9b5dd37-9170-4298-baf5-6c595efa0aa0"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="0f51fcf3-0923-46ef-810f-1510ccf46d11"
+              LastKnownName="Observer"
+              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6af37b90-c474-48da-9d9c-04eb03cc8ed6"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f47f7c9f-4a08-476b-8244-861a28721814"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="e8c1c106-10d1-4c50-b9b0-c344861d1677"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="0db35dd8-a395-4451-aa48-faa694c92306"
+              LastKnownName="AddPortfolioObserver"
+              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2c9c190a-263d-453f-9400-8d39e7d7155d"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a599a319-62e8-43f0-b6a6-2493ae31836d"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="1d97fc62-17d8-4851-914b-6e6a20a9c1c7"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="61d85b86-ce5b-438d-b080-763ba1c7506c"
+              LastKnownName="DisplayErrorMessageObserver"
+              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="cbbdce28-2a86-4dfa-8a1c-71f0850560db"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="22240fef-7f7f-448e-89b4-e56c5f9e61f2"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="5d1c9dae-1d05-4a6c-9152-e81870ccc56e"
+        name="DepositCashHandler"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="18287127-93b2-4fff-abf0-b2df42364ddd"
+        name="WithdrawCashHandler"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="9a9f9f76-2d75-4c96-9840-32ee3cbc0eaa"
+        name="BuyStocksHandler"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="e07cf2fe-c016-4290-b553-740f909e1c49"
+        name="SellStocksHandler"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="b62aa2fa-0449-4e43-af29-068d7ea8544e"
+        name="AddPortfolioHandler"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="69fd05a0-7908-41d6-bcd4-35a6d48f28ac"
+        name="DeletePortfolioHandler"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="96596f55-3c36-4413-b1ec-2901e2a6ae3a"
+        name="SimulateHandler"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="08fb49a6-34be-4294-90b8-0de0cdc855e9"
+        name="ReadFileHandler"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="0f51fcf3-0923-46ef-810f-1510ccf46d11"
+        name="Observer"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="0db35dd8-a395-4451-aa48-faa694c92306"
+        name="AddPortfolioObserver"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="61d85b86-ce5b-438d-b080-763ba1c7506c"
+        name="DisplayErrorMessageObserver"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="dcb452a3-5943-4f7c-9eaf-00e097883b28"
+        name="SellStockForm-V"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <class
-        Id="4102967c-c50f-4c7a-a996-2a1f21d4786f"
-        name="Account-M"
+        Id="6fd52449-fa85-413b-857d-39624247dadf"
+        name="BuyStocksForm-V"
         isAbstract="false"
         isLeaf="false"
-        isActiveClass="false">
-        <suppliersInternal>
-          <interfaceRealization
-            Id="ee717442-d09e-40cd-b8c9-2c7d2cffa189">
-            <interfaceMoniker
-              Id="4f4e5f86-1aae-4882-9608-f9363daaabc5"
-              LastKnownName="Interface2"
-              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
-          </interfaceRealization>
-        </suppliersInternal>
-      </class>
+        isActiveClass="false" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <class
-        Id="b34a28e7-2f7d-41f0-abc5-8baebac2d16e"
-        name="Portfolio-M"
+        Id="3757f012-e9c6-4697-8a59-e17a69b9ae44"
+        name="GetPortfolioNameForm-V"
         isAbstract="false"
         isLeaf="false"
-        isActiveClass="false">
-        <suppliersInternal>
-          <interfaceRealization
-            Id="3de9b905-26c0-4647-ae71-be26100eb707">
-            <interfaceMoniker
-              Id="f0f3b375-aa47-4d97-8836-9b9a492a3788"
-              LastKnownName="Interface3"
-              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
-          </interfaceRealization>
-        </suppliersInternal>
-      </class>
+        isActiveClass="false" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <class
-        Id="ec0b5f9e-9072-4a24-9d7b-3850f3983a7f"
-        name="Stock-M"
+        Id="ef1ac8c7-7543-41a1-b219-853f8cc1e0fa"
+        name="AddWithdrawFundsForm"
         isAbstract="false"
         isLeaf="false"
-        isActiveClass="false">
-        <suppliersInternal>
-          <interfaceRealization
-            Id="c14fe9ce-5cff-4367-a0a5-62c73fd18174">
-            <interfaceMoniker
-              Id="d9449469-6a82-41c2-8a82-90a9845f3ba4"
-              LastKnownName="Interface4"
-              LastKnownLocation="Ticker501-MVC-Diagram.uml" />
-          </interfaceRealization>
-        </suppliersInternal>
-      </class>
+        isActiveClass="false" />
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <Interface
-        Id="5d1c9dae-1d05-4a6c-9152-e81870ccc56e"
-        name="Interface1"
-        isAbstract="false"
-        isLeaf="false" />
+      <packageMoniker
+        Id="fffd2ded-a176-4370-9df0-728100d34cca"
+        LastKnownName="Model"
+        LastKnownLocation="Package_1927.uml" />
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <Interface
-        Id="4f4e5f86-1aae-4882-9608-f9363daaabc5"
-        name="Interface2"
-        isAbstract="false"
-        isLeaf="false" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <Interface
-        Id="f0f3b375-aa47-4d97-8836-9b9a492a3788"
-        name="Interface3"
-        isAbstract="false"
-        isLeaf="false" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <Interface
-        Id="d9449469-6a82-41c2-8a82-90a9845f3ba4"
-        name="Interface4"
-        isAbstract="false"
-        isLeaf="false" />
+      <packageMoniker
+        Id="39feff6f-56eb-448c-8d5a-859a3f0f8445"
+        LastKnownName="Package1"
+        LastKnownLocation="Package_1942.uml" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

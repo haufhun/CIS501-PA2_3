@@ -1,91 +1,550 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="6978d6f2-44b2-4d3c-bbc8-abc2b7d915fe" name="Ticker501-MVC" linkedPackageId="c2e7ffec-82aa-426d-a0b3-a5cd4f191ad1" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
-  <profileInstances>
-    <packageHasProfileInstances Id="8aeaf506-1905-4a3e-9540-ba4227309f00">
-      <profileInstance Id="f7f9e9ba-8fa7-4a69-bb3f-a08c73bd91d2" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="a1f970f5-ad2e-4a45-9808-2234020c4eb9">
-      <profileInstance Id="54616f95-0322-4616-a97a-533ee8e50e81" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-  </profileInstances>
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="9cdc3527-1cbf-4cdc-ae03-4054ee2633a8" name="UserInterface-V" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="6f7a2fe1-63e5-4d42-a1e5-cb5ca2d3ccc8" />
         <suppliersInternal>
-          <dependency Id="f5f86411-dbfa-4a22-86f7-e65c40e59488">
-            <interfaceMoniker Id="365eab36-ae74-4990-ae9e-9baeec18ed76" LastKnownName="Interface1" />
-            <elementDefinition Id="213757ee-2ac5-4e97-a020-523ae0cbe30d" />
-          </dependency>
+          <interfaceRealization Id="28d4308b-a12e-44d2-9c62-495727caa9f9">
+            <interfaceMoniker Id="bd400d3c-a6e3-4bc3-b1e8-799c0de0d0af" LastKnownName="Observer" />
+            <elementDefinition Id="abeb58d6-e786-416c-899a-0007795ae735" />
+          </interfaceRealization>
+          <interfaceRealization Id="54dc83d2-c442-445c-b953-0106622c9fac">
+            <interfaceMoniker Id="31f0340c-3a55-4774-b144-dd0ccc927337" LastKnownName="AddPortfolioObserver" />
+            <elementDefinition Id="15490749-2705-44eb-ba46-125f4b309618" />
+          </interfaceRealization>
+          <interfaceRealization Id="2824e192-db2b-49c0-97eb-de5c3e4109c7">
+            <interfaceMoniker Id="13fea0ce-fa2f-4b93-aa47-3d3738fb68d7" LastKnownName="DisplayErrorMessageObserver" />
+            <elementDefinition Id="f77e7bd9-f1f1-47d4-9a44-1d361620fff0" />
+          </interfaceRealization>
         </suppliersInternal>
-      </class>
-    </logicalClassDesignerModelHasTypes>
-    <logicalClassDesignerModelHasTypes>
-      <class Id="85fee84c-a25c-4274-b48c-7af34c3a0c07" name="Controller-C" isAbstract="false" isLeaf="false" isActiveClass="false">
-        <elementDefinition Id="734c5fae-de6d-47c2-8410-ddd4a70e3e57" />
-      </class>
-    </logicalClassDesignerModelHasTypes>
-    <logicalClassDesignerModelHasTypes>
-      <class Id="6d6b2851-ef4f-4a91-a2da-f6856f69ae20" name="Account-M" isAbstract="false" isLeaf="false" isActiveClass="false">
-        <elementDefinition Id="4102967c-c50f-4c7a-a996-2a1f21d4786f" />
-        <suppliersInternal>
-          <interfaceRealization Id="6512eed2-6176-4035-bbba-1cc31bb4d5d7">
+        <targetEnds>
+          <association Id="54a5e09a-0477-46bb-b3c0-7a3a9ad2694a" isDerived="false" sourceEndRoleName="" targetEndRoleName="Interface2" isLeaf="false" isAbstract="false">
             <interfaceMoniker Id="3571ac6c-dc7c-40e5-8610-477981e21afd" LastKnownName="Interface2" />
-            <elementDefinition Id="ee717442-d09e-40cd-b8c9-2c7d2cffa189" />
-          </interfaceRealization>
-        </suppliersInternal>
-      </class>
-    </logicalClassDesignerModelHasTypes>
-    <logicalClassDesignerModelHasTypes>
-      <class Id="7a79a4fd-f447-47a7-8dee-c11312964f42" name="Portfolio-M" isAbstract="false" isLeaf="false" isActiveClass="false">
-        <elementDefinition Id="b34a28e7-2f7d-41f0-abc5-8baebac2d16e" />
-        <suppliersInternal>
-          <interfaceRealization Id="6c57598a-95ee-4b04-abf9-15928cf29a98">
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e76bd8fd-22d2-41b0-a41a-493800b7b718" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="b12d0f00-ba77-469a-b2a7-fc16a1f97129" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="013e3b59-0282-43e1-ba0a-9ef861b6e810" name="Interface2" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="2f330d79-2c26-43a6-8e73-86aeb77e0ea6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="6b7d7b46-5b70-448a-93bd-d23489e7aa47" />
+          </association>
+          <association Id="f861ec51-0dfa-426c-bbdd-1baf243123f7" isDerived="false" sourceEndRoleName="" targetEndRoleName="Interface3" isLeaf="false" isAbstract="false">
             <interfaceMoniker Id="9833345f-3a05-4b4d-a4d4-b1daf40e0197" LastKnownName="Interface3" />
-            <elementDefinition Id="3de9b905-26c0-4647-ae71-be26100eb707" />
-          </interfaceRealization>
-        </suppliersInternal>
-      </class>
-    </logicalClassDesignerModelHasTypes>
-    <logicalClassDesignerModelHasTypes>
-      <class Id="83049a05-abe4-45e8-9a15-e3795e416641" name="Stock-M" isAbstract="false" isLeaf="false" isActiveClass="false">
-        <elementDefinition Id="ec0b5f9e-9072-4a24-9d7b-3850f3983a7f" />
-        <suppliersInternal>
-          <interfaceRealization Id="7b00b692-5ddc-406e-a3a9-56cf69ba0d59">
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d6d30331-3e71-4531-8309-5f6ee029c56b" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="9506d500-7fea-418d-9bc3-f91754d744a7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e3680a72-b225-4893-b426-014288517fad" name="Interface3" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="2b5ce961-3fda-4e33-bc28-771dcad49a0e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="aa449ef8-e120-49ca-8367-470032a1ae7b" />
+          </association>
+          <association Id="7d80cb93-d18f-4524-ac1b-ea3ff95ce3e5" isDerived="false" sourceEndRoleName="" targetEndRoleName="Interface4" isLeaf="false" isAbstract="false">
             <interfaceMoniker Id="5611639c-2d74-4d4d-92b9-d845d2a367a2" LastKnownName="Interface4" />
-            <elementDefinition Id="c14fe9ce-5cff-4367-a0a5-62c73fd18174" />
-          </interfaceRealization>
-        </suppliersInternal>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="29a73b24-c8e4-4be2-931b-28e365e31cb8" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="098df678-fdad-4639-af58-49fbeafa7b3c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f98628ac-6a2f-4dd5-bfa0-972ee6a4c14a" name="Interface4" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="a8ced70e-109f-422a-aa6b-f1ff926602aa" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="8058f70c-987d-4224-a2ea-f50621fddae4" />
+          </association>
+          <association Id="9adb78f1-8a8a-4fbf-8268-c0e774a96e48" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="0b6eada1-6a74-4270-a52a-3370e381c6db" LastKnownName="SellStockForm-V" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="95937b50-a24b-437a-a062-54a9b0e5994d" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="55a87831-cdc7-48a2-a837-0fd2b4dfbef5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="af04e79c-e748-4e7c-a0e0-a8352c35cee8" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="ce3a3472-bf41-4d58-9a17-b8adfbd5dc1f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="646265f8-8288-4c9f-9fe6-b257afd3ecf4" />
+          </association>
+          <association Id="f1dd687e-0f98-42c6-b313-47d522b55de4" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="301aff51-34e6-4caf-a91f-e36091f4fa16" LastKnownName="BuyStocksForm-V" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="15d96ad3-3422-4715-8b62-6c684ae7789a" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="a6159670-5204-4e91-8495-59d642c28d58" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4f7b83d2-0476-4cbe-8459-0137d0867b79" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="caca2e82-0129-42ca-acb0-2ba3082151f0" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="3c7e0305-eaac-4dee-8e5d-de6859c76070" />
+          </association>
+          <association Id="08f24a5d-3d25-4753-8103-39193f9db6ef" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="f811f7c1-a2ed-4e7b-a89d-1d4c4bc82d2a" LastKnownName="GetPortfolioNameForm-V" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="cadb8bd7-e1f0-4348-9ef2-53b94a79e219" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="08c20f40-ed3e-48ed-a90e-944ba30c6705" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c9fc086b-7d65-43fc-9726-6a5c8b19ca6d" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="c5400ab6-0a8e-4c68-8ecb-666415ed794e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="400a96a4-39f9-4bb3-a4d0-6ebfcffac049" />
+          </association>
+          <association Id="a963f289-8f3f-45bf-b402-88e7a094eec7" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="16e60910-a4f4-499e-aec0-52235f40b545" LastKnownName="AddWithdrawFundsForm" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ccbb822c-e46e-4f65-97e4-503e23ad0205" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="e03b6083-325c-4cbd-a732-9345df001a03" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e87ef6a9-47ba-404d-801a-f5c9cfe02bc6" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="a96e15c2-c581-49b4-8ca8-82af6871d0b9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="9f7d4138-7473-49c3-b1f1-81b12f2cc0f8" />
+          </association>
+          <association Id="c08f081e-1017-4003-b2a2-92b354ef9f92" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="365eab36-ae74-4990-ae9e-9baeec18ed76" LastKnownName="DepositCashHandler" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3668ab75-259e-4234-b3c9-8e86c13669ce" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="682ea802-9d92-4694-9a3a-33e845fae816" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1eef937a-7a82-4e07-bb02-1754208859e9" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="730bdc90-f1d4-4b3e-982e-05af93e30eff" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="dd8559ca-db0d-4509-86f2-00f64fa9645f" />
+          </association>
+          <association Id="2fc2b986-8cc3-41f2-bc18-4913ad8bdf05" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="62e33fb7-e411-4d02-997c-3a22ca7483d0" LastKnownName="WithdrawCashHandler" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2f7881d2-d67e-45ec-8607-8d8183be34b4" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="db5588b5-9f22-4b23-944b-2425c6ed154c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e300905b-4edd-4f5c-b007-0de9c547e7d0" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="6f2caaf8-a831-4e64-98ed-f0a2a93cd40c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c6d9a6bf-c9f7-4b70-aa59-eebb4129a47e" />
+          </association>
+          <association Id="3ac1f738-c113-4014-8c1b-e2aacad8525b" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="149d9061-0ca9-4066-85ec-a50e8a18dba7" LastKnownName="BuyStocksHandler" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e0370c62-a925-4a23-9646-dbcb1bd70eaa" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="e3dcfe82-7cc9-438b-8775-57669e933505" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="823cbfbe-56d0-440b-b830-c5eb3091bda8" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="bbf9c94c-af76-4af0-832d-2198d61e89ee" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="b576dc3e-9321-4108-bcbf-6a95eae5fddb" />
+          </association>
+          <association Id="9e1ead42-6ae3-417e-8d4a-1a4add0ebf2b" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="5f238177-8682-4680-bb53-9c56a0187d56" LastKnownName="SellStocksHandler" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="26b4bcb5-9bac-4d4b-8892-4c746c0c57bf" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="d1a14c49-c083-4239-b448-ffa59942c6c4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1241a613-5748-4c45-b70c-0078c30341e5" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="a4065f88-6a10-4fec-9e7d-5cdbefbff043" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="19abbd2d-1b93-48a4-8b72-a892403a791a" />
+          </association>
+          <association Id="fd052fd5-84e6-4887-a389-cb6e5fe7436f" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="4cf2ac9a-ded2-43cd-b244-18571b6747f6" LastKnownName="AddPortfolioHandler" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c6b83aca-6e8b-4de8-8faf-e7e74269b562" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="84e586b4-683c-4cfa-a709-b504d8c7bf62" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="bd20a49e-dc93-45d0-a2c2-a07da9fe8833" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="469ba9e2-132d-45ab-866f-2c1367c8b6da" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="4442c5ab-e939-4f09-9a38-875647e02371" />
+          </association>
+          <association Id="9e4815e1-b9b6-4f37-a375-e80cf3c214d5" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="d2bdf8cf-c98b-48e6-85b9-74147880581f" LastKnownName="DeletePortfolioHandler" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ccf9670b-4a8c-4d18-957a-4a10a8a84817" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="c63150c0-4cec-42e3-977f-f74b1e94a7b2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7ef0f372-1ed1-4512-935d-f88ff27b0f09" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="27c9d0a0-00bd-43cb-b2d4-83f99a1f1b51" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="07d0dd57-8b87-429c-979b-b1a64928353c" />
+          </association>
+          <association Id="b3ce9da0-b35d-4024-a264-09fe34007f71" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="9e85ebd8-c812-4974-a63f-c8b12b4c766c" LastKnownName="SimulateHandler" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ed84cbb5-4e61-401b-95ce-1f16d7c8e66b" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="36f16b59-d564-43cc-a845-2b3cf046885a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8a637e3d-b605-4a10-bd80-26cc96b89bab" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="60854820-2fbf-48ad-8e88-c87a14e4095a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="d49984eb-2796-44b6-a4ef-838bafbd1830" />
+          </association>
+          <association Id="fce314f5-1dc9-42a4-a5a7-c9e5b2f7dea4" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="18b3a3e9-54fc-4c30-b913-c939997657be" LastKnownName="ReadFileHandler" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0f125d3d-8c3a-4cf8-ae74-444abc29ef36" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="06451dee-a123-4b37-b358-1f2c21e54645" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0d10c1f8-b361-41c6-981a-994a33f796dc" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="46599139-34b2-45c3-b92a-58c24d7b8845" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="83ae62d1-d00f-444d-8e2c-38b2e351d95d" />
+          </association>
+        </targetEnds>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <Interface Id="365eab36-ae74-4990-ae9e-9baeec18ed76" name="Interface1" isAbstract="false" isLeaf="false">
+      <class Id="85fee84c-a25c-4274-b48c-7af34c3a0c07" name="CentralCommandCenterAkaJarvis-C" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="734c5fae-de6d-47c2-8410-ddd4a70e3e57" />
+        <suppliersInternal>
+          <interfaceRealization Id="3e10546d-40b2-48f2-b1d4-f61b3aa3473a">
+            <interfaceMoniker Id="365eab36-ae74-4990-ae9e-9baeec18ed76" LastKnownName="DepositCashHandler" />
+            <elementDefinition Id="900ad056-bbf1-47fa-a3fd-7677e7770ee0" />
+          </interfaceRealization>
+          <interfaceRealization Id="89ed94f2-e8e4-466e-bf2c-1f39097a4ae1">
+            <interfaceMoniker Id="62e33fb7-e411-4d02-997c-3a22ca7483d0" LastKnownName="WithdrawCashHandler" />
+            <elementDefinition Id="44becfc1-4303-4f77-bb14-8e7f4cfdc08b" />
+          </interfaceRealization>
+          <interfaceRealization Id="951247cf-a426-4563-b2b2-160486e6e878">
+            <interfaceMoniker Id="149d9061-0ca9-4066-85ec-a50e8a18dba7" LastKnownName="BuyStocksHandler" />
+            <elementDefinition Id="da480e1c-6640-4c89-8253-48f396684d11" />
+          </interfaceRealization>
+          <interfaceRealization Id="899db299-33a0-4fdd-aa72-8d294514c60b">
+            <interfaceMoniker Id="5f238177-8682-4680-bb53-9c56a0187d56" LastKnownName="SellStocksHandler" />
+            <elementDefinition Id="3dc15904-4881-4a2d-8fa4-9ee6f2c07e13" />
+          </interfaceRealization>
+          <interfaceRealization Id="9c7bee1c-f733-4f94-a65e-c3a8b8a3752d">
+            <interfaceMoniker Id="4cf2ac9a-ded2-43cd-b244-18571b6747f6" LastKnownName="AddPortfolioHandler" />
+            <elementDefinition Id="244a11be-546a-4156-9c5e-5af51d520bee" />
+          </interfaceRealization>
+          <interfaceRealization Id="932d8c5d-6d4b-4067-9bc9-e3ac62c73303">
+            <interfaceMoniker Id="d2bdf8cf-c98b-48e6-85b9-74147880581f" LastKnownName="DeletePortfolioHandler" />
+            <elementDefinition Id="3578bcc5-203e-4cd8-9365-14afb8f59f40" />
+          </interfaceRealization>
+          <interfaceRealization Id="6898991d-8e8b-4971-afed-9dd9fae5c540">
+            <interfaceMoniker Id="9e85ebd8-c812-4974-a63f-c8b12b4c766c" LastKnownName="SimulateHandler" />
+            <elementDefinition Id="6ce4aa50-4451-4c20-964e-3acf11230c2b" />
+          </interfaceRealization>
+          <interfaceRealization Id="8b22732e-5328-4b0e-b49d-cc25c826c1f9">
+            <interfaceMoniker Id="18b3a3e9-54fc-4c30-b913-c939997657be" LastKnownName="ReadFileHandler" />
+            <elementDefinition Id="cbab545e-fa23-43a2-9f1d-1a927f1668d1" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <targetEnds>
+          <association Id="392f33a5-5563-4b00-a0d8-2f9c02a516ce" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="3571ac6c-dc7c-40e5-8610-477981e21afd" LastKnownName="Interface2" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="61473606-cc93-42eb-af14-69720faf42cd" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ee0c949c-cbe8-4b26-92b7-cfe2f1253417" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e2acf4af-2e8a-4558-9632-ab0ca0d24463" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="6777072b-8219-434f-8369-13bc7bdbe234" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="ab90762e-a0a4-4bc7-83fb-1fbd66dac22f" />
+          </association>
+          <association Id="377612d5-399e-48d1-b191-6c752f243c86" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="9833345f-3a05-4b4d-a4d4-b1daf40e0197" LastKnownName="Interface3" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ffc193e2-ff6d-46a7-b1d5-0a0ed3163bb5" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="5c667fcd-98c1-4805-a6c9-3480bb9d9b82" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d52d7333-4e80-45b7-acc0-ad4f15d45db5" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="cb4c94b8-87f7-450c-b860-c3324f9589a2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="fec81709-69eb-4d3b-b2a8-0c2822d9958b" />
+          </association>
+          <association Id="bbc59fd5-397a-45d9-a477-dca55a0ab975" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="5611639c-2d74-4d4d-92b9-d845d2a367a2" LastKnownName="Interface4" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7252b442-fa82-4d66-916a-a252e352d96e" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="4fefad3b-52b5-4fdd-93c0-abe3beb670fa" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="91e14846-3f17-4ccc-8ded-1ca14ba844de" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="5df939a6-9093-4a6f-9adc-ef158c3d770d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="f75d8333-6839-4b51-894d-c46c68df4b2d" />
+          </association>
+          <association Id="57fb1d10-6e33-4d93-b5eb-f695e34fb99f" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="bd400d3c-a6e3-4bc3-b1e8-799c0de0d0af" LastKnownName="Observer" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c363cd5e-9c88-4d29-9dec-c41aff29c7cb" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="6af37b90-c474-48da-9d9c-04eb03cc8ed6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8c1edc5c-76a3-45c3-a21a-46281d4618a3" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="f47f7c9f-4a08-476b-8244-861a28721814" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="a9b5dd37-9170-4298-baf5-6c595efa0aa0" />
+          </association>
+          <association Id="b1f165d6-42d5-4f2d-a40e-de015bc4316a" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="31f0340c-3a55-4774-b144-dd0ccc927337" LastKnownName="AddPortfolioObserver" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="884982ac-1c3f-4b00-8e7c-a581d7f28823" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="2c9c190a-263d-453f-9400-8d39e7d7155d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ee963a7a-6880-40cf-8794-0d1b000a6358" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="a599a319-62e8-43f0-b6a6-2493ae31836d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="e8c1c106-10d1-4c50-b9b0-c344861d1677" />
+          </association>
+          <association Id="23bfe439-f440-46e4-8780-6cd2f4e1b8ea" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="13fea0ce-fa2f-4b93-aa47-3d3738fb68d7" LastKnownName="DisplayErrorMessageObserver" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f9e29b0e-735f-4804-813a-1ea79785a619" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="cbbdce28-2a86-4dfa-8a1c-71f0850560db" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="058458b0-397b-41ef-af8d-02703677a629" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="22240fef-7f7f-448e-89b4-e56c5f9e61f2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="1d97fc62-17d8-4851-914b-6e6a20a9c1c7" />
+          </association>
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="365eab36-ae74-4990-ae9e-9baeec18ed76" name="DepositCashHandler" isAbstract="false" isLeaf="false">
         <elementDefinition Id="5d1c9dae-1d05-4a6c-9152-e81870ccc56e" />
       </Interface>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <Interface Id="3571ac6c-dc7c-40e5-8610-477981e21afd" name="Interface2" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="4f4e5f86-1aae-4882-9608-f9363daaabc5" />
+      <Interface Id="62e33fb7-e411-4d02-997c-3a22ca7483d0" name="WithdrawCashHandler" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="18287127-93b2-4fff-abf0-b2df42364ddd" />
       </Interface>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <Interface Id="9833345f-3a05-4b4d-a4d4-b1daf40e0197" name="Interface3" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="f0f3b375-aa47-4d97-8836-9b9a492a3788" />
+      <Interface Id="149d9061-0ca9-4066-85ec-a50e8a18dba7" name="BuyStocksHandler" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9a9f9f76-2d75-4c96-9840-32ee3cbc0eaa" />
       </Interface>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <Interface Id="5611639c-2d74-4d4d-92b9-d845d2a367a2" name="Interface4" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="d9449469-6a82-41c2-8a82-90a9845f3ba4" />
+      <Interface Id="5f238177-8682-4680-bb53-9c56a0187d56" name="SellStocksHandler" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e07cf2fe-c016-4290-b553-740f909e1c49" />
       </Interface>
     </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="4cf2ac9a-ded2-43cd-b244-18571b6747f6" name="AddPortfolioHandler" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b62aa2fa-0449-4e43-af29-068d7ea8544e" />
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="d2bdf8cf-c98b-48e6-85b9-74147880581f" name="DeletePortfolioHandler" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="69fd05a0-7908-41d6-bcd4-35a6d48f28ac" />
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="9e85ebd8-c812-4974-a63f-c8b12b4c766c" name="SimulateHandler" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="96596f55-3c36-4413-b1ec-2901e2a6ae3a" />
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="18b3a3e9-54fc-4c30-b913-c939997657be" name="ReadFileHandler" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="08fb49a6-34be-4294-90b8-0de0cdc855e9" />
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="bd400d3c-a6e3-4bc3-b1e8-799c0de0d0af" name="Observer" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0f51fcf3-0923-46ef-810f-1510ccf46d11" />
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="31f0340c-3a55-4774-b144-dd0ccc927337" name="AddPortfolioObserver" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0db35dd8-a395-4451-aa48-faa694c92306" />
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="13fea0ce-fa2f-4b93-aa47-3d3738fb68d7" name="DisplayErrorMessageObserver" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="61d85b86-ce5b-438d-b080-763ba1c7506c" />
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="0b6eada1-6a74-4270-a52a-3370e381c6db" name="SellStockForm-V" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="dcb452a3-5943-4f7c-9eaf-00e097883b28" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="301aff51-34e6-4caf-a91f-e36091f4fa16" name="BuyStocksForm-V" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6fd52449-fa85-413b-857d-39624247dadf" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="f811f7c1-a2ed-4e7b-a89d-1d4c4bc82d2a" name="GetPortfolioNameForm-V" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="3757f012-e9c6-4697-8a59-e17a69b9ae44" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="16e60910-a4f4-499e-aec0-52235f40b545" name="AddWithdrawFundsForm" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="ef1ac8c7-7543-41a1-b219-853f8cc1e0fa" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="e8a67a10-8e6c-49b5-b514-352d87c96316" name="Model">
+        <elementDefinition Id="fffd2ded-a176-4370-9df0-728100d34cca" />
+        <packagedElements>
+          <packageHasNamedElement>
+            <class Id="6d6b2851-ef4f-4a91-a2da-f6856f69ae20" name="Account-M" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="4102967c-c50f-4c7a-a996-2a1f21d4786f" />
+              <suppliersInternal>
+                <interfaceRealization Id="6512eed2-6176-4035-bbba-1cc31bb4d5d7">
+                  <interfaceMoniker Id="3571ac6c-dc7c-40e5-8610-477981e21afd" LastKnownName="Interface2" />
+                  <elementDefinition Id="ee717442-d09e-40cd-b8c9-2c7d2cffa189" />
+                </interfaceRealization>
+              </suppliersInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <Interface Id="3571ac6c-dc7c-40e5-8610-477981e21afd" name="Interface2" isAbstract="false" isLeaf="false">
+              <elementDefinition Id="4f4e5f86-1aae-4882-9608-f9363daaabc5" />
+            </Interface>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="7a79a4fd-f447-47a7-8dee-c11312964f42" name="Portfolio-M" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="b34a28e7-2f7d-41f0-abc5-8baebac2d16e" />
+              <suppliersInternal>
+                <interfaceRealization Id="6c57598a-95ee-4b04-abf9-15928cf29a98">
+                  <interfaceMoniker Id="9833345f-3a05-4b4d-a4d4-b1daf40e0197" LastKnownName="Interface3" />
+                  <elementDefinition Id="3de9b905-26c0-4647-ae71-be26100eb707" />
+                </interfaceRealization>
+              </suppliersInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <Interface Id="9833345f-3a05-4b4d-a4d4-b1daf40e0197" name="Interface3" isAbstract="false" isLeaf="false">
+              <elementDefinition Id="f0f3b375-aa47-4d97-8836-9b9a492a3788" />
+            </Interface>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="83049a05-abe4-45e8-9a15-e3795e416641" name="Stock-M" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="ec0b5f9e-9072-4a24-9d7b-3850f3983a7f" />
+              <suppliersInternal>
+                <interfaceRealization Id="7b00b692-5ddc-406e-a3a9-56cf69ba0d59">
+                  <interfaceMoniker Id="5611639c-2d74-4d4d-92b9-d845d2a367a2" LastKnownName="Interface4" />
+                  <elementDefinition Id="c14fe9ce-5cff-4367-a0a5-62c73fd18174" />
+                </interfaceRealization>
+              </suppliersInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <Interface Id="5611639c-2d74-4d4d-92b9-d845d2a367a2" name="Interface4" isAbstract="false" isLeaf="false">
+              <elementDefinition Id="d9449469-6a82-41c2-8a82-90a9845f3ba4" />
+            </Interface>
+          </packageHasNamedElement>
+        </packagedElements>
+      </package>
+    </logicalClassDesignerModelHasPackages>
   </packagedElements>
   <package Id="c2e7ffec-82aa-426d-a0b3-a5cd4f191ad1" name="Ticker501-MVC-Diagram">
     <elementDefinition Id="d5fd6ce1-d9c7-4b3c-96f9-6d61b19f6938" />
+    <profileInstances>
+      <packageHasProfileInstances Id="8aeaf506-1905-4a3e-9540-ba4227309f00">
+        <profileInstance Id="f7f9e9ba-8fa7-4a69-bb3f-a08c73bd91d2" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="a1f970f5-ad2e-4a45-9808-2234020c4eb9">
+        <profileInstance Id="54616f95-0322-4616-a97a-533ee8e50e81" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </logicalClassDesignerModel>
