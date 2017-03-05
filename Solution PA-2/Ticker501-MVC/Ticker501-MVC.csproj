@@ -46,24 +46,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddWithdrawFundsForm.cs">
+    <Compile Include="Forms\AddWithdrawFundsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddWithdrawFundsForm.Designer.cs">
+    <Compile Include="Forms\AddWithdrawFundsForm.Designer.cs">
       <DependentUpon>AddWithdrawFundsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="Forms\BuyStocksForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\BuyStocksForm.Designer.cs">
+      <DependentUpon>BuyStocksForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GetPortfolioNameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GetPortfolioNameForm.Designer.cs">
+      <DependentUpon>GetPortfolioNameForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddWithdrawFundsForm.resx">
+    <Compile Include="Forms\SellStocksForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SellStocksForm.Designer.cs">
+      <DependentUpon>SellStocksForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Forms\AddWithdrawFundsForm.resx">
       <DependentUpon>AddWithdrawFundsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Forms\BuyStocksForm.resx">
+      <DependentUpon>BuyStocksForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GetPortfolioNameForm.resx">
+      <DependentUpon>GetPortfolioNameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -75,6 +99,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\SellStocksForm.resx">
+      <DependentUpon>SellStocksForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Ticker501_MVC
 {
-    public partial class MainForm : Form
+    public partial class BuyStocksForm : Form
     {
-        public MainForm()
+        public BuyStocksForm()
         {
             InitializeComponent();
         }
