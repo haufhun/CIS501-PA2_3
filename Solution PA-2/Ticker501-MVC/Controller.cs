@@ -17,12 +17,10 @@ namespace Ticker501_MVC
         /// The list of observers to call.
         /// </summary>
         private List<Observer> _observers;
-
         /// <summary>
         /// The list of portolio observers to call.
         /// </summary>
         private PortfolioObserver _portfolioObserver;
-
         /// <summary>
         /// A error message delegate used to display error messges.
         /// </summary>
@@ -51,6 +49,7 @@ namespace Ticker501_MVC
         {
             _observers.Add(o);
         }
+
         /// <summary>
         /// The portfolio observer that updates the portfolio tab.
         /// </summary>
@@ -59,6 +58,7 @@ namespace Ticker501_MVC
         {
             _portfolioObserver = o;
         }
+
         /// <summary>
         /// Register the display error message method in the user interface to the private field.
         /// </summary>
@@ -66,6 +66,28 @@ namespace Ticker501_MVC
         public void ErrorMessageRegister(DisplayErrorMessageObserver o)
         {
             displayErrorMessageObserver = o;
+        }
+
+        /// <summary>
+        /// Signals the observers to update fields of the user interface
+        /// </summary>
+        private void SignalObservers()
+        {
+            foreach (var o in _observers)
+            {
+                o();
+            }
+
+            //need to check if there is a portfolio created yet
+            _portfolioObserver(_currentPortfolioSelected);
+
+            //if (_account.GetListOfPortfolioNames().Count > 0)
+            //{
+            //foreach (var portO in _portfolioObservers)
+            //{
+            //   portO();
+            //}
+            //}
         }
 
         /// <summary>
@@ -78,11 +100,24 @@ namespace Ticker501_MVC
         }
 
         /// <summary>
+        /// shows the form passed into the argument
+        /// </summary>
+        /// <param name="form">The Form to open</param>
+        public void OpenForm(Form form)
+        {
+            form.Show();
+        }
+
+        /// <summary>
         /// Deposits funds into the account, catching any exception.
         /// </summary>
         /// <param name="cash">The amount of cash to deposit.</param>
         public void DepositFunds(decimal cash)
         {
+           // if (aWfundsForm.ShowDialog() == DialogResult.OK)
+          //  {
+            //   aWfundsForm.Amount;
+           // }
             //try
             //{
             //    _account.AddFundsToCashFund(cash);
@@ -97,6 +132,7 @@ namespace Ticker501_MVC
             //    displayErrorMessageObserver("Error trying to deposit funds.");
             //}
         }
+
         /// <summary>
         /// Withdraws funds from the account, catching any exception.
         /// </summary>
@@ -117,6 +153,7 @@ namespace Ticker501_MVC
             //    displayErrorMessageObserver("Error trying to withdraw funds.");
             //}
         }
+
         /// <summary>
         /// Buys stocks of a given portfolio name and ticker name and number of shares.
         /// </summary>
@@ -139,6 +176,7 @@ namespace Ticker501_MVC
             //    displayErrorMessageObserver("Error trying to buy stocks.");
             //}
         }
+
         /// <summary>
         /// Sells stocks given a portfolio name, ticker name, and number of stocks.
         /// </summary>
@@ -161,6 +199,7 @@ namespace Ticker501_MVC
             //    displayErrorMessageObserver("Error trying to sell stocks.");
             //}
         }
+
         /// <summary>
         /// Adds a new portfolio given a portfolio name, and an observer to update the toolstrip menu.
         /// </summary>
@@ -184,6 +223,7 @@ namespace Ticker501_MVC
             //}
 
         }
+
         /// <summary>
         /// Deletes the portfolio, catching any account exception or regular exception that may be needed.
         /// </summary>
@@ -205,6 +245,7 @@ namespace Ticker501_MVC
             //    displayErrorMessageObserver("Error when trying to delete portfolio " + portfolioName + ".");
             //}
         }
+
         /// <summary>
         /// Simulates stock market activity, either high, medium or low volatility based on user choice.
         /// </summary>
@@ -231,6 +272,7 @@ namespace Ticker501_MVC
             //    displayErrorMessageObserver("Error when trying to run the simluator");
             //}
         }
+
         /// <summary>
         /// Reads the ticker information from a file.
         /// </summary>
@@ -255,26 +297,6 @@ namespace Ticker501_MVC
             return false;
         }
 
-        /// <summary>
-        /// Signals the observers to update fields of the user interface
-        /// </summary>
-        private void SignalObservers()
-        {
-            foreach (var o in _observers)
-            {
-                o();
-            }
 
-            //need to check if there is a portfolio created yet
-            _portfolioObserver(_currentPortfolioSelected);
-
-            //if (_account.GetListOfPortfolioNames().Count > 0)
-            //{
-            //foreach (var portO in _portfolioObservers)
-            //{
-            //   portO();
-            //}
-            //}
-        }
     }
 }

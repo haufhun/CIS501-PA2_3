@@ -14,6 +14,9 @@ namespace Ticker501_MVC
     {
         private PortfolioSelectedHandler _portfolioSelectedHandler;
 
+        private OpenForm _openForm;
+
+
         /// <summary>
         /// Defines the type of method that handles a deposit cash input event 
         /// </summary>
@@ -55,20 +58,31 @@ namespace Ticker501_MVC
         private ReadFileHandler _readFileHandler;
 
         private Account _account;
-        private AddWithdrawFundsForm _aWFundsForm;
+
+        private GetPortfolioNameForm _getPNForm;
+        private AddWithdrawFundsForm _addFundsForm;
+        private AddWithdrawFundsForm _withdrawFundsForm;
         private BuyStocksForm _bSForm;
         private SellStocksForm _sSForm;
 
         /// <summary>
         /// Constructor for User interface. Initilazies the model, forms and handlers.
         /// </summary>
-        public MainForm(Account a, AddWithdrawFundsForm aWFundsForm, BuyStocksForm bSForm, SellStocksForm sSForm, PortfolioSelectedHandler portfolioSelected, DepositCashHandler depositFunds, WithdrawCashHandler withdrawFunds, BuyStocksHandler buyStocks, SellStocksHandler sellStocks, AddPortfolioHandler addPortfolio, DeletePortfolioHandler deletePortfolio, SimulateHandler simulate, ReadFileHandler readTickerFile)
+        public MainForm(Account a, GetPortfolioNameForm GPNForm, AddWithdrawFundsForm aFundsForm, AddWithdrawFundsForm wFundsForm, BuyStocksForm bSForm, SellStocksForm sSForm,
+                            OpenForm openForm, PortfolioSelectedHandler portfolioSelected, DepositCashHandler depositFunds, WithdrawCashHandler withdrawFunds, 
+                            BuyStocksHandler buyStocks, SellStocksHandler sellStocks, AddPortfolioHandler addPortfolio, DeletePortfolioHandler deletePortfolio, 
+                            SimulateHandler simulate, ReadFileHandler readTickerFile)
         {
             //Initialize Account and Forms
             _account = a;
-            _aWFundsForm = aWFundsForm;
+            _getPNForm = GPNForm;
+            _addFundsForm = aFundsForm;
+            _withdrawFundsForm = wFundsForm;
             _bSForm = bSForm;
             _sSForm = sSForm;
+
+            //Initialize Open Form handlers
+            _openForm = openForm;
 
             //Initialize Handlers
             _portfolioSelectedHandler = portfolioSelected;
@@ -82,8 +96,17 @@ namespace Ticker501_MVC
             _readFileHandler = readTickerFile;
 
             InitializeComponent();
-        }
 
+            //Makes All Buy Buttons Refrence the same buttonClick
+            uxBuyStocks1.Click += BuyStocksButton_Click;
+            uxBuyStocks2.Click += BuyStocksButton_Click;
+            uxBuyStocks3.Click += BuyStocksButton_Click;
+            //Makes all sell buttons refrene the same buttonClick
+            uxSellStocks1.Click += SellStocksButton_Click;
+            uxSellStocks2.Click += SellStocksButton_Click;
+            uxSellStocks3.Click += SellStocksButton_Click;
+        }
+/////////// Click Events inside this collapsed block /////////////////
         /// <summary>
         /// Handles if the user selects portfolio 1 on the portfolio tab.
         /// </summary>
@@ -112,39 +135,116 @@ namespace Ticker501_MVC
         }
 
         /// <summary>
+        /// Button click fo Open File button
+        /// </summary>
+        private void uxOpenTickerFile_Click(object sender, EventArgs e)
+        {
+            if (_readFileHandler(uxOpenFileDialog))
+            {
+                uxSimulateStockPrices.Enabled = true;
+                uxRadioBttnHigh.Enabled = true;
+                uxRadioBttnMedium.Enabled = true;
+                uxRadioBttnLow.Enabled = true;
+            }
+        }
+
+        /// <summary>
+        /// Simulate stock prices buttonclick event. Passes a 1 for high, 2 for medium, or a 3 for low volatility 
+        ///    into the simulateHandler delegate based on radio button choice.
+        /// </summary>
+        private void uxSimulateStockPrices_Click(object sender, EventArgs e)
+        {
+            if (uxRadioBttnHigh.Checked)
+            {
+                _simulateHandler(1);
+            }
+            else if (uxRadioBttnMedium.Checked)
+            {
+                _simulateHandler(2);
+            }
+            else if (uxRadioBttnLow.Checked)
+            {
+                _simulateHandler(3);
+            }
+        }
+
+        /// <summary>
+        /// CLick handler for Add funds button
+        /// </summary>
+
+        private void uxAddFunds_Click(object sender, EventArgs e)
+        {
+            _openForm(_addFundsForm);
+        }
+
+        /// <summary>
+        /// Click handler for withdraw funds button
+        /// </summary>
+        private void uxWithdrawFunds_Click(object sender, EventArgs e)
+        {
+            _openForm(_withdrawFundsForm);
+        }
+
+        /// <summary>
+        /// Click handler for Add Portfolio Button
+        /// </summary>
+        private void uxAddPortfolio_Click(object sender, EventArgs e)
+        {
+            _openForm(_getPNForm);
+        }
+
+        /// <summary>
+        /// click handler for all buy stocks buttons
+        /// </summary>
+        private void BuyStocksButton_Click(object sender, EventArgs e)
+        {
+            _openForm(_bSForm);
+        }
+
+        /// <summary>
+        /// Click handler for all sell stocks buttons
+        /// </summary>
+        private void SellStocksButton_Click(object sender, EventArgs e)
+        {
+            _openForm(_sSForm);
+        }
+//////////////////////////////////////////////////////////////////////
+
+
+        /// <summary>
         /// Updates all the information on the Portfolio tab selected.
         /// </summary>
         /// <param name="currentPortfolio">name of portfolio to display</param>
         public void DisplayPortfolio(string currentPortfolio)
         {
             uxPortfolioName.Text = currentPortfolio;
-            updateEnabledBuyAndSellStocks(currentPortfolio);  
+            updateEnabledBuyAndSellStocks(currentPortfolio);
 
-           // var info = _account.GetPortfolioBalance(currentPortfolio);
+            // var info = _account.GetPortfolioBalance(currentPortfolio);
 
-           // uxPrtBalOutput.Text = _account.CashBalance.ToString("C");
-           // uxPrtPercentageOfAccountOutput.Text = info.Item3.ToString("P");
-           // uxPrtTotalInvestedOuput.Text = info.Item2.ToString("C");
-           // uxPrtNetWorthOutput.Text = _account.SelectPortfolio(currentPortfolio).GetCurrentValueOfAllStocks().ToString("c");
+            // uxPrtBalOutput.Text = _account.CashBalance.ToString("C");
+            // uxPrtPercentageOfAccountOutput.Text = info.Item3.ToString("P");
+            // uxPrtTotalInvestedOuput.Text = info.Item2.ToString("C");
+            // uxPrtNetWorthOutput.Text = _account.SelectPortfolio(currentPortfolio).GetCurrentValueOfAllStocks().ToString("c");
 
-           // DisplayGainsAndLossesPretty(uxPrtGainsLossesOutput, _account.SelectPortfolio(currentPortfolio).GetGainsAndLossesReport());
+            // DisplayGainsAndLossesPretty(uxPrtGainsLossesOutput, _account.SelectPortfolio(currentPortfolio).GetGainsAndLossesReport());
 
-           // var infoList = _account.GetAllPortfolioStockInfoTuple(currentPortfolio);
+            // var infoList = _account.GetAllPortfolioStockInfoTuple(currentPortfolio);
 
             uxPrtListInfo.BeginUpdate();
             uxPrtListInfo.Items.Clear();
 
-           // foreach (var i in infoList)
-           // {
-                //  Tickername, companyName, pricePerShare, sharesOwned, networthOfShares, PositionBalance
-           //     string[] itemInfo =
-           //     {
-           //         i.Item1, i.Item2, i.Item3.ToString("C"), i.Item4.ToString(), i.Item5.ToString("C"),
-           //         i.Item6.ToString("P")
-           //     };
+            // foreach (var i in infoList)
+            // {
+            //  Tickername, companyName, pricePerShare, sharesOwned, networthOfShares, PositionBalance
+            //     string[] itemInfo =
+            //     {
+            //         i.Item1, i.Item2, i.Item3.ToString("C"), i.Item4.ToString(), i.Item5.ToString("C"),
+            //         i.Item6.ToString("P")
+            //     };
 
-           //     uxPrtListInfo.Items.Add(new ListViewItem(itemInfo));
-           // }
+            //     uxPrtListInfo.Items.Add(new ListViewItem(itemInfo));
+            // }
 
             uxPrtListInfo.EndUpdate();
         }
@@ -187,33 +287,6 @@ namespace Ticker501_MVC
 
                 uxBuyStocks3.Enabled = true;
                 uxSellStocks3.Enabled = true;
-            }
-        }
-
-        private void uxOpenTickerFile_Click(object sender, EventArgs e)
-        {
-            if (_readFileHandler(uxOpenFileDialog))
-            {
-                uxSimulateStockPrices.Enabled = true;
-                uxRadioBttnHigh.Enabled = true;
-                uxRadioBttnMedium.Enabled = true;
-                uxRadioBttnLow.Enabled = true;
-            }
-        }
-
-        private void uxSimulateStockPrices_Click(object sender, EventArgs e)
-        {
-            if (uxRadioBttnHigh.Checked)
-            {
-                _simulateHandler(1);
-            }
-            else if (uxRadioBttnMedium.Checked)
-            {
-                _simulateHandler(2);
-            }
-            else if (uxRadioBttnLow.Checked)
-            {
-                _simulateHandler(3);
             }
         }
     }

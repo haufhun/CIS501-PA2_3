@@ -48,7 +48,7 @@
   <ItemGroup>
     <Compile Include="Controller.cs" />
     <Compile Include="Model\Account.cs" />
-    <Compile Include="Model\Account-I.cs" />
+    <Compile Include="Model\Interfaces\IAccount.cs" />
     <Compile Include="Model\DataBase.cs" />
     <Compile Include="View\AddWithdrawFundsForm.cs">
       <SubType>Form</SubType>

@@ -14,6 +14,8 @@ namespace Ticker501_MVC
     public delegate void AddPortfolioObserver(string portfolioName);
     public delegate void DisplayErrorMessageObserver(string errorMessage);
 
+    public delegate void OpenForm(Form f);
+
     public delegate void PortfolioSelectedHandler(string portfolioName);
     //defines the type of method that handles a deposit cash input event 
     public delegate void DepositCashHandler(decimal cash);
@@ -45,13 +47,16 @@ namespace Ticker501_MVC
 
             var a = new Account();
             var c = new Controller(a);
-            
-            var aWFundsForm = new AddWithdrawFundsForm(); //pass withdraw and deposit cash handlers
+
+            var gpnForm = new GetPortfolioNameForm();
+            var aFundsForm = new AddWithdrawFundsForm(1); //pass withdraw and deposit cash handlers
+            var wFundsForm =  new AddWithdrawFundsForm(2);
             var bSForm = new BuyStocksForm();// pass buyStocks handler
             var sSForm = new SellStocksForm();// pass SellStocks handler
 
-            var mForm = new MainForm(a, aWFundsForm, bSForm, sSForm, c.DisplayPortfolioSelected, c.DepositFunds, c.WithdrawFunds, c.BuyStocks, c.SellStocks, 
-                                        c.AddPortfolio, c.DeletePortfolio, c.Simulate, c.ReadTickerFile);// pass all the delegates needed
+            var mForm = new MainForm(a, gpnForm, aFundsForm, wFundsForm, bSForm, sSForm,
+                                        c.OpenForm, c.DisplayPortfolioSelected, c.DepositFunds, c.WithdrawFunds, 
+                                        c.BuyStocks, c.SellStocks, c.AddPortfolio, c.DeletePortfolio, c.Simulate, c.ReadTickerFile);
 
             c.PortfoioRegister(mForm.DisplayPortfolio);
 

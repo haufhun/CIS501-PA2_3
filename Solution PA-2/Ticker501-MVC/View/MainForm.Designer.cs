@@ -346,6 +346,7 @@
             this.uxAddFunds.Name = "uxAddFunds";
             this.uxAddFunds.Size = new System.Drawing.Size(83, 24);
             this.uxAddFunds.Text = "&Add Funds";
+            this.uxAddFunds.Click += new System.EventHandler(this.uxAddFunds_Click);
             // 
             // uxWithdrawFunds
             // 
@@ -354,6 +355,7 @@
             this.uxWithdrawFunds.Name = "uxWithdrawFunds";
             this.uxWithdrawFunds.Size = new System.Drawing.Size(119, 24);
             this.uxWithdrawFunds.Text = "&Withdraw Funds";
+            this.uxWithdrawFunds.Click += new System.EventHandler(this.uxWithdrawFunds_Click);
             // 
             // toolStripSeparator3
             // 
@@ -778,6 +780,7 @@
             this.uxBuyStocks1.Name = "uxBuyStocks1";
             this.uxBuyStocks1.Size = new System.Drawing.Size(185, 26);
             this.uxBuyStocks1.Text = "Buy Stocks";
+           // this.uxBuyStocks1.Click += new System.EventHandler(this.uxBuyStocks1_Click);
             // 
             // uxSellStocks1
             // 
@@ -899,6 +902,7 @@
             this.uxAddPortfolio.Name = "uxAddPortfolio";
             this.uxAddPortfolio.Size = new System.Drawing.Size(102, 24);
             this.uxAddPortfolio.Text = "&Add Portfolio";
+            this.uxAddPortfolio.Click += new System.EventHandler(this.uxAddPortfolio_Click);
             // 
             // uxOpenFileDialog
             // 
@@ -911,7 +915,7 @@
             this.ClientSize = new System.Drawing.Size(1245, 571);
             this.Controls.Add(this.uxTabControl);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "Ticker 501";
             this.uxTabControl.ResumeLayout(false);
             this.uxHomeTab.ResumeLayout(false);
             this.uxHomeTab.PerformLayout();
