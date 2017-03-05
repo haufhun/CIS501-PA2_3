@@ -12,9 +12,16 @@ namespace Ticker501_MVC
 {
     public partial class SellStocksForm : Form
     {
+        private Action<string, string, int> sellStocks;
+
         public SellStocksForm()
         {
             InitializeComponent();
+        }
+
+        public SellStocksForm(Action<string, string, int> sellStocks)
+        {
+            this.sellStocks = sellStocks;
         }
     }
 }

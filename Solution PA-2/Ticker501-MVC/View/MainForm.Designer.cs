@@ -780,7 +780,6 @@
             this.uxBuyStocks1.Name = "uxBuyStocks1";
             this.uxBuyStocks1.Size = new System.Drawing.Size(185, 26);
             this.uxBuyStocks1.Text = "Buy Stocks";
-           // this.uxBuyStocks1.Click += new System.EventHandler(this.uxBuyStocks1_Click);
             // 
             // uxSellStocks1
             // 
@@ -854,7 +853,7 @@
             this.uxPortfolio3.Size = new System.Drawing.Size(117, 24);
             this.uxPortfolio3.Text = "Portfolio 3";
             this.uxPortfolio3.Visible = false;
-            this.uxPortfolio3.ButtonClick += new System.EventHandler(this.uxPortfolio3_ButtonClick_1);
+            this.uxPortfolio3.ButtonClick += new System.EventHandler(this.uxPortfolio3_ButtonClick);
             // 
             // uxBuyStocks3
             // 

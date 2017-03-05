@@ -49,10 +49,10 @@ namespace Ticker501_MVC
             var c = new Controller(a);
 
             var gpnForm = new GetPortfolioNameForm();
-            var aFundsForm = new AddWithdrawFundsForm(1); //pass withdraw and deposit cash handlers
-            var wFundsForm =  new AddWithdrawFundsForm(2);
-            var bSForm = new BuyStocksForm();// pass buyStocks handler
-            var sSForm = new SellStocksForm();// pass SellStocks handler
+            var aFundsForm = new AddWithdrawFundsForm(1, c.DepositFunds);
+            var wFundsForm =  new AddWithdrawFundsForm(2, c.WithdrawFunds);
+            var bSForm = new BuyStocksForm(c.BuyStocks);
+            var sSForm = new SellStocksForm(c.SellStocks);
 
             var mForm = new MainForm(a, gpnForm, aFundsForm, wFundsForm, bSForm, sSForm,
                                         c.OpenForm, c.DisplayPortfolioSelected, c.DepositFunds, c.WithdrawFunds, 

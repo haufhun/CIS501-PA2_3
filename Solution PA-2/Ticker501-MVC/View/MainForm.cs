@@ -107,32 +107,7 @@ namespace Ticker501_MVC
             uxSellStocks3.Click += SellStocksButton_Click;
         }
 /////////// Click Events inside this collapsed block /////////////////
-        /// <summary>
-        /// Handles if the user selects portfolio 1 on the portfolio tab.
-        /// </summary>
-        private void uxPortfolio1_ButtonClick(object sender, EventArgs e)
-        {
-            uxPortfolioName.Text = uxPortfolio1.Text;
-            _portfolioSelectedHandler(uxPortfolio1.Text);
-        }
 
-        /// <summary>
-        /// Hanldes if the user selects portfolio 2 on the portfolio tab.
-        /// </summary>
-        private void uxPortfolio2_ButtonClick(object sender, EventArgs e)
-        {
-            uxPortfolioName.Text = uxPortfolio2.Text;
-            _portfolioSelectedHandler(uxPortfolio2.Text);
-        }
-
-        /// <summary>
-        /// handles if the user selects portfolio 3 on the portfolio tab.
-        /// </summary>
-        private void uxPortfolio3_ButtonClick_1(object sender, EventArgs e)
-        {
-            uxPortfolioName.Text = uxPortfolio3.Text;
-            _portfolioSelectedHandler(uxPortfolio3.Text);
-        }
 
         /// <summary>
         /// Button click fo Open File button
@@ -171,7 +146,6 @@ namespace Ticker501_MVC
         /// <summary>
         /// CLick handler for Add funds button
         /// </summary>
-
         private void uxAddFunds_Click(object sender, EventArgs e)
         {
             _openForm(_addFundsForm);
@@ -191,6 +165,33 @@ namespace Ticker501_MVC
         private void uxAddPortfolio_Click(object sender, EventArgs e)
         {
             _openForm(_getPNForm);
+        }
+
+        /// <summary>
+        /// Handles if the user selects portfolio 1 on the portfolio tab.
+        /// </summary>      
+        private void uxPortfolio1_ButtonClick(object sender, EventArgs e)
+        {
+            uxPortfolioName.Text = uxPortfolio1.Text;
+            _portfolioSelectedHandler(uxPortfolio1.Text);
+        }
+
+        /// <summary>
+        /// Hanldes if the user selects portfolio 2 on the portfolio tab.
+        /// </summary>
+        private void uxPortfolio2_ButtonClick(object sender, EventArgs e)
+        {
+            uxPortfolioName.Text = uxPortfolio2.Text;
+            _portfolioSelectedHandler(uxPortfolio2.Text);
+        }
+
+        /// <summary>
+        /// handles if the user selects portfolio 3 on the portfolio tab.
+        /// </summary>
+        private void uxPortfolio3_ButtonClick(object sender, EventArgs e)
+        {
+            uxPortfolioName.Text = uxPortfolio3.Text;
+            _portfolioSelectedHandler(uxPortfolio3.Text);
         }
 
         /// <summary>
@@ -289,5 +290,6 @@ namespace Ticker501_MVC
                 uxSellStocks3.Enabled = true;
             }
         }
+
     }
 }

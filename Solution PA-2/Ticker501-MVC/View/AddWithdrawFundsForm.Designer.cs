@@ -53,6 +53,7 @@
             this.uxOK.TabIndex = 9;
             this.uxOK.Text = "OK";
             this.uxOK.UseVisualStyleBackColor = true;
+            this.uxOK.Click += new System.EventHandler(this.uxOK_Click);
             // 
             // uxAmountTxtBox
             // 
@@ -82,6 +83,8 @@
             this.Name = "AddWithdrawFundsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Transaction";
+            this.TextChanged += new System.EventHandler(this.uxAmountTxtBox_TextChanged);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.uxAmountTxtBox_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 

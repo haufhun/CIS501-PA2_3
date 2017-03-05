@@ -68,6 +68,16 @@ namespace Ticker501_MVC
             displayErrorMessageObserver = o;
         }
 
+
+        /// <summary>
+        /// Will update the info on the portfolio tab when a new portfolio is selected
+        /// </summary>
+        public void DisplayPortfolioSelected(string portfolioName)
+        {
+            _currentPortfolioSelected = portfolioName;
+            _portfolioObserver(portfolioName);
+        }
+
         /// <summary>
         /// Signals the observers to update fields of the user interface
         /// </summary>
@@ -90,14 +100,6 @@ namespace Ticker501_MVC
             //}
         }
 
-        /// <summary>
-        /// Will update the info on the portfolio tab when a new portfolio is selected
-        /// </summary>
-        public void DisplayPortfolioSelected(string portfolioName)
-        {
-            _currentPortfolioSelected = portfolioName;
-            _portfolioObserver(portfolioName);
-        }
 
         /// <summary>
         /// shows the form passed into the argument
@@ -162,7 +164,7 @@ namespace Ticker501_MVC
         /// <param name="numberOfShares">The number of shares.</param>
         public void BuyStocks(string portfolioName, string tickerName, int numberOfShares)
         {
-                        //try
+           //try
             //{
             //    _account.BuyStock(portfolioName, tickerName, numberOfShares);
             //    SignalObservers();
@@ -230,7 +232,7 @@ namespace Ticker501_MVC
         /// <param name="portfolioName">The name of the portfolio.</param>
         public void DeletePortfolio(string portfolioName)
         {
-                        //try
+                         //try
             //{
             //    _account.DeletePortfolio(portfolioName);
             //    SignalObservers();
