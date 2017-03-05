@@ -10,7 +10,7 @@ namespace Ticker501_MVC
 {
     // defines the type of method that observes model updates
     public delegate void Observer();
-    public delegate void PortfolioObserver();
+    public delegate void PortfolioObserver(string portfolioName);
     public delegate void AddPortfolioObserver(string portfolioName);
     public delegate void DisplayErrorMessageObserver(string errorMessage);
 
@@ -43,8 +43,8 @@ namespace Ticker501_MVC
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var c = new Controller();
             var a = new Account();
+            var c = new Controller(a);
             
             var aWFundsForm = new AddWithdrawFundsForm(); //pass withdraw and deposit cash handlers
             var bSForm = new BuyStocksForm();// pass buyStocks handler
@@ -53,7 +53,7 @@ namespace Ticker501_MVC
             var mForm = new MainForm(a, aWFundsForm, bSForm, sSForm, c.DisplayPortfolioSelected, c.DepositFunds, c.WithdrawFunds, c.BuyStocks, c.SellStocks, 
                                         c.AddPortfolio, c.DeletePortfolio, c.Simulate, c.ReadTickerFile);// pass all the delegates needed
 
-            
+            c.PortfoioRegister(mForm.DisplayPortfolio);
 
             Application.Run(mForm);
         }

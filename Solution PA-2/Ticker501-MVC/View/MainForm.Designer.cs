@@ -280,6 +280,7 @@
             this.uxOpenTickerFile.Name = "uxOpenTickerFile";
             this.uxOpenTickerFile.Size = new System.Drawing.Size(119, 24);
             this.uxOpenTickerFile.Text = "&Open Ticker File";
+            this.uxOpenTickerFile.Click += new System.EventHandler(this.uxOpenTickerFile_Click);
             // 
             // uxSimulateStockPrices
             // 
@@ -288,6 +289,7 @@
             this.uxSimulateStockPrices.Name = "uxSimulateStockPrices";
             this.uxSimulateStockPrices.Size = new System.Drawing.Size(153, 24);
             this.uxSimulateStockPrices.Text = "&Simulate Stock Prices";
+            this.uxSimulateStockPrices.Click += new System.EventHandler(this.uxSimulateStockPrices_Click);
             // 
             // toolStripSeparator2
             // 

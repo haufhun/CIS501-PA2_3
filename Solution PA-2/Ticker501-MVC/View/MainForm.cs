@@ -13,6 +13,7 @@ namespace Ticker501_MVC
     public partial class MainForm : Form
     {
         private PortfolioSelectedHandler _portfolioSelectedHandler;
+
         /// <summary>
         /// Defines the type of method that handles a deposit cash input event 
         /// </summary>
@@ -58,7 +59,6 @@ namespace Ticker501_MVC
         private BuyStocksForm _bSForm;
         private SellStocksForm _sSForm;
 
-
         /// <summary>
         /// Constructor for User interface. Initilazies the model, forms and handlers.
         /// </summary>
@@ -91,8 +91,6 @@ namespace Ticker501_MVC
         {
             uxPortfolioName.Text = uxPortfolio1.Text;
             _portfolioSelectedHandler(uxPortfolio1.Text);
-            //_currentPortfolio = uxPortfolio1.Text;
-            //DisplayPortfolio();
         }
 
         /// <summary>
@@ -102,8 +100,6 @@ namespace Ticker501_MVC
         {
             uxPortfolioName.Text = uxPortfolio2.Text;
             _portfolioSelectedHandler(uxPortfolio2.Text);
-            //_currentPortfolio = uxPortfolio2.Text;
-            //DisplayPortfolio();
         }
 
         /// <summary>
@@ -113,12 +109,16 @@ namespace Ticker501_MVC
         {
             uxPortfolioName.Text = uxPortfolio3.Text;
             _portfolioSelectedHandler(uxPortfolio3.Text);
-            //_currentPortfolio = uxPortfolio3.Text;
-            //DisplayPortfolio();
         }
+
+        /// <summary>
+        /// Updates all the information on the Portfolio tab selected.
+        /// </summary>
+        /// <param name="currentPortfolio">name of portfolio to display</param>
         public void DisplayPortfolio(string currentPortfolio)
         {
             uxPortfolioName.Text = currentPortfolio;
+            updateEnabledBuyAndSellStocks(currentPortfolio);  
 
            // var info = _account.GetPortfolioBalance(currentPortfolio);
 
@@ -149,5 +149,72 @@ namespace Ticker501_MVC
             uxPrtListInfo.EndUpdate();
         }
 
+        /// <summary>
+        /// Enables and disables the buy and sell stock buttons according to which portfolio they are on
+        /// </summary>
+        /// <param name="currentPortfolio">The portfolio that they are currently on</param>
+        private void updateEnabledBuyAndSellStocks(string currentPortfolio)
+        {
+            if (uxPortfolio1.Text == currentPortfolio)
+            {
+                uxBuyStocks1.Enabled = true;
+                uxSellStocks1.Enabled = true;
+
+                uxBuyStocks2.Enabled = false;
+                uxSellStocks2.Enabled = false;
+
+                uxBuyStocks3.Enabled = false;
+                uxSellStocks3.Enabled = false;
+            }
+            else if (uxPortfolio2.Text == currentPortfolio)
+            {
+                uxBuyStocks1.Enabled = false;
+                uxSellStocks1.Enabled = false;
+
+                uxBuyStocks2.Enabled = true;
+                uxSellStocks2.Enabled = true;
+
+                uxBuyStocks3.Enabled = false;
+                uxSellStocks3.Enabled = false;
+            }
+            else if (uxPortfolio3.Text == currentPortfolio)
+            {
+                uxBuyStocks1.Enabled = false;
+                uxSellStocks1.Enabled = false;
+
+                uxBuyStocks2.Enabled = false;
+                uxSellStocks2.Enabled = false;
+
+                uxBuyStocks3.Enabled = true;
+                uxSellStocks3.Enabled = true;
+            }
+        }
+
+        private void uxOpenTickerFile_Click(object sender, EventArgs e)
+        {
+            if (_readFileHandler(uxOpenFileDialog))
+            {
+                uxSimulateStockPrices.Enabled = true;
+                uxRadioBttnHigh.Enabled = true;
+                uxRadioBttnMedium.Enabled = true;
+                uxRadioBttnLow.Enabled = true;
+            }
+        }
+
+        private void uxSimulateStockPrices_Click(object sender, EventArgs e)
+        {
+            if (uxRadioBttnHigh.Checked)
+            {
+                _simulateHandler(1);
+            }
+            else if (uxRadioBttnMedium.Checked)
+            {
+                _simulateHandler(2);
+            }
+            else if (uxRadioBttnLow.Checked)
+            {
+                _simulateHandler(3);
+            }
+        }
     }
 }

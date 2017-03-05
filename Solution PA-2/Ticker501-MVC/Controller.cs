@@ -21,17 +21,26 @@ namespace Ticker501_MVC
         /// <summary>
         /// The list of portolio observers to call.
         /// </summary>
-        private List<PortfolioObserver> _portfolioObservers;
+        private PortfolioObserver _portfolioObserver;
 
         /// <summary>
         /// A error message delegate used to display error messges.
         /// </summary>
         private DisplayErrorMessageObserver displayErrorMessageObserver;
 
+        /// <summary>
+        /// Current Portfoilo selected on the gui
+        /// </summary>
+        private string _currentPortfolioSelected;
 
-        public Controller()
+        /// <summary>
+        /// contructs the Controller and initialized the account private field
+        /// </summary>
+        /// <param name="a">Accoutn object</param>
+        public Controller(Account a)
         {
-            
+            _account = a;
+            _observers = new List<Observer>();
         }
 
         /// <summary>
@@ -48,7 +57,7 @@ namespace Ticker501_MVC
         /// <param name="o">The delegate that updates the portfolio tab.</param>
         public void PortfoioRegister(PortfolioObserver o)
         {
-            _portfolioObservers.Add(o);
+            _portfolioObserver = o;
         }
         /// <summary>
         /// Register the display error message method in the user interface to the private field.
@@ -64,10 +73,8 @@ namespace Ticker501_MVC
         /// </summary>
         public void DisplayPortfolioSelected(string portfolioName)
         {
-            foreach (var portO in _portfolioObservers)
-            {
-                portO();
-            }
+            _currentPortfolioSelected = portfolioName;
+            _portfolioObserver(portfolioName);
         }
 
         /// <summary>
@@ -230,23 +237,22 @@ namespace Ticker501_MVC
         /// <param name="fileName"> The file to read</param>
         public bool ReadTickerFile(OpenFileDialog openFile)
         {
-                        //try
-            //{
-            //    if (openFile.ShowDialog() == DialogResult.OK)
-            //    {
+            try
+            {
+                if (openFile.ShowDialog() == DialogResult.OK)
+                {
 
-            //        string fileName = openFile.FileName;
-            //        DataBase.GetInfoFromFile(new StreamReader(fileName));
-            //        SignalObservers();
-            //        return true;
-            //    }
-            //}
-            //catch (Exception)
-            //{
-            //    displayErrorMessageObserver("Error when reading file. Please try again.");
-            //}
-            //return false;
-            throw new NotImplementedException();
+                    string fileName = openFile.FileName;
+                   // DataBase.GetInfoFromFile(new StreamReader(fileName));
+                    SignalObservers();
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                displayErrorMessageObserver("Error when reading file. Please try again.");
+            }
+            return false;
         }
 
         /// <summary>
@@ -258,12 +264,16 @@ namespace Ticker501_MVC
             {
                 o();
             }
+
+            //need to check if there is a portfolio created yet
+            _portfolioObserver(_currentPortfolioSelected);
+
             //if (_account.GetListOfPortfolioNames().Count > 0)
             //{
-               foreach (var portO in _portfolioObservers)
-               {
-                  portO();
-               }
+            //foreach (var portO in _portfolioObservers)
+            //{
+            //   portO();
+            //}
             //}
         }
     }
