@@ -106,9 +106,10 @@
             this.uxSellStocks3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.uxDeletePortfolio3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.uxAddPortfolio = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.uxAddPortfolio = new System.Windows.Forms.ToolStripButton();
+            this.uxOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.uxTabControl.SuspendLayout();
             this.uxHomeTab.SuspendLayout();
             this.uxVolatilityGroup.SuspendLayout();
@@ -743,9 +744,9 @@
             this.uxPortfolio1,
             this.uxPortfolio2,
             this.uxPortfolio3,
-            this.uxAddPortfolio,
             this.toolStripSeparator1,
-            this.helpToolStripButton});
+            this.helpToolStripButton,
+            this.uxAddPortfolio});
             this.uxPortfolioToolStrip.Location = new System.Drawing.Point(3, 3);
             this.uxPortfolioToolStrip.Name = "uxPortfolioToolStrip";
             this.uxPortfolioToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -768,6 +769,7 @@
             this.uxPortfolio1.Size = new System.Drawing.Size(117, 24);
             this.uxPortfolio1.Text = "Portfolio 1";
             this.uxPortfolio1.Visible = false;
+            this.uxPortfolio1.ButtonClick += new System.EventHandler(this.uxPortfolio1_ButtonClick);
             // 
             // uxBuyStocks1
             // 
@@ -807,6 +809,7 @@
             this.uxPortfolio2.Size = new System.Drawing.Size(117, 24);
             this.uxPortfolio2.Text = "Portfolio 2";
             this.uxPortfolio2.Visible = false;
+            this.uxPortfolio2.ButtonClick += new System.EventHandler(this.uxPortfolio2_ButtonClick);
             // 
             // uxBuyStocks2
             // 
@@ -846,6 +849,7 @@
             this.uxPortfolio3.Size = new System.Drawing.Size(117, 24);
             this.uxPortfolio3.Text = "Portfolio 3";
             this.uxPortfolio3.Visible = false;
+            this.uxPortfolio3.ButtonClick += new System.EventHandler(this.uxPortfolio3_ButtonClick_1);
             // 
             // uxBuyStocks3
             // 
@@ -872,13 +876,6 @@
             this.uxDeletePortfolio3.Size = new System.Drawing.Size(189, 26);
             this.uxDeletePortfolio3.Text = "Delete Portfolio";
             // 
-            // uxAddPortfolio
-            // 
-            this.uxAddPortfolio.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.uxAddPortfolio.Name = "uxAddPortfolio";
-            this.uxAddPortfolio.Size = new System.Drawing.Size(102, 24);
-            this.uxAddPortfolio.Text = "&Add Portfolio";
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -894,13 +891,24 @@
             this.helpToolStripButton.Size = new System.Drawing.Size(24, 24);
             this.helpToolStripButton.Text = "He&lp";
             // 
-            // Form1
+            // uxAddPortfolio
+            // 
+            this.uxAddPortfolio.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.uxAddPortfolio.Name = "uxAddPortfolio";
+            this.uxAddPortfolio.Size = new System.Drawing.Size(102, 24);
+            this.uxAddPortfolio.Text = "&Add Portfolio";
+            // 
+            // uxOpenFileDialog
+            // 
+            this.uxOpenFileDialog.FileName = "openFileDialog1";
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1245, 571);
             this.Controls.Add(this.uxTabControl);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Form1";
             this.uxTabControl.ResumeLayout(false);
             this.uxHomeTab.ResumeLayout(false);
@@ -1003,6 +1011,7 @@
         private System.Windows.Forms.ToolStripButton uxAddPortfolio;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton helpToolStripButton;
+        private System.Windows.Forms.OpenFileDialog uxOpenFileDialog;
     }
 }
 
