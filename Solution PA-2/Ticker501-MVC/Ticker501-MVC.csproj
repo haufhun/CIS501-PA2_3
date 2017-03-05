@@ -46,48 +46,53 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\AddWithdrawFundsForm.cs">
+    <Compile Include="Controller.cs" />
+    <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\DataBase.cs" />
+    <Compile Include="View\AddWithdrawFundsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddWithdrawFundsForm.Designer.cs">
+    <Compile Include="View\AddWithdrawFundsForm.Designer.cs">
       <DependentUpon>AddWithdrawFundsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\BuyStocksForm.cs">
+    <Compile Include="View\BuyStocksForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\BuyStocksForm.Designer.cs">
+    <Compile Include="View\BuyStocksForm.Designer.cs">
       <DependentUpon>BuyStocksForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\GetPortfolioNameForm.cs">
+    <Compile Include="View\GetPortfolioNameForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\GetPortfolioNameForm.Designer.cs">
+    <Compile Include="View\GetPortfolioNameForm.Designer.cs">
       <DependentUpon>GetPortfolioNameForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MainForm.cs">
+    <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MainForm.Designer.cs">
+    <Compile Include="View\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Portfolio.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Forms\SellStocksForm.cs">
+    <Compile Include="View\SellStocksForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SellStocksForm.Designer.cs">
+    <Compile Include="View\SellStocksForm.Designer.cs">
       <DependentUpon>SellStocksForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\AddWithdrawFundsForm.resx">
+    <Compile Include="Model\Stock.cs" />
+    <EmbeddedResource Include="View\AddWithdrawFundsForm.resx">
       <DependentUpon>AddWithdrawFundsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\BuyStocksForm.resx">
+    <EmbeddedResource Include="View\BuyStocksForm.resx">
       <DependentUpon>BuyStocksForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\GetPortfolioNameForm.resx">
+    <EmbeddedResource Include="View\GetPortfolioNameForm.resx">
       <DependentUpon>GetPortfolioNameForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MainForm.resx">
+    <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -99,7 +104,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\SellStocksForm.resx">
+    <EmbeddedResource Include="View\SellStocksForm.resx">
       <DependentUpon>SellStocksForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -114,6 +119,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Ticker.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

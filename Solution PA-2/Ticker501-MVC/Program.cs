@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -39,6 +41,17 @@ namespace Ticker501_MVC
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            //var c = new Controller();
+            //var a = new Account();
+            var fundsForm = new AddWithdrawFundsForm(); //pass withdraw and deposit cash handlers
+            var bSForm = new BuyStocksForm();// pass buyStocks handler
+            var sSForm = new SellStocksForm();// pass SellStocks handler
+
+            var mForm = new MainForm();// pass all the delegates needed
+
+            
+
             Application.Run(new MainForm());
         }
     }
