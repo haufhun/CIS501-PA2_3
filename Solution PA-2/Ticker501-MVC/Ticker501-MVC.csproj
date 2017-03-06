@@ -48,12 +48,11 @@
   <ItemGroup>
     <Compile Include="Controller.cs" />
     <Compile Include="Model\Account.cs" />
-    <Compile Include="Model\Interfaces\IAccount.cs" />
     <Compile Include="Model\DataBase.cs" />
-    <Compile Include="Model\IAccount.cs" />
-    <Compile Include="Model\IDatabase.cs" />
-    <Compile Include="Model\IPortfolio.cs" />
-    <Compile Include="Model\IStock.cs" />
+    <Compile Include="Model\Interfaces\IAccount.cs" />
+    <Compile Include="Model\Interfaces\IDatabase.cs" />
+    <Compile Include="Model\Interfaces\IPortfolio.cs" />
+    <Compile Include="Model\Interfaces\IStock.cs" />
     <Compile Include="View\AddWithdrawFundsForm.cs">
       <SubType>Form</SubType>
     </Compile>
