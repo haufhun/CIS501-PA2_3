@@ -314,8 +314,13 @@ namespace Ticker501_MVC
 
                             if (split != null)
                             {
-                                if(_database.StockDatabase.ContainsKey(split[0]))
+                                if(!_database.StockDatabase.ContainsKey(split[0]))
                                     _database.StockDatabase.Add(split[0], new Tuple<string, string, decimal>(split[0], split[1], Convert.ToDecimal(split[2])));
+                                else
+                                {
+                                    _database.StockDatabase[split[0]] = new Tuple<string, string, decimal>(split[0],
+                                        split[1], Convert.ToDecimal(split[2]));
+                                }
                             }
                         }
                     }

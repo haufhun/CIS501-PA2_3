@@ -39,6 +39,7 @@ namespace Ticker501_MVC.View
         private List<ToolStripSplitButton> _listOfPortfolioButtons;
 
         private IAccount _account;
+        private IDatabase _database;
 
         private GetPortfolioNameForm _getPNForm;
         private AddWithdrawFundsForm _addFundsForm;
@@ -49,12 +50,13 @@ namespace Ticker501_MVC.View
         /// <summary>
         /// Constructor for User interface. Initilazies the model, forms and handlers.
         /// </summary>
-        public MainForm(IAccount a, GetPortfolioNameForm gpnForm, AddWithdrawFundsForm aFundsForm, AddWithdrawFundsForm wFundsForm, BuyStocksForm bSForm, SellStocksForm sSForm,
+        public MainForm(IAccount a, IDatabase db, GetPortfolioNameForm gpnForm, AddWithdrawFundsForm aFundsForm, AddWithdrawFundsForm wFundsForm, BuyStocksForm bSForm, SellStocksForm sSForm,
                             OpenForm openForm, PortfolioSelectedHandler portfolioSelected, AddPortfolioHandler addPortfolio, DeletePortfolioHandler deletePortfolio, 
                             SimulateHandler simulate, ReadFileHandler readTickerFile)
         {
             //Initialize Account and Forms
             _account = a;
+            _database = db;
             _getPNForm = gpnForm;
             _addFundsForm = aFundsForm;
             _withdrawFundsForm = wFundsForm;
@@ -217,13 +219,13 @@ namespace Ticker501_MVC.View
             uxHomeListInfo.BeginUpdate();
             uxHomeListInfo.Items.Clear();
 
-            //foreach (var i in DataBase.PriceAndTickerName.Values)
-            //{
-            //    string[] itemInfo = { i.Item1, i.Item2, i.Item3.ToString("C") };
-            //    var item = new ListViewItem(itemInfo);
+            foreach (var i in _database.StockDatabase.Values)
+            {
+                string[] itemInfo = { i.Item1, i.Item2, i.Item3.ToString("C") };
+                var item = new ListViewItem(itemInfo);
 
-            //    uxHomeListInfo.Items.Add(item);
-            //}
+                uxHomeListInfo.Items.Add(item);
+            }
 
             uxHomeListInfo.EndUpdate();
            // DisplayGainsAndLossesPretty(uxHomeGainsLosses, _account.GetGainsAndLossesReport());

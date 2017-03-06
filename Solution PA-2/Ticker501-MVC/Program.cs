@@ -52,10 +52,11 @@ namespace Ticker501_MVC
             var bSForm = new BuyStocksForm(c.BuyStocks);
             var sSForm = new SellStocksForm(c.SellStocks);
 
-            var mForm = new MainForm(a, gpnForm, aFundsForm, wFundsForm, bSForm, sSForm, c.OpenForm, c.DisplayPortfolioSelectedObserver, 
+            var mForm = new MainForm(a, db, gpnForm, aFundsForm, wFundsForm, bSForm, sSForm, c.OpenForm, c.DisplayPortfolioSelectedObserver, 
                                         c.AddPortfolio, c.DeletePortfolio, c.Simulate, c.ReadTickerFile);
 
             c.PortfoioRegister(mForm.DisplayPortfolio);
+            c.Register(mForm.DisplayHomeStockInfo);
             //c.AddPortfolioRegister(mForm.AddPortfolioToToolStrip);
 
             Application.Run(mForm);
