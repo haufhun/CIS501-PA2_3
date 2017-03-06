@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 using Ticker501_MVC.Model.Interfaces;
 
@@ -15,9 +13,13 @@ namespace Ticker501_MVC
         /// </summary>
         private IAccount _account;
         /// <summary>
+        /// The instance of the database,
+        /// </summary>
+        private readonly IDatabase _database;
+        /// <summary>
         /// The list of observers to call.
         /// </summary>
-        private List<Observer> _observers;
+        private readonly List<Observer> _observers;
         /// <summary>
         /// The list of portolio observers to call.
         /// </summary>
@@ -31,17 +33,14 @@ namespace Ticker501_MVC
         private DisplayErrorMessageObserver _displayErrorMessageObserver;
 
         /// <summary>
-        /// Current Portfoilo selected on the gui
-        /// </summary>
-        private string _currentPortfolioSelected;
-
-        /// <summary>
         /// contructs the Controller and initialized the account private field
         /// </summary>
         /// <param name="a">Accoutn object</param>
-        public Controller(IAccount a)
+        /// <param name="db">An instance of the database.</param>
+        public Controller(IAccount a, IDatabase db)
         {
             _account = a;
+            _database = db;
             _observers = new List<Observer>();
         }
 
@@ -83,8 +82,6 @@ namespace Ticker501_MVC
         /// </summary>
         public void DisplayPortfolioSelectedObserver(string portfolioName)
         {
-            _currentPortfolioSelected = portfolioName;
-
             _portfolioObserver(portfolioName);
         }
 
@@ -223,10 +220,8 @@ namespace Ticker501_MVC
         /// Adds a new portfolio given a portfolio name, and an observer to update the toolstrip menu.
         /// </summary>
         /// <param name="portfolioName">The portfolio name.</param>
-        /// <param name="addPrtMethod">The update tool strip menu delegate.</param>
         public void AddPortfolio(string portfolioName)
         {
-            _currentPortfolioSelected = portfolioName;
             SignalObservers();
             //try
             //{
@@ -243,8 +238,6 @@ namespace Ticker501_MVC
             //    _displayErrorMessageObserver("There was a problem trying to add a portfolio.");
             //}
         }
-
-
 
         /// <summary>
         /// Deletes the portfolio, catching any account exception or regular exception that may be needed.
@@ -298,16 +291,34 @@ namespace Ticker501_MVC
         /// <summary>
         /// Reads the ticker information from a file.
         /// </summary>
-        /// <param name="fileName"> The file to read</param>
+        /// <param name="openFile"> An instance of the open dialog to get the file from.</param>
         public bool ReadTickerFile(OpenFileDialog openFile)
         {
             try
             {
                 if (openFile.ShowDialog() == DialogResult.OK)
                 {
-
                     var fileName = openFile.FileName;
-                   // DataBase.GetInfoFromFile(new StreamReader(fileName));
+                    using (var input = new StreamReader(fileName))
+                    {
+                        while (!input.EndOfStream)
+                        {
+                            var inputLine = input.ReadLine();
+                            string[] split = null;
+                            if (inputLine != null && !(inputLine.Trim().Length <= 5))
+                            {
+                                split = inputLine.Split('-');
+                                split[0] = split[0].Trim().ToUpper();
+                                split[2] = split[2].Substring(1);
+                            }
+
+                            if (split != null)
+                            {
+                                if(_database.StockDatabase.ContainsKey(split[0]))
+                                    _database.StockDatabase.Add(split[0], new Tuple<string, string, decimal>(split[0], split[1], Convert.ToDecimal(split[2])));
+                            }
+                        }
+                    }
                     SignalObservers();
                     return true;
                 }

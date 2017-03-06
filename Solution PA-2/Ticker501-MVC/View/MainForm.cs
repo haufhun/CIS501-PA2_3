@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Ticker501_MVC.Model;
 using Ticker501_MVC.Model.Interfaces;
 
-namespace Ticker501_MVC
+namespace Ticker501_MVC.View
 {
     public partial class MainForm : Form
     {
@@ -54,13 +49,13 @@ namespace Ticker501_MVC
         /// <summary>
         /// Constructor for User interface. Initilazies the model, forms and handlers.
         /// </summary>
-        public MainForm(IAccount a, GetPortfolioNameForm GPNForm, AddWithdrawFundsForm aFundsForm, AddWithdrawFundsForm wFundsForm, BuyStocksForm bSForm, SellStocksForm sSForm,
+        public MainForm(IAccount a, GetPortfolioNameForm gpnForm, AddWithdrawFundsForm aFundsForm, AddWithdrawFundsForm wFundsForm, BuyStocksForm bSForm, SellStocksForm sSForm,
                             OpenForm openForm, PortfolioSelectedHandler portfolioSelected, AddPortfolioHandler addPortfolio, DeletePortfolioHandler deletePortfolio, 
                             SimulateHandler simulate, ReadFileHandler readTickerFile)
         {
             //Initialize Account and Forms
             _account = a;
-            _getPNForm = GPNForm;
+            _getPNForm = gpnForm;
             _addFundsForm = aFundsForm;
             _withdrawFundsForm = wFundsForm;
             _bSForm = bSForm;
@@ -271,7 +266,7 @@ namespace Ticker501_MVC
         public void DisplayPortfolio(string currentPortfolio)
         {
             uxPortfolioName.Text = currentPortfolio;
-            updateEnabledBuyAndSellStocks(currentPortfolio);
+            UpdateEnabledBuyAndSellStocks(currentPortfolio);
 
             // var info = _account.GetPortfolioBalance(currentPortfolio);
 
@@ -306,7 +301,7 @@ namespace Ticker501_MVC
         /// Enables and disables the buy and sell stock buttons according to which portfolio they are on
         /// </summary>
         /// <param name="currentPortfolio">The portfolio that they are currently on</param>
-        private void updateEnabledBuyAndSellStocks(string currentPortfolio)
+        private void UpdateEnabledBuyAndSellStocks(string currentPortfolio)
         {
             if (uxPortfolio1.Text == currentPortfolio)
             {

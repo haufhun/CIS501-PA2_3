@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Security.Principal;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Ticker501_MVC.Model;
+using Ticker501_MVC.View;
 
 namespace Ticker501_MVC
 {
@@ -47,7 +43,8 @@ namespace Ticker501_MVC
             Application.SetCompatibleTextRenderingDefault(false);
 
             var a = new Account();
-            var c = new Controller(a);
+            var db = new DataBase();
+            var c = new Controller(a, db);
 
             var gpnForm = new GetPortfolioNameForm(c.AddPortfolio);
             var aFundsForm = new AddWithdrawFundsForm(1, c.DepositFunds);
