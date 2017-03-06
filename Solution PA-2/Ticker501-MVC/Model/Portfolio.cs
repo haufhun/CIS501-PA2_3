@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Ticker501_MVC.Model.Interfaces;
 
-namespace Ticker501_MVC
+namespace Ticker501_MVC.Model
 {
-    public class Portfolio
+    public class Portfolio : IPortfolio
     {
+        public decimal InvestedBalance { get; set; }
+        public int NumberOfStocks { get; set; }
+        public Dictionary<string, IStock> Stocks { get; set; }
     }
 }
