@@ -360,7 +360,6 @@ namespace Ticker501_MVC
                     return;
                 }
             }
-
         }
 
         /// <summary>

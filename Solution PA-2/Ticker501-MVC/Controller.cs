@@ -23,7 +23,7 @@ namespace Ticker501_MVC
         /// </summary>
         private PortfolioObserver _portfolioObserver;
 
-        private List<AddPortfolioObserver> _addPortfolioObserver;
+        //private List<AddPortfolioObserver> _addPortfolioObserver;
 
         /// <summary>
         /// A error message delegate used to display error messges.
@@ -63,10 +63,10 @@ namespace Ticker501_MVC
             _portfolioObserver = o;
         }
 
-        public void AddPortfolioRegister(AddPortfolioObserver o)
-        {
-            _addPortfolioObserver.Add(o);
-        }
+        //public void AddPortfolioRegister(AddPortfolioObserver o)
+        //{
+        //    _addPortfolioObserver.Add(o);
+        //}
 
         /// <summary>
         /// Register the display error message method in the user interface to the private field.
@@ -88,13 +88,13 @@ namespace Ticker501_MVC
             _portfolioObserver(portfolioName);
         }
 
-        private void SignalAddPortfolioObservers(string portfolioName)
-        {
-            foreach (var o in _addPortfolioObserver)
-            {
-                o(portfolioName);
-            }
-        }
+        //private void SignalAddPortfolioObservers(string portfolioName)
+        //{
+        //    foreach (var o in _addPortfolioObserver)
+        //    {
+        //        o(portfolioName);
+        //    }
+        //}
 
         /// <summary>
         /// Signals the observers to update fields of the user interface
@@ -117,7 +117,6 @@ namespace Ticker501_MVC
             //}
             //}
         }
-
 
         /// <summary>
         /// shows the form passed into the argument
@@ -228,7 +227,7 @@ namespace Ticker501_MVC
         public void AddPortfolio(string portfolioName)
         {
             _currentPortfolioSelected = portfolioName;
-            SignalAddPortfolioObservers(portfolioName);
+            SignalObservers();
             //try
             //{
             //    _account.AddPortfolio(portfolioName);
