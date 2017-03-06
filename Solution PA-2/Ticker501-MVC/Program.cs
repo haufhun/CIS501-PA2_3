@@ -26,7 +26,7 @@ namespace Ticker501_MVC
     // defines the type of method that handles a sell stock input event
     public delegate void SellStocksHandler(string portfolioName, string tickerName, int numberOfShares);
     // defines the type of method that handles a add portfolio input event 
-    public delegate void AddPortfolioHandler(string portfolioName, AddPortfolioObserver addPrtMethod);
+    public delegate void AddPortfolioHandler(string portfolioName);
     // defines the type of method that handles a delete portfolio input event
     public delegate void DeletePortfolioHandler(string portfolioName);
     // defines the type of method that handles a simulate input event
@@ -48,17 +48,17 @@ namespace Ticker501_MVC
             var a = new Account();
             var c = new Controller(a);
 
-            var gpnForm = new GetPortfolioNameForm();
+            var gpnForm = new GetPortfolioNameForm(c.AddPortfolio);
             var aFundsForm = new AddWithdrawFundsForm(1, c.DepositFunds);
             var wFundsForm =  new AddWithdrawFundsForm(2, c.WithdrawFunds);
             var bSForm = new BuyStocksForm(c.BuyStocks);
             var sSForm = new SellStocksForm(c.SellStocks);
 
-            var mForm = new MainForm(a, gpnForm, aFundsForm, wFundsForm, bSForm, sSForm,
-                                        c.OpenForm, c.DisplayPortfolioSelected, c.DepositFunds, c.WithdrawFunds, 
-                                        c.BuyStocks, c.SellStocks, c.AddPortfolio, c.DeletePortfolio, c.Simulate, c.ReadTickerFile);
+            var mForm = new MainForm(a, gpnForm, aFundsForm, wFundsForm, bSForm, sSForm, c.OpenForm, c.DisplayPortfolioSelectedObserver, 
+                                        c.AddPortfolio, c.DeletePortfolio, c.Simulate, c.ReadTickerFile);
 
             c.PortfoioRegister(mForm.DisplayPortfolio);
+            c.AddPortfolioRegister(mForm.AddPortfolioToToolStrip);
 
             Application.Run(mForm);
         }

@@ -53,10 +53,8 @@ namespace Ticker501_MVC
         }
 
         /// <summary>
-        /// makes sure that they can only input a correct decimal value
+        /// Makes sure they can only input a valid decimal in txtbox
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void uxAmountTxtBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
@@ -72,7 +70,6 @@ namespace Ticker501_MVC
                 e.Handled = true;
             }
         }
-
         /// <summary>
         /// Makes sure what they are depositing is above the transfer fee value.
         /// </summary>
@@ -94,6 +91,9 @@ namespace Ticker501_MVC
             }
         }
 
+        /// <summary>
+        /// OK button click handler.. calls the correct delegate  int he controller
+        /// </summary>
         private void uxOK_Click(object sender, EventArgs e)
         {
             addOrWithdrawFunds(Convert.ToDecimal(uxAmountTxtBox.Text));

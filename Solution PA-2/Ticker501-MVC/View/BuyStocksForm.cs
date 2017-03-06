@@ -12,6 +12,9 @@ namespace Ticker501_MVC
 {
     public partial class BuyStocksForm : Form
     {
+        /// <summary>
+        /// Defines the type of method that handles a buy stock input event 
+        /// </summary>
         private Action<string, string, int> buyStocks;
 
         public BuyStocksForm()

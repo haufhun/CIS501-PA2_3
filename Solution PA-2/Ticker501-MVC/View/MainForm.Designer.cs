@@ -133,6 +133,7 @@
             this.uxTabControl.SelectedIndex = 0;
             this.uxTabControl.Size = new System.Drawing.Size(1245, 571);
             this.uxTabControl.TabIndex = 3;
+            this.uxTabControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.uxTabControl_Selecting);
             // 
             // uxHomeTab
             // 

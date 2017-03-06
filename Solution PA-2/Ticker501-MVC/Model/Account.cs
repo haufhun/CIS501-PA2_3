@@ -16,5 +16,21 @@ namespace Ticker501_MVC
         /// The transfer fee for depositing/withdrawing money.
         /// </summary>
         public const decimal TRANSFER_FEE = 4.99m;
+
+        private decimal _cashBalance;
+
+        private int _totalNumberofShares;
+
+        public decimal CashBalance
+        {
+            get { return _cashBalance;}
+            set { _cashBalance = value; }
+        }
+
+        public int TotalNumberOfShares
+        {
+            get { return _totalNumberofShares; }
+            set { _totalNumberofShares = value; }
+        }
     }
 }

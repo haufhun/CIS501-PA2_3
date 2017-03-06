@@ -16,27 +16,6 @@ namespace Ticker501_MVC
 
         private OpenForm _openForm;
 
-
-        /// <summary>
-        /// Defines the type of method that handles a deposit cash input event 
-        /// </summary>
-        private DepositCashHandler _depositCashHandler;
-
-        /// <summary>
-        /// Defines the type of method that handles a withdraw cash input event
-        /// </summary>
-        private WithdrawCashHandler _withdrawCashHandler;
-
-        /// <summary>
-        /// Defines the type of method that handles a buy stock input event 
-        /// </summary>
-        private BuyStocksHandler _buyStocksHandler;
-
-        /// <summary>
-        /// Defines the type of method that handles a sell stock input event
-        /// </summary>
-        private SellStocksHandler _sellStocksHandler;
-
         /// <summary>
         ///  Defines the type of method that handles a add portfolio input event 
         /// </summary>
@@ -57,6 +36,11 @@ namespace Ticker501_MVC
         /// </summary>
         private ReadFileHandler _readFileHandler;
 
+        /// <summary>
+        /// A list of all the portfolio buttons on the tool strip menu.
+        /// </summary>
+        private List<ToolStripSplitButton> _listOfPortfolioButtons;
+
         private Account _account;
 
         private GetPortfolioNameForm _getPNForm;
@@ -69,8 +53,7 @@ namespace Ticker501_MVC
         /// Constructor for User interface. Initilazies the model, forms and handlers.
         /// </summary>
         public MainForm(Account a, GetPortfolioNameForm GPNForm, AddWithdrawFundsForm aFundsForm, AddWithdrawFundsForm wFundsForm, BuyStocksForm bSForm, SellStocksForm sSForm,
-                            OpenForm openForm, PortfolioSelectedHandler portfolioSelected, DepositCashHandler depositFunds, WithdrawCashHandler withdrawFunds, 
-                            BuyStocksHandler buyStocks, SellStocksHandler sellStocks, AddPortfolioHandler addPortfolio, DeletePortfolioHandler deletePortfolio, 
+                            OpenForm openForm, PortfolioSelectedHandler portfolioSelected, AddPortfolioHandler addPortfolio, DeletePortfolioHandler deletePortfolio, 
                             SimulateHandler simulate, ReadFileHandler readTickerFile)
         {
             //Initialize Account and Forms
@@ -81,15 +64,9 @@ namespace Ticker501_MVC
             _bSForm = bSForm;
             _sSForm = sSForm;
 
-            //Initialize Open Form handlers
-            _openForm = openForm;
-
             //Initialize Handlers
+            _openForm = openForm;
             _portfolioSelectedHandler = portfolioSelected;
-            _depositCashHandler = depositFunds;
-            _withdrawCashHandler = withdrawFunds;
-            _buyStocksHandler = buyStocks;
-            _sellStocksHandler = sellStocks;
             _addPortfolioHandler = addPortfolio;
             _deletePortfolioHandler = deletePortfolio;
             _simulateHandler = simulate;
@@ -105,6 +82,12 @@ namespace Ticker501_MVC
             uxSellStocks1.Click += SellStocksButton_Click;
             uxSellStocks2.Click += SellStocksButton_Click;
             uxSellStocks3.Click += SellStocksButton_Click;
+
+            //Adds all portfolio buttons to list
+            _listOfPortfolioButtons = new List<ToolStripSplitButton>();
+            _listOfPortfolioButtons.Add(uxPortfolio1);
+            _listOfPortfolioButtons.Add(uxPortfolio2);
+            _listOfPortfolioButtons.Add(uxPortfolio3);
         }
 /////////// Click Events inside this collapsed block /////////////////
 
@@ -211,6 +194,64 @@ namespace Ticker501_MVC
         }
 //////////////////////////////////////////////////////////////////////
 
+        private void uxTabControl_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            if (e.TabPage == uxPortfolioTab && uxSimulateStockPrices.Enabled == false)
+            {
+                e.Cancel = true;
+                MessageBox.Show("Please Open a ticker file first.");
+            }
+        }
+
+        /// <summary>
+        /// Updates all the information on the Home tab.
+        /// </summary>
+        public void DisplayHomeStockInfo()
+        {
+            uxHomeListInfo.BeginUpdate();
+            uxHomeListInfo.Items.Clear();
+
+            //foreach (var i in DataBase.PriceAndTickerName.Values)
+            //{
+            //    string[] itemInfo = { i.Item1, i.Item2, i.Item3.ToString("C") };
+            //    var item = new ListViewItem(itemInfo);
+
+            //    uxHomeListInfo.Items.Add(item);
+            //}
+
+            uxHomeListInfo.EndUpdate();
+           // DisplayGainsAndLossesPretty(uxHomeGainsLosses, _account.GetGainsAndLossesReport());
+        }
+
+        /// <summary>
+        /// Updates all the information on the Account tab.
+        /// </summary>
+        public void DisplayAccount()
+        {
+
+            //var t = _account.GetAccountBalance();
+
+            //uxAccBalOutput.Text = t.Item1.ToString("C");
+            //uxAccNetWorthOutput.Text = t.Item3.ToString("C");
+            //uxAccTotalInvestedOutput.Text = t.Item2.ToString("C");
+            //uxAccNetWorthStocksOutput.Text = _account.GetCashBalance().ToString("C");
+            //DisplayGainsAndLossesPretty(uxAccGainsLossesOutput, _account.GetGainsAndLossesReport());
+
+            //uxAccListInfo.BeginUpdate();
+            //uxAccListInfo.Items.Clear();
+
+            //var list = _account.GetAllAccountStockInfoTuple();
+
+            //foreach (var i in list)
+            //{
+            //    //TickerName    Company Name    Price per share     Shares owned    Networth of shares   position balance
+            //    string[] itemInfo = { i.Item1, i.Item2, i.Item3.ToString("c"), i.Item4.ToString(), i.Item5.ToString("c"), i.Item6.ToString("p") };
+            //    ListViewItem item = new ListViewItem(itemInfo);
+            //    uxAccListInfo.Items.Add(item);
+            //}
+
+            //uxAccListInfo.EndUpdate();
+        }
 
         /// <summary>
         /// Updates all the information on the Portfolio tab selected.
@@ -291,5 +332,128 @@ namespace Ticker501_MVC
             }
         }
 
+        /// <summary>
+        /// Adds a portfolio to toolstrip and opens the portfolio
+        /// </summary>
+        /// <param name="portfolioName">Name of portfolio to create and display</param>
+        public void AddPortfolioToToolStrip(string portfolioName)
+        {
+            foreach (var p in _listOfPortfolioButtons)
+            {
+                if (!p.Visible)
+                {
+                    p.Visible = true;
+                    p.Text = portfolioName;
+           //       _currentPortfolio = portfolioName;
+           //       DisplayPortfolio();
+                    return;
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// Delete the contents of the whole portfolio, getting the name of the portfolio
+        /// from the proper parent.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DeletePortfolio(object sender, EventArgs e)
+        {
+            //var parent = (sender as ToolStripMenuItem).OwnerItem;
+            //var name = parent.Text;
+            //_account.DeletePortfolio(name);
+            //parent.Visible = false;
+            //if (_account.NumberOfPortfolios < 3) uxAddPortfolio.Visible = true;
+            //_portfolioCount--;
+            //ClearPortfolioPage();
+        }
+
+        private void ClearPortfolioPage()
+        {
+            uxPrtBalOutput.Text = "$0.00";
+            uxPrtPercentageOfAccountOutput.Text = "0.00 %";
+            uxPrtTotalInvestedOuput.Text = "$0.00";
+            uxPrtNetWorthOutput.Text = "$0.00";
+            uxPortfolioName.Text = "Please Select a Portfolio";
+            DisplayGainsAndLossesPretty(uxPrtGainsLossesOutput, 0.00m);
+
+            uxPrtListInfo.BeginUpdate();
+            uxPrtListInfo.Items.Clear();
+            uxPrtListInfo.EndUpdate();
+        }
+
+        /// <summary>
+        /// Displays an error message to the user with the given string.
+        /// </summary>
+        /// <param name="message">The message to be displayed to the user in a message box.</param>
+        public void DisplayErrorMessage(string message)
+        {
+            MessageBox.Show(message);
+        }
+
+        /// <summary>
+        /// Sets if the withdraw funds button and the buy stocks buttons are 
+        /// enabled based on if the user has more money than the trade or transfer fee in their account.
+        /// </summary>
+        public void SetButtonsBasedOnSufficentfunds()
+        {
+            uxWithdrawFunds.Enabled = _account.CashBalance > Account.TRANSFER_FEE;
+
+            if (_account.CashBalance > Account.TRADE_FEE)
+            {
+                uxBuyStocks1.Enabled = true;
+                uxBuyStocks2.Enabled = true;
+                uxBuyStocks3.Enabled = true;
+            }
+            else
+            {
+                uxBuyStocks1.Enabled = false;
+                uxBuyStocks2.Enabled = false;
+                uxBuyStocks3.Enabled = false;
+            }
+        }
+
+        /// <summary>
+        /// Changes the sell stock button to true or false based on if the user has stocks or not.
+        /// </summary>
+        public void SetSellStockButtonBasedOnNumberOfStocks()
+        {
+            if (_account.TotalNumberOfShares > 0)
+            {
+                uxSellStocks1.Enabled = true;
+                uxSellStocks2.Enabled = true;
+                uxSellStocks3.Enabled = true;
+            }
+            else
+            {
+                uxSellStocks1.Enabled = false;
+                uxSellStocks2.Enabled = false;
+                uxSellStocks3.Enabled = false;
+            }
+        }
+
+        /// <summary>
+        /// Exits the program if the user clicks the exit button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uxExitProgram_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        public void DisplayGainsAndLossesPretty(Label l, decimal cash)
+        {
+            l.Text = cash.ToString("c");
+            if (cash < 0)
+            {
+                l.ForeColor = Color.Red;
+            }
+            else if (cash > 0)
+            {
+                l.ForeColor = Color.SeaGreen;
+            }
+        }
     }
 }

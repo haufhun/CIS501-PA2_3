@@ -61,6 +61,8 @@
             this.uxAmountTxtBox.Name = "uxAmountTxtBox";
             this.uxAmountTxtBox.Size = new System.Drawing.Size(127, 22);
             this.uxAmountTxtBox.TabIndex = 8;
+            this.uxAmountTxtBox.TextChanged += new System.EventHandler(this.uxAmountTxtBox_TextChanged);
+            this.uxAmountTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.uxAmountTxtBox_KeyPress);
             // 
             // uxInfoLabel
             // 
@@ -83,8 +85,6 @@
             this.Name = "AddWithdrawFundsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Transaction";
-            this.TextChanged += new System.EventHandler(this.uxAmountTxtBox_TextChanged);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.uxAmountTxtBox_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 

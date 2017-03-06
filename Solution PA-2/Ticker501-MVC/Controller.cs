@@ -21,6 +21,9 @@ namespace Ticker501_MVC
         /// The list of portolio observers to call.
         /// </summary>
         private PortfolioObserver _portfolioObserver;
+
+        private List<AddPortfolioObserver> _addPortfolioObserver;
+
         /// <summary>
         /// A error message delegate used to display error messges.
         /// </summary>
@@ -59,6 +62,11 @@ namespace Ticker501_MVC
             _portfolioObserver = o;
         }
 
+        public void AddPortfolioRegister(AddPortfolioObserver o)
+        {
+            _addPortfolioObserver.Add(o);
+        }
+
         /// <summary>
         /// Register the display error message method in the user interface to the private field.
         /// </summary>
@@ -72,10 +80,19 @@ namespace Ticker501_MVC
         /// <summary>
         /// Will update the info on the portfolio tab when a new portfolio is selected
         /// </summary>
-        public void DisplayPortfolioSelected(string portfolioName)
+        public void DisplayPortfolioSelectedObserver(string portfolioName)
         {
             _currentPortfolioSelected = portfolioName;
+
             _portfolioObserver(portfolioName);
+        }
+
+        private void SignalAddPortfolioObservers(string portfolioName)
+        {
+            foreach (var o in _addPortfolioObserver)
+            {
+                o(portfolioName);
+            }
         }
 
         /// <summary>
@@ -207,9 +224,11 @@ namespace Ticker501_MVC
         /// </summary>
         /// <param name="portfolioName">The portfolio name.</param>
         /// <param name="addPrtMethod">The update tool strip menu delegate.</param>
-        public void AddPortfolio(string portfolioName, AddPortfolioObserver addPrtMethod)
+        public void AddPortfolio(string portfolioName)
         {
-                        //try
+            _currentPortfolioSelected = portfolioName;
+            SignalAddPortfolioObservers(portfolioName);
+            //try
             //{
             //    _account.AddPortfolio(portfolioName);
             //    addPrtMethod(portfolioName);
@@ -223,8 +242,9 @@ namespace Ticker501_MVC
             //{
             //    displayErrorMessageObserver("There was a problem trying to add a portfolio.");
             //}
-
         }
+
+
 
         /// <summary>
         /// Deletes the portfolio, catching any account exception or regular exception that may be needed.
