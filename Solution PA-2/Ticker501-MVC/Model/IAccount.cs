@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Ticker501_MVC.Model
 {
-    public class IAccount
+    public interface IAccount
     {
-        public decimal CashBalance { get; set; }
+        decimal CashBalance { get; set; }
 
-        public decimal InvestedBalance { get; set; }
+        decimal InvestedBalance { get; set; }
         
-        public int NumberOfStocks { get; set; }
+        int NumberOfStocks { get; set; }
 
-        public Dictionary<string, IPortfolio> Portfolios { get; set; }
+        Dictionary<string, IPortfolio> Portfolios { get; set; }
 
-        public decimal GainsLosses { get; set; }
+        decimal GainsLosses { get; set; }
     }
 }

@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace Ticker501_MVC.Model
 {
-    public interface IStock
+    public interface IDatabase
     {
-       decimal InvestedBalance { get; set; }
-
-       int NumberOfShares { get; set; }
-
+        Dictionary<string, Tuple<string, string, decimal>> StockDatabase { get; set; }
     }
 }

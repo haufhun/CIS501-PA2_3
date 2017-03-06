@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Ticker501_MVC.Model
 {
-    public class IPortfolio
+    public interface IPortfolio
     {
-        public decimal InvestedBalance { get; set; }
+       decimal InvestedBalance { get; set; }
 
-        public int NumberOfStocks { get; set; }
-
-        public Dictionary<string, IStock> Stocks { get; set; }
+       int NumberOfStocks { get; set; }
+        
+       Dictionary<string, IStock> Stocks { get; set; }
 
     }
 }
