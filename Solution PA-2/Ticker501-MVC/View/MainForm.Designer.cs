@@ -304,6 +304,7 @@
             this.uxExitProgram.Name = "uxExitProgram";
             this.uxExitProgram.Size = new System.Drawing.Size(108, 24);
             this.uxExitProgram.Text = "Exit Ticker 501";
+            this.uxExitProgram.Click += new System.EventHandler(this.uxExitProgram_Click);
             // 
             // uxAccountTab
             // 

@@ -192,6 +192,15 @@ namespace Ticker501_MVC
         {
             _openForm(_sSForm);
         }
+        /// <summary>
+        /// Exits the program if the user clicks the exit button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uxExitProgram_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
 //////////////////////////////////////////////////////////////////////
 
         private void uxTabControl_Selecting(object sender, TabControlCancelEventArgs e)
@@ -433,15 +442,7 @@ namespace Ticker501_MVC
             }
         }
 
-        /// <summary>
-        /// Exits the program if the user clicks the exit button.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void uxExitProgram_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+
 
         public void DisplayGainsAndLossesPretty(Label l, decimal cash)
         {
