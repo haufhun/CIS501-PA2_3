@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Ticker501_MVC.Model.Interfaces;
 
-namespace Ticker501_MVC
+namespace Ticker501_MVC.Model
 {
-    public class Account
+    public class Account : IAccount
     {
         /// <summary>
         /// The trade fee for buying/selling stocks.
@@ -17,20 +14,39 @@ namespace Ticker501_MVC
         /// </summary>
         public const decimal TRANSFER_FEE = 4.99m;
 
-        private decimal _cashBalance;
+        /// <summary>
+        /// The total cash in the account.
+        /// </summary>
+        public decimal CashBalance { get; set; }
+        /// <summary>
+        /// The total worth of all stocks invested into the market.
+        /// </summary>
+        public decimal InvestedBalance { get; set; }
+        /// <summary>
+        /// The total number of stocks invested.
+        /// </summary>
+        public int NumberOfStocks { get; set; }
+        /// <summary>
+        /// A field indicating how much the user has gained/lost.
+        /// </summary>
+        public decimal GainsLosses { get; set; }
+        /// <summary>
+        /// A dictionary of the portfolios associated with this account.
+        /// </summary>
+        public Dictionary<string, IPortfolio> Portfolios { get; set; }
+        
 
-        private int _totalNumberofShares;
-
-        public decimal CashBalance
+        /// <summary>
+        /// Constructor initializing all fields. 
+        /// </summary>
+        public Account()
         {
-            get { return _cashBalance;}
-            set { _cashBalance = value; }
+            CashBalance = 0m;
+            InvestedBalance = 0m;
+            NumberOfStocks = 0;
+            Portfolios = new Dictionary<string, IPortfolio>();
+            GainsLosses = 0m;
         }
-
-        public int TotalNumberOfShares
-        {
-            get { return _totalNumberofShares; }
-            set { _totalNumberofShares = value; }
-        }
+        
     }
 }

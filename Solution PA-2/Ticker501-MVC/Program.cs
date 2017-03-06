@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Security.Principal;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Ticker501_MVC.Model;
 
 namespace Ticker501_MVC
 {

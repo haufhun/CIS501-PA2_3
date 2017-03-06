@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Ticker501_MVC.Model;
+using Ticker501_MVC.Model.Interfaces;
 
 namespace Ticker501_MVC
 {
@@ -41,7 +43,7 @@ namespace Ticker501_MVC
         /// </summary>
         private List<ToolStripSplitButton> _listOfPortfolioButtons;
 
-        private Account _account;
+        private IAccount _account;
 
         private GetPortfolioNameForm _getPNForm;
         private AddWithdrawFundsForm _addFundsForm;
@@ -52,7 +54,7 @@ namespace Ticker501_MVC
         /// <summary>
         /// Constructor for User interface. Initilazies the model, forms and handlers.
         /// </summary>
-        public MainForm(Account a, GetPortfolioNameForm GPNForm, AddWithdrawFundsForm aFundsForm, AddWithdrawFundsForm wFundsForm, BuyStocksForm bSForm, SellStocksForm sSForm,
+        public MainForm(IAccount a, GetPortfolioNameForm GPNForm, AddWithdrawFundsForm aFundsForm, AddWithdrawFundsForm wFundsForm, BuyStocksForm bSForm, SellStocksForm sSForm,
                             OpenForm openForm, PortfolioSelectedHandler portfolioSelected, AddPortfolioHandler addPortfolio, DeletePortfolioHandler deletePortfolio, 
                             SimulateHandler simulate, ReadFileHandler readTickerFile)
         {
@@ -428,7 +430,7 @@ namespace Ticker501_MVC
         /// </summary>
         public void SetSellStockButtonBasedOnNumberOfStocks()
         {
-            if (_account.TotalNumberOfShares > 0)
+            if (_account.NumberOfStocks > 0)
             {
                 uxSellStocks1.Enabled = true;
                 uxSellStocks2.Enabled = true;

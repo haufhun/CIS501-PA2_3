@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Ticker501_MVC.Model.Interfaces;
 
 namespace Ticker501_MVC
 {
@@ -12,7 +13,7 @@ namespace Ticker501_MVC
         /// <summary>
         /// The instance of the account.
         /// </summary>
-        private Account _account;
+        private IAccount _account;
         /// <summary>
         /// The list of observers to call.
         /// </summary>
@@ -27,7 +28,7 @@ namespace Ticker501_MVC
         /// <summary>
         /// A error message delegate used to display error messges.
         /// </summary>
-        private DisplayErrorMessageObserver displayErrorMessageObserver;
+        private DisplayErrorMessageObserver _displayErrorMessageObserver;
 
         /// <summary>
         /// Current Portfoilo selected on the gui
@@ -38,7 +39,7 @@ namespace Ticker501_MVC
         /// contructs the Controller and initialized the account private field
         /// </summary>
         /// <param name="a">Accoutn object</param>
-        public Controller(Account a)
+        public Controller(IAccount a)
         {
             _account = a;
             _observers = new List<Observer>();
@@ -73,7 +74,7 @@ namespace Ticker501_MVC
         /// <param name="o">The error message delegate in the user interface.</param>
         public void ErrorMessageRegister(DisplayErrorMessageObserver o)
         {
-            displayErrorMessageObserver = o;
+            _displayErrorMessageObserver = o;
         }
 
 
@@ -144,11 +145,11 @@ namespace Ticker501_MVC
             //}
             //catch (AccountException)
             //{
-            //    displayErrorMessageObserver("There was a problem depositing money into your account.");
+            //    _displayErrorMessageObserver("There was a problem depositing money into your account.");
             //}
             //catch (Exception)
             //{
-            //    displayErrorMessageObserver("Error trying to deposit funds.");
+            //    _displayErrorMessageObserver("Error trying to deposit funds.");
             //}
         }
 
@@ -165,11 +166,11 @@ namespace Ticker501_MVC
             //}
             //catch (AccountExceptions)
             //{
-            //    displayErrorMessageObserver("You currently do not have enough funds to perform this action.");
+            //    _displayErrorMessageObserver("You currently do not have enough funds to perform this action.");
             //}
             //catch (Exception)
             //{
-            //    displayErrorMessageObserver("Error trying to withdraw funds.");
+            //    _displayErrorMessageObserver("Error trying to withdraw funds.");
             //}
         }
 
@@ -188,11 +189,11 @@ namespace Ticker501_MVC
             //}
             //catch (AccountExceptions)
             //{
-            //    displayErrorMessageObserver("You currently do not have enought funds to perform this action");
+            //    _displayErrorMessageObserver("You currently do not have enought funds to perform this action");
             //}
             //catch (Exception)
             //{
-            //    displayErrorMessageObserver("Error trying to buy stocks.");
+            //    _displayErrorMessageObserver("Error trying to buy stocks.");
             //}
         }
 
@@ -211,11 +212,11 @@ namespace Ticker501_MVC
             //}
             //catch (AccountException)
             //{
-            //    displayErrorMessageObserver("Insufficient funds in your account.");
+            //    _displayErrorMessageObserver("Insufficient funds in your account.");
             //}
             //catch (Exception)
             //{
-            //    displayErrorMessageObserver("Error trying to sell stocks.");
+            //    _displayErrorMessageObserver("Error trying to sell stocks.");
             //}
         }
 
@@ -236,11 +237,11 @@ namespace Ticker501_MVC
             //}
             //catch (SamePortfolioNameException)
             //{
-            //    displayErrorMessageObserver("You already have a portfolio named \"" + portfolioName + "\".");
+            //    _displayErrorMessageObserver("You already have a portfolio named \"" + portfolioName + "\".");
             //}
             //catch (Exception)
             //{
-            //    displayErrorMessageObserver("There was a problem trying to add a portfolio.");
+            //    _displayErrorMessageObserver("There was a problem trying to add a portfolio.");
             //}
         }
 
@@ -259,12 +260,12 @@ namespace Ticker501_MVC
             //}
             //catch (AccountException)
             //{
-            //    displayErrorMessageObserver(
+            //    _displayErrorMessageObserver(
             //        "Error in the account with funds when trying to process delete portfolio request.");
             //}
             //catch (Exception)
             //{
-            //    displayErrorMessageObserver("Error when trying to delete portfolio " + portfolioName + ".");
+            //    _displayErrorMessageObserver("Error when trying to delete portfolio " + portfolioName + ".");
             //}
         }
 
@@ -291,7 +292,7 @@ namespace Ticker501_MVC
             //}
             //catch (Exception)
             //{
-            //    displayErrorMessageObserver("Error when trying to run the simluator");
+            //    _displayErrorMessageObserver("Error when trying to run the simluator");
             //}
         }
 
@@ -314,7 +315,7 @@ namespace Ticker501_MVC
             }
             catch (Exception)
             {
-                displayErrorMessageObserver("Error when reading file. Please try again.");
+                _displayErrorMessageObserver("Error when reading file. Please try again.");
             }
             return false;
         }
