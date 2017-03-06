@@ -133,6 +133,7 @@
             this.uxTabControl.SelectedIndex = 0;
             this.uxTabControl.Size = new System.Drawing.Size(1245, 571);
             this.uxTabControl.TabIndex = 3;
+            this.uxTabControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.uxTabControl_Selecting);
             // 
             // uxHomeTab
             // 
@@ -280,6 +281,7 @@
             this.uxOpenTickerFile.Name = "uxOpenTickerFile";
             this.uxOpenTickerFile.Size = new System.Drawing.Size(119, 24);
             this.uxOpenTickerFile.Text = "&Open Ticker File";
+            this.uxOpenTickerFile.Click += new System.EventHandler(this.uxOpenTickerFile_Click);
             // 
             // uxSimulateStockPrices
             // 
@@ -288,6 +290,7 @@
             this.uxSimulateStockPrices.Name = "uxSimulateStockPrices";
             this.uxSimulateStockPrices.Size = new System.Drawing.Size(153, 24);
             this.uxSimulateStockPrices.Text = "&Simulate Stock Prices";
+            this.uxSimulateStockPrices.Click += new System.EventHandler(this.uxSimulateStockPrices_Click);
             // 
             // toolStripSeparator2
             // 
@@ -301,6 +304,7 @@
             this.uxExitProgram.Name = "uxExitProgram";
             this.uxExitProgram.Size = new System.Drawing.Size(108, 24);
             this.uxExitProgram.Text = "Exit Ticker 501";
+            this.uxExitProgram.Click += new System.EventHandler(this.uxExitProgram_Click);
             // 
             // uxAccountTab
             // 
@@ -344,6 +348,7 @@
             this.uxAddFunds.Name = "uxAddFunds";
             this.uxAddFunds.Size = new System.Drawing.Size(83, 24);
             this.uxAddFunds.Text = "&Add Funds";
+            this.uxAddFunds.Click += new System.EventHandler(this.uxAddFunds_Click);
             // 
             // uxWithdrawFunds
             // 
@@ -352,6 +357,7 @@
             this.uxWithdrawFunds.Name = "uxWithdrawFunds";
             this.uxWithdrawFunds.Size = new System.Drawing.Size(119, 24);
             this.uxWithdrawFunds.Text = "&Withdraw Funds";
+            this.uxWithdrawFunds.Click += new System.EventHandler(this.uxWithdrawFunds_Click);
             // 
             // toolStripSeparator3
             // 
@@ -849,7 +855,7 @@
             this.uxPortfolio3.Size = new System.Drawing.Size(117, 24);
             this.uxPortfolio3.Text = "Portfolio 3";
             this.uxPortfolio3.Visible = false;
-            this.uxPortfolio3.ButtonClick += new System.EventHandler(this.uxPortfolio3_ButtonClick_1);
+            this.uxPortfolio3.ButtonClick += new System.EventHandler(this.uxPortfolio3_ButtonClick);
             // 
             // uxBuyStocks3
             // 
@@ -897,6 +903,7 @@
             this.uxAddPortfolio.Name = "uxAddPortfolio";
             this.uxAddPortfolio.Size = new System.Drawing.Size(102, 24);
             this.uxAddPortfolio.Text = "&Add Portfolio";
+            this.uxAddPortfolio.Click += new System.EventHandler(this.uxAddPortfolio_Click);
             // 
             // uxOpenFileDialog
             // 
@@ -909,7 +916,7 @@
             this.ClientSize = new System.Drawing.Size(1245, 571);
             this.Controls.Add(this.uxTabControl);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "Ticker 501";
             this.uxTabControl.ResumeLayout(false);
             this.uxHomeTab.ResumeLayout(false);
             this.uxHomeTab.PerformLayout();

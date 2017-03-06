@@ -53,6 +53,7 @@
             this.uxOK.TabIndex = 9;
             this.uxOK.Text = "OK";
             this.uxOK.UseVisualStyleBackColor = true;
+            this.uxOK.Click += new System.EventHandler(this.uxOK_Click);
             // 
             // uxAmountTxtBox
             // 
@@ -60,6 +61,8 @@
             this.uxAmountTxtBox.Name = "uxAmountTxtBox";
             this.uxAmountTxtBox.Size = new System.Drawing.Size(127, 22);
             this.uxAmountTxtBox.TabIndex = 8;
+            this.uxAmountTxtBox.TextChanged += new System.EventHandler(this.uxAmountTxtBox_TextChanged);
+            this.uxAmountTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.uxAmountTxtBox_KeyPress);
             // 
             // uxInfoLabel
             // 

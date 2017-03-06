@@ -43,6 +43,7 @@
             this.uxOK.TabIndex = 5;
             this.uxOK.Text = "OK";
             this.uxOK.UseVisualStyleBackColor = true;
+            this.uxOK.Click += new System.EventHandler(this.uxOK_Click);
             // 
             // uxPNameTxtBox
             // 
@@ -60,7 +61,7 @@
             this.uxPortLabel.TabIndex = 3;
             this.uxPortLabel.Text = "What would you like to name your Portfolio?";
             // 
-            // GetPortfolioName
+            // GetPortfolioNameForm
             // 
             this.AcceptButton = this.uxOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -72,7 +73,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "GetPortfolioName";
+            this.Name = "GetPortfolioNameForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Portfolio Name";
             this.ResumeLayout(false);
