@@ -107,7 +107,7 @@ namespace Ticker501_MVC
             }
 
             //need to check if there is a portfolio created yet
-            _portfolioObserver(_currentPortfolioSelected);
+            //_portfolioObserver(_currentPortfolioSelected);
 
             //if (_account.GetListOfPortfolioNames().Count > 0)
             //{
@@ -306,7 +306,7 @@ namespace Ticker501_MVC
                 if (openFile.ShowDialog() == DialogResult.OK)
                 {
 
-                    string fileName = openFile.FileName;
+                    var fileName = openFile.FileName;
                    // DataBase.GetInfoFromFile(new StreamReader(fileName));
                     SignalObservers();
                     return true;
@@ -318,7 +318,5 @@ namespace Ticker501_MVC
             }
             return false;
         }
-
-
     }
 }

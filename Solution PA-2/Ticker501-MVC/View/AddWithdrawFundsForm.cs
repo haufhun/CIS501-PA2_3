@@ -18,7 +18,7 @@ namespace Ticker501_MVC
         /// <summary>
         ///  Either a DepositCashHandler or a WithdrawCashHandler
         /// </summary>
-        private Action<decimal> addOrWithdrawFunds;
+        private Action<decimal> _addOrWithdrawFunds;
 
         /// <summary>
         /// Consturctor fo rForm
@@ -27,7 +27,7 @@ namespace Ticker501_MVC
         /// <param name="addWithdrawFunds">the delegate to be used</param>
         public AddWithdrawFundsForm(int formType, Action<decimal> addWithdrawFunds)
         {
-            addOrWithdrawFunds = addWithdrawFunds;
+            _addOrWithdrawFunds = addWithdrawFunds;
 
             InitializeComponent();
 
@@ -97,8 +97,8 @@ namespace Ticker501_MVC
         /// </summary>
         private void uxOK_Click(object sender, EventArgs e)
         {
-            addOrWithdrawFunds(Convert.ToDecimal(uxAmountTxtBox.Text));
+            _addOrWithdrawFunds(Convert.ToDecimal(uxAmountTxtBox.Text));
+            Hide();
         }
     }
-
 }
