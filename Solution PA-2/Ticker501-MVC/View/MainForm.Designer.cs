@@ -1,4 +1,4 @@
-﻿namespace Ticker501_MVC
+﻿namespace Ticker501_MVC.View
 {
     partial class MainForm
     {
@@ -106,9 +106,10 @@
             this.uxSellStocks3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.uxDeletePortfolio3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.uxAddPortfolio = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.uxAddPortfolio = new System.Windows.Forms.ToolStripButton();
+            this.uxOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.uxTabControl.SuspendLayout();
             this.uxHomeTab.SuspendLayout();
             this.uxVolatilityGroup.SuspendLayout();
@@ -132,6 +133,7 @@
             this.uxTabControl.SelectedIndex = 0;
             this.uxTabControl.Size = new System.Drawing.Size(1245, 571);
             this.uxTabControl.TabIndex = 3;
+            this.uxTabControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.uxTabControl_Selecting);
             // 
             // uxHomeTab
             // 
@@ -279,6 +281,7 @@
             this.uxOpenTickerFile.Name = "uxOpenTickerFile";
             this.uxOpenTickerFile.Size = new System.Drawing.Size(119, 24);
             this.uxOpenTickerFile.Text = "&Open Ticker File";
+            this.uxOpenTickerFile.Click += new System.EventHandler(this.uxOpenTickerFile_Click);
             // 
             // uxSimulateStockPrices
             // 
@@ -287,6 +290,7 @@
             this.uxSimulateStockPrices.Name = "uxSimulateStockPrices";
             this.uxSimulateStockPrices.Size = new System.Drawing.Size(153, 24);
             this.uxSimulateStockPrices.Text = "&Simulate Stock Prices";
+            this.uxSimulateStockPrices.Click += new System.EventHandler(this.uxSimulateStockPrices_Click);
             // 
             // toolStripSeparator2
             // 
@@ -300,6 +304,7 @@
             this.uxExitProgram.Name = "uxExitProgram";
             this.uxExitProgram.Size = new System.Drawing.Size(108, 24);
             this.uxExitProgram.Text = "Exit Ticker 501";
+            this.uxExitProgram.Click += new System.EventHandler(this.uxExitProgram_Click);
             // 
             // uxAccountTab
             // 
@@ -343,6 +348,7 @@
             this.uxAddFunds.Name = "uxAddFunds";
             this.uxAddFunds.Size = new System.Drawing.Size(83, 24);
             this.uxAddFunds.Text = "&Add Funds";
+            this.uxAddFunds.Click += new System.EventHandler(this.uxAddFunds_Click);
             // 
             // uxWithdrawFunds
             // 
@@ -351,6 +357,7 @@
             this.uxWithdrawFunds.Name = "uxWithdrawFunds";
             this.uxWithdrawFunds.Size = new System.Drawing.Size(119, 24);
             this.uxWithdrawFunds.Text = "&Withdraw Funds";
+            this.uxWithdrawFunds.Click += new System.EventHandler(this.uxWithdrawFunds_Click);
             // 
             // toolStripSeparator3
             // 
@@ -743,9 +750,9 @@
             this.uxPortfolio1,
             this.uxPortfolio2,
             this.uxPortfolio3,
-            this.uxAddPortfolio,
             this.toolStripSeparator1,
-            this.helpToolStripButton});
+            this.helpToolStripButton,
+            this.uxAddPortfolio});
             this.uxPortfolioToolStrip.Location = new System.Drawing.Point(3, 3);
             this.uxPortfolioToolStrip.Name = "uxPortfolioToolStrip";
             this.uxPortfolioToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -768,6 +775,7 @@
             this.uxPortfolio1.Size = new System.Drawing.Size(117, 24);
             this.uxPortfolio1.Text = "Portfolio 1";
             this.uxPortfolio1.Visible = false;
+            this.uxPortfolio1.ButtonClick += new System.EventHandler(this.uxPortfolio1_ButtonClick);
             // 
             // uxBuyStocks1
             // 
@@ -807,6 +815,7 @@
             this.uxPortfolio2.Size = new System.Drawing.Size(117, 24);
             this.uxPortfolio2.Text = "Portfolio 2";
             this.uxPortfolio2.Visible = false;
+            this.uxPortfolio2.ButtonClick += new System.EventHandler(this.uxPortfolio2_ButtonClick);
             // 
             // uxBuyStocks2
             // 
@@ -846,6 +855,7 @@
             this.uxPortfolio3.Size = new System.Drawing.Size(117, 24);
             this.uxPortfolio3.Text = "Portfolio 3";
             this.uxPortfolio3.Visible = false;
+            this.uxPortfolio3.ButtonClick += new System.EventHandler(this.uxPortfolio3_ButtonClick);
             // 
             // uxBuyStocks3
             // 
@@ -872,13 +882,6 @@
             this.uxDeletePortfolio3.Size = new System.Drawing.Size(189, 26);
             this.uxDeletePortfolio3.Text = "Delete Portfolio";
             // 
-            // uxAddPortfolio
-            // 
-            this.uxAddPortfolio.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.uxAddPortfolio.Name = "uxAddPortfolio";
-            this.uxAddPortfolio.Size = new System.Drawing.Size(102, 24);
-            this.uxAddPortfolio.Text = "&Add Portfolio";
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -894,14 +897,26 @@
             this.helpToolStripButton.Size = new System.Drawing.Size(24, 24);
             this.helpToolStripButton.Text = "He&lp";
             // 
-            // Form1
+            // uxAddPortfolio
+            // 
+            this.uxAddPortfolio.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.uxAddPortfolio.Name = "uxAddPortfolio";
+            this.uxAddPortfolio.Size = new System.Drawing.Size(102, 24);
+            this.uxAddPortfolio.Text = "&Add Portfolio";
+            this.uxAddPortfolio.Click += new System.EventHandler(this.uxAddPortfolio_Click);
+            // 
+            // uxOpenFileDialog
+            // 
+            this.uxOpenFileDialog.FileName = "openFileDialog1";
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1245, 571);
             this.Controls.Add(this.uxTabControl);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "MainForm";
+            this.Text = "Ticker 501";
             this.uxTabControl.ResumeLayout(false);
             this.uxHomeTab.ResumeLayout(false);
             this.uxHomeTab.PerformLayout();
@@ -1003,6 +1018,7 @@
         private System.Windows.Forms.ToolStripButton uxAddPortfolio;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton helpToolStripButton;
+        private System.Windows.Forms.OpenFileDialog uxOpenFileDialog;
     }
 }
 

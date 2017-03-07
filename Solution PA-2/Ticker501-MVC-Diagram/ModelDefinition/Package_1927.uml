@@ -27,7 +27,100 @@
         Id="4f4e5f86-1aae-4882-9608-f9363daaabc5"
         name="Interface2"
         isAbstract="false"
-        isLeaf="false" />
+        isLeaf="false">
+        <ownedAttributes>
+          <property
+            Id="dbe867a5-9411-4b58-b5e6-bc52ec1dfd95"
+            name="CashBalance"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="6e331711-3fcf-460a-900b-4ac3a2f6f192"
+                LastKnownName="decimal"
+                LastKnownLocation="Package_1927.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="283c46ae-ed9b-44a1-bfd1-07144340b99b"
+            name="InvestedBalance"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="6e331711-3fcf-460a-900b-4ac3a2f6f192"
+                LastKnownName="decimal"
+                LastKnownLocation="Package_1927.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="e63b0317-428e-4445-b358-50ad5ab284d6"
+            name="NumberOfStocks"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="123b518b-f3d6-405a-b78a-a1ab14d1255a"
+                LastKnownName="int"
+                LastKnownLocation="Package_1927.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="66391f42-8c69-47d3-93c6-d21d6efeb37b"
+            name="GainsLosses"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="6e331711-3fcf-460a-900b-4ac3a2f6f192"
+                LastKnownName="decimal"
+                LastKnownLocation="Package_1927.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="6d3262b0-ae50-4faa-a950-77452c540d77"
+            name="Portfolios"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="459cb1f3-3408-4859-80bf-5068e05005a8"
+                LastKnownName="Dictionary&lt;string, IPortfolio&gt;"
+                LastKnownLocation="Package_1927.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributes>
+      </Interface>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <class
@@ -52,7 +145,57 @@
         Id="f0f3b375-aa47-4d97-8836-9b9a492a3788"
         name="Interface3"
         isAbstract="false"
-        isLeaf="false" />
+        isLeaf="false">
+        <ownedAttributes>
+          <property
+            Id="b6cd4448-63f1-4176-b5ec-387674c9619d"
+            name="InvestedBalance"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="6e331711-3fcf-460a-900b-4ac3a2f6f192"
+                LastKnownName="decimal"
+                LastKnownLocation="Package_1927.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="bc47c3b6-5439-41b8-9b1f-b2e856a76533"
+            name="NumberOfStocks"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="123b518b-f3d6-405a-b78a-a1ab14d1255a"
+                LastKnownName="int"
+                LastKnownLocation="Package_1927.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="b9c8825e-a4c5-4a9f-b363-493a90906073"
+            name="Stocks Dictionary&lt;string, IStock&gt;"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributes>
+      </Interface>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <class
@@ -77,7 +220,61 @@
         Id="d9449469-6a82-41c2-8a82-90a9845f3ba4"
         name="Interface4"
         isAbstract="false"
-        isLeaf="false" />
+        isLeaf="false">
+        <ownedAttributes>
+          <property
+            Id="80445dea-bd5c-4e89-82ff-f78b04e22d4d"
+            name="InvestedBalance"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="6e331711-3fcf-460a-900b-4ac3a2f6f192"
+                LastKnownName="decimal"
+                LastKnownLocation="Package_1927.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="f3b2317a-29e9-469f-967e-e129603fb3f1"
+            name="NumberOfShares"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="123b518b-f3d6-405a-b78a-a1ab14d1255a"
+                LastKnownName="int"
+                LastKnownLocation="Package_1927.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributes>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="6e331711-3fcf-460a-900b-4ac3a2f6f192"
+        name="decimal" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="123b518b-f3d6-405a-b78a-a1ab14d1255a"
+        name="int" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="459cb1f3-3408-4859-80bf-5068e05005a8"
+        name="Dictionary&lt;string, IPortfolio&gt;" />
     </packageHasNamedElement>
   </packagedElements>
 </package>

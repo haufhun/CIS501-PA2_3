@@ -1,6 +1,6 @@
 ﻿namespace Ticker501_MVC
 {
-    partial class AddWithdrawFundsForm
+    partial class GetPortfolioNameForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,58 +28,54 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.uxOK = new System.Windows.Forms.Button();
-            this.uxAmountTxtBox = new System.Windows.Forms.TextBox();
-            this.uxInfoLabel = new System.Windows.Forms.Label();
+            this.uxPNameTxtBox = new System.Windows.Forms.TextBox();
+            this.uxPortLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(304, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(16, 17);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "$";
             // 
             // uxOK
             // 
             this.uxOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.uxOK.Enabled = false;
-            this.uxOK.Location = new System.Drawing.Point(202, 47);
+            this.uxOK.Location = new System.Drawing.Point(193, 47);
             this.uxOK.Name = "uxOK";
             this.uxOK.Size = new System.Drawing.Size(76, 35);
-            this.uxOK.TabIndex = 9;
+            this.uxOK.TabIndex = 5;
             this.uxOK.Text = "OK";
             this.uxOK.UseVisualStyleBackColor = true;
+            this.uxOK.Click += new System.EventHandler(this.uxOK_Click);
             // 
-            // uxAmountTxtBox
+            // uxPNameTxtBox
             // 
-            this.uxAmountTxtBox.Location = new System.Drawing.Point(326, 9);
-            this.uxAmountTxtBox.Name = "uxAmountTxtBox";
-            this.uxAmountTxtBox.Size = new System.Drawing.Size(127, 22);
-            this.uxAmountTxtBox.TabIndex = 8;
+            this.uxPNameTxtBox.Location = new System.Drawing.Point(317, 9);
+            this.uxPNameTxtBox.Name = "uxPNameTxtBox";
+            this.uxPNameTxtBox.Size = new System.Drawing.Size(127, 22);
+            this.uxPNameTxtBox.TabIndex = 4;
             // 
-            // uxInfoLabel
+            // uxPortLabel
             // 
-            this.uxInfoLabel.AutoSize = true;
-            this.uxInfoLabel.Location = new System.Drawing.Point(23, 12);
-            this.uxInfoLabel.Name = "uxInfoLabel";
-            this.uxInfoLabel.Size = new System.Drawing.Size(0, 17);
-            this.uxInfoLabel.TabIndex = 7;
+            this.uxPortLabel.AutoSize = true;
+            this.uxPortLabel.Location = new System.Drawing.Point(14, 12);
+            this.uxPortLabel.Name = "uxPortLabel";
+            this.uxPortLabel.Size = new System.Drawing.Size(284, 17);
+            this.uxPortLabel.TabIndex = 3;
+            this.uxPortLabel.Text = "What would you like to name your Portfolio?";
             // 
-            // AddWithdrawFundsForm
+            // GetPortfolioNameForm
             // 
+            this.AcceptButton = this.uxOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(476, 91);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.uxOK);
-            this.Controls.Add(this.uxAmountTxtBox);
-            this.Controls.Add(this.uxInfoLabel);
-            this.Name = "AddWithdrawFundsForm";
-            this.Text = "AddWithdrawFundsForm";
+            this.Controls.Add(this.uxPNameTxtBox);
+            this.Controls.Add(this.uxPortLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "GetPortfolioNameForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Portfolio Name";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -87,9 +83,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button uxOK;
-        private System.Windows.Forms.TextBox uxAmountTxtBox;
-        private System.Windows.Forms.Label uxInfoLabel;
+        private System.Windows.Forms.TextBox uxPNameTxtBox;
+        private System.Windows.Forms.Label uxPortLabel;
     }
 }
