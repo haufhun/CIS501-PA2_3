@@ -232,20 +232,6 @@ namespace Ticker501_MVC
                 _account.Portfolios.Add(portfolioName, new Portfolio());
                 SignalObservers();
             }
-            //try
-            //{
-            //    _account.AddPortfolio(portfolioName);
-            //    addPrtMethod(portfolioName);
-            //    SignalObservers();
-            //}
-            //catch (SamePortfolioNameException)
-            //{
-            //    _displayErrorMessageObserver("You already have a portfolio named \"" + portfolioName + "\".");
-            //}
-            //catch (Exception)
-            //{
-            //    _displayErrorMessageObserver("There was a problem trying to add a portfolio.");
-            //}
         }
 
         /// <summary>
@@ -254,20 +240,22 @@ namespace Ticker501_MVC
         /// <param name="portfolioName">The name of the portfolio.</param>
         public void DeletePortfolio(string portfolioName)
         {
-                         //try
-            //{
-            //    _account.DeletePortfolio(portfolioName);
-            //    SignalObservers();
-            //}
-            //catch (AccountException)
-            //{
-            //    _displayErrorMessageObserver(
-            //        "Error in the account with funds when trying to process delete portfolio request.");
-            //}
-            //catch (Exception)
-            //{
-            //    _displayErrorMessageObserver("Error when trying to delete portfolio " + portfolioName + ".");
-            //}
+            foreach (var s in _account.Portfolios[portfolioName].Stocks.Values)
+            {
+                var currentValue = _database.StockDatabase[s.Name].Item3;
+
+                _account.CashBalance += s.NumberOfShares * currentValue;
+                _account.InvestedBalance -= s.NumberOfShares * currentValue;
+            }
+
+            _account.Portfolios.Remove(portfolioName);
+
+            SignalObservers();
+
+            //sell all stocks within portfolio
+            //update invested balance, cash balance on account
+            
+            //final -  remove method for portfolios
         }
 
         /// <summary>
