@@ -16,19 +16,5 @@ namespace Ticker501_MVC
         {
             InitializeComponent();
         }
-
-        private void uxAddFunds_Click(object sender, EventArgs e)
-        {
-            AddWithdrawFundsForm form = new AddWithdrawFundsForm();
-            DialogResult dr = form.ShowDialog();
-            if(dr == DialogResult.OK)
-            {
-                //Add the funds of form.Amount to account
-            }
-            else
-            {
-                MessageBox.Show("No funds were added.");
-            }
-        }
     }
 }
