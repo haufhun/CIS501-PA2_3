@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using Ticker501_MVC.Model;
 using Ticker501_MVC.Model.Interfaces;
 
 namespace Ticker501_MVC
@@ -222,7 +223,15 @@ namespace Ticker501_MVC
         /// <param name="portfolioName">The portfolio name.</param>
         public void AddPortfolio(string portfolioName)
         {
-            SignalObservers();
+            if (_account.Portfolios.ContainsKey(portfolioName))
+            {
+                _displayErrorMessageObserver("You already have a portfolio named \"" + portfolioName + "\".");
+            }
+            else
+            {
+                _account.Portfolios.Add(portfolioName, new Portfolio());
+                SignalObservers();
+            }
             //try
             //{
             //    _account.AddPortfolio(portfolioName);
