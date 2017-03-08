@@ -8,7 +8,8 @@ namespace Ticker501_MVC
     // defines the type of method that observes model updates
     public delegate void Observer();
     public delegate void PortfolioObserver(string portfolioName);
-    //public delegate void AddPortfolioObserver(string portfolioName);
+    public delegate void AddPortfolioObserver(string portfolioName);
+    public delegate void DeletePortfolioObserver(string portfolioName);
     public delegate void DisplayErrorMessageObserver(string errorMessage);
 
     public delegate void OpenForm(Form f);
@@ -56,9 +57,17 @@ namespace Ticker501_MVC
                                         c.AddPortfolio, c.DeletePortfolio, c.Simulate, c.ReadTickerFile);
 
             c.PortfoioRegister(mForm.DisplayPortfolio);
+
             c.Register(mForm.DisplayHomeStockInfo);
             c.Register(mForm.DisplayAccount);
-            //c.AddPortfolioRegister(mForm.AddPortfolioToToolStrip);
+            c.Register(mForm.SetButtonsBasedOnSufficentfunds);
+            c.Register(mForm.SetSellStockButtonBasedOnNumberOfStocks);
+
+            c.ErrorMessageRegister(mForm.DisplayErrorMessage);
+
+            c.AddPortfolioRegister(mForm.AddPortfolioToToolStrip);
+
+            c.DeletePortfolioRegister(mForm.DeletePortfolio);
 
             Application.Run(mForm);
         }

@@ -801,6 +801,7 @@
             this.uxDeletePortfolio1.Name = "uxDeletePortfolio1";
             this.uxDeletePortfolio1.Size = new System.Drawing.Size(185, 26);
             this.uxDeletePortfolio1.Text = "DeletePortfolio";
+            this.uxDeletePortfolio1.Click += new System.EventHandler(this.uxDeletePortfolio_Click);
             // 
             // uxPortfolio2
             // 
@@ -841,6 +842,7 @@
             this.uxDeletePortfolio2.Name = "uxDeletePortfolio2";
             this.uxDeletePortfolio2.Size = new System.Drawing.Size(189, 26);
             this.uxDeletePortfolio2.Text = "Delete Portfolio";
+            this.uxDeletePortfolio2.Click += new System.EventHandler(this.uxDeletePortfolio_Click);
             // 
             // uxPortfolio3
             // 
@@ -881,6 +883,7 @@
             this.uxDeletePortfolio3.Name = "uxDeletePortfolio3";
             this.uxDeletePortfolio3.Size = new System.Drawing.Size(189, 26);
             this.uxDeletePortfolio3.Text = "Delete Portfolio";
+            this.uxDeletePortfolio3.Click += new System.EventHandler(this.uxDeletePortfolio_Click);
             // 
             // toolStripSeparator1
             // 

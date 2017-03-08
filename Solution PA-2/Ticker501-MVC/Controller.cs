@@ -12,7 +12,7 @@ namespace Ticker501_MVC
         /// <summary>
         /// The instance of the account.
         /// </summary>
-        private IAccount _account;
+        private readonly IAccount _account;
         /// <summary>
         /// The instance of the database,
         /// </summary>
@@ -26,7 +26,9 @@ namespace Ticker501_MVC
         /// </summary>
         private PortfolioObserver _portfolioObserver;
 
-        //private List<AddPortfolioObserver> _addPortfolioObserver;
+        private AddPortfolioObserver _addPortfolioObserver;
+
+        private DeletePortfolioObserver _deletePortfolioObserver;
 
         /// <summary>
         /// A error message delegate used to display error messges.
@@ -63,10 +65,18 @@ namespace Ticker501_MVC
             _portfolioObserver = o;
         }
 
-        //public void AddPortfolioRegister(AddPortfolioObserver o)
-        //{
-        //    _addPortfolioObserver.Add(o);
-        //}
+        public void AddPortfolioRegister(AddPortfolioObserver o)
+        {
+            _addPortfolioObserver = o;
+        }
+        /// <summary>
+        /// Sets the delete portfolio observer to the method passed into this function.
+        /// </summary>
+        /// <param name="o">The function that updates the display when delete portfolio is called.</param>
+        public void DeletePortfolioRegister(DeletePortfolioObserver o)
+        {
+            _deletePortfolioObserver = o;
+        }
 
         /// <summary>
         /// Register the display error message method in the user interface to the private field.
@@ -116,6 +126,7 @@ namespace Ticker501_MVC
             //}
         }
 
+
         /// <summary>
         /// shows the form passed into the argument
         /// </summary>
@@ -131,8 +142,16 @@ namespace Ticker501_MVC
         /// <param name="cash">The amount of cash to deposit.</param>
         public void DepositFunds(decimal cash)
         {
-            _account.CashBalance += cash - Account.TRANSFER_FEE;
-            SignalObservers();
+            var toAdd = cash - Account.TRANSFER_FEE;
+            if (toAdd > 0)
+            {
+                _account.CashBalance += cash;
+                SignalObservers();
+            }
+            else
+            {
+                _displayErrorMessageObserver("The amount you want to deposit is less than the deposit fee of $4.99. Please enter another number.");
+            }
         }
 
         /// <summary>
@@ -254,6 +273,7 @@ namespace Ticker501_MVC
             else
             {
                 _account.Portfolios.Add(portfolioName, new Portfolio());
+                _addPortfolioObserver(portfolioName);
                 _portfolioObserver(portfolioName);
             }
         }
@@ -274,7 +294,8 @@ namespace Ticker501_MVC
 
             _account.Portfolios.Remove(portfolioName);
 
-            SignalObservers();
+            _deletePortfolioObserver(portfolioName);
+            _portfolioObserver(null);
         }
 
         /// <summary>
@@ -282,26 +303,80 @@ namespace Ticker501_MVC
         /// </summary>
         public void Simulate(int volatility)
         {
-                        //try
-            //{
-            //    switch (volatility)
-            //    {
-            //        case 1:
-            //            Simulator.SimulateHighVolatility();
-            //            break;
-            //        case 2:
-            //            Simulator.SimulateMediumVolatility();
-            //            break;
-            //        case 3:
-            //            Simulator.SimulateLowVolatility();
-            //            break;
-            //    }
-            //    SignalObservers();
-            //}
-            //catch (Exception)
-            //{
-            //    _displayErrorMessageObserver("Error when trying to run the simluator");
-            //}
+            var d = new Dictionary<string, Tuple<string, string, decimal>>();
+            var r = new Random();
+            decimal change;
+            decimal sign;
+            switch(volatility)
+            {
+                case 1:
+                    {
+                        foreach (
+                            var t in _database.StockDatabase.Values)
+                        {
+                            sign = r.Next(2);
+                            if (sign == 0)
+                            {
+                                sign = -1;
+                            }
+                            else
+                            {
+                                sign = 1;
+                            }
+                            change = ((r.Next(13) + 3) / 100)*sign;
+                            Tuple<string, string, decimal> x = new Tuple<string, string, decimal>(t.Item1, t.Item2, t.Item3 * change);
+                            d.Add(t.Item1, x);
+                        }
+                        break;
+                    }
+                case 2:
+                    {
+                        foreach (Tuple<string, string, decimal> t in _database.StockDatabase.Values)
+                        {
+                            sign = r.Next(2);
+                            if (sign == 0)
+                            {
+                                sign = -1;
+                            }
+                            else
+                            {
+                                sign = 1;
+                            }
+                            change = (((r.Next(7) + 2) / 100))*sign;
+                            Tuple<string, string, decimal> x = new Tuple<string, string, decimal>(t.Item1, t.Item2, t.Item3 * change);
+                            d.Add(t.Item1, x);
+                        }
+                        
+                        break;
+                    }
+                case 3:
+                    {
+                        
+                        foreach (Tuple<string, string, decimal> t in _database.StockDatabase.Values)
+                        {
+                            change = ((r.Next(4) + 1) / 100);
+                            sign = r.Next(2);
+                            if(sign==0)
+                            {
+                                sign = -1;
+                            }
+                            else
+                            {
+                                sign = 1;
+                            }
+                            change = ((r.Next(13) + 3) / 100)*sign;
+                            Tuple<string, string, decimal> x = new Tuple<string, string, decimal>(t.Item1, t.Item2, t.Item3 * change);
+                            d.Add(t.Item1, x);
+                        }
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+            _database.StockDatabase = d;
+            SignalObservers();
         }
 
         /// <summary>
