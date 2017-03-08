@@ -9,6 +9,7 @@ namespace Ticker501_MVC
     public delegate void Observer();
     public delegate void PortfolioObserver(string portfolioName);
     public delegate void AddPortfolioObserver(string portfolioName);
+    public delegate void DeletePortfolioObserver(string portfolioName);
     public delegate void DisplayErrorMessageObserver(string errorMessage);
 
     public delegate void OpenForm(Form f);
@@ -65,6 +66,8 @@ namespace Ticker501_MVC
             c.ErrorMessageRegister(mForm.DisplayErrorMessage);
 
             c.AddPortfolioRegister(mForm.AddPortfolioToToolStrip);
+
+            c.DeletePortfolioRegister(mForm.DeletePortfolio);
 
             Application.Run(mForm);
         }

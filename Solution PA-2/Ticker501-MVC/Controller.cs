@@ -28,6 +28,8 @@ namespace Ticker501_MVC
 
         private AddPortfolioObserver _addPortfolioObserver;
 
+        private DeletePortfolioObserver _deletePortfolioObserver;
+
         /// <summary>
         /// A error message delegate used to display error messges.
         /// </summary>
@@ -66,6 +68,14 @@ namespace Ticker501_MVC
         public void AddPortfolioRegister(AddPortfolioObserver o)
         {
             _addPortfolioObserver = o;
+        }
+        /// <summary>
+        /// Sets the delete portfolio observer to the method passed into this function.
+        /// </summary>
+        /// <param name="o">The function that updates the display when delete portfolio is called.</param>
+        public void DeletePortfolioRegister(DeletePortfolioObserver o)
+        {
+            _deletePortfolioObserver = o;
         }
 
         /// <summary>
@@ -233,8 +243,8 @@ namespace Ticker501_MVC
 
             _account.Portfolios.Remove(portfolioName);
 
-            _addPortfolioObserver(portfolioName);
-            _portfolioObserver(portfolioName);
+            _deletePortfolioObserver(portfolioName);
+            _portfolioObserver(null);
         }
 
         /// <summary>
