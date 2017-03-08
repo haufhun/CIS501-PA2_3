@@ -158,7 +158,7 @@ namespace Ticker501_MVC
             //{
             //    _displayErrorMessageObserver("Error trying to deposit funds.");
             //}
-            decimal toAdd = cash - Convert.ToDecimal(Account.TRANSFER_FEE);
+            decimal toAdd = cash - Account.TRANSFER_FEE;
             if (toAdd > 0)
             {
                 _account.CashBalance += toAdd;
@@ -296,8 +296,9 @@ namespace Ticker501_MVC
                             {
                                 sign = 1;
                             }
-                            change = ((r.Next(13) + 3) / 100)*sign;
-                            Tuple<string, string, decimal> x = new Tuple<string, string, decimal>(t.Item1, t.Item2, t.Item3 * change);
+                            change = ((Convert.ToDecimal(r.Next(13)) + Convert.ToDecimal(3)) / Convert.ToDecimal(100))*sign;
+                            decimal newAmount = t.Item3 + t.Item3 * change;
+                            Tuple<string, string, decimal> x = new Tuple<string, string, decimal>(t.Item1, t.Item2, newAmount);
                             d.Add(t.Item1, x);
                         }
                         break;
@@ -315,8 +316,9 @@ namespace Ticker501_MVC
                             {
                                 sign = 1;
                             }
-                            change = (((r.Next(7) + 2) / 100))*sign;
-                            Tuple<string, string, decimal> x = new Tuple<string, string, decimal>(t.Item1, t.Item2, t.Item3 * change);
+                            change = ((Convert.ToDecimal(r.Next(7)) + Convert.ToDecimal(2)) / Convert.ToDecimal(100)) * sign;
+                            decimal newAmount = t.Item3 + t.Item3 * change;
+                            Tuple<string, string, decimal> x = new Tuple<string, string, decimal>(t.Item1, t.Item2, newAmount);
                             d.Add(t.Item1, x);
                         }
                         
@@ -337,8 +339,9 @@ namespace Ticker501_MVC
                             {
                                 sign = 1;
                             }
-                            change = ((r.Next(13) + 3) / 100)*sign;
-                            Tuple<string, string, decimal> x = new Tuple<string, string, decimal>(t.Item1, t.Item2, t.Item3 * change);
+                            change = ((Convert.ToDecimal(r.Next(4)) + Convert.ToDecimal(1)) / Convert.ToDecimal(100)) * sign;
+                            decimal newAmount = t.Item3 + t.Item3 * change;
+                            Tuple<string, string, decimal> x = new Tuple<string, string, decimal>(t.Item1, t.Item2, newAmount);
                             d.Add(t.Item1, x);
                         }
                         break;
