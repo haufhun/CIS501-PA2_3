@@ -237,17 +237,24 @@ namespace Ticker501_MVC.View
         /// </summary>
         public void DisplayAccount()
         {
+            uxAccBalOutput.Text = _account.CashBalance.ToString("C");
+            uxAccNetWorthOutput.Text = (_account.CashBalance + _account.InvestedBalance).ToString("C");
+            uxAccTotalInvestedOutput.Text = _account.InvestedBalance.ToString("C");
 
-            //var t = _account.GetAccountBalance();
+            var total = 0m;
+            foreach (var p in _account.Portfolios.Values)
+            {
+                foreach (var s in p.Stocks.Values)
+                {
+                    total += s.NumberOfShares * _database.StockDatabase[s.Name].Item3;
+                }
+            }
 
-            //uxAccBalOutput.Text = t.Item1.ToString("C");
-            //uxAccNetWorthOutput.Text = t.Item3.ToString("C");
-            //uxAccTotalInvestedOutput.Text = t.Item2.ToString("C");
-            //uxAccNetWorthStocksOutput.Text = _account.GetCashBalance().ToString("C");
-            //DisplayGainsAndLossesPretty(uxAccGainsLossesOutput, _account.GetGainsAndLossesReport());
+            uxAccNetWorthStocksOutput.Text = total.ToString("C");
+            DisplayGainsAndLossesPretty(uxAccGainsLossesOutput, _account.GainsLosses);
 
-            //uxAccListInfo.BeginUpdate();
-            //uxAccListInfo.Items.Clear();
+            uxAccListInfo.BeginUpdate();
+            uxAccListInfo.Items.Clear();
 
             //var list = _account.GetAllAccountStockInfoTuple();
 
@@ -259,7 +266,7 @@ namespace Ticker501_MVC.View
             //    uxAccListInfo.Items.Add(item);
             //}
 
-            //uxAccListInfo.EndUpdate();
+            uxAccListInfo.EndUpdate();
         }
 
         /// <summary>

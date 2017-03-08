@@ -91,6 +91,22 @@ namespace Ticker501_MVC.View
         private void uxOK_Click(object sender, EventArgs e)
         {
             _addOrWithdrawFunds(Convert.ToDecimal(uxAmountTxtBox.Text));
+            //Clear
+
+            //Need a handler for this?
+            Hide();
+        }
+
+        /// <summary>
+        /// The user clicks the cancel button... do no action, just hide the form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uxCancel_Click(object sender, EventArgs e)
+        {
+            //clear
+
+            //Need a handler for this?
             Hide();
         }
     }

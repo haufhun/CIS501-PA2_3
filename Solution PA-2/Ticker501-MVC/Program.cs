@@ -57,6 +57,7 @@ namespace Ticker501_MVC
 
             c.PortfoioRegister(mForm.DisplayPortfolio);
             c.Register(mForm.DisplayHomeStockInfo);
+            c.Register(mForm.DisplayAccount);
             //c.AddPortfolioRegister(mForm.AddPortfolioToToolStrip);
 
             Application.Run(mForm);
