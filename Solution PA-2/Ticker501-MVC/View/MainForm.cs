@@ -131,6 +131,7 @@ namespace Ticker501_MVC.View
         private void uxAddFunds_Click(object sender, EventArgs e)
         {
             _openForm(_addFundsForm);
+            
         }
 
         /// <summary>
