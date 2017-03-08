@@ -186,7 +186,7 @@ namespace Ticker501_MVC
                 IPortfolio port;
                 IStock stock = new Stock(tickerName);
                 IStock stock2;
-                decimal totalPrice;
+               
 
                 if (_database.StockDatabase.ContainsKey(tickerName))
                 {
@@ -209,12 +209,13 @@ namespace Ticker501_MVC
                                 _account.NumberOfStocks += numberOfShares;
 
                             }
+                            else
+                            {
+                                _displayErrorMessageObserver(
+                                    "You currently do not have enought funds to perform this action");
+                            }
                         }
-                        else
-                        {
-                            _displayErrorMessageObserver(
-                                "You currently do not have enought funds to perform this action");
-                        }
+                       
                     }
                 }
             }
@@ -245,7 +246,43 @@ namespace Ticker501_MVC
         /// <param name="numberOfShares">The number of shares.</param>
         public void SellStocks(string portfolioName, string tickerName, int numberOfShares)
         {
-                        //try
+
+            try
+            {
+                Tuple<string, string, decimal> valueFromDatabase;
+                IPortfolio port;
+                IStock stock = new Stock(tickerName);
+                IStock stock2;
+               
+                if (_database.StockDatabase.ContainsKey(tickerName))
+                {
+                    if (_database.StockDatabase.TryGetValue(tickerName, out valueFromDatabase))
+                    {
+                        if (_account.Portfolios.TryGetValue(portfolioName, out port))
+                        {
+                            if (port.Stocks.ContainsKey(tickerName))
+                            {
+                                port.Stocks.TryGetValue(tickerName, out stock2);
+                                stock2.NumberOfShares -= numberOfShares;
+                            }
+                            var cost = numberOfShares * valueFromDatabase.Item3;
+                            stock.InvestedBalance -= cost;
+                            _account.CashBalance += (cost - Account.TRADE_FEE);
+                            _account.InvestedBalance -= stock.InvestedBalance;
+                            _account.NumberOfStocks -= numberOfShares;
+                            if (stock.NumberOfShares == 0)
+                            {
+                                port.Stocks.Remove(tickerName);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _displayErrorMessageObserver("Error trying to sell stocks.");
+            }
+            //try
             //{
             //    _account.SellNumberOfStocks(portfolioName, tickerName, numberOfShares);
             //    SignalObservers();
