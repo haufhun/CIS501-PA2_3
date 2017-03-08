@@ -161,6 +161,21 @@ namespace Ticker501_MVC
         /// <param name="numberOfShares">The number of shares.</param>
         public void BuyStocks(string portfolioName, string tickerName, int numberOfShares)
         {
+            Tuple<string, string, decimal> valueFromDatabase;
+            if (_database.StockDatabase.ContainsKey(tickerName))
+            {
+                if (_database.StockDatabase.TryGetValue(tickerName, out valueFromDatabase))
+                {
+                    var cost = numberOfShares*valueFromDatabase.Item3;
+                    if (cost > _account.CashBalance - Account.TRADE_FEE)
+                    {
+
+                    }
+                }
+             
+            }
+            
+            
            //try
             //{
             //    _account.BuyStock(portfolioName, tickerName, numberOfShares);
