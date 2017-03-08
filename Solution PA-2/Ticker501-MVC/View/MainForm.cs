@@ -447,10 +447,13 @@ namespace Ticker501_MVC.View
                 uxSellStocks3.Enabled = false;
             }
         }
-
-
-
-        public void DisplayGainsAndLossesPretty(Label l, decimal cash)
+        
+        /// <summary>
+        /// Displays the gains and losses in green or red based on if positive or negative
+        /// </summary>
+        /// <param name="l">The label to be updated.</param>
+        /// <param name="cash">The value of the Gains/Losses variable.</param>
+        private void DisplayGainsAndLossesPretty(Label l, decimal cash)
         {
             l.Text = cash.ToString("c");
             if (cash < 0)
