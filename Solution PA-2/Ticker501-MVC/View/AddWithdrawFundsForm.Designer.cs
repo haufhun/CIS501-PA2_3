@@ -1,4 +1,4 @@
-﻿namespace Ticker501_MVC
+﻿namespace Ticker501_MVC.View
 {
     partial class AddWithdrawFundsForm
     {
@@ -32,6 +32,7 @@
             this.uxOK = new System.Windows.Forms.Button();
             this.uxAmountTxtBox = new System.Windows.Forms.TextBox();
             this.uxInfoLabel = new System.Windows.Forms.Label();
+            this.uxCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -47,7 +48,7 @@
             // 
             this.uxOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.uxOK.Enabled = false;
-            this.uxOK.Location = new System.Drawing.Point(202, 47);
+            this.uxOK.Location = new System.Drawing.Point(146, 44);
             this.uxOK.Name = "uxOK";
             this.uxOK.Size = new System.Drawing.Size(76, 35);
             this.uxOK.TabIndex = 9;
@@ -72,19 +73,37 @@
             this.uxInfoLabel.Size = new System.Drawing.Size(0, 17);
             this.uxInfoLabel.TabIndex = 7;
             // 
+            // uxCancel
+            // 
+            this.uxCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.uxCancel.Location = new System.Drawing.Point(244, 44);
+            this.uxCancel.Name = "uxCancel";
+            this.uxCancel.Size = new System.Drawing.Size(76, 35);
+            this.uxCancel.TabIndex = 11;
+            this.uxCancel.Text = "Cancel";
+            this.uxCancel.UseVisualStyleBackColor = true;
+            this.uxCancel.Click += new System.EventHandler(this.uxCancel_Click);
+            // 
             // AddWithdrawFundsForm
             // 
+            this.AcceptButton = this.uxOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(476, 91);
+            this.CancelButton = this.uxCancel;
+            this.ClientSize = new System.Drawing.Size(476, 90);
+            this.ControlBox = false;
+            this.Controls.Add(this.uxCancel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.uxOK);
             this.Controls.Add(this.uxAmountTxtBox);
             this.Controls.Add(this.uxInfoLabel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AddWithdrawFundsForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Transaction";
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -96,5 +115,6 @@
         private System.Windows.Forms.Button uxOK;
         private System.Windows.Forms.TextBox uxAmountTxtBox;
         private System.Windows.Forms.Label uxInfoLabel;
+        private System.Windows.Forms.Button uxCancel;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Runtime.Remoting.Channels;
 using System.Windows.Forms;
 using Ticker501_MVC.Model;
 using Ticker501_MVC.Model.Interfaces;
@@ -178,6 +179,18 @@ namespace Ticker501_MVC.View
         }
 
         /// <summary>
+        /// Handles the user pushing the delete portfolio button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uxDeletePortfolio_Click(object sender, EventArgs e)
+        {
+            var parent = (sender as ToolStripMenuItem).OwnerItem;
+            var name = parent.Text;
+            _deletePortfolioHandler(name);
+        }
+
+        /// <summary>
         /// click handler for all buy stocks buttons
         /// </summary>
         private void BuyStocksButton_Click(object sender, EventArgs e)
@@ -192,6 +205,7 @@ namespace Ticker501_MVC.View
         {
             _openForm(_sSForm);
         }
+
         /// <summary>
         /// Exits the program if the user clicks the exit button.
         /// </summary>
@@ -237,17 +251,24 @@ namespace Ticker501_MVC.View
         /// </summary>
         public void DisplayAccount()
         {
+            uxAccBalOutput.Text = _account.CashBalance.ToString("C");
+            uxAccNetWorthOutput.Text = (_account.CashBalance + _account.InvestedBalance).ToString("C");
+            uxAccTotalInvestedOutput.Text = _account.InvestedBalance.ToString("C");
 
-            //var t = _account.GetAccountBalance();
+            var total = 0m;
+            foreach (var p in _account.Portfolios.Values)
+            {
+                foreach (var s in p.Stocks.Values)
+                {
+                    total += s.NumberOfShares * _database.StockDatabase[s.Name].Item3;
+                }
+            }
 
-            //uxAccBalOutput.Text = t.Item1.ToString("C");
-            //uxAccNetWorthOutput.Text = t.Item3.ToString("C");
-            //uxAccTotalInvestedOutput.Text = t.Item2.ToString("C");
-            //uxAccNetWorthStocksOutput.Text = _account.GetCashBalance().ToString("C");
-            //DisplayGainsAndLossesPretty(uxAccGainsLossesOutput, _account.GetGainsAndLossesReport());
+            uxAccNetWorthStocksOutput.Text = total.ToString("C");
+            DisplayGainsAndLossesPretty(uxAccGainsLossesOutput, _account.GainsLosses);
 
-            //uxAccListInfo.BeginUpdate();
-            //uxAccListInfo.Items.Clear();
+            uxAccListInfo.BeginUpdate();
+            uxAccListInfo.Items.Clear();
 
             //var list = _account.GetAllAccountStockInfoTuple();
 
@@ -259,45 +280,53 @@ namespace Ticker501_MVC.View
             //    uxAccListInfo.Items.Add(item);
             //}
 
-            //uxAccListInfo.EndUpdate();
+            uxAccListInfo.EndUpdate();
         }
 
         /// <summary>
-        /// Updates all the information on the Portfolio tab selected.
+        /// Updates all the information on the Portfolio tab selected. 
+        /// Passing a null indicates to clear the portfolio page.
         /// </summary>
         /// <param name="currentPortfolio">name of portfolio to display</param>
         public void DisplayPortfolio(string currentPortfolio)
         {
-            uxPortfolioName.Text = currentPortfolio;
-            UpdateEnabledBuyAndSellStocks(currentPortfolio);
+            if (currentPortfolio == null)
+            {
+                ClearPortfolioPage();
+            }
+            else
+            {
+                uxPortfolioName.Text = currentPortfolio;
+                UpdateEnabledBuyAndSellStocks(currentPortfolio);
 
-            // var info = _account.GetPortfolioBalance(currentPortfolio);
+                // var info = _account.GetPortfolioBalance(currentPortfolio);
 
-            // uxPrtBalOutput.Text = _account.CashBalance.ToString("C");
-            // uxPrtPercentageOfAccountOutput.Text = info.Item3.ToString("P");
-            // uxPrtTotalInvestedOuput.Text = info.Item2.ToString("C");
-            // uxPrtNetWorthOutput.Text = _account.SelectPortfolio(currentPortfolio).GetCurrentValueOfAllStocks().ToString("c");
+                // uxPrtBalOutput.Text = _account.CashBalance.ToString("C");
+                // uxPrtPercentageOfAccountOutput.Text = info.Item3.ToString("P");
+                // uxPrtTotalInvestedOuput.Text = info.Item2.ToString("C");
+                // uxPrtNetWorthOutput.Text = _account.SelectPortfolio(currentPortfolio).GetCurrentValueOfAllStocks().ToString("c");
 
-            // DisplayGainsAndLossesPretty(uxPrtGainsLossesOutput, _account.SelectPortfolio(currentPortfolio).GetGainsAndLossesReport());
+                // DisplayGainsAndLossesPretty(uxPrtGainsLossesOutput, _account.SelectPortfolio(currentPortfolio).GetGainsAndLossesReport());
 
-            // var infoList = _account.GetAllPortfolioStockInfoTuple(currentPortfolio);
+                // var infoList = _account.GetAllPortfolioStockInfoTuple(currentPortfolio);
 
-            uxPrtListInfo.BeginUpdate();
-            uxPrtListInfo.Items.Clear();
+                uxPrtListInfo.BeginUpdate();
+                uxPrtListInfo.Items.Clear();
 
-            // foreach (var i in infoList)
-            // {
-            //  Tickername, companyName, pricePerShare, sharesOwned, networthOfShares, PositionBalance
-            //     string[] itemInfo =
-            //     {
-            //         i.Item1, i.Item2, i.Item3.ToString("C"), i.Item4.ToString(), i.Item5.ToString("C"),
-            //         i.Item6.ToString("P")
-            //     };
+                // foreach (var i in infoList)
+                // {
+                //  Tickername, companyName, pricePerShare, sharesOwned, networthOfShares, PositionBalance
+                //     string[] itemInfo =
+                //     {
+                //         i.Item1, i.Item2, i.Item3.ToString("C"), i.Item4.ToString(), i.Item5.ToString("C"),
+                //         i.Item6.ToString("P")
+                //     };
 
-            //     uxPrtListInfo.Items.Add(new ListViewItem(itemInfo));
-            // }
+                //     uxPrtListInfo.Items.Add(new ListViewItem(itemInfo));
+                // }
 
-            uxPrtListInfo.EndUpdate();
+                uxPrtListInfo.EndUpdate();
+            }
         }
 
         /// <summary>
@@ -366,15 +395,17 @@ namespace Ticker501_MVC.View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DeletePortfolio(object sender, EventArgs e)
+        public void DeletePortfolio(string portfolioName)
         {
-            //var parent = (sender as ToolStripMenuItem).OwnerItem;
-            //var name = parent.Text;
-            //_account.DeletePortfolio(name);
-            //parent.Visible = false;
-            //if (_account.NumberOfPortfolios < 3) uxAddPortfolio.Visible = true;
-            //_portfolioCount--;
-            //ClearPortfolioPage();
+            foreach (var p in _listOfPortfolioButtons)
+            {
+                if (p.Text == portfolioName)
+                {
+                    p.Visible = false;
+                    if (_account.Portfolios.Count < 3) uxAddPortfolio.Visible = true;
+                }
+            }
+            
         }
 
         private void ClearPortfolioPage()
@@ -440,10 +471,13 @@ namespace Ticker501_MVC.View
                 uxSellStocks3.Enabled = false;
             }
         }
-
-
-
-        public void DisplayGainsAndLossesPretty(Label l, decimal cash)
+        
+        /// <summary>
+        /// Displays the gains and losses in green or red based on if positive or negative
+        /// </summary>
+        /// <param name="l">The label to be updated.</param>
+        /// <param name="cash">The value of the Gains/Losses variable.</param>
+        private void DisplayGainsAndLossesPretty(Label l, decimal cash)
         {
             l.Text = cash.ToString("c");
             if (cash < 0)
@@ -455,5 +489,7 @@ namespace Ticker501_MVC.View
                 l.ForeColor = Color.SeaGreen;
             }
         }
+
+        
     }
 }

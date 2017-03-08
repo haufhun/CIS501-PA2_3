@@ -1,4 +1,4 @@
-﻿namespace Ticker501_MVC
+﻿namespace Ticker501_MVC.View
 {
     partial class SellStocksForm
     {
@@ -60,7 +60,7 @@
             this.uxSellStockListInfo.Location = new System.Drawing.Point(12, 53);
             this.uxSellStockListInfo.MultiSelect = false;
             this.uxSellStockListInfo.Name = "uxSellStockListInfo";
-            this.uxSellStockListInfo.Size = new System.Drawing.Size(698, 323);
+            this.uxSellStockListInfo.Size = new System.Drawing.Size(698, 333);
             this.uxSellStockListInfo.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.uxSellStockListInfo.TabIndex = 29;
             this.uxSellStockListInfo.UseCompatibleStateImageBehavior = false;
@@ -112,6 +112,7 @@
             // 
             // uxCloseBttn
             // 
+            this.uxCloseBttn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.uxCloseBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uxCloseBttn.Location = new System.Drawing.Point(845, 332);
             this.uxCloseBttn.Name = "uxCloseBttn";
@@ -173,7 +174,9 @@
             this.AcceptButton = this.uxSellStockBttn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1251, 388);
+            this.CancelButton = this.uxCloseBttn;
+            this.ClientSize = new System.Drawing.Size(1277, 398);
+            this.ControlBox = false;
             this.Controls.Add(this.uxSellStockListInfo);
             this.Controls.Add(this.uxPotentialAmount);
             this.Controls.Add(this.uxResultLabel);

@@ -1,4 +1,4 @@
-﻿namespace Ticker501_MVC
+﻿namespace Ticker501_MVC.View
 {
     partial class BuyStocksForm
     {
@@ -61,7 +61,7 @@
             this.uxBuyStockListInfo.Location = new System.Drawing.Point(12, 58);
             this.uxBuyStockListInfo.MultiSelect = false;
             this.uxBuyStockListInfo.Name = "uxBuyStockListInfo";
-            this.uxBuyStockListInfo.Size = new System.Drawing.Size(478, 285);
+            this.uxBuyStockListInfo.Size = new System.Drawing.Size(478, 259);
             this.uxBuyStockListInfo.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.uxBuyStockListInfo.TabIndex = 29;
             this.uxBuyStockListInfo.UseCompatibleStateImageBehavior = false;
@@ -152,6 +152,7 @@
             // 
             // uxCloseBttn
             // 
+            this.uxCloseBttn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.uxCloseBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uxCloseBttn.Location = new System.Drawing.Point(652, 299);
             this.uxCloseBttn.Name = "uxCloseBttn";
@@ -213,7 +214,8 @@
             this.AcceptButton = this.uxBuyStockBttn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1206, 388);
+            this.ClientSize = new System.Drawing.Size(1220, 362);
+            this.ControlBox = false;
             this.Controls.Add(this.uxBuyStockListInfo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.uxResultLabel);

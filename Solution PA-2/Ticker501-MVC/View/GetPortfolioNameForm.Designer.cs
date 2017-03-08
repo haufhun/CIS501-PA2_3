@@ -1,4 +1,4 @@
-﻿namespace Ticker501_MVC
+﻿namespace Ticker501_MVC.View
 {
     partial class GetPortfolioNameForm
     {
@@ -31,13 +31,14 @@
             this.uxOK = new System.Windows.Forms.Button();
             this.uxPNameTxtBox = new System.Windows.Forms.TextBox();
             this.uxPortLabel = new System.Windows.Forms.Label();
+            this.uxCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // uxOK
             // 
             this.uxOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.uxOK.Enabled = false;
-            this.uxOK.Location = new System.Drawing.Point(193, 47);
+            this.uxOK.Location = new System.Drawing.Point(145, 47);
             this.uxOK.Name = "uxOK";
             this.uxOK.Size = new System.Drawing.Size(76, 35);
             this.uxOK.TabIndex = 5;
@@ -51,6 +52,7 @@
             this.uxPNameTxtBox.Name = "uxPNameTxtBox";
             this.uxPNameTxtBox.Size = new System.Drawing.Size(127, 22);
             this.uxPNameTxtBox.TabIndex = 4;
+            this.uxPNameTxtBox.TextChanged += new System.EventHandler(this.uxPNameTxtBox_TextChanged);
             // 
             // uxPortLabel
             // 
@@ -61,12 +63,25 @@
             this.uxPortLabel.TabIndex = 3;
             this.uxPortLabel.Text = "What would you like to name your Portfolio?";
             // 
+            // uxCancel
+            // 
+            this.uxCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.uxCancel.Location = new System.Drawing.Point(249, 47);
+            this.uxCancel.Name = "uxCancel";
+            this.uxCancel.Size = new System.Drawing.Size(76, 35);
+            this.uxCancel.TabIndex = 6;
+            this.uxCancel.Text = "Cancel";
+            this.uxCancel.UseVisualStyleBackColor = true;
+            this.uxCancel.Click += new System.EventHandler(this.uxCancel_Click);
+            // 
             // GetPortfolioNameForm
             // 
             this.AcceptButton = this.uxOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(476, 91);
+            this.ClientSize = new System.Drawing.Size(486, 133);
+            this.ControlBox = false;
+            this.Controls.Add(this.uxCancel);
             this.Controls.Add(this.uxOK);
             this.Controls.Add(this.uxPNameTxtBox);
             this.Controls.Add(this.uxPortLabel);
@@ -86,5 +101,6 @@
         private System.Windows.Forms.Button uxOK;
         private System.Windows.Forms.TextBox uxPNameTxtBox;
         private System.Windows.Forms.Label uxPortLabel;
+        private System.Windows.Forms.Button uxCancel;
     }
 }

@@ -6,5 +6,7 @@
 
        int NumberOfShares { get; set; }
 
+        string Name { get; }
     }
 }
+

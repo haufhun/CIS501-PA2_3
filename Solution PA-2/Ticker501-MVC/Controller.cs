@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using Ticker501_MVC.Model;
 using Ticker501_MVC.Model.Interfaces;
 
 namespace Ticker501_MVC
@@ -25,7 +26,9 @@ namespace Ticker501_MVC
         /// </summary>
         private PortfolioObserver _portfolioObserver;
 
-        //private List<AddPortfolioObserver> _addPortfolioObserver;
+        private AddPortfolioObserver _addPortfolioObserver;
+
+        private DeletePortfolioObserver _deletePortfolioObserver;
 
         /// <summary>
         /// A error message delegate used to display error messges.
@@ -62,10 +65,18 @@ namespace Ticker501_MVC
             _portfolioObserver = o;
         }
 
-        //public void AddPortfolioRegister(AddPortfolioObserver o)
-        //{
-        //    _addPortfolioObserver.Add(o);
-        //}
+        public void AddPortfolioRegister(AddPortfolioObserver o)
+        {
+            _addPortfolioObserver = o;
+        }
+        /// <summary>
+        /// Sets the delete portfolio observer to the method passed into this function.
+        /// </summary>
+        /// <param name="o">The function that updates the display when delete portfolio is called.</param>
+        public void DeletePortfolioRegister(DeletePortfolioObserver o)
+        {
+            _deletePortfolioObserver = o;
+        }
 
         /// <summary>
         /// Register the display error message method in the user interface to the private field.
@@ -165,20 +176,7 @@ namespace Ticker501_MVC
         /// <param name="cash">The amount of cash to withdraw.</param>
         public void WithdrawFunds(decimal cash)
         {
-            //try
-            //{
-            //    _account.WithdrawFunds(cash);
-            //    SignalObservers();
-            //}
-            //catch (AccountExceptions)
-            //{
-            //    _displayErrorMessageObserver("You currently do not have enough funds to perform this action.");
-            //}
-            //catch (Exception)
-            //{
-            //    _displayErrorMessageObserver("Error trying to withdraw funds.");
-            //}
-            decimal toWithdraw = cash + Convert.ToDecimal(4.99);
+            var toWithdraw = cash + Account.TRANSFER_FEE;
             if ( toWithdraw < _account.CashBalance)
             {
                 _account.CashBalance -= toWithdraw;
@@ -242,21 +240,16 @@ namespace Ticker501_MVC
         /// <param name="portfolioName">The portfolio name.</param>
         public void AddPortfolio(string portfolioName)
         {
-            SignalObservers();
-            //try
-            //{
-            //    _account.AddPortfolio(portfolioName);
-            //    addPrtMethod(portfolioName);
-            //    SignalObservers();
-            //}
-            //catch (SamePortfolioNameException)
-            //{
-            //    _displayErrorMessageObserver("You already have a portfolio named \"" + portfolioName + "\".");
-            //}
-            //catch (Exception)
-            //{
-            //    _displayErrorMessageObserver("There was a problem trying to add a portfolio.");
-            //}
+            if (_account.Portfolios.ContainsKey(portfolioName))
+            {
+                _displayErrorMessageObserver("You already have a portfolio named \"" + portfolioName + "\".");
+            }
+            else
+            {
+                _account.Portfolios.Add(portfolioName, new Portfolio());
+                _addPortfolioObserver(portfolioName);
+                _portfolioObserver(portfolioName);
+            }
         }
 
         /// <summary>
@@ -265,20 +258,18 @@ namespace Ticker501_MVC
         /// <param name="portfolioName">The name of the portfolio.</param>
         public void DeletePortfolio(string portfolioName)
         {
-                         //try
-            //{
-            //    _account.DeletePortfolio(portfolioName);
-            //    SignalObservers();
-            //}
-            //catch (AccountException)
-            //{
-            //    _displayErrorMessageObserver(
-            //        "Error in the account with funds when trying to process delete portfolio request.");
-            //}
-            //catch (Exception)
-            //{
-            //    _displayErrorMessageObserver("Error when trying to delete portfolio " + portfolioName + ".");
-            //}
+            foreach (var s in _account.Portfolios[portfolioName].Stocks.Values)
+            {
+                var currentValue = _database.StockDatabase[s.Name].Item3;
+
+                _account.CashBalance += s.NumberOfShares * currentValue;
+                _account.InvestedBalance -= s.NumberOfShares * currentValue;
+            }
+
+            _account.Portfolios.Remove(portfolioName);
+
+            _deletePortfolioObserver(portfolioName);
+            _portfolioObserver(null);
         }
 
         /// <summary>
@@ -286,26 +277,6 @@ namespace Ticker501_MVC
         /// </summary>
         public void Simulate(int volatility)
         {
-            //try
-            //{
-            //    switch (volatility)
-            //    {
-            //        case 1:
-            //            Simulator.SimulateHighVolatility();
-            //            break;
-            //        case 2:
-            //            Simulator.SimulateMediumVolatility();
-            //            break;
-            //        case 3:
-            //            Simulator.SimulateLowVolatility();
-            //            break;
-            //    }
-            //    SignalObservers();
-            //}
-            //catch (Exception)
-            //{
-            //    _displayErrorMessageObserver("Error when trying to run the simluator");
-            //}
             Dictionary<string, Tuple<string, string, decimal>> d = new Dictionary<string, Tuple<string, string, decimal>>();
             Random r = new Random();
             decimal change = 0;
