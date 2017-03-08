@@ -12,7 +12,7 @@ namespace Ticker501_MVC
         /// <summary>
         /// The instance of the account.
         /// </summary>
-        private IAccount _account;
+        private readonly IAccount _account;
         /// <summary>
         /// The instance of the database,
         /// </summary>
@@ -261,15 +261,16 @@ namespace Ticker501_MVC
         /// </summary>
         public void Simulate(int volatility)
         {
-            Dictionary<string, Tuple<string, string, decimal>> d = new Dictionary<string, Tuple<string, string, decimal>>();
-            Random r = new Random();
-            decimal change = 0;
-            decimal sign = 0;
+            var d = new Dictionary<string, Tuple<string, string, decimal>>();
+            var r = new Random();
+            decimal change;
+            decimal sign;
             switch(volatility)
             {
                 case 1:
                     {
-                        foreach (Tuple<string, string, decimal> t in _database.StockDatabase.Values)
+                        foreach (
+                            var t in _database.StockDatabase.Values)
                         {
                             sign = r.Next(2);
                             if (sign == 0)
