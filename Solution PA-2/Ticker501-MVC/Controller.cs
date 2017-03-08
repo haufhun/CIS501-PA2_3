@@ -161,22 +161,49 @@ namespace Ticker501_MVC
         /// <param name="numberOfShares">The number of shares.</param>
         public void BuyStocks(string portfolioName, string tickerName, int numberOfShares)
         {
-            Tuple<string, string, decimal> valueFromDatabase;
-            if (_database.StockDatabase.ContainsKey(tickerName))
+            try
             {
-                if (_database.StockDatabase.TryGetValue(tickerName, out valueFromDatabase))
-                {
-                    var cost = numberOfShares*valueFromDatabase.Item3;
-                    if (cost > _account.CashBalance - Account.TRADE_FEE)
-                    {
+                Tuple<string, string, decimal> valueFromDatabase;
+                IPortfolio port;
+                IStock stock = new Stock(tickerName);
+                IStock stock2;
+                decimal totalPrice;
 
+                if (_database.StockDatabase.ContainsKey(tickerName))
+                {
+                    if (_database.StockDatabase.TryGetValue(tickerName, out valueFromDatabase))
+                    {
+                        if (_account.Portfolios.TryGetValue(portfolioName, out port))
+                        {
+                            if (port.Stocks.ContainsKey(tickerName))
+                            {
+                                port.Stocks.TryGetValue(tickerName, out stock2);
+                                stock2.NumberOfShares += numberOfShares;
+                            }
+                            var cost = numberOfShares*valueFromDatabase.Item3;
+                            if (cost <= (_account.CashBalance - Account.TRADE_FEE))
+                            {
+                                stock.InvestedBalance = cost;
+                                port.Stocks.Add(tickerName, stock);
+                                _account.CashBalance -= (cost + Account.TRADE_FEE);
+                                _account.InvestedBalance += stock.InvestedBalance;
+                                _account.NumberOfStocks += numberOfShares;
+
+                            }
+                        }
+                        else
+                        {
+                            _displayErrorMessageObserver(
+                                "You currently do not have enought funds to perform this action");
+                        }
                     }
                 }
-             
             }
-            
-            
-           //try
+            catch (Exception ex)
+            {
+                _displayErrorMessageObserver("Error trying to buy stocks.");
+            }
+            //try
             //{
             //    _account.BuyStock(portfolioName, tickerName, numberOfShares);
             //    SignalObservers();
@@ -187,7 +214,7 @@ namespace Ticker501_MVC
             //}
             //catch (Exception)
             //{
-            //    _displayErrorMessageObserver("Error trying to buy stocks.");
+            //    
             //}
         }
 
