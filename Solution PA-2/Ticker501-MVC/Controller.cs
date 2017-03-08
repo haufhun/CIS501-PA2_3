@@ -207,6 +207,7 @@ namespace Ticker501_MVC
                                 _account.CashBalance -= (cost + Account.TRADE_FEE);
                                 _account.InvestedBalance += stock.InvestedBalance;
                                 _account.NumberOfStocks += numberOfShares;
+                                SignalObservers();
 
                             }
                             else
@@ -270,6 +271,7 @@ namespace Ticker501_MVC
                             _account.CashBalance += (cost - Account.TRADE_FEE);
                             _account.InvestedBalance -= stock.InvestedBalance;
                             _account.NumberOfStocks -= numberOfShares;
+                            SignalObservers();
                             if (stock.NumberOfShares == 0)
                             {
                                 port.Stocks.Remove(tickerName);
