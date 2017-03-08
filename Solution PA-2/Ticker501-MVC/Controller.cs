@@ -178,7 +178,7 @@ namespace Ticker501_MVC
             }
             else
             {
-                
+                _displayErrorMessageObserver("You don't have enough money in your account. Please enter a different number.");
             }
         }
 
