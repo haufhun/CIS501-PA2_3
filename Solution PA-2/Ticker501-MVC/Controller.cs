@@ -147,8 +147,16 @@ namespace Ticker501_MVC
             //{
             //    _displayErrorMessageObserver("Error trying to deposit funds.");
             //}
-            _account.CashBalance += cash;
-            SignalObservers();
+            decimal toAdd = cash - Convert.ToDecimal(4.99);
+            if (toAdd > 0)
+            {
+                _account.CashBalance += cash;
+                SignalObservers();
+            }
+            else
+            {
+                _displayErrorMessageObserver("The amount you want to deposit is less than the deposit fee of $4.99. Please enter another number.");
+            }
         }
 
         /// <summary>
@@ -170,7 +178,7 @@ namespace Ticker501_MVC
             //{
             //    _displayErrorMessageObserver("Error trying to withdraw funds.");
             //}
-            decimal toWithdraw = cash + Convert.ToDecimal(9.99);
+            decimal toWithdraw = cash + Convert.ToDecimal(4.99);
             if ( toWithdraw < _account.CashBalance)
             {
                 _account.CashBalance -= toWithdraw;
