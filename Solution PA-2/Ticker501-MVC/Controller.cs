@@ -212,7 +212,7 @@ namespace Ticker501_MVC
             else
             {
                 _account.Portfolios.Add(portfolioName, new Portfolio());
-                SignalObservers();
+                _portfolioObserver(portfolioName);
             }
         }
 

@@ -907,7 +907,7 @@
             // 
             // uxOpenFileDialog
             // 
-            this.uxOpenFileDialog.FileName = "openFileDialog1";
+            this.uxOpenFileDialog.FileName = "Ticker.txt";
             // 
             // MainForm
             // 
