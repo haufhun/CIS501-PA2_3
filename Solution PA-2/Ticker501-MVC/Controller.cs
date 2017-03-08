@@ -131,24 +131,7 @@ namespace Ticker501_MVC
         /// <param name="cash">The amount of cash to deposit.</param>
         public void DepositFunds(decimal cash)
         {
-            // if (aWfundsForm.ShowDialog() == DialogResult.OK)
-            // {
-            //   aWfundsForm.Amount;
-            // }
-            //try
-            //{
-            //    _account.AddFundsToCashFund(cash);
-            //    SignalObservers();
-            //}
-            //catch (AccountException)
-            //{
-            //    _displayErrorMessageObserver("There was a problem depositing money into your account.");
-            //}
-            //catch (Exception)
-            //{
-            //    _displayErrorMessageObserver("Error trying to deposit funds.");
-            //}
-            _account.CashBalance += cash;
+            _account.CashBalance += cash - Account.TRANSFER_FEE;
             SignalObservers();
         }
 
@@ -158,20 +141,7 @@ namespace Ticker501_MVC
         /// <param name="cash">The amount of cash to withdraw.</param>
         public void WithdrawFunds(decimal cash)
         {
-            //try
-            //{
-            //    _account.WithdrawFunds(cash);
-            //    SignalObservers();
-            //}
-            //catch (AccountExceptions)
-            //{
-            //    _displayErrorMessageObserver("You currently do not have enough funds to perform this action.");
-            //}
-            //catch (Exception)
-            //{
-            //    _displayErrorMessageObserver("Error trying to withdraw funds.");
-            //}
-            decimal toWithdraw = cash + Convert.ToDecimal(9.99);
+            var toWithdraw = cash + Account.TRANSFER_FEE;
             if ( toWithdraw < _account.CashBalance)
             {
                 _account.CashBalance -= toWithdraw;
