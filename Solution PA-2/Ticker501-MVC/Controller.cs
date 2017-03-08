@@ -158,10 +158,10 @@ namespace Ticker501_MVC
             //{
             //    _displayErrorMessageObserver("Error trying to deposit funds.");
             //}
-            decimal toAdd = cash - Convert.ToDecimal(4.99);
+            decimal toAdd = cash - Convert.ToDecimal(Account.TRANSFER_FEE);
             if (toAdd > 0)
             {
-                _account.CashBalance += cash;
+                _account.CashBalance += toAdd;
                 SignalObservers();
             }
             else
