@@ -233,11 +233,6 @@ namespace Ticker501_MVC
             _account.Portfolios.Remove(portfolioName);
 
             SignalObservers();
-
-            //sell all stocks within portfolio
-            //update invested balance, cash balance on account
-            
-            //final -  remove method for portfolios
         }
 
         /// <summary>
