@@ -38,9 +38,9 @@
             // 
             this.uxOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.uxOK.Enabled = false;
-            this.uxOK.Location = new System.Drawing.Point(145, 47);
+            this.uxOK.Location = new System.Drawing.Point(127, 47);
             this.uxOK.Name = "uxOK";
-            this.uxOK.Size = new System.Drawing.Size(76, 35);
+            this.uxOK.Size = new System.Drawing.Size(100, 35);
             this.uxOK.TabIndex = 5;
             this.uxOK.Text = "OK";
             this.uxOK.UseVisualStyleBackColor = true;
@@ -66,9 +66,9 @@
             // uxCancel
             // 
             this.uxCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.uxCancel.Location = new System.Drawing.Point(249, 47);
+            this.uxCancel.Location = new System.Drawing.Point(263, 47);
             this.uxCancel.Name = "uxCancel";
-            this.uxCancel.Size = new System.Drawing.Size(76, 35);
+            this.uxCancel.Size = new System.Drawing.Size(100, 35);
             this.uxCancel.TabIndex = 6;
             this.uxCancel.Text = "Cancel";
             this.uxCancel.UseVisualStyleBackColor = true;

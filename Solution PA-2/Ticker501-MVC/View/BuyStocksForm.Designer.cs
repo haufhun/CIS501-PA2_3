@@ -217,7 +217,7 @@
             this.AcceptButton = this.uxBuyStockBttn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1220, 429);
+            this.ClientSize = new System.Drawing.Size(1113, 429);
             this.ControlBox = false;
             this.Controls.Add(this.uxBuyStockListInfo);
             this.Controls.Add(this.label3);

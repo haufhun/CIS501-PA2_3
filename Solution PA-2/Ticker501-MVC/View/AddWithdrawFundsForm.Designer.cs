@@ -38,7 +38,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(304, 12);
+            this.label1.Location = new System.Drawing.Point(337, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(16, 17);
             this.label1.TabIndex = 10;
@@ -48,9 +48,9 @@
             // 
             this.uxOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.uxOK.Enabled = false;
-            this.uxOK.Location = new System.Drawing.Point(146, 44);
+            this.uxOK.Location = new System.Drawing.Point(139, 44);
             this.uxOK.Name = "uxOK";
-            this.uxOK.Size = new System.Drawing.Size(76, 35);
+            this.uxOK.Size = new System.Drawing.Size(100, 35);
             this.uxOK.TabIndex = 9;
             this.uxOK.Text = "OK";
             this.uxOK.UseVisualStyleBackColor = true;
@@ -58,7 +58,7 @@
             // 
             // uxAmountTxtBox
             // 
-            this.uxAmountTxtBox.Location = new System.Drawing.Point(326, 9);
+            this.uxAmountTxtBox.Location = new System.Drawing.Point(359, 9);
             this.uxAmountTxtBox.Name = "uxAmountTxtBox";
             this.uxAmountTxtBox.Size = new System.Drawing.Size(127, 22);
             this.uxAmountTxtBox.TabIndex = 8;
@@ -76,9 +76,9 @@
             // uxCancel
             // 
             this.uxCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.uxCancel.Location = new System.Drawing.Point(244, 44);
+            this.uxCancel.Location = new System.Drawing.Point(277, 44);
             this.uxCancel.Name = "uxCancel";
-            this.uxCancel.Size = new System.Drawing.Size(76, 35);
+            this.uxCancel.Size = new System.Drawing.Size(100, 35);
             this.uxCancel.TabIndex = 11;
             this.uxCancel.Text = "Cancel";
             this.uxCancel.UseVisualStyleBackColor = true;
@@ -90,7 +90,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.uxCancel;
-            this.ClientSize = new System.Drawing.Size(476, 90);
+            this.ClientSize = new System.Drawing.Size(515, 130);
             this.ControlBox = false;
             this.Controls.Add(this.uxCancel);
             this.Controls.Add(this.label1);

@@ -60,7 +60,7 @@
             this.uxSellStockListInfo.Location = new System.Drawing.Point(12, 53);
             this.uxSellStockListInfo.MultiSelect = false;
             this.uxSellStockListInfo.Name = "uxSellStockListInfo";
-            this.uxSellStockListInfo.Size = new System.Drawing.Size(728, 333);
+            this.uxSellStockListInfo.Size = new System.Drawing.Size(728, 364);
             this.uxSellStockListInfo.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.uxSellStockListInfo.TabIndex = 29;
             this.uxSellStockListInfo.UseCompatibleStateImageBehavior = false;
@@ -95,7 +95,7 @@
             // 
             this.uxPotentialAmount.AutoSize = true;
             this.uxPotentialAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxPotentialAmount.Location = new System.Drawing.Point(799, 134);
+            this.uxPotentialAmount.Location = new System.Drawing.Point(931, 138);
             this.uxPotentialAmount.Name = "uxPotentialAmount";
             this.uxPotentialAmount.Size = new System.Drawing.Size(61, 25);
             this.uxPotentialAmount.TabIndex = 36;
@@ -177,7 +177,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.uxCloseBttn;
-            this.ClientSize = new System.Drawing.Size(1277, 398);
+            this.ClientSize = new System.Drawing.Size(1233, 429);
             this.ControlBox = false;
             this.Controls.Add(this.uxSellStockListInfo);
             this.Controls.Add(this.uxPotentialAmount);
