@@ -230,7 +230,7 @@ namespace Ticker501_MVC
                                 }                               
                                 stock.InvestedBalance += cost;
                                 _account.Portfolios[portfolioName].InvestedBalance += cost;
-                                _account.Portfolios[portfolioName].NumberOfStocks++;
+                                _account.Portfolios[portfolioName].NumberOfStocks+= numberOfShares;
                                 _account.CashBalance -= (cost + Account.TRADE_FEE);
                                 _account.InvestedBalance += stock.InvestedBalance;
                                 _account.NumberOfStocks += numberOfShares;
