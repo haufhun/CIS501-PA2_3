@@ -12,7 +12,7 @@ namespace Ticker501_MVC
         /// <summary>
         /// The instance of the account.
         /// </summary>
-        private IAccount _account;
+        private readonly IAccount _account;
         /// <summary>
         /// The instance of the database,
         /// </summary>
@@ -126,6 +126,7 @@ namespace Ticker501_MVC
             //}
         }
 
+
         /// <summary>
         /// shows the form passed into the argument
         /// </summary>
@@ -141,24 +142,7 @@ namespace Ticker501_MVC
         /// <param name="cash">The amount of cash to deposit.</param>
         public void DepositFunds(decimal cash)
         {
-            // if (aWfundsForm.ShowDialog() == DialogResult.OK)
-            // {
-            //   aWfundsForm.Amount;
-            // }
-            //try
-            //{
-            //    _account.AddFundsToCashFund(cash);
-            //    SignalObservers();
-            //}
-            //catch (AccountException)
-            //{
-            //    _displayErrorMessageObserver("There was a problem depositing money into your account.");
-            //}
-            //catch (Exception)
-            //{
-            //    _displayErrorMessageObserver("Error trying to deposit funds.");
-            //}
-            decimal toAdd = cash - Account.TRANSFER_FEE;
+            var toAdd = cash - Account.TRANSFER_FEE;
             if (toAdd > 0)
             {
                 _account.CashBalance += toAdd;
@@ -277,15 +261,16 @@ namespace Ticker501_MVC
         /// </summary>
         public void Simulate(int volatility)
         {
-            Dictionary<string, Tuple<string, string, decimal>> d = new Dictionary<string, Tuple<string, string, decimal>>();
-            Random r = new Random();
-            decimal change = 0;
-            decimal sign = 0;
+            var d = new Dictionary<string, Tuple<string, string, decimal>>();
+            var r = new Random();
+            decimal change;
+            decimal sign;
             switch(volatility)
             {
                 case 1:
                     {
-                        foreach (Tuple<string, string, decimal> t in _database.StockDatabase.Values)
+                        foreach (
+                            var t in _database.StockDatabase.Values)
                         {
                             sign = r.Next(2);
                             if (sign == 0)
