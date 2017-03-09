@@ -313,7 +313,16 @@ namespace Ticker501_MVC.View
                 }
 
                 uxPrtBalOutput.Text = _account.CashBalance.ToString("C");
-                uxPrtPercentageOfAccountOutput.Text = (_account.Portfolios[portfolioName].NumberOfStocks / _account.NumberOfStocks).ToString("P");
+
+                if (_account.NumberOfStocks == 0)
+                {
+                    uxPrtPercentageOfAccountOutput.Text = "0.00%";
+                }
+                else
+                {
+                    uxPrtPercentageOfAccountOutput.Text = (_account.Portfolios[portfolioName].NumberOfStocks / _account.NumberOfStocks).ToString("P");
+                }
+
                 uxPrtNetWorthOutput.Text = total.ToString("c");
                 uxPrtTotalInvestedOuput.Text = _account.Portfolios[portfolioName].InvestedBalance.ToString("c");
                 DisplayGainsAndLossesPretty(uxPrtGainsLossesOutput, _account.Portfolios[portfolioName].GainsLosses);
