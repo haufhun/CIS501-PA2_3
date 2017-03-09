@@ -61,7 +61,7 @@
             this.uxBuyStockListInfo.Location = new System.Drawing.Point(12, 58);
             this.uxBuyStockListInfo.MultiSelect = false;
             this.uxBuyStockListInfo.Name = "uxBuyStockListInfo";
-            this.uxBuyStockListInfo.Size = new System.Drawing.Size(478, 259);
+            this.uxBuyStockListInfo.Size = new System.Drawing.Size(478, 326);
             this.uxBuyStockListInfo.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.uxBuyStockListInfo.TabIndex = 29;
             this.uxBuyStockListInfo.UseCompatibleStateImageBehavior = false;
@@ -141,6 +141,7 @@
             this.uxBuyBySharesOrPrice.Name = "uxBuyBySharesOrPrice";
             this.uxBuyBySharesOrPrice.Size = new System.Drawing.Size(401, 24);
             this.uxBuyBySharesOrPrice.TabIndex = 36;
+            this.uxBuyBySharesOrPrice.SelectedIndexChanged += new System.EventHandler(this.uxBuyBySharesOrPrice_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -160,6 +161,7 @@
             this.uxCloseBttn.TabIndex = 34;
             this.uxCloseBttn.Text = "&Close";
             this.uxCloseBttn.UseVisualStyleBackColor = true;
+            this.uxCloseBttn.Click += new System.EventHandler(this.uxCloseBttn_Click);
             // 
             // uxNumberOfShares
             // 
@@ -188,6 +190,7 @@
             this.uxBuyStockBttn.TabIndex = 32;
             this.uxBuyStockBttn.Text = "&Buy Shares";
             this.uxBuyStockBttn.UseVisualStyleBackColor = true;
+            this.uxBuyStockBttn.Click += new System.EventHandler(this.uxBuyStockBttn_Click);
             // 
             // uxNumberLabel
             // 
@@ -214,7 +217,7 @@
             this.AcceptButton = this.uxBuyStockBttn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1220, 362);
+            this.ClientSize = new System.Drawing.Size(1113, 429);
             this.ControlBox = false;
             this.Controls.Add(this.uxBuyStockListInfo);
             this.Controls.Add(this.label3);

@@ -7,6 +7,8 @@ namespace Ticker501_MVC.Model.Interfaces
        decimal InvestedBalance { get; set; }
 
        int NumberOfStocks { get; set; }
+
+        decimal GainsLosses { get; set; }
         
        Dictionary<string, IStock> Stocks { get; set; }
 
