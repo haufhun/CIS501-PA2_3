@@ -4,6 +4,7 @@ using System.IO;
 using System.Windows.Forms;
 using Ticker501_MVC.Model;
 using Ticker501_MVC.Model.Interfaces;
+using Ticker501_MVC.View;
 
 namespace Ticker501_MVC
 {
@@ -29,6 +30,10 @@ namespace Ticker501_MVC
         private AddPortfolioObserver _addPortfolioObserver;
 
         private DeletePortfolioObserver _deletePortfolioObserver;
+
+        private BuyStockObserver _buyStockObserver;
+
+        private SellStockObserver _sellStockObserver;
 
         /// <summary>
         /// A error message delegate used to display error messges.
@@ -87,6 +92,24 @@ namespace Ticker501_MVC
             _displayErrorMessageObserver = o;
         }
 
+        /// <summary>
+        /// Registers the buy stock observer.
+        /// </summary>
+        /// <param name="o"></param>
+        public void BuyStockRegister(BuyStockObserver o)
+        {
+            _buyStockObserver = o;
+        }
+
+        /// <summary>
+        /// Registers the buy stock observer.
+        /// </summary>
+        /// <param name="o"></param>
+        public void SellStockRegister(SellStockObserver o)
+        {
+            _sellStockObserver = o;
+        }
+
 
         /// <summary>
         /// Will update the info on the portfolio tab when a new portfolio is selected
@@ -95,14 +118,6 @@ namespace Ticker501_MVC
         {
             _portfolioObserver(portfolioName);
         }
-
-        //private void SignalAddPortfolioObservers(string portfolioName)
-        //{
-        //    foreach (var o in _addPortfolioObserver)
-        //    {
-        //        o(portfolioName);
-        //    }
-        //}
 
         /// <summary>
         /// Signals the observers to update fields of the user interface
@@ -131,9 +146,24 @@ namespace Ticker501_MVC
         /// shows the form passed into the argument
         /// </summary>
         /// <param name="form">The Form to open</param>
-        public void OpenForm(Form form)
+        /// <param name="sender">The tool strip button that caused this event to fire.</param>
+        public void OpenForm(Form form, object sender)
         {
             form.Show();
+            if (form.Name.Contains("Buy"))
+            {
+                _buyStockObserver();
+                var parent = (sender as ToolStripMenuItem).OwnerItem;
+                var name = parent.Text;
+                (form as BuyStocksForm).RegisterPortfolioName(name);
+            }
+            else if (form.Name.Contains("Sell"))
+            {
+                _sellStockObserver();
+                var parent = (sender as ToolStripMenuItem).OwnerItem;
+                var name = parent.Text;
+                (form as SellStocksForm).RegisterPortfolioName(name);
+            }
         }
 
         /// <summary>
@@ -186,7 +216,7 @@ namespace Ticker501_MVC
                 IPortfolio port;
                 IStock stock = new Stock(tickerName);
                 IStock stock2;
-
+               
 
                 if (_database.StockDatabase.ContainsKey(tickerName))
                 {
@@ -208,6 +238,7 @@ namespace Ticker501_MVC
                                 _account.InvestedBalance += stock.InvestedBalance;
                                 _account.NumberOfStocks += numberOfShares;
                                 SignalObservers();
+                                _portfolioObserver(portfolioName);
                             }
                             else
                             {
@@ -215,10 +246,9 @@ namespace Ticker501_MVC
                                     "You currently do not have enought funds to perform this action");
                             }
                         }
-
+                       
                     }
                 }
-                
             }
             catch (Exception ex)
             {
@@ -272,6 +302,7 @@ namespace Ticker501_MVC
                             _account.InvestedBalance -= stock.InvestedBalance;
                             _account.NumberOfStocks -= numberOfShares;
                             SignalObservers();
+                            _portfolioObserver(portfolioName);
                             if (stock.NumberOfShares == 0)
                             {
                                 port.Stocks.Remove(tickerName);
@@ -467,5 +498,7 @@ namespace Ticker501_MVC
             }
             return false;
         }
+
+        
     }
 }
