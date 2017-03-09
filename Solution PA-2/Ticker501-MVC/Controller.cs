@@ -217,23 +217,28 @@ namespace Ticker501_MVC
                 IStock stock = new Stock(tickerName);
                 IStock stock2;
                
-                
                 if (_database.StockDatabase.ContainsKey(tickerName))
                 {
                     if (_database.StockDatabase.TryGetValue(tickerName, out valueFromDatabase))
                     {
                         if (_account.Portfolios.TryGetValue(portfolioName, out port))
                         {
-                            if (port.Stocks.ContainsKey(tickerName))
-                            {
-                                port.Stocks.TryGetValue(tickerName, out stock2);
-                                stock2.NumberOfShares += numberOfShares;
-                            }
+                            
                             var cost = numberOfShares*valueFromDatabase.Item3;
                             if (cost <= (_account.CashBalance - Account.TRADE_FEE))
                             {
-                                stock.InvestedBalance = cost;
-                                port.Stocks.Add(tickerName, stock);
+                                if (port.Stocks.ContainsKey(tickerName))
+                                {
+                                    _account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares += numberOfShares;
+                                }
+                                else
+                                {
+                                    port.Stocks.Add(tickerName, stock);
+                                    _account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares += numberOfShares;
+                                }                               
+                                stock.InvestedBalance += cost;
+                                port.InvestedBalance += cost;
+                                port.NumberOfStocks ++;
                                 _account.CashBalance -= (cost + Account.TRADE_FEE);
                                 _account.InvestedBalance += stock.InvestedBalance;
                                 _account.NumberOfStocks += numberOfShares;
@@ -251,22 +256,9 @@ namespace Ticker501_MVC
                 }
             }
             catch (Exception ex)
-            {
+           {
                 _displayErrorMessageObserver("Error trying to buy stocks.");
             }
-            //try
-            //{
-            //    _account.BuyStock(portfolioName, tickerName, numberOfShares);
-            //    SignalObservers();
-            //}
-            //catch (AccountExceptions)
-            //{
-            //    _displayErrorMessageObserver("You currently do not have enought funds to perform this action");
-            //}
-            //catch (Exception)
-            //{
-            //    
-            //}
         }
 
         /// <summary>
@@ -284,28 +276,37 @@ namespace Ticker501_MVC
                 IPortfolio port;
                 IStock stock = new Stock(tickerName);
                 IStock stock2;
-               
                 if (_database.StockDatabase.ContainsKey(tickerName))
                 {
                     if (_database.StockDatabase.TryGetValue(tickerName, out valueFromDatabase))
                     {
                         if (_account.Portfolios.TryGetValue(portfolioName, out port))
                         {
-                            if (port.Stocks.ContainsKey(tickerName))
+
+                            var cost = numberOfShares*valueFromDatabase.Item3;
+                            if (cost <= (_account.CashBalance - Account.TRADE_FEE))
                             {
-                                port.Stocks.TryGetValue(tickerName, out stock2);
-                                stock2.NumberOfShares -= numberOfShares;
-                            }
-                            var cost = numberOfShares * valueFromDatabase.Item3;
-                            stock.InvestedBalance -= cost;
-                            _account.CashBalance += (cost - Account.TRADE_FEE);
-                            _account.InvestedBalance -= stock.InvestedBalance;
-                            _account.NumberOfStocks -= numberOfShares;
-                            SignalObservers();
-                            _portfolioObserver(portfolioName);
-                            if (stock.NumberOfShares == 0)
-                            {
-                                port.Stocks.Remove(tickerName);
+                                if (port.Stocks.ContainsKey(tickerName))
+                                {
+                                    _account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares -=  numberOfShares;
+                                }
+                                else
+                                {
+                                    port.Stocks.Add(tickerName, stock);
+                                    _account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares -= numberOfShares;
+                                }
+                                stock.InvestedBalance -= cost;
+                                port.InvestedBalance -= cost;
+                                port.NumberOfStocks--;
+                                _account.CashBalance += (cost - Account.TRADE_FEE);
+                                _account.InvestedBalance -= stock.InvestedBalance;
+                                _account.NumberOfStocks -= numberOfShares;
+                                SignalObservers();
+                                _portfolioObserver(portfolioName);
+                                if (stock.NumberOfShares == 0)
+                                {
+                                    port.Stocks.Remove(tickerName);
+                                }
                             }
                         }
                     }
