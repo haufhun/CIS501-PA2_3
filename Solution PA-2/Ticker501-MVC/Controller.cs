@@ -4,6 +4,7 @@ using System.IO;
 using System.Windows.Forms;
 using Ticker501_MVC.Model;
 using Ticker501_MVC.Model.Interfaces;
+using Ticker501_MVC.View;
 
 namespace Ticker501_MVC
 {
@@ -30,7 +31,7 @@ namespace Ticker501_MVC
 
         private DeletePortfolioObserver _deletePortfolioObserver;
 
-        private List<BuyStockObserver> _buyStockObservers;
+        private BuyStockObserver _buyStockObserver;
 
         /// <summary>
         /// A error message delegate used to display error messges.
@@ -47,7 +48,6 @@ namespace Ticker501_MVC
             _account = a;
             _database = db;
             _observers = new List<Observer>();
-            _buyStockObservers = new List<BuyStockObserver>();
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Ticker501_MVC
 
         public void BuyStockRegister(BuyStockObserver o)
         {
-            _buyStockObservers.Add(o);
+            _buyStockObserver = o;
         }
 
 
@@ -134,25 +134,21 @@ namespace Ticker501_MVC
             //}
         }
 
-        private void SignalBuyStockObservers()
-        {
-            foreach (var m in _buyStockObservers)
-            {
-                m();
-            }
-        }
-
 
         /// <summary>
         /// shows the form passed into the argument
         /// </summary>
         /// <param name="form">The Form to open</param>
-        public void OpenForm(Form form)
+        /// <param name="sender">The tool strip button that caused this event to fire.</param>
+        public void OpenForm(Form form, object sender)
         {
             form.Show();
             if (form.Name.Contains("Buy"))
             {
-                SignalBuyStockObservers();
+                _buyStockObserver();
+                var parent = (sender as ToolStripMenuItem).OwnerItem;
+                var name = parent.Text;
+                (form as BuyStocksForm).RegisterPortfolioName(name);
             }
         }
 

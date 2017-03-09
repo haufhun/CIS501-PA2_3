@@ -131,7 +131,7 @@ namespace Ticker501_MVC.View
         /// </summary>
         private void uxAddFunds_Click(object sender, EventArgs e)
         {
-            _openForm(_addFundsForm);
+            _openForm(_addFundsForm, sender);
             
         }
 
@@ -140,7 +140,7 @@ namespace Ticker501_MVC.View
         /// </summary>
         private void uxWithdrawFunds_Click(object sender, EventArgs e)
         {
-            _openForm(_withdrawFundsForm);
+            _openForm(_withdrawFundsForm, sender);
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace Ticker501_MVC.View
         /// </summary>
         private void uxAddPortfolio_Click(object sender, EventArgs e)
         {
-            _openForm(_getPNForm);
+            _openForm(_getPNForm, sender);
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace Ticker501_MVC.View
         /// </summary>
         private void BuyStocksButton_Click(object sender, EventArgs e)
         {
-            _openForm(_bSForm);
+            _openForm(_bSForm, sender);
         }
 
         /// <summary>
@@ -203,7 +203,7 @@ namespace Ticker501_MVC.View
         /// </summary>
         private void SellStocksButton_Click(object sender, EventArgs e)
         {
-            _openForm(_sSForm);
+            _openForm(_sSForm, sender);
         }
 
         /// <summary>
