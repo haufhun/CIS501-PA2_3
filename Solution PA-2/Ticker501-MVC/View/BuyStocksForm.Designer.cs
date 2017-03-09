@@ -160,6 +160,7 @@
             this.uxCloseBttn.TabIndex = 34;
             this.uxCloseBttn.Text = "&Close";
             this.uxCloseBttn.UseVisualStyleBackColor = true;
+            this.uxCloseBttn.Click += new System.EventHandler(this.uxCloseBttn_Click);
             // 
             // uxNumberOfShares
             // 
@@ -188,6 +189,7 @@
             this.uxBuyStockBttn.TabIndex = 32;
             this.uxBuyStockBttn.Text = "&Buy Shares";
             this.uxBuyStockBttn.UseVisualStyleBackColor = true;
+            this.uxBuyStockBttn.Click += new System.EventHandler(this.uxBuyStockBttn_Click);
             // 
             // uxNumberLabel
             // 

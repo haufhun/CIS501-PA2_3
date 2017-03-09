@@ -30,6 +30,8 @@ namespace Ticker501_MVC
 
         private DeletePortfolioObserver _deletePortfolioObserver;
 
+        private List<BuyStockObserver> _buyStockObservers;
+
         /// <summary>
         /// A error message delegate used to display error messges.
         /// </summary>
@@ -45,6 +47,7 @@ namespace Ticker501_MVC
             _account = a;
             _database = db;
             _observers = new List<Observer>();
+            _buyStockObservers = new List<BuyStockObserver>();
         }
 
         /// <summary>
@@ -87,6 +90,11 @@ namespace Ticker501_MVC
             _displayErrorMessageObserver = o;
         }
 
+        public void BuyStockRegister(BuyStockObserver o)
+        {
+            _buyStockObservers.Add(o);
+        }
+
 
         /// <summary>
         /// Will update the info on the portfolio tab when a new portfolio is selected
@@ -126,6 +134,14 @@ namespace Ticker501_MVC
             //}
         }
 
+        private void SignalBuyStockObservers()
+        {
+            foreach (var m in _buyStockObservers)
+            {
+                m();
+            }
+        }
+
 
         /// <summary>
         /// shows the form passed into the argument
@@ -134,6 +150,10 @@ namespace Ticker501_MVC
         public void OpenForm(Form form)
         {
             form.Show();
+            if (form.Name.Contains("Buy"))
+            {
+                SignalBuyStockObservers();
+            }
         }
 
         /// <summary>
@@ -467,5 +487,7 @@ namespace Ticker501_MVC
             }
             return false;
         }
+
+        
     }
 }

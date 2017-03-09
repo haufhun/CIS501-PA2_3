@@ -8,16 +8,13 @@ namespace Ticker501_MVC.View
         /// <summary>
         /// Defines the type of method that handles a sell stock input event
         /// </summary>
-        private Action<string, string, int> sellStocks;
-
-        public SellStocksForm()
-        {
-            InitializeComponent();
-        }
+        private Action<string, string, int> _sellStocks;
 
         public SellStocksForm(Action<string, string, int> sellStocks)
         {
-            this.sellStocks = sellStocks;
+            _sellStocks = sellStocks;
+
+            InitializeComponent();
         }
     }
 }
