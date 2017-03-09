@@ -33,6 +33,8 @@ namespace Ticker501_MVC
 
         private BuyStockObserver _buyStockObserver;
 
+        private SellStockObserver _sellStockObserver;
+
         /// <summary>
         /// A error message delegate used to display error messges.
         /// </summary>
@@ -90,9 +92,22 @@ namespace Ticker501_MVC
             _displayErrorMessageObserver = o;
         }
 
+        /// <summary>
+        /// Registers the buy stock observer.
+        /// </summary>
+        /// <param name="o"></param>
         public void BuyStockRegister(BuyStockObserver o)
         {
             _buyStockObserver = o;
+        }
+
+        /// <summary>
+        /// Registers the buy stock observer.
+        /// </summary>
+        /// <param name="o"></param>
+        public void SellStockRegister(SellStockObserver o)
+        {
+            _sellStockObserver = o;
         }
 
 
@@ -103,14 +118,6 @@ namespace Ticker501_MVC
         {
             _portfolioObserver(portfolioName);
         }
-
-        //private void SignalAddPortfolioObservers(string portfolioName)
-        //{
-        //    foreach (var o in _addPortfolioObserver)
-        //    {
-        //        o(portfolioName);
-        //    }
-        //}
 
         /// <summary>
         /// Signals the observers to update fields of the user interface
@@ -149,6 +156,13 @@ namespace Ticker501_MVC
                 var parent = (sender as ToolStripMenuItem).OwnerItem;
                 var name = parent.Text;
                 (form as BuyStocksForm).RegisterPortfolioName(name);
+            }
+            else if (form.Name.Contains("Sell"))
+            {
+                _sellStockObserver();
+                var parent = (sender as ToolStripMenuItem).OwnerItem;
+                var name = parent.Text;
+                (form as SellStocksForm).RegisterPortfolioName(name);
             }
         }
 

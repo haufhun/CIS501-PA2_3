@@ -14,6 +14,8 @@ namespace Ticker501_MVC
 
     public delegate void BuyStockObserver();
 
+    public delegate void SellStockObserver();
+
     public delegate void OpenForm(Form f, object sender);
 
     public delegate void PortfolioSelectedHandler(string portfolioName);
@@ -53,7 +55,7 @@ namespace Ticker501_MVC
             var aFundsForm = new AddWithdrawFundsForm(1, c.DepositFunds);
             var wFundsForm =  new AddWithdrawFundsForm(2, c.WithdrawFunds);
             var bSForm = new BuyStocksForm(c.BuyStocks, db, a);
-            var sSForm = new SellStocksForm(c.SellStocks);
+            var sSForm = new SellStocksForm(c.SellStocks, a, db);
 
             var mForm = new MainForm(a, db, gpnForm, aFundsForm, wFundsForm, bSForm, sSForm, c.OpenForm, c.DisplayPortfolioSelectedObserver, 
                                         c.AddPortfolio, c.DeletePortfolio, c.Simulate, c.ReadTickerFile);
@@ -72,6 +74,7 @@ namespace Ticker501_MVC
             c.DeletePortfolioRegister(mForm.DeletePortfolio);
 
             c.BuyStockRegister(bSForm.DisplayListView);
+            c.SellStockRegister(sSForm.DisplayListView);
 
             Application.Run(mForm);
         }
