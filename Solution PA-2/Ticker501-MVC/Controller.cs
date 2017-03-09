@@ -187,7 +187,7 @@ namespace Ticker501_MVC
                 IStock stock = new Stock(tickerName);
                 IStock stock2;
                
-
+                
                 if (_database.StockDatabase.ContainsKey(tickerName))
                 {
                     if (_database.StockDatabase.TryGetValue(tickerName, out valueFromDatabase))
