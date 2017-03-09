@@ -351,41 +351,67 @@ namespace Ticker501_MVC.View
         /// <summary>
         /// Enables and disables the buy and sell stock buttons according to which portfolio they are on
         /// </summary>
-        /// <param name="currentPortfolio">The portfolio that they are currently on</param>
-        private void UpdateEnabledBuyAndSellStocks(string currentPortfolio)
+        /// <param name="portfolioName">The portfolio that they are currently on</param>
+        private void UpdateEnabledBuyAndSellStocks(string portfolioName)
         {
-            if (uxPortfolio1.Text == currentPortfolio)
+            if (uxPortfolio1.Text == portfolioName)
             {
-                uxBuyStocks1.Enabled = true;
-                uxSellStocks1.Enabled = true;
+                if (_account.CashBalance > 0)
+                {
+                    uxBuyStocks1.Enabled = true;
+                }
+                if(_account.Portfolios[portfolioName].NumberOfStocks > 0)
+                {
+                    uxSellStocks1.Enabled = true;
+                }
+                uxDeletePortfolio1.Enabled = true;
 
                 uxBuyStocks2.Enabled = false;
+                uxSellStocks2.Enabled = false;
                 uxSellStocks2.Enabled = false;
 
                 uxBuyStocks3.Enabled = false;
                 uxSellStocks3.Enabled = false;
+                uxSellStocks3.Enabled = false;
             }
-            else if (uxPortfolio2.Text == currentPortfolio)
+            else if (uxPortfolio2.Text == portfolioName)
             {
                 uxBuyStocks1.Enabled = false;
                 uxSellStocks1.Enabled = false;
 
-                uxBuyStocks2.Enabled = true;
-                uxSellStocks2.Enabled = true;
+                if (_account.CashBalance > 0)
+                {
+                    uxBuyStocks2.Enabled = true;
+                }
+                if(_account.Portfolios[portfolioName].NumberOfStocks > 0)
+                {
+                    uxSellStocks2.Enabled = true;
+                }
+                uxDeletePortfolio2.Enabled = true;
 
                 uxBuyStocks3.Enabled = false;
                 uxSellStocks3.Enabled = false;
+                uxDeletePortfolio3.Enabled = true;
             }
-            else if (uxPortfolio3.Text == currentPortfolio)
+            else if (uxPortfolio3.Text == portfolioName)
             {
                 uxBuyStocks1.Enabled = false;
                 uxSellStocks1.Enabled = false;
+                uxDeletePortfolio1.Enabled = false;
 
                 uxBuyStocks2.Enabled = false;
                 uxSellStocks2.Enabled = false;
+                uxDeletePortfolio2.Enabled = false;
 
-                uxBuyStocks3.Enabled = true;
-                uxSellStocks3.Enabled = true;
+                if (_account.CashBalance > 0)
+                {
+                    uxBuyStocks3.Enabled = true;
+                }
+                if(_account.Portfolios[portfolioName].NumberOfStocks > 0)
+                { 
+                    uxSellStocks3.Enabled = true;
+                }
+                uxDeletePortfolio3.Enabled = true;
             }
         }
 

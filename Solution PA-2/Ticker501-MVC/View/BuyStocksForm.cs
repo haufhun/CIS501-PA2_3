@@ -55,6 +55,8 @@ namespace Ticker501_MVC.View
         private void uxCloseBttn_Click(object sender, EventArgs e)
         {
             //clear
+            uxNumberOfShares.Value = 1;
+            uxAmount.Text = "0.00";
 
             //Need a handler for this?
             Hide();

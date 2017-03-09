@@ -100,7 +100,10 @@ namespace Ticker501_MVC.View
         /// <param name="e"></param>
         private void uxCloseBttn_Click(object sender, EventArgs e)
         {
-            Close();
+            uxNumberOfShares.Value = 1;
+            uxPotentialAmount.Text = "$0.00";
+
+            Hide();
         }
 
     }

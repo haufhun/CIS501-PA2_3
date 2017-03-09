@@ -779,12 +779,14 @@
             // 
             // uxBuyStocks1
             // 
+            this.uxBuyStocks1.Enabled = false;
             this.uxBuyStocks1.Name = "uxBuyStocks1";
             this.uxBuyStocks1.Size = new System.Drawing.Size(185, 26);
             this.uxBuyStocks1.Text = "Buy Stocks";
             // 
             // uxSellStocks1
             // 
+            this.uxSellStocks1.Enabled = false;
             this.uxSellStocks1.Name = "uxSellStocks1";
             this.uxSellStocks1.Size = new System.Drawing.Size(185, 26);
             this.uxSellStocks1.Text = "Sell Stocks";
@@ -798,6 +800,7 @@
             // 
             // uxDeletePortfolio1
             // 
+            this.uxDeletePortfolio1.Enabled = false;
             this.uxDeletePortfolio1.Name = "uxDeletePortfolio1";
             this.uxDeletePortfolio1.Size = new System.Drawing.Size(185, 26);
             this.uxDeletePortfolio1.Text = "DeletePortfolio";
@@ -820,12 +823,14 @@
             // 
             // uxBuyStocks2
             // 
+            this.uxBuyStocks2.Enabled = false;
             this.uxBuyStocks2.Name = "uxBuyStocks2";
             this.uxBuyStocks2.Size = new System.Drawing.Size(189, 26);
             this.uxBuyStocks2.Text = "Buy Stocks";
             // 
             // uxSellStocks2
             // 
+            this.uxSellStocks2.Enabled = false;
             this.uxSellStocks2.Name = "uxSellStocks2";
             this.uxSellStocks2.Size = new System.Drawing.Size(189, 26);
             this.uxSellStocks2.Text = "Sell Stocks";
@@ -839,6 +844,7 @@
             // 
             // uxDeletePortfolio2
             // 
+            this.uxDeletePortfolio2.Enabled = false;
             this.uxDeletePortfolio2.Name = "uxDeletePortfolio2";
             this.uxDeletePortfolio2.Size = new System.Drawing.Size(189, 26);
             this.uxDeletePortfolio2.Text = "Delete Portfolio";
@@ -861,12 +867,14 @@
             // 
             // uxBuyStocks3
             // 
+            this.uxBuyStocks3.Enabled = false;
             this.uxBuyStocks3.Name = "uxBuyStocks3";
             this.uxBuyStocks3.Size = new System.Drawing.Size(189, 26);
             this.uxBuyStocks3.Text = "Buy Stocks";
             // 
             // uxSellStocks3
             // 
+            this.uxSellStocks3.Enabled = false;
             this.uxSellStocks3.Name = "uxSellStocks3";
             this.uxSellStocks3.Size = new System.Drawing.Size(189, 26);
             this.uxSellStocks3.Text = "Sell Stocks";
@@ -880,6 +888,7 @@
             // 
             // uxDeletePortfolio3
             // 
+            this.uxDeletePortfolio3.Enabled = false;
             this.uxDeletePortfolio3.Name = "uxDeletePortfolio3";
             this.uxDeletePortfolio3.Size = new System.Drawing.Size(189, 26);
             this.uxDeletePortfolio3.Text = "Delete Portfolio";
