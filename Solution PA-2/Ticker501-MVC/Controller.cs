@@ -238,7 +238,7 @@ namespace Ticker501_MVC
                                 _account.InvestedBalance += stock.InvestedBalance;
                                 _account.NumberOfStocks += numberOfShares;
                                 SignalObservers();
-
+                                _portfolioObserver(portfolioName);
                             }
                             else
                             {
@@ -302,6 +302,7 @@ namespace Ticker501_MVC
                             _account.InvestedBalance -= stock.InvestedBalance;
                             _account.NumberOfStocks -= numberOfShares;
                             SignalObservers();
+                            _portfolioObserver(portfolioName);
                             if (stock.NumberOfShares == 0)
                             {
                                 port.Stocks.Remove(tickerName);
