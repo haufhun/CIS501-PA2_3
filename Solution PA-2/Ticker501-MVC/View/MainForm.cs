@@ -315,13 +315,13 @@ namespace Ticker501_MVC.View
 
                 uxPrtBalOutput.Text = _account.CashBalance.ToString("C");
 
-                if (_account.NumberOfStocks == 0)
+                if (_account.Portfolios[portfolioName].NumberOfStocks == 0)
                 {
                     uxPrtPercentageOfAccountOutput.Text = "0.00%";
                 }
                 else
                 {
-                    uxPrtPercentageOfAccountOutput.Text = (_account.Portfolios[portfolioName].NumberOfStocks / _account.NumberOfStocks).ToString("P");
+                    uxPrtPercentageOfAccountOutput.Text = (((double)_account.Portfolios[portfolioName].NumberOfStocks / _account.NumberOfStocks)).ToString("P");
                 }
 
                 uxPrtNetWorthOutput.Text = total.ToString("c");
