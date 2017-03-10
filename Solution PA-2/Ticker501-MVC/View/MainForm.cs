@@ -552,5 +552,12 @@ namespace Ticker501_MVC.View
                 l.ForeColor = Color.SeaGreen;
             }
         }
+
+        public void SelectPortfolioPage()
+        {
+            _withdrawFundsForm.Hide();
+            uxTabControl.SelectedIndex = 2;
+            MessageBox.Show("You do not have sufficient funds. Select a portfolio to sell stocks and get more money.");
+        }
     }
 }

@@ -96,7 +96,7 @@
             // 
             this.uxPotentialAmount.AutoSize = true;
             this.uxPotentialAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxPotentialAmount.Location = new System.Drawing.Point(931, 138);
+            this.uxPotentialAmount.Location = new System.Drawing.Point(857, 136);
             this.uxPotentialAmount.Name = "uxPotentialAmount";
             this.uxPotentialAmount.Size = new System.Drawing.Size(61, 25);
             this.uxPotentialAmount.TabIndex = 36;

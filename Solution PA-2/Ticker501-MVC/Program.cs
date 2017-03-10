@@ -15,6 +15,8 @@ namespace Ticker501_MVC
     public delegate void DeletePortfolioObserver(string portfolioName);
     //defines the type of method that handles the display error message event
     public delegate void DisplayErrorMessageObserver(string errorMessage);
+
+    public delegate void SelectPortfolioFromWithdraw();
     //defines the type of method that handles the buy stock event
     public delegate void BuyStockObserver();
     //defines the type of method that handles the sell stock event
@@ -81,6 +83,8 @@ namespace Ticker501_MVC
 
             c.BuyStockRegister(bSForm.DisplayListView);
             c.SellStockRegister(sSForm.DisplayListView);
+
+            c.RegisterPortfolioFromWithdraw(mForm.SelectPortfolioPage);
 
             Application.Run(mForm);
         }

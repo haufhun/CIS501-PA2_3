@@ -43,6 +43,8 @@ namespace Ticker501_MVC
         /// </summary>
         private SellStockObserver _sellStockObserver;
 
+        private SelectPortfolioFromWithdraw _selectPortfolioFromWithdraw;
+
         /// <summary>
         /// A error message delegate used to display error messges.
         /// </summary>
@@ -217,7 +219,14 @@ namespace Ticker501_MVC
             }
             else
             {
-                _displayErrorMessageObserver("You don't have enough money in your account. Please enter a different number.");
+                if (toWithdraw <= _account.InvestedBalance + _account.CashBalance)
+                {
+                    _selectPortfolioFromWithdraw();
+                }
+                else
+                {
+                    _displayErrorMessageObserver("You do not have enough money in your account.");
+                }
             }
         }
 
@@ -493,6 +502,10 @@ namespace Ticker501_MVC
             return false;
         }
 
-        
+
+        public void RegisterPortfolioFromWithdraw(SelectPortfolioFromWithdraw o)
+        {
+            _selectPortfolioFromWithdraw = o;
+        }
     }
 }
