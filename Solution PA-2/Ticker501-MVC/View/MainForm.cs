@@ -10,8 +10,13 @@ namespace Ticker501_MVC.View
 {
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// The selected portfolio.
+        /// </summary>
         private PortfolioSelectedHandler _portfolioSelectedHandler;
-
+        /// <summary>
+        /// The open form handler.
+        /// </summary>
         private OpenForm _openForm;
 
         /// <summary>
@@ -34,13 +39,33 @@ namespace Ticker501_MVC.View
         /// </summary>
         private List<ToolStripSplitButton> _listOfPortfolioButtons;
 
+        /// <summary>
+        /// An instance of the account.
+        /// </summary>
         private IAccount _account;
+        /// <summary>
+        /// An instance of the database.
+        /// </summary>
         private IDatabase _database;
-
+        /// <summary>
+        /// The portfolio name form.
+        /// </summary>
         private GetPortfolioNameForm _getPNForm;
+        /// <summary>
+        /// The add funds form.
+        /// </summary>
         private AddWithdrawFundsForm _addFundsForm;
+        /// <summary>
+        /// The withdraw funds form.
+        /// </summary>
         private AddWithdrawFundsForm _withdrawFundsForm;
+        /// <summary>
+        /// The buy stock form.
+        /// </summary>
         private BuyStocksForm _bSForm;
+        /// <summary>
+        /// The sell stock form.
+        /// </summary>
         private SellStocksForm _sSForm;
 
         /// <summary>
@@ -81,7 +106,6 @@ namespace Ticker501_MVC.View
             _listOfPortfolioButtons.Add(uxPortfolio2);
             _listOfPortfolioButtons.Add(uxPortfolio3);
         }
-/////////// Click Events inside this collapsed block /////////////////
 
 
         /// <summary>
@@ -222,7 +246,7 @@ namespace Ticker501_MVC.View
                 MessageBox.Show("Please Open a ticker file first.");
             }
         }
-//////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
         /// Updates all the information on the Home tab.
@@ -288,6 +312,7 @@ namespace Ticker501_MVC.View
                 uxAccListInfo.EndUpdate();
             }
         }
+        
         /// <summary>
         /// Updates all the information on the Portfolio tab selected. 
         /// Passing a null indicates to clear the portfolio page.
