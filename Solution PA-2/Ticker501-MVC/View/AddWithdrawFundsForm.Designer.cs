@@ -61,7 +61,7 @@
             this.uxAmountTxtBox.Location = new System.Drawing.Point(359, 9);
             this.uxAmountTxtBox.Name = "uxAmountTxtBox";
             this.uxAmountTxtBox.Size = new System.Drawing.Size(127, 22);
-            this.uxAmountTxtBox.TabIndex = 8;
+            this.uxAmountTxtBox.TabIndex = 0;
             this.uxAmountTxtBox.TextChanged += new System.EventHandler(this.uxAmountTxtBox_TextChanged);
             this.uxAmountTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.uxAmountTxtBox_KeyPress);
             // 

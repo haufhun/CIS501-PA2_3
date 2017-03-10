@@ -427,6 +427,15 @@ namespace Ticker501_MVC.View
                 {
                     p.Visible = true;
                     p.Text = portfolioName;
+                    if (_account.Portfolios.Count > 2)
+                    {
+                        
+                        uxAddPortfolio.Visible = false;
+                    }
+                    else if (_account.Portfolios.Count <= 2)
+                    {
+                        uxAddPortfolio.Visible = true;
+                    }
            //       _currentPortfolio = portfolioName;
            //       DisplayPortfolio();
                     return;
