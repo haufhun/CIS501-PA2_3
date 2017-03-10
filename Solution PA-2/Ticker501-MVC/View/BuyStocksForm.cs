@@ -126,10 +126,7 @@ namespace Ticker501_MVC.View
             var text = (sender as TextBox).Text;
 
             decimal temp;
-            if (!decimal.TryParse(text, out temp))
-            {
-                uxBuyStockBttn.Enabled = false;
-            }
+            uxBuyStockBttn.Enabled = decimal.TryParse(text, out temp) && temp < int.MaxValue;
         }
 
 

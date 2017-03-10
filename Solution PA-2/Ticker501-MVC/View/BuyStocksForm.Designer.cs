@@ -119,6 +119,7 @@
             this.uxAmount.Size = new System.Drawing.Size(115, 30);
             this.uxAmount.TabIndex = 38;
             this.uxAmount.Text = "0.00";
+            this.uxAmount.TextChanged += new System.EventHandler(this.uxAmountTxtBox_TextChanged);
             // 
             // uxDollarToPurchase
             // 
