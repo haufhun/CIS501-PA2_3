@@ -145,17 +145,6 @@ namespace Ticker501_MVC
             {
                 o();
             }
-
-            //need to check if there is a portfolio created yet
-            //_portfolioObserver(_currentPortfolioSelected);
-
-            //if (_account.GetListOfPortfolioNames().Count > 0)
-            //{
-            //foreach (var portO in _portfolioObservers)
-            //{
-            //   portO();
-            //}
-            //}
         }
 
 
