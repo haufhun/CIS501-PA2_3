@@ -65,6 +65,7 @@
             this.uxSellStockListInfo.TabIndex = 29;
             this.uxSellStockListInfo.UseCompatibleStateImageBehavior = false;
             this.uxSellStockListInfo.View = System.Windows.Forms.View.Details;
+            this.uxSellStockListInfo.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.uxSellStockListInfo_ItemSelectionChanged);
             // 
             // uxTickerNameCol
             // 
@@ -139,6 +140,7 @@
             0,
             0,
             0});
+            this.uxNumberOfShares.ValueChanged += new System.EventHandler(this.uxNumberOfShares_ValueChanged);
             // 
             // uxSellStockBttn
             // 

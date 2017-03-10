@@ -102,6 +102,32 @@ namespace Ticker501_MVC.View
 
             Hide();
         }
+        /// <summary>
+        /// Updates info when an item is selected in the list view.
+        /// </summary>
+        private void uxSellStockListInfo_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if (uxSellStockListInfo.SelectedItems.Count > 0)
+            {
+                var numOfSharesOwned = uxSellStockListInfo.SelectedItems[0].SubItems[3].Text;
+                uxNumberOfShares.Maximum = Convert.ToDecimal(numOfSharesOwned);
+
+                var currentPrice = Convert.ToDecimal(uxSellStockListInfo.SelectedItems[0].SubItems[2].Text.Substring(1));
+                uxPotentialAmount.Text = "Potential Profit: " + (currentPrice * uxNumberOfShares.Value).ToString("C");
+            }
+        }
+
+        /// <summary>
+        /// updates information when number of shares are changed.
+        /// </summary>
+        private void uxNumberOfShares_ValueChanged(object sender, EventArgs e)
+        {
+            if (uxSellStockListInfo.SelectedItems.Count > 0)
+            {
+                var currentPrice = Convert.ToDecimal(uxSellStockListInfo.SelectedItems[0].SubItems[2].Text.Substring(1));
+                uxPotentialAmount.Text = "Potential Profit: " + (currentPrice * uxNumberOfShares.Value).ToString("C");
+            }
+        }
 
     }
 }
