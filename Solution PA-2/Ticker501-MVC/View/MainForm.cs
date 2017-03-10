@@ -354,7 +354,7 @@ namespace Ticker501_MVC.View
         {
             if (uxPortfolio1.Text == portfolioName)
             {
-                uxBuyStocks1.Enabled = _account.CashBalance > 0;
+                uxBuyStocks1.Enabled = _account.CashBalance > Account.TRADE_FEE;
                 uxSellStocks1.Enabled = _account.Portfolios[portfolioName].NumberOfStocks > 0;
                 uxDeletePortfolio1.Enabled = true;
 
@@ -372,7 +372,7 @@ namespace Ticker501_MVC.View
                 uxSellStocks1.Enabled = false;
                 uxDeletePortfolio1.Enabled = false;
 
-                uxBuyStocks2.Enabled = _account.CashBalance > 0;
+                uxBuyStocks2.Enabled = _account.CashBalance > Account.TRADE_FEE;
                 uxSellStocks2.Enabled = _account.Portfolios[portfolioName].NumberOfStocks > 0;
                 uxDeletePortfolio2.Enabled = true;
 
@@ -390,7 +390,7 @@ namespace Ticker501_MVC.View
                 uxSellStocks2.Enabled = false;
                 uxDeletePortfolio2.Enabled = false;
 
-                uxBuyStocks3.Enabled = _account.CashBalance > 0;
+                uxBuyStocks3.Enabled = _account.CashBalance > Account.TRADE_FEE;
                 uxSellStocks3.Enabled = _account.Portfolios[portfolioName].NumberOfStocks > 0;
                 uxDeletePortfolio3.Enabled = true;
             }
@@ -489,19 +489,6 @@ namespace Ticker501_MVC.View
         public void SetButtonsBasedOnSufficentfunds()
         {
             uxWithdrawFunds.Enabled = _account.CashBalance > Account.TRANSFER_FEE;
-
-            if (_account.CashBalance > Account.TRADE_FEE)
-            {
-                uxBuyStocks1.Enabled = true;
-                uxBuyStocks2.Enabled = true;
-                uxBuyStocks3.Enabled = true;
-            }
-            else
-            {
-                uxBuyStocks1.Enabled = false;
-                uxBuyStocks2.Enabled = false;
-                uxBuyStocks3.Enabled = false;
-            }
         }
 
         /// <summary>
