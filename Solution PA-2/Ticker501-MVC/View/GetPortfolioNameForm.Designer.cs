@@ -79,7 +79,7 @@
             this.AcceptButton = this.uxOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(498, 133);
+            this.ClientSize = new System.Drawing.Size(498, 123);
             this.ControlBox = false;
             this.Controls.Add(this.uxCancel);
             this.Controls.Add(this.uxOK);
@@ -88,7 +88,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(504, 180);
             this.Name = "GetPortfolioNameForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Portfolio Name";
