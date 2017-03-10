@@ -275,7 +275,7 @@ namespace Ticker501_MVC
 
             try
             {
-                if (numberOfShares < _account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares)
+                if (numberOfShares <= _account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares && numberOfShares > 0)
                 {
                     var revenue = numberOfShares * _database.StockDatabase[tickerName].Item3;
 
@@ -290,20 +290,20 @@ namespace Ticker501_MVC
                     _account.Portfolios[portfolioName].InvestedBalance -= revenue;
                     _account.Portfolios[portfolioName].Stocks[tickerName].InvestedBalance -= revenue;
 
+                    if (_account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares == 0)
+                    {
+                        _account.Portfolios[portfolioName].Stocks.Remove(tickerName);
+                    }
+
                     SignalObservers();
                     _portfolioObserver(portfolioName);
                     _sellStockObserver();
                     _displayErrorMessageObserver("You sold " + numberOfShares + " share(s) of " + tickerName +
                                                  " for " + revenue.ToString("C"));
-
-                    if (_account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares == 0)
-                    {
-                        _account.Portfolios[portfolioName].Stocks.Remove(tickerName);
-                    }
                 }
                 else
                 {
-                    _displayErrorMessageObserver("Too many shares selected. You can only select a max of " + _account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares + " shares.");
+                    _displayErrorMessageObserver("Improper stocks chosen. You can only select from 1 to a max of " + _account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares + " shares to sell.");
                 }
             }
             catch (Exception)
