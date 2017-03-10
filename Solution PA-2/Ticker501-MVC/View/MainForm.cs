@@ -250,6 +250,7 @@ namespace Ticker501_MVC.View
         public void DisplayAccount()
         {
             uxAccBalOutput.Text = _account.CashBalance.ToString("C");
+            uxPrtBalOutput.Text = _account.CashBalance.ToString("C");
             uxAccNetWorthOutput.Text = (_account.CashBalance + _account.InvestedBalance).ToString("C");
             uxAccTotalInvestedOutput.Text = _account.InvestedBalance.ToString("C");
 
@@ -457,7 +458,7 @@ namespace Ticker501_MVC.View
         /// </summary>
         private void ClearPortfolioPage()
         {
-            uxPrtBalOutput.Text = "$0.00";
+            uxPrtBalOutput.Text = _account.CashBalance.ToString("c");
             uxPrtPercentageOfAccountOutput.Text = "0.00 %";
             uxPrtTotalInvestedOuput.Text = "$0.00";
             uxPrtNetWorthOutput.Text = "$0.00";

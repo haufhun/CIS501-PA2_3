@@ -233,8 +233,9 @@
             this.Controls.Add(this.uxNumberLabel);
             this.Controls.Add(this.uxInstructionLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MinimumSize = new System.Drawing.Size(1131, 476);
             this.Name = "BuyStocksForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Buy Stocks";
             ((System.ComponentModel.ISupportInitialize)(this.uxNumberOfShares)).EndInit();
             this.ResumeLayout(false);

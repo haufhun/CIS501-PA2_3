@@ -72,7 +72,9 @@ namespace Ticker501_MVC.View
         private void uxAmountTxtBox_TextChanged(object sender, EventArgs e)
         {
             var text = (sender as TextBox).Text;
-            if (text.Length > 0)
+
+            decimal temp;
+            if (decimal.TryParse(text, out temp))
             {
                 if (Convert.ToDecimal(text) > Account.TRANSFER_FEE)
                 {

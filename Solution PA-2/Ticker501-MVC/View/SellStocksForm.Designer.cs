@@ -187,8 +187,9 @@
             this.Controls.Add(this.uxSellStockBttn);
             this.Controls.Add(this.uxNumberLabel);
             this.Controls.Add(this.uxInstructionLabel);
+            this.MinimumSize = new System.Drawing.Size(1251, 476);
             this.Name = "SellStocksForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sell Stocks";
             ((System.ComponentModel.ISupportInitialize)(this.uxNumberOfShares)).EndInit();
             this.ResumeLayout(false);
