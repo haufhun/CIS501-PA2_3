@@ -94,7 +94,7 @@ namespace Ticker501_MVC.View
         {
             _addOrWithdrawFunds(Convert.ToDecimal(uxAmountTxtBox.Text));
             //Clear
-            uxAmountTxtBox.Clear();
+            uxAmountTxtBox.Text = "";
 
             Hide();
         }
@@ -107,7 +107,7 @@ namespace Ticker501_MVC.View
         private void uxCancel_Click(object sender, EventArgs e)
         {
             //clear
-            uxAmountTxtBox.Clear();
+            uxAmountTxtBox.Text = "";
 
             Hide();
         }
