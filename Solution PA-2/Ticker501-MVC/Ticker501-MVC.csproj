@@ -107,6 +107,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="View\SellStocksForm.resx">
       <DependentUpon>SellStocksForm.cs</DependentUpon>
@@ -126,6 +127,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Model\Ticker.txt" />
+    <None Include="Resources\ExitImage.png" />
+    <None Include="Resources\SimulateImage.png" />
+    <None Include="Resources\OpenFileImage.png" />
+    <None Include="Resources\WithdrawFund1.png" />
+    <None Include="Resources\AddFunds1.jpg" />
+    <None Include="Resources\DeleteImage.png" />
+    <None Include="Resources\SellStockImage.png" />
+    <None Include="Resources\BuyStockImage.png" />
+    <None Include="Resources\PortfolioImage.png" />
+    <None Include="Resources\AddPortfolioImage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

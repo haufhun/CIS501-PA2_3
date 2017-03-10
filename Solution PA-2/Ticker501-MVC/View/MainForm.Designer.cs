@@ -43,16 +43,11 @@
             this.uxHmCompanyNameCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.uxHmCurrentPriceCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.uxHomeToolStrip = new System.Windows.Forms.ToolStrip();
-            this.uxOpenTickerFile = new System.Windows.Forms.ToolStripButton();
-            this.uxSimulateStockPrices = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.uxExitProgram = new System.Windows.Forms.ToolStripButton();
             this.uxAccountTab = new System.Windows.Forms.TabPage();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.uxAddFunds = new System.Windows.Forms.ToolStripButton();
-            this.uxWithdrawFunds = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.helpToolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.uxAccGainsLossesOutput = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.uxAccNetWorthOutput = new System.Windows.Forms.Label();
@@ -91,6 +86,13 @@
             this.uxPrtPositionBalCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label16 = new System.Windows.Forms.Label();
             this.uxPortfolioToolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.uxOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.uxOpenTickerFile = new System.Windows.Forms.ToolStripButton();
+            this.uxSimulateStockPrices = new System.Windows.Forms.ToolStripButton();
+            this.uxAddFunds = new System.Windows.Forms.ToolStripButton();
+            this.uxWithdrawFunds = new System.Windows.Forms.ToolStripButton();
+            this.helpToolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.uxPortfolio1 = new System.Windows.Forms.ToolStripSplitButton();
             this.uxBuyStocks1 = new System.Windows.Forms.ToolStripMenuItem();
             this.uxSellStocks1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -106,10 +108,8 @@
             this.uxSellStocks3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.uxDeletePortfolio3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.uxAddPortfolio = new System.Windows.Forms.ToolStripButton();
-            this.uxOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.uxTabControl.SuspendLayout();
             this.uxHomeTab.SuspendLayout();
             this.uxVolatilityGroup.SuspendLayout();
@@ -277,23 +277,6 @@
             this.uxHomeToolStrip.TabIndex = 0;
             this.uxHomeToolStrip.Text = "toolStrip1";
             // 
-            // uxOpenTickerFile
-            // 
-            this.uxOpenTickerFile.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.uxOpenTickerFile.Name = "uxOpenTickerFile";
-            this.uxOpenTickerFile.Size = new System.Drawing.Size(119, 24);
-            this.uxOpenTickerFile.Text = "&Open Ticker File";
-            this.uxOpenTickerFile.Click += new System.EventHandler(this.uxOpenTickerFile_Click);
-            // 
-            // uxSimulateStockPrices
-            // 
-            this.uxSimulateStockPrices.Enabled = false;
-            this.uxSimulateStockPrices.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.uxSimulateStockPrices.Name = "uxSimulateStockPrices";
-            this.uxSimulateStockPrices.Size = new System.Drawing.Size(153, 24);
-            this.uxSimulateStockPrices.Text = "&Simulate Stock Prices";
-            this.uxSimulateStockPrices.Click += new System.EventHandler(this.uxSimulateStockPrices_Click);
-            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
@@ -302,9 +285,10 @@
             // uxExitProgram
             // 
             this.uxExitProgram.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.uxExitProgram.Image = global::Ticker501_MVC.Properties.Resources.ExitImage;
             this.uxExitProgram.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.uxExitProgram.Name = "uxExitProgram";
-            this.uxExitProgram.Size = new System.Drawing.Size(108, 24);
+            this.uxExitProgram.Size = new System.Drawing.Size(128, 24);
             this.uxExitProgram.Text = "Exit Ticker 501";
             this.uxExitProgram.Click += new System.EventHandler(this.uxExitProgram_Click);
             // 
@@ -344,37 +328,10 @@
             this.toolStrip1.TabIndex = 25;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // uxAddFunds
-            // 
-            this.uxAddFunds.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.uxAddFunds.Name = "uxAddFunds";
-            this.uxAddFunds.Size = new System.Drawing.Size(83, 24);
-            this.uxAddFunds.Text = "&Add Funds";
-            this.uxAddFunds.Click += new System.EventHandler(this.uxAddFunds_Click);
-            // 
-            // uxWithdrawFunds
-            // 
-            this.uxWithdrawFunds.Enabled = false;
-            this.uxWithdrawFunds.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.uxWithdrawFunds.Name = "uxWithdrawFunds";
-            this.uxWithdrawFunds.Size = new System.Drawing.Size(119, 24);
-            this.uxWithdrawFunds.Text = "&Withdraw Funds";
-            this.uxWithdrawFunds.Click += new System.EventHandler(this.uxWithdrawFunds_Click);
-            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
-            // 
-            // helpToolStripButton1
-            // 
-            this.helpToolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.helpToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.helpToolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripButton1.Image")));
-            this.helpToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.helpToolStripButton1.Name = "helpToolStripButton1";
-            this.helpToolStripButton1.Size = new System.Drawing.Size(24, 24);
-            this.helpToolStripButton1.Text = "He&lp";
             // 
             // uxAccGainsLossesOutput
             // 
@@ -762,6 +719,63 @@
             this.uxPortfolioToolStrip.TabIndex = 3;
             this.uxPortfolioToolStrip.Text = "toolStrip1";
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            // 
+            // uxOpenFileDialog
+            // 
+            this.uxOpenFileDialog.FileName = "Ticker.txt";
+            // 
+            // uxOpenTickerFile
+            // 
+            this.uxOpenTickerFile.Image = global::Ticker501_MVC.Properties.Resources.OpenFileImage;
+            this.uxOpenTickerFile.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.uxOpenTickerFile.Name = "uxOpenTickerFile";
+            this.uxOpenTickerFile.Size = new System.Drawing.Size(139, 24);
+            this.uxOpenTickerFile.Text = "&Open Ticker File";
+            this.uxOpenTickerFile.Click += new System.EventHandler(this.uxOpenTickerFile_Click);
+            // 
+            // uxSimulateStockPrices
+            // 
+            this.uxSimulateStockPrices.Enabled = false;
+            this.uxSimulateStockPrices.Image = global::Ticker501_MVC.Properties.Resources.SimulateImage;
+            this.uxSimulateStockPrices.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.uxSimulateStockPrices.Name = "uxSimulateStockPrices";
+            this.uxSimulateStockPrices.Size = new System.Drawing.Size(173, 24);
+            this.uxSimulateStockPrices.Text = "&Simulate Stock Prices";
+            this.uxSimulateStockPrices.Click += new System.EventHandler(this.uxSimulateStockPrices_Click);
+            // 
+            // uxAddFunds
+            // 
+            this.uxAddFunds.Image = global::Ticker501_MVC.Properties.Resources.AddFunds1;
+            this.uxAddFunds.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.uxAddFunds.Name = "uxAddFunds";
+            this.uxAddFunds.Size = new System.Drawing.Size(103, 24);
+            this.uxAddFunds.Text = "&Add Funds";
+            this.uxAddFunds.Click += new System.EventHandler(this.uxAddFunds_Click);
+            // 
+            // uxWithdrawFunds
+            // 
+            this.uxWithdrawFunds.Enabled = false;
+            this.uxWithdrawFunds.Image = global::Ticker501_MVC.Properties.Resources.WithdrawFund1;
+            this.uxWithdrawFunds.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.uxWithdrawFunds.Name = "uxWithdrawFunds";
+            this.uxWithdrawFunds.Size = new System.Drawing.Size(139, 24);
+            this.uxWithdrawFunds.Text = "&Withdraw Funds";
+            this.uxWithdrawFunds.Click += new System.EventHandler(this.uxWithdrawFunds_Click);
+            // 
+            // helpToolStripButton1
+            // 
+            this.helpToolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.helpToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.helpToolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripButton1.Image")));
+            this.helpToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.helpToolStripButton1.Name = "helpToolStripButton1";
+            this.helpToolStripButton1.Size = new System.Drawing.Size(24, 24);
+            this.helpToolStripButton1.Text = "He&lp";
+            // 
             // uxPortfolio1
             // 
             this.uxPortfolio1.BackColor = System.Drawing.Color.Maroon;
@@ -782,6 +796,7 @@
             // uxBuyStocks1
             // 
             this.uxBuyStocks1.Enabled = false;
+            this.uxBuyStocks1.Image = global::Ticker501_MVC.Properties.Resources.BuyStockImage;
             this.uxBuyStocks1.Name = "uxBuyStocks1";
             this.uxBuyStocks1.Size = new System.Drawing.Size(185, 26);
             this.uxBuyStocks1.Text = "Buy Stocks";
@@ -789,6 +804,7 @@
             // uxSellStocks1
             // 
             this.uxSellStocks1.Enabled = false;
+            this.uxSellStocks1.Image = global::Ticker501_MVC.Properties.Resources.SellStockImage;
             this.uxSellStocks1.Name = "uxSellStocks1";
             this.uxSellStocks1.Size = new System.Drawing.Size(185, 26);
             this.uxSellStocks1.Text = "Sell Stocks";
@@ -803,6 +819,7 @@
             // uxDeletePortfolio1
             // 
             this.uxDeletePortfolio1.Enabled = false;
+            this.uxDeletePortfolio1.Image = global::Ticker501_MVC.Properties.Resources.DeleteImage;
             this.uxDeletePortfolio1.Name = "uxDeletePortfolio1";
             this.uxDeletePortfolio1.Size = new System.Drawing.Size(185, 26);
             this.uxDeletePortfolio1.Text = "DeletePortfolio";
@@ -826,6 +843,7 @@
             // uxBuyStocks2
             // 
             this.uxBuyStocks2.Enabled = false;
+            this.uxBuyStocks2.Image = global::Ticker501_MVC.Properties.Resources.BuyStockImage;
             this.uxBuyStocks2.Name = "uxBuyStocks2";
             this.uxBuyStocks2.Size = new System.Drawing.Size(189, 26);
             this.uxBuyStocks2.Text = "Buy Stocks";
@@ -833,6 +851,7 @@
             // uxSellStocks2
             // 
             this.uxSellStocks2.Enabled = false;
+            this.uxSellStocks2.Image = global::Ticker501_MVC.Properties.Resources.SellStockImage;
             this.uxSellStocks2.Name = "uxSellStocks2";
             this.uxSellStocks2.Size = new System.Drawing.Size(189, 26);
             this.uxSellStocks2.Text = "Sell Stocks";
@@ -847,6 +866,7 @@
             // uxDeletePortfolio2
             // 
             this.uxDeletePortfolio2.Enabled = false;
+            this.uxDeletePortfolio2.Image = global::Ticker501_MVC.Properties.Resources.DeleteImage;
             this.uxDeletePortfolio2.Name = "uxDeletePortfolio2";
             this.uxDeletePortfolio2.Size = new System.Drawing.Size(189, 26);
             this.uxDeletePortfolio2.Text = "Delete Portfolio";
@@ -870,6 +890,7 @@
             // uxBuyStocks3
             // 
             this.uxBuyStocks3.Enabled = false;
+            this.uxBuyStocks3.Image = global::Ticker501_MVC.Properties.Resources.BuyStockImage;
             this.uxBuyStocks3.Name = "uxBuyStocks3";
             this.uxBuyStocks3.Size = new System.Drawing.Size(189, 26);
             this.uxBuyStocks3.Text = "Buy Stocks";
@@ -877,6 +898,7 @@
             // uxSellStocks3
             // 
             this.uxSellStocks3.Enabled = false;
+            this.uxSellStocks3.Image = global::Ticker501_MVC.Properties.Resources.SellStockImage;
             this.uxSellStocks3.Name = "uxSellStocks3";
             this.uxSellStocks3.Size = new System.Drawing.Size(189, 26);
             this.uxSellStocks3.Text = "Sell Stocks";
@@ -891,15 +913,11 @@
             // uxDeletePortfolio3
             // 
             this.uxDeletePortfolio3.Enabled = false;
+            this.uxDeletePortfolio3.Image = global::Ticker501_MVC.Properties.Resources.DeleteImage;
             this.uxDeletePortfolio3.Name = "uxDeletePortfolio3";
             this.uxDeletePortfolio3.Size = new System.Drawing.Size(189, 26);
             this.uxDeletePortfolio3.Text = "Delete Portfolio";
             this.uxDeletePortfolio3.Click += new System.EventHandler(this.uxDeletePortfolio_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // helpToolStripButton
             // 
@@ -913,15 +931,12 @@
             // 
             // uxAddPortfolio
             // 
+            this.uxAddPortfolio.Image = global::Ticker501_MVC.Properties.Resources.AddPortfolioImage;
             this.uxAddPortfolio.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.uxAddPortfolio.Name = "uxAddPortfolio";
-            this.uxAddPortfolio.Size = new System.Drawing.Size(102, 24);
+            this.uxAddPortfolio.Size = new System.Drawing.Size(122, 24);
             this.uxAddPortfolio.Text = "&Add Portfolio";
             this.uxAddPortfolio.Click += new System.EventHandler(this.uxAddPortfolio_Click);
-            // 
-            // uxOpenFileDialog
-            // 
-            this.uxOpenFileDialog.FileName = "Ticker.txt";
             // 
             // MainForm
             // 
