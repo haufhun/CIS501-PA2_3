@@ -334,6 +334,7 @@ namespace Ticker501_MVC
 
             _deletePortfolioObserver(portfolioName);
             _portfolioObserver(null);
+            SignalObservers();
         }
 
         /// <summary>
