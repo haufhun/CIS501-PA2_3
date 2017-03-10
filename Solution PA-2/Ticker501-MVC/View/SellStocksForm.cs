@@ -51,8 +51,6 @@ namespace Ticker501_MVC.View
         /// </summary>
         public void DisplayListView()
         {
-            if(_account.NumberOfStocks > 0)
-            {
                 uxSellStockListInfo.BeginUpdate();
                 uxSellStockListInfo.Items.Clear();
                 foreach (var s in _account.Portfolios[_portfolioName].Stocks.Values)
@@ -66,7 +64,6 @@ namespace Ticker501_MVC.View
                     uxSellStockListInfo.Items.Add(new ListViewItem(itemInfo));
                 }
                 uxSellStockListInfo.EndUpdate();
-            }
         }
        
         /// <summary>

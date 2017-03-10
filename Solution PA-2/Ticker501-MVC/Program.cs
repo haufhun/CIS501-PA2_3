@@ -63,8 +63,8 @@ namespace Ticker501_MVC
 
             c.Register(mForm.DisplayHomeStockInfo);
             c.Register(mForm.DisplayAccount);
-            c.Register(mForm.SetButtonsBasedOnSufficentfunds);
-            c.Register(mForm.SetSellStockButtonBasedOnNumberOfStocks);
+            //c.Register(mForm.SetButtonsBasedOnSufficentfunds);
+            //c.Register(mForm.SetSellStockButtonBasedOnNumberOfStocks);
 
             c.ErrorMessageRegister(mForm.DisplayErrorMessage);
 
