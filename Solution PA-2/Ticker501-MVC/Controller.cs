@@ -26,13 +26,21 @@ namespace Ticker501_MVC
         /// The list of portolio observers to call.
         /// </summary>
         private PortfolioObserver _portfolioObserver;
-
+        /// <summary>
+        /// The toolstrip menu update for the mainm form of portfolios
+        /// </summary>
         private AddPortfolioObserver _addPortfolioObserver;
-
+        /// <summary>
+        /// Updates the toolstrip menu on a delete method.
+        /// </summary>
         private DeletePortfolioObserver _deletePortfolioObserver;
-
+        /// <summary>
+        /// Populates all the values in a buy stock form.
+        /// </summary>
         private BuyStockObserver _buyStockObserver;
-
+        /// <summary>
+        /// Populates all the values in a sell stock form.
+        /// </summary>
         private SellStockObserver _sellStockObserver;
 
         /// <summary>
@@ -69,7 +77,10 @@ namespace Ticker501_MVC
         {
             _portfolioObserver = o;
         }
-
+        /// <summary>
+        /// Register the add portfolio observer on the toolstrip menu for the main form
+        /// </summary>
+        /// <param name="o"></param>
         public void AddPortfolioRegister(AddPortfolioObserver o)
         {
             _addPortfolioObserver = o;
@@ -244,7 +255,7 @@ namespace Ticker501_MVC
                             }
                     }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 _displayErrorMessageObserver("Error trying to buy stocks.");
             }
@@ -292,7 +303,7 @@ namespace Ticker501_MVC
                             }
                     }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 _displayErrorMessageObserver("Error trying to sell stocks.");
             }
