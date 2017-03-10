@@ -65,6 +65,7 @@
             this.uxSellStockListInfo.TabIndex = 29;
             this.uxSellStockListInfo.UseCompatibleStateImageBehavior = false;
             this.uxSellStockListInfo.View = System.Windows.Forms.View.Details;
+            this.uxSellStockListInfo.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.uxSellStockListInfo_ItemSelectionChanged);
             // 
             // uxTickerNameCol
             // 
@@ -95,7 +96,7 @@
             // 
             this.uxPotentialAmount.AutoSize = true;
             this.uxPotentialAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxPotentialAmount.Location = new System.Drawing.Point(931, 138);
+            this.uxPotentialAmount.Location = new System.Drawing.Point(857, 136);
             this.uxPotentialAmount.Name = "uxPotentialAmount";
             this.uxPotentialAmount.Size = new System.Drawing.Size(61, 25);
             this.uxPotentialAmount.TabIndex = 36;
@@ -139,6 +140,7 @@
             0,
             0,
             0});
+            this.uxNumberOfShares.ValueChanged += new System.EventHandler(this.uxNumberOfShares_ValueChanged);
             // 
             // uxSellStockBttn
             // 

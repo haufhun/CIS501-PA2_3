@@ -90,7 +90,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.uxCancel;
-            this.ClientSize = new System.Drawing.Size(531, 135);
+            this.ClientSize = new System.Drawing.Size(515, 126);
             this.ControlBox = false;
             this.Controls.Add(this.uxCancel);
             this.Controls.Add(this.label1);
@@ -100,7 +100,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(533, 177);
             this.Name = "AddWithdrawFundsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Transaction";

@@ -10,8 +10,13 @@ namespace Ticker501_MVC.View
 {
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// The selected portfolio.
+        /// </summary>
         private PortfolioSelectedHandler _portfolioSelectedHandler;
-
+        /// <summary>
+        /// The open form handler.
+        /// </summary>
         private OpenForm _openForm;
 
         /// <summary>
@@ -34,13 +39,33 @@ namespace Ticker501_MVC.View
         /// </summary>
         private List<ToolStripSplitButton> _listOfPortfolioButtons;
 
+        /// <summary>
+        /// An instance of the account.
+        /// </summary>
         private IAccount _account;
+        /// <summary>
+        /// An instance of the database.
+        /// </summary>
         private IDatabase _database;
-
+        /// <summary>
+        /// The portfolio name form.
+        /// </summary>
         private GetPortfolioNameForm _getPNForm;
+        /// <summary>
+        /// The add funds form.
+        /// </summary>
         private AddWithdrawFundsForm _addFundsForm;
+        /// <summary>
+        /// The withdraw funds form.
+        /// </summary>
         private AddWithdrawFundsForm _withdrawFundsForm;
+        /// <summary>
+        /// The buy stock form.
+        /// </summary>
         private BuyStocksForm _bSForm;
+        /// <summary>
+        /// The sell stock form.
+        /// </summary>
         private SellStocksForm _sSForm;
 
         /// <summary>
@@ -81,7 +106,6 @@ namespace Ticker501_MVC.View
             _listOfPortfolioButtons.Add(uxPortfolio2);
             _listOfPortfolioButtons.Add(uxPortfolio3);
         }
-/////////// Click Events inside this collapsed block /////////////////
 
 
         /// <summary>
@@ -222,7 +246,7 @@ namespace Ticker501_MVC.View
                 MessageBox.Show("Please Open a ticker file first.");
             }
         }
-//////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
         /// Updates all the information on the Home tab.
@@ -265,6 +289,7 @@ namespace Ticker501_MVC.View
 
             uxAccNetWorthStocksOutput.Text = total.ToString("C");
             DisplayGainsAndLossesPretty(uxAccGainsLossesOutput, _account.GainsLosses);
+            DisplayGainsAndLossesPretty(uxHomeGainsLosses, _account.GainsLosses);
 
             if(_account.NumberOfStocks > 0)
             {
@@ -287,6 +312,7 @@ namespace Ticker501_MVC.View
                 uxAccListInfo.EndUpdate();
             }
         }
+        
         /// <summary>
         /// Updates all the information on the Portfolio tab selected. 
         /// Passing a null indicates to clear the portfolio page.
@@ -327,24 +353,21 @@ namespace Ticker501_MVC.View
                 uxPrtTotalInvestedOuput.Text = _account.Portfolios[portfolioName].InvestedBalance.ToString("c");
                 DisplayGainsAndLossesPretty(uxPrtGainsLossesOutput, _account.Portfolios[portfolioName].GainsLosses);
 
-                if(_account.NumberOfStocks > 0)
+                uxPrtListInfo.BeginUpdate();
+                uxPrtListInfo.Items.Clear();
+
+                foreach (var s in _account.Portfolios[portfolioName].Stocks.Values)
                 {
-                    uxPrtListInfo.BeginUpdate();
-                    uxPrtListInfo.Items.Clear();
+                    //Tickername, companyName, pricePerShare, sharesOwned, networthOfShares, PositionBalance
+                    var fullName = _database.StockDatabase[s.Name].Item2;
+                    var price = _database.StockDatabase[s.Name].Item3;
 
-                    foreach (var s in _account.Portfolios[portfolioName].Stocks.Values)
-                    {
-                        //Tickername, companyName, pricePerShare, sharesOwned, networthOfShares, PositionBalance
-                        var fullName = _database.StockDatabase[s.Name].Item2;
-                        var price = _database.StockDatabase[s.Name].Item3;
+                    string[] itemInfo = { s.Name, fullName, price.ToString("C"), s.NumberOfShares.ToString(), (price * s.NumberOfShares).ToString("C"), ((double)s.NumberOfShares / _account.Portfolios[portfolioName].NumberOfStocks).ToString("p") };
 
-                        string[] itemInfo = { s.Name, fullName, price.ToString("C"), s.NumberOfShares.ToString(), (price * s.NumberOfShares).ToString("C"), ((double)s.NumberOfShares / _account.Portfolios[portfolioName].NumberOfStocks).ToString("p") };
-
-                        uxPrtListInfo.Items.Add(new ListViewItem(itemInfo));
-                    }
-
-                    uxPrtListInfo.EndUpdate();
+                    uxPrtListInfo.Items.Add(new ListViewItem(itemInfo));
                 }
+
+                uxPrtListInfo.EndUpdate();
             }
         }
 
@@ -356,42 +379,31 @@ namespace Ticker501_MVC.View
         {
             if (uxPortfolio1.Text == portfolioName)
             {
-                if (_account.CashBalance > 0)
-                {
-                    uxBuyStocks1.Enabled = true;
-                }
-                if(_account.Portfolios[portfolioName].NumberOfStocks > 0)
-                {
-                    uxSellStocks1.Enabled = true;
-                }
+                uxBuyStocks1.Enabled = _account.CashBalance > Account.TRADE_FEE;
+                uxSellStocks1.Enabled = _account.Portfolios[portfolioName].NumberOfStocks > 0;
                 uxDeletePortfolio1.Enabled = true;
 
                 uxBuyStocks2.Enabled = false;
                 uxSellStocks2.Enabled = false;
-                uxSellStocks2.Enabled = false;
+                uxDeletePortfolio2.Enabled = false;
 
                 uxBuyStocks3.Enabled = false;
                 uxSellStocks3.Enabled = false;
-                uxSellStocks3.Enabled = false;
+                uxDeletePortfolio3.Enabled = false;
             }
             else if (uxPortfolio2.Text == portfolioName)
             {
                 uxBuyStocks1.Enabled = false;
                 uxSellStocks1.Enabled = false;
+                uxDeletePortfolio1.Enabled = false;
 
-                if (_account.CashBalance > 0)
-                {
-                    uxBuyStocks2.Enabled = true;
-                }
-                if(_account.Portfolios[portfolioName].NumberOfStocks > 0)
-                {
-                    uxSellStocks2.Enabled = true;
-                }
+                uxBuyStocks2.Enabled = _account.CashBalance > Account.TRADE_FEE;
+                uxSellStocks2.Enabled = _account.Portfolios[portfolioName].NumberOfStocks > 0;
                 uxDeletePortfolio2.Enabled = true;
 
                 uxBuyStocks3.Enabled = false;
                 uxSellStocks3.Enabled = false;
-                uxDeletePortfolio3.Enabled = true;
+                uxDeletePortfolio3.Enabled = false;
             }
             else if (uxPortfolio3.Text == portfolioName)
             {
@@ -403,15 +415,23 @@ namespace Ticker501_MVC.View
                 uxSellStocks2.Enabled = false;
                 uxDeletePortfolio2.Enabled = false;
 
-                if (_account.CashBalance > 0)
-                {
-                    uxBuyStocks3.Enabled = true;
-                }
-                if(_account.Portfolios[portfolioName].NumberOfStocks > 0)
-                { 
-                    uxSellStocks3.Enabled = true;
-                }
+                uxBuyStocks3.Enabled = _account.CashBalance > Account.TRADE_FEE;
+                uxSellStocks3.Enabled = _account.Portfolios[portfolioName].NumberOfStocks > 0;
                 uxDeletePortfolio3.Enabled = true;
+            }
+            else
+            {
+                uxBuyStocks1.Enabled = false;
+                uxSellStocks1.Enabled = false;
+                uxDeletePortfolio1.Enabled = false;
+
+                uxBuyStocks2.Enabled = false;
+                uxSellStocks2.Enabled = false;
+                uxDeletePortfolio2.Enabled = false;
+
+                uxBuyStocks3.Enabled = false;
+                uxSellStocks3.Enabled = false;
+                uxDeletePortfolio3.Enabled = false;
             }
         }
 
@@ -494,19 +514,6 @@ namespace Ticker501_MVC.View
         public void SetButtonsBasedOnSufficentfunds()
         {
             uxWithdrawFunds.Enabled = _account.CashBalance > Account.TRANSFER_FEE;
-
-            if (_account.CashBalance > Account.TRADE_FEE)
-            {
-                uxBuyStocks1.Enabled = true;
-                uxBuyStocks2.Enabled = true;
-                uxBuyStocks3.Enabled = true;
-            }
-            else
-            {
-                uxBuyStocks1.Enabled = false;
-                uxBuyStocks2.Enabled = false;
-                uxBuyStocks3.Enabled = false;
-            }
         }
 
         /// <summary>
@@ -544,6 +551,13 @@ namespace Ticker501_MVC.View
             {
                 l.ForeColor = Color.SeaGreen;
             }
+        }
+
+        public void SelectPortfolioPage()
+        {
+            _withdrawFundsForm.Hide();
+            uxTabControl.SelectedIndex = 2;
+            MessageBox.Show("You do not have sufficient funds. Select a portfolio to sell stocks and get more money.");
         }
     }
 }

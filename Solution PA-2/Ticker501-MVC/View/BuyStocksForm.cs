@@ -58,7 +58,6 @@ namespace Ticker501_MVC.View
             uxNumberOfShares.Value = 1;
             uxAmount.Text = "0.00";
 
-            //Need a handler for this?
             Hide();
         }
         /// <summary>
@@ -87,8 +86,6 @@ namespace Ticker501_MVC.View
 
                 cost = (numberOfShares * Convert.ToDecimal(uxBuyStockListInfo.SelectedItems[0].SubItems[2].Text.Substring(1))).ToString("c");
                 _buyStocksHandler(_portfolioName, tickerName, numberOfShares);
-                //uxResultLabel.Text = "You bought " + numberOfShares + " share(s) of " + tickerName +
-                //                     " for a total of " + cost;
             }
             else
             {

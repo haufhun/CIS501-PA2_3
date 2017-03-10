@@ -36,9 +36,8 @@ namespace Ticker501_MVC.View
         private void uxOK_Click(object sender, EventArgs e)
         {
             _addPortfolio(uxPNameTxtBox.Text);
-            uxPNameTxtBox.Clear();
+            uxPNameTxtBox.Text = "";
 
-            //Need a handler for this?
             Hide();
         }
         /// <summary>
@@ -49,9 +48,8 @@ namespace Ticker501_MVC.View
         private void uxCancel_Click(object sender, EventArgs e)
         {
             //clear
-            uxPNameTxtBox.Clear();
+            uxPNameTxtBox.Text = "";
 
-            //Need a handler for this?
             Hide();
         }
 

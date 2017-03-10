@@ -43,10 +43,17 @@ namespace Ticker501_MVC
         /// </summary>
         private SellStockObserver _sellStockObserver;
 
+        private SelectPortfolioFromWithdraw _selectPortfolioFromWithdraw;
+
         /// <summary>
         /// A error message delegate used to display error messges.
         /// </summary>
         private DisplayErrorMessageObserver _displayErrorMessageObserver;
+
+        /// <summary>
+        /// The portfolio that is currently selected.
+        /// </summary>
+        private string _selectedPortfolio = null;
 
         /// <summary>
         /// contructs the Controller and initialized the account private field
@@ -125,8 +132,9 @@ namespace Ticker501_MVC
         /// <summary>
         /// Will update the info on the portfolio tab when a new portfolio is selected
         /// </summary>
-        public void DisplayPortfolioSelectedObserver(string portfolioName)
+        public void DisplayPortfolioSelected(string portfolioName)
         {
+            _selectedPortfolio = portfolioName;
             _portfolioObserver(portfolioName);
         }
 
@@ -139,17 +147,6 @@ namespace Ticker501_MVC
             {
                 o();
             }
-
-            //need to check if there is a portfolio created yet
-            //_portfolioObserver(_currentPortfolioSelected);
-
-            //if (_account.GetListOfPortfolioNames().Count > 0)
-            //{
-            //foreach (var portO in _portfolioObservers)
-            //{
-            //   portO();
-            //}
-            //}
         }
 
 
@@ -188,6 +185,7 @@ namespace Ticker501_MVC
             {
                 _account.CashBalance += toAdd;
                 SignalObservers();
+                _portfolioObserver(_selectedPortfolio);
             }
             else
             {
@@ -202,14 +200,22 @@ namespace Ticker501_MVC
         public void WithdrawFunds(decimal cash)
         {
             var toWithdraw = cash + Account.TRANSFER_FEE;
-            if ( toWithdraw < _account.CashBalance)
+            if ( toWithdraw <= _account.CashBalance)
             {
                 _account.CashBalance -= toWithdraw;
                 SignalObservers();
+                _portfolioObserver(_selectedPortfolio);
             }
             else
             {
-                _displayErrorMessageObserver("You don't have enough money in your account. Please enter a different number.");
+                if (toWithdraw <= _account.InvestedBalance + _account.CashBalance)
+                {
+                    _selectPortfolioFromWithdraw();
+                }
+                else
+                {
+                    _displayErrorMessageObserver("You do not have enough money in your account.");
+                }
             }
         }
 
@@ -275,7 +281,7 @@ namespace Ticker501_MVC
 
             try
             {
-                if (numberOfShares < _account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares)
+                if (numberOfShares <= _account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares && numberOfShares > 0)
                 {
                     var revenue = numberOfShares * _database.StockDatabase[tickerName].Item3;
 
@@ -290,20 +296,20 @@ namespace Ticker501_MVC
                     _account.Portfolios[portfolioName].InvestedBalance -= revenue;
                     _account.Portfolios[portfolioName].Stocks[tickerName].InvestedBalance -= revenue;
 
+                    if (_account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares == 0)
+                    {
+                        _account.Portfolios[portfolioName].Stocks.Remove(tickerName);
+                    }
+
                     SignalObservers();
                     _portfolioObserver(portfolioName);
                     _sellStockObserver();
                     _displayErrorMessageObserver("You sold " + numberOfShares + " share(s) of " + tickerName +
                                                  " for " + revenue.ToString("C"));
-
-                    if (_account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares == 0)
-                    {
-                        _account.Portfolios[portfolioName].Stocks.Remove(tickerName);
-                    }
                 }
                 else
                 {
-                    _displayErrorMessageObserver("Too many shares selected. You can only select a max of " + _account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares + " shares.");
+                    _displayErrorMessageObserver("Improper stocks chosen. You can only select from 1 to a max of " + _account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares + " shares to sell.");
                 }
             }
             catch (Exception)
@@ -325,6 +331,7 @@ namespace Ticker501_MVC
             else
             {
                 _account.Portfolios.Add(portfolioName, new Portfolio(_database));
+                _selectedPortfolio = portfolioName;
                 _addPortfolioObserver(portfolioName);
                 _portfolioObserver(portfolioName);
             }
@@ -372,14 +379,18 @@ namespace Ticker501_MVC
                             sign = r.Next(2);
                             if (sign == 0)
                             {
-                                sign = -1;
+                                sign = -1m;
                             }
                             else
                             {
-                                sign = 1;
+                                sign = 1m;
                             }
-                            change = ((Convert.ToDecimal(r.Next(13)) + Convert.ToDecimal(3)) / Convert.ToDecimal(100))*sign;
+                            change = ((Convert.ToDecimal(r.Next(13)) + 3m) / 100m)*sign;
                             decimal newAmount = t.Item3 + t.Item3 * change;
+                            if(newAmount<0)
+                            {
+                                newAmount = 0m;
+                            }
                             Tuple<string, string, decimal> x = new Tuple<string, string, decimal>(t.Item1, t.Item2, newAmount);
                             d.Add(t.Item1, x);
                         }
@@ -392,14 +403,18 @@ namespace Ticker501_MVC
                             sign = r.Next(2);
                             if (sign == 0)
                             {
-                                sign = -1;
+                                sign = -1m;
                             }
                             else
                             {
-                                sign = 1;
+                                sign = 1m;
                             }
-                            change = ((Convert.ToDecimal(r.Next(7)) + Convert.ToDecimal(2)) / Convert.ToDecimal(100)) * sign;
+                            change = ((Convert.ToDecimal(r.Next(7)) + 2m) / 100m) * sign;
                             decimal newAmount = t.Item3 + t.Item3 * change;
+                            if (newAmount < 0)
+                            {
+                                newAmount = 0m;
+                            }
                             Tuple<string, string, decimal> x = new Tuple<string, string, decimal>(t.Item1, t.Item2, newAmount);
                             d.Add(t.Item1, x);
                         }
@@ -415,14 +430,18 @@ namespace Ticker501_MVC
                             sign = r.Next(2);
                             if(sign==0)
                             {
-                                sign = -1;
+                                sign = -1m;
                             }
                             else
                             {
-                                sign = 1;
+                                sign = 1m;
                             }
-                            change = ((Convert.ToDecimal(r.Next(4)) + Convert.ToDecimal(1)) / Convert.ToDecimal(100)) * sign;
+                            change = ((Convert.ToDecimal(r.Next(4)) + 1m) / 100m) * sign;
                             decimal newAmount = t.Item3 + t.Item3 * change;
+                            if (newAmount < 0)
+                            {
+                                newAmount = 0m;
+                            }
                             Tuple<string, string, decimal> x = new Tuple<string, string, decimal>(t.Item1, t.Item2, newAmount);
                             d.Add(t.Item1, x);
                         }
@@ -484,6 +503,10 @@ namespace Ticker501_MVC
             return false;
         }
 
-        
+
+        public void RegisterPortfolioFromWithdraw(SelectPortfolioFromWithdraw o)
+        {
+            _selectPortfolioFromWithdraw = o;
+        }
     }
 }

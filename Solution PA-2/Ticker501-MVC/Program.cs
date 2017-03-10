@@ -7,17 +7,23 @@ namespace Ticker501_MVC
 {
     // defines the type of method that observes model updates
     public delegate void Observer();
+    //defines the type of method that handles the portfolio event
     public delegate void PortfolioObserver(string portfolioName);
+    //defines the type of method that handles the add portfolio event
     public delegate void AddPortfolioObserver(string portfolioName);
+    //defines the type of method that handles the delete portfolio event
     public delegate void DeletePortfolioObserver(string portfolioName);
+    //defines the type of method that handles the display error message event
     public delegate void DisplayErrorMessageObserver(string errorMessage);
 
+    public delegate void SelectPortfolioFromWithdraw();
+    //defines the type of method that handles the buy stock event
     public delegate void BuyStockObserver();
-
+    //defines the type of method that handles the sell stock event
     public delegate void SellStockObserver();
-
+    //defines the type of method that handles the openform event
     public delegate void OpenForm(Form f, object sender);
-
+    //defines the type of method that handles the portfolio event
     public delegate void PortfolioSelectedHandler(string portfolioName);
     //defines the type of method that handles a deposit cash input event 
     public delegate void DepositCashHandler(decimal cash);
@@ -36,6 +42,9 @@ namespace Ticker501_MVC
     // defines the type of method that handles a read file input event
     public delegate bool ReadFileHandler(OpenFileDialog openFile);
 
+    /// <summary>
+    /// Program class
+    /// </summary>
     public static class Program
     {
         /// <summary>
@@ -57,14 +66,14 @@ namespace Ticker501_MVC
             var bSForm = new BuyStocksForm(c.BuyStocks, db, a);
             var sSForm = new SellStocksForm(c.SellStocks, a, db);
 
-            var mForm = new MainForm(a, db, gpnForm, aFundsForm, wFundsForm, bSForm, sSForm, c.OpenForm, c.DisplayPortfolioSelectedObserver, c.DeletePortfolio, c.Simulate, c.ReadTickerFile);
+            var mForm = new MainForm(a, db, gpnForm, aFundsForm, wFundsForm, bSForm, sSForm, c.OpenForm, c.DisplayPortfolioSelected, c.DeletePortfolio, c.Simulate, c.ReadTickerFile);
 
             c.PortfoioRegister(mForm.DisplayPortfolio);
 
             c.Register(mForm.DisplayHomeStockInfo);
             c.Register(mForm.DisplayAccount);
             c.Register(mForm.SetButtonsBasedOnSufficentfunds);
-            c.Register(mForm.SetSellStockButtonBasedOnNumberOfStocks);
+            //c.Register(mForm.SetSellStockButtonBasedOnNumberOfStocks);
 
             c.ErrorMessageRegister(mForm.DisplayErrorMessage);
 
@@ -74,6 +83,8 @@ namespace Ticker501_MVC
 
             c.BuyStockRegister(bSForm.DisplayListView);
             c.SellStockRegister(sSForm.DisplayListView);
+
+            c.RegisterPortfolioFromWithdraw(mForm.SelectPortfolioPage);
 
             Application.Run(mForm);
         }
