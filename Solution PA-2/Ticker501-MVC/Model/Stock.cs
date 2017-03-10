@@ -11,6 +11,8 @@ namespace Ticker501_MVC.Model
         public Stock(string name)
         {
             this.Name = name;
+            NumberOfShares = 0;
+            InvestedBalance = 0m;
         }
     }
 }
