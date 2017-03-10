@@ -248,6 +248,8 @@ namespace Ticker501_MVC
                                 _account.Fees += Account.TRADE_FEE;
                                 SignalObservers();
                                 _portfolioObserver(portfolioName);
+                                _displayErrorMessageObserver("You bought " + numberOfShares + " share(s) of " + tickerName +
+                                                             " for " + cost.ToString("C"));
                             }
                             else
                             {
@@ -291,13 +293,16 @@ namespace Ticker501_MVC
                                 }
                                 stock.InvestedBalance -= cost;
                                 _account.Portfolios[portfolioName].InvestedBalance -= cost;
-                                _account.Portfolios[portfolioName].NumberOfStocks--;
+                                _account.Portfolios[portfolioName].NumberOfStocks -= numberOfShares;
                                 _account.CashBalance += (cost - Account.TRADE_FEE);
                                 _account.InvestedBalance -= stock.InvestedBalance;
                                 _account.NumberOfStocks -= numberOfShares;
                                 _account.Fees += Account.TRADE_FEE;
                                 SignalObservers();
                                 _portfolioObserver(portfolioName);
+                                _sellStockObserver();
+                                _displayErrorMessageObserver("You sold " + numberOfShares + " share(s) of " + tickerName +
+                                                     " for " + cost.ToString("C"));
                                 if (stock.NumberOfShares == 0)
                                 {
                                     _account.Portfolios[portfolioName].Stocks.Remove(tickerName);
