@@ -12,6 +12,8 @@ namespace Ticker501_MVC.Model.Interfaces
 
         Dictionary<string, IPortfolio> Portfolios { get; set; }
 
-        decimal GainsLosses { get; set; }
+        decimal GainsLosses { get; }
+
+        decimal Fees { get; set; }
     }
 }

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using Ticker501_MVC.Model;
 using Ticker501_MVC.Model.Interfaces;
+using Ticker501_MVC.View;
 
 namespace Ticker501_MVC
 {
@@ -11,7 +13,7 @@ namespace Ticker501_MVC
         /// <summary>
         /// The instance of the account.
         /// </summary>
-        private IAccount _account;
+        private readonly IAccount _account;
         /// <summary>
         /// The instance of the database,
         /// </summary>
@@ -24,8 +26,22 @@ namespace Ticker501_MVC
         /// The list of portolio observers to call.
         /// </summary>
         private PortfolioObserver _portfolioObserver;
-
-        //private List<AddPortfolioObserver> _addPortfolioObserver;
+        /// <summary>
+        /// The toolstrip menu update for the mainm form of portfolios
+        /// </summary>
+        private AddPortfolioObserver _addPortfolioObserver;
+        /// <summary>
+        /// Updates the toolstrip menu on a delete method.
+        /// </summary>
+        private DeletePortfolioObserver _deletePortfolioObserver;
+        /// <summary>
+        /// Populates all the values in a buy stock form.
+        /// </summary>
+        private BuyStockObserver _buyStockObserver;
+        /// <summary>
+        /// Populates all the values in a sell stock form.
+        /// </summary>
+        private SellStockObserver _sellStockObserver;
 
         /// <summary>
         /// A error message delegate used to display error messges.
@@ -61,11 +77,22 @@ namespace Ticker501_MVC
         {
             _portfolioObserver = o;
         }
-
-        //public void AddPortfolioRegister(AddPortfolioObserver o)
-        //{
-        //    _addPortfolioObserver.Add(o);
-        //}
+        /// <summary>
+        /// Register the add portfolio observer on the toolstrip menu for the main form
+        /// </summary>
+        /// <param name="o"></param>
+        public void AddPortfolioRegister(AddPortfolioObserver o)
+        {
+            _addPortfolioObserver = o;
+        }
+        /// <summary>
+        /// Sets the delete portfolio observer to the method passed into this function.
+        /// </summary>
+        /// <param name="o">The function that updates the display when delete portfolio is called.</param>
+        public void DeletePortfolioRegister(DeletePortfolioObserver o)
+        {
+            _deletePortfolioObserver = o;
+        }
 
         /// <summary>
         /// Register the display error message method in the user interface to the private field.
@@ -76,6 +103,24 @@ namespace Ticker501_MVC
             _displayErrorMessageObserver = o;
         }
 
+        /// <summary>
+        /// Registers the buy stock observer.
+        /// </summary>
+        /// <param name="o"></param>
+        public void BuyStockRegister(BuyStockObserver o)
+        {
+            _buyStockObserver = o;
+        }
+
+        /// <summary>
+        /// Registers the buy stock observer.
+        /// </summary>
+        /// <param name="o"></param>
+        public void SellStockRegister(SellStockObserver o)
+        {
+            _sellStockObserver = o;
+        }
+
 
         /// <summary>
         /// Will update the info on the portfolio tab when a new portfolio is selected
@@ -84,14 +129,6 @@ namespace Ticker501_MVC
         {
             _portfolioObserver(portfolioName);
         }
-
-        //private void SignalAddPortfolioObservers(string portfolioName)
-        //{
-        //    foreach (var o in _addPortfolioObserver)
-        //    {
-        //        o(portfolioName);
-        //    }
-        //}
 
         /// <summary>
         /// Signals the observers to update fields of the user interface
@@ -115,13 +152,29 @@ namespace Ticker501_MVC
             //}
         }
 
+
         /// <summary>
         /// shows the form passed into the argument
         /// </summary>
         /// <param name="form">The Form to open</param>
-        public void OpenForm(Form form)
+        /// <param name="sender">The tool strip button that caused this event to fire.</param>
+        public void OpenForm(Form form, object sender)
         {
             form.Show();
+            if (form.Name.Contains("Buy"))
+            {
+                _buyStockObserver();
+                var parent = (sender as ToolStripMenuItem).OwnerItem;
+                var name = parent.Text;
+                (form as BuyStocksForm).RegisterPortfolioName(name);
+            }
+            else if (form.Name.Contains("Sell"))
+            {
+                var parent = (sender as ToolStripMenuItem).OwnerItem;
+                var name = parent.Text;
+                (form as SellStocksForm).RegisterPortfolioName(name);
+                _sellStockObserver();
+            }
         }
 
         /// <summary>
@@ -130,23 +183,16 @@ namespace Ticker501_MVC
         /// <param name="cash">The amount of cash to deposit.</param>
         public void DepositFunds(decimal cash)
         {
-           // if (aWfundsForm.ShowDialog() == DialogResult.OK)
-          //  {
-            //   aWfundsForm.Amount;
-           // }
-            //try
-            //{
-            //    _account.AddFundsToCashFund(cash);
-            //    SignalObservers();
-            //}
-            //catch (AccountException)
-            //{
-            //    _displayErrorMessageObserver("There was a problem depositing money into your account.");
-            //}
-            //catch (Exception)
-            //{
-            //    _displayErrorMessageObserver("Error trying to deposit funds.");
-            //}
+            var toAdd = cash - Account.TRANSFER_FEE;
+            if (toAdd > 0)
+            {
+                _account.CashBalance += toAdd;
+                SignalObservers();
+            }
+            else
+            {
+                _displayErrorMessageObserver("The amount you want to deposit is less than the deposit fee of $4.99. Please enter another number.");
+            }
         }
 
         /// <summary>
@@ -155,19 +201,16 @@ namespace Ticker501_MVC
         /// <param name="cash">The amount of cash to withdraw.</param>
         public void WithdrawFunds(decimal cash)
         {
-                        //try
-            //{
-            //    _account.WithdrawFunds(cash);
-            //    SignalObservers();
-            //}
-            //catch (AccountExceptions)
-            //{
-            //    _displayErrorMessageObserver("You currently do not have enough funds to perform this action.");
-            //}
-            //catch (Exception)
-            //{
-            //    _displayErrorMessageObserver("Error trying to withdraw funds.");
-            //}
+            var toWithdraw = cash + Account.TRANSFER_FEE;
+            if ( toWithdraw < _account.CashBalance)
+            {
+                _account.CashBalance -= toWithdraw;
+                SignalObservers();
+            }
+            else
+            {
+                _displayErrorMessageObserver("You don't have enough money in your account. Please enter a different number.");
+            }
         }
 
         /// <summary>
@@ -178,19 +221,47 @@ namespace Ticker501_MVC
         /// <param name="numberOfShares">The number of shares.</param>
         public void BuyStocks(string portfolioName, string tickerName, int numberOfShares)
         {
-           //try
-            //{
-            //    _account.BuyStock(portfolioName, tickerName, numberOfShares);
-            //    SignalObservers();
-            //}
-            //catch (AccountExceptions)
-            //{
-            //    _displayErrorMessageObserver("You currently do not have enought funds to perform this action");
-            //}
-            //catch (Exception)
-            //{
-            //    _displayErrorMessageObserver("Error trying to buy stocks.");
-            //}
+            try
+            {
+                Tuple<string, string, decimal> valueFromDatabase;
+                IStock stock = new Stock(tickerName);
+                    if (_database.StockDatabase.TryGetValue(tickerName, out valueFromDatabase))
+                    {
+                            var cost = numberOfShares*valueFromDatabase.Item3;
+                            if (cost <= (_account.CashBalance - Account.TRADE_FEE))
+                            {
+                                if (_account.Portfolios[portfolioName].Stocks.ContainsKey(tickerName))
+                                {
+                                    _account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares += numberOfShares;
+                                }
+                                else
+                                {
+                                    _account.Portfolios[portfolioName].Stocks.Add(tickerName, stock);
+                                    _account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares += numberOfShares;
+                                }                               
+                                stock.InvestedBalance += cost;
+                                _account.Portfolios[portfolioName].InvestedBalance += cost;
+                                _account.Portfolios[portfolioName].NumberOfStocks+= numberOfShares;
+                                _account.CashBalance -= (cost + Account.TRADE_FEE);
+                                _account.InvestedBalance += stock.InvestedBalance;
+                                _account.NumberOfStocks += numberOfShares;
+                                _account.Fees += Account.TRADE_FEE;
+                                SignalObservers();
+                                _portfolioObserver(portfolioName);
+                                _displayErrorMessageObserver("You bought " + numberOfShares + " share(s) of " + tickerName +
+                                                             " for " + cost.ToString("C"));
+                            }
+                            else
+                            {
+                                _displayErrorMessageObserver(
+                                    "You currently do not have enought funds to perform this action");
+                            }
+                    }
+            }
+            catch (Exception)
+            {
+                _displayErrorMessageObserver("Error trying to buy stocks.");
+            }
         }
 
         /// <summary>
@@ -201,19 +272,44 @@ namespace Ticker501_MVC
         /// <param name="numberOfShares">The number of shares.</param>
         public void SellStocks(string portfolioName, string tickerName, int numberOfShares)
         {
-                        //try
-            //{
-            //    _account.SellNumberOfStocks(portfolioName, tickerName, numberOfShares);
-            //    SignalObservers();
-            //}
-            //catch (AccountException)
-            //{
-            //    _displayErrorMessageObserver("Insufficient funds in your account.");
-            //}
-            //catch (Exception)
-            //{
-            //    _displayErrorMessageObserver("Error trying to sell stocks.");
-            //}
+
+            try
+            {
+                if (numberOfShares < _account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares)
+                {
+                    var revenue = numberOfShares * _database.StockDatabase[tickerName].Item3;
+
+                    _account.CashBalance += (revenue - Account.TRADE_FEE);
+                    _account.Fees += Account.TRADE_FEE;
+
+                    _account.NumberOfStocks -= numberOfShares;
+                    _account.Portfolios[portfolioName].NumberOfStocks -= numberOfShares;
+                    _account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares -= numberOfShares;
+
+                    _account.InvestedBalance -= revenue;
+                    _account.Portfolios[portfolioName].InvestedBalance -= revenue;
+                    _account.Portfolios[portfolioName].Stocks[tickerName].InvestedBalance -= revenue;
+
+                    SignalObservers();
+                    _portfolioObserver(portfolioName);
+                    _sellStockObserver();
+                    _displayErrorMessageObserver("You sold " + numberOfShares + " share(s) of " + tickerName +
+                                                 " for " + revenue.ToString("C"));
+
+                    if (_account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares == 0)
+                    {
+                        _account.Portfolios[portfolioName].Stocks.Remove(tickerName);
+                    }
+                }
+                else
+                {
+                    _displayErrorMessageObserver("Too many shares selected. You can only select a max of " + _account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares + " shares.");
+                }
+            }
+            catch (Exception)
+            {
+                _displayErrorMessageObserver("Error trying to sell stocks.");
+            }
         }
 
         /// <summary>
@@ -222,21 +318,16 @@ namespace Ticker501_MVC
         /// <param name="portfolioName">The portfolio name.</param>
         public void AddPortfolio(string portfolioName)
         {
-            SignalObservers();
-            //try
-            //{
-            //    _account.AddPortfolio(portfolioName);
-            //    addPrtMethod(portfolioName);
-            //    SignalObservers();
-            //}
-            //catch (SamePortfolioNameException)
-            //{
-            //    _displayErrorMessageObserver("You already have a portfolio named \"" + portfolioName + "\".");
-            //}
-            //catch (Exception)
-            //{
-            //    _displayErrorMessageObserver("There was a problem trying to add a portfolio.");
-            //}
+            if (_account.Portfolios.ContainsKey(portfolioName))
+            {
+                _displayErrorMessageObserver("You already have a portfolio named \"" + portfolioName + "\".");
+            }
+            else
+            {
+                _account.Portfolios.Add(portfolioName, new Portfolio(_database));
+                _addPortfolioObserver(portfolioName);
+                _portfolioObserver(portfolioName);
+            }
         }
 
         /// <summary>
@@ -245,20 +336,21 @@ namespace Ticker501_MVC
         /// <param name="portfolioName">The name of the portfolio.</param>
         public void DeletePortfolio(string portfolioName)
         {
-                         //try
-            //{
-            //    _account.DeletePortfolio(portfolioName);
-            //    SignalObservers();
-            //}
-            //catch (AccountException)
-            //{
-            //    _displayErrorMessageObserver(
-            //        "Error in the account with funds when trying to process delete portfolio request.");
-            //}
-            //catch (Exception)
-            //{
-            //    _displayErrorMessageObserver("Error when trying to delete portfolio " + portfolioName + ".");
-            //}
+            foreach (var s in _account.Portfolios[portfolioName].Stocks.Values)
+            {
+                var currentValue = _database.StockDatabase[s.Name].Item3;
+
+                _account.CashBalance += s.NumberOfShares * currentValue;
+                _account.InvestedBalance -= s.NumberOfShares * currentValue;
+            }
+
+            _account.CashBalance -= Account.TRADE_FEE;
+            _account.Fees += Account.TRADE_FEE;
+            _account.Portfolios.Remove(portfolioName);
+
+            _deletePortfolioObserver(portfolioName);
+            _portfolioObserver(null);
+            SignalObservers();
         }
 
         /// <summary>
@@ -266,26 +358,83 @@ namespace Ticker501_MVC
         /// </summary>
         public void Simulate(int volatility)
         {
-                        //try
-            //{
-            //    switch (volatility)
-            //    {
-            //        case 1:
-            //            Simulator.SimulateHighVolatility();
-            //            break;
-            //        case 2:
-            //            Simulator.SimulateMediumVolatility();
-            //            break;
-            //        case 3:
-            //            Simulator.SimulateLowVolatility();
-            //            break;
-            //    }
-            //    SignalObservers();
-            //}
-            //catch (Exception)
-            //{
-            //    _displayErrorMessageObserver("Error when trying to run the simluator");
-            //}
+            var d = new Dictionary<string, Tuple<string, string, decimal>>();
+            var r = new Random();
+            decimal change;
+            decimal sign;
+            switch(volatility)
+            {
+                case 1:
+                    {
+                        foreach (
+                            var t in _database.StockDatabase.Values)
+                        {
+                            sign = r.Next(2);
+                            if (sign == 0)
+                            {
+                                sign = -1;
+                            }
+                            else
+                            {
+                                sign = 1;
+                            }
+                            change = ((Convert.ToDecimal(r.Next(13)) + Convert.ToDecimal(3)) / Convert.ToDecimal(100))*sign;
+                            decimal newAmount = t.Item3 + t.Item3 * change;
+                            Tuple<string, string, decimal> x = new Tuple<string, string, decimal>(t.Item1, t.Item2, newAmount);
+                            d.Add(t.Item1, x);
+                        }
+                        break;
+                    }
+                case 2:
+                    {
+                        foreach (Tuple<string, string, decimal> t in _database.StockDatabase.Values)
+                        {
+                            sign = r.Next(2);
+                            if (sign == 0)
+                            {
+                                sign = -1;
+                            }
+                            else
+                            {
+                                sign = 1;
+                            }
+                            change = ((Convert.ToDecimal(r.Next(7)) + Convert.ToDecimal(2)) / Convert.ToDecimal(100)) * sign;
+                            decimal newAmount = t.Item3 + t.Item3 * change;
+                            Tuple<string, string, decimal> x = new Tuple<string, string, decimal>(t.Item1, t.Item2, newAmount);
+                            d.Add(t.Item1, x);
+                        }
+                        
+                        break;
+                    }
+                case 3:
+                    {
+                        
+                        foreach (Tuple<string, string, decimal> t in _database.StockDatabase.Values)
+                        {
+                            change = ((r.Next(4) + 1) / 100);
+                            sign = r.Next(2);
+                            if(sign==0)
+                            {
+                                sign = -1;
+                            }
+                            else
+                            {
+                                sign = 1;
+                            }
+                            change = ((Convert.ToDecimal(r.Next(4)) + Convert.ToDecimal(1)) / Convert.ToDecimal(100)) * sign;
+                            decimal newAmount = t.Item3 + t.Item3 * change;
+                            Tuple<string, string, decimal> x = new Tuple<string, string, decimal>(t.Item1, t.Item2, newAmount);
+                            d.Add(t.Item1, x);
+                        }
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+            _database.StockDatabase = d;
+            SignalObservers();
         }
 
         /// <summary>
@@ -334,5 +483,7 @@ namespace Ticker501_MVC
             }
             return false;
         }
+
+        
     }
 }

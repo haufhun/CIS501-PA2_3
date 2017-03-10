@@ -1,4 +1,4 @@
-﻿namespace Ticker501_MVC
+﻿namespace Ticker501_MVC.View
 {
     partial class SellStocksForm
     {
@@ -60,7 +60,7 @@
             this.uxSellStockListInfo.Location = new System.Drawing.Point(12, 53);
             this.uxSellStockListInfo.MultiSelect = false;
             this.uxSellStockListInfo.Name = "uxSellStockListInfo";
-            this.uxSellStockListInfo.Size = new System.Drawing.Size(698, 323);
+            this.uxSellStockListInfo.Size = new System.Drawing.Size(728, 393);
             this.uxSellStockListInfo.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.uxSellStockListInfo.TabIndex = 29;
             this.uxSellStockListInfo.UseCompatibleStateImageBehavior = false;
@@ -95,7 +95,7 @@
             // 
             this.uxPotentialAmount.AutoSize = true;
             this.uxPotentialAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxPotentialAmount.Location = new System.Drawing.Point(799, 134);
+            this.uxPotentialAmount.Location = new System.Drawing.Point(931, 138);
             this.uxPotentialAmount.Name = "uxPotentialAmount";
             this.uxPotentialAmount.Size = new System.Drawing.Size(61, 25);
             this.uxPotentialAmount.TabIndex = 36;
@@ -112,13 +112,15 @@
             // 
             // uxCloseBttn
             // 
+            this.uxCloseBttn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.uxCloseBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxCloseBttn.Location = new System.Drawing.Point(845, 332);
+            this.uxCloseBttn.Location = new System.Drawing.Point(862, 324);
             this.uxCloseBttn.Name = "uxCloseBttn";
             this.uxCloseBttn.Size = new System.Drawing.Size(203, 44);
             this.uxCloseBttn.TabIndex = 34;
             this.uxCloseBttn.Text = "&Close";
             this.uxCloseBttn.UseVisualStyleBackColor = true;
+            this.uxCloseBttn.Click += new System.EventHandler(this.uxCloseBttn_Click);
             // 
             // uxNumberOfShares
             // 
@@ -141,12 +143,13 @@
             // uxSellStockBttn
             // 
             this.uxSellStockBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxSellStockBttn.Location = new System.Drawing.Point(731, 177);
+            this.uxSellStockBttn.Location = new System.Drawing.Point(746, 177);
             this.uxSellStockBttn.Name = "uxSellStockBttn";
             this.uxSellStockBttn.Size = new System.Drawing.Size(420, 44);
             this.uxSellStockBttn.TabIndex = 32;
             this.uxSellStockBttn.Text = "Sell Shares";
             this.uxSellStockBttn.UseVisualStyleBackColor = true;
+            this.uxSellStockBttn.Click += new System.EventHandler(this.uxSellStockBttn_Click);
             // 
             // uxNumberLabel
             // 
@@ -173,7 +176,9 @@
             this.AcceptButton = this.uxSellStockBttn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1251, 388);
+            this.CancelButton = this.uxCloseBttn;
+            this.ClientSize = new System.Drawing.Size(1233, 458);
+            this.ControlBox = false;
             this.Controls.Add(this.uxSellStockListInfo);
             this.Controls.Add(this.uxPotentialAmount);
             this.Controls.Add(this.uxResultLabel);
@@ -182,8 +187,9 @@
             this.Controls.Add(this.uxSellStockBttn);
             this.Controls.Add(this.uxNumberLabel);
             this.Controls.Add(this.uxInstructionLabel);
+            this.MinimumSize = new System.Drawing.Size(1251, 476);
             this.Name = "SellStocksForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sell Stocks";
             ((System.ComponentModel.ISupportInitialize)(this.uxNumberOfShares)).EndInit();
             this.ResumeLayout(false);

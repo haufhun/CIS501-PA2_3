@@ -1,4 +1,4 @@
-﻿namespace Ticker501_MVC
+﻿namespace Ticker501_MVC.View
 {
     partial class BuyStocksForm
     {
@@ -61,7 +61,7 @@
             this.uxBuyStockListInfo.Location = new System.Drawing.Point(12, 58);
             this.uxBuyStockListInfo.MultiSelect = false;
             this.uxBuyStockListInfo.Name = "uxBuyStockListInfo";
-            this.uxBuyStockListInfo.Size = new System.Drawing.Size(478, 285);
+            this.uxBuyStockListInfo.Size = new System.Drawing.Size(478, 400);
             this.uxBuyStockListInfo.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.uxBuyStockListInfo.TabIndex = 29;
             this.uxBuyStockListInfo.UseCompatibleStateImageBehavior = false;
@@ -119,6 +119,7 @@
             this.uxAmount.Size = new System.Drawing.Size(115, 30);
             this.uxAmount.TabIndex = 38;
             this.uxAmount.Text = "0.00";
+            this.uxAmount.TextChanged += new System.EventHandler(this.uxAmountTxtBox_TextChanged);
             // 
             // uxDollarToPurchase
             // 
@@ -141,6 +142,7 @@
             this.uxBuyBySharesOrPrice.Name = "uxBuyBySharesOrPrice";
             this.uxBuyBySharesOrPrice.Size = new System.Drawing.Size(401, 24);
             this.uxBuyBySharesOrPrice.TabIndex = 36;
+            this.uxBuyBySharesOrPrice.SelectedIndexChanged += new System.EventHandler(this.uxBuyBySharesOrPrice_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -152,6 +154,7 @@
             // 
             // uxCloseBttn
             // 
+            this.uxCloseBttn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.uxCloseBttn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uxCloseBttn.Location = new System.Drawing.Point(652, 299);
             this.uxCloseBttn.Name = "uxCloseBttn";
@@ -159,6 +162,7 @@
             this.uxCloseBttn.TabIndex = 34;
             this.uxCloseBttn.Text = "&Close";
             this.uxCloseBttn.UseVisualStyleBackColor = true;
+            this.uxCloseBttn.Click += new System.EventHandler(this.uxCloseBttn_Click);
             // 
             // uxNumberOfShares
             // 
@@ -187,6 +191,7 @@
             this.uxBuyStockBttn.TabIndex = 32;
             this.uxBuyStockBttn.Text = "&Buy Shares";
             this.uxBuyStockBttn.UseVisualStyleBackColor = true;
+            this.uxBuyStockBttn.Click += new System.EventHandler(this.uxBuyStockBttn_Click);
             // 
             // uxNumberLabel
             // 
@@ -213,7 +218,8 @@
             this.AcceptButton = this.uxBuyStockBttn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1206, 388);
+            this.ClientSize = new System.Drawing.Size(1125, 470);
+            this.ControlBox = false;
             this.Controls.Add(this.uxBuyStockListInfo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.uxResultLabel);
@@ -228,8 +234,9 @@
             this.Controls.Add(this.uxNumberLabel);
             this.Controls.Add(this.uxInstructionLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MinimumSize = new System.Drawing.Size(1131, 476);
             this.Name = "BuyStocksForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Buy Stocks";
             ((System.ComponentModel.ISupportInitialize)(this.uxNumberOfShares)).EndInit();
             this.ResumeLayout(false);
