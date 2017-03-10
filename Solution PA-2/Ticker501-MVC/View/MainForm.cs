@@ -279,7 +279,7 @@ namespace Ticker501_MVC.View
                         var price = _database.StockDatabase[s.Name].Item3;
                     
                         //TickerName    Company Name    Price per share     Shares owned    Networth of shares   position balance
-                        string[] itemInfo = { s.Name, fullName, price.ToString("C"), s.NumberOfShares.ToString(), (price * s.NumberOfShares).ToString("C"), (s.NumberOfShares / _account.NumberOfStocks).ToString() };
+                        string[] itemInfo = { s.Name, fullName, price.ToString("C"), s.NumberOfShares.ToString(), (price * s.NumberOfShares).ToString("C"), ((double)s.NumberOfShares / _account.NumberOfStocks).ToString("p") };
 
                         uxAccListInfo.Items.Add(new ListViewItem(itemInfo));
                     }
@@ -287,7 +287,6 @@ namespace Ticker501_MVC.View
                 uxAccListInfo.EndUpdate();
             }
         }
-
         /// <summary>
         /// Updates all the information on the Portfolio tab selected. 
         /// Passing a null indicates to clear the portfolio page.
@@ -339,7 +338,7 @@ namespace Ticker501_MVC.View
                         var fullName = _database.StockDatabase[s.Name].Item2;
                         var price = _database.StockDatabase[s.Name].Item3;
 
-                        string[] itemInfo = { s.Name, fullName, price.ToString("C"), s.NumberOfShares.ToString(), (price * s.NumberOfShares).ToString("C") };
+                        string[] itemInfo = { s.Name, fullName, price.ToString("C"), s.NumberOfShares.ToString(), (price * s.NumberOfShares).ToString("C"), ((double)s.NumberOfShares / _account.Portfolios[portfolioName].NumberOfStocks).ToString("p") };
 
                         uxPrtListInfo.Items.Add(new ListViewItem(itemInfo));
                     }
