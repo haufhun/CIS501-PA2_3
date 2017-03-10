@@ -370,17 +370,17 @@ namespace Ticker501_MVC
                             sign = r.Next(2);
                             if (sign == 0)
                             {
-                                sign = -1;
+                                sign = -1m;
                             }
                             else
                             {
-                                sign = 1;
+                                sign = 1m;
                             }
-                            change = ((Convert.ToDecimal(r.Next(13)) + Convert.ToDecimal(3)) / Convert.ToDecimal(100))*sign;
+                            change = ((Convert.ToDecimal(r.Next(13)) + 3m) / 100m)*sign;
                             decimal newAmount = t.Item3 + t.Item3 * change;
                             if(newAmount<0)
                             {
-                                newAmount = 0;
+                                newAmount = 0m;
                             }
                             Tuple<string, string, decimal> x = new Tuple<string, string, decimal>(t.Item1, t.Item2, newAmount);
                             d.Add(t.Item1, x);
@@ -394,17 +394,17 @@ namespace Ticker501_MVC
                             sign = r.Next(2);
                             if (sign == 0)
                             {
-                                sign = -1;
+                                sign = -1m;
                             }
                             else
                             {
-                                sign = 1;
+                                sign = 1m;
                             }
-                            change = ((Convert.ToDecimal(r.Next(7)) + Convert.ToDecimal(2)) / Convert.ToDecimal(100)) * sign;
+                            change = ((Convert.ToDecimal(r.Next(7)) + 2m) / 100m) * sign;
                             decimal newAmount = t.Item3 + t.Item3 * change;
                             if (newAmount < 0)
                             {
-                                newAmount = 0;
+                                newAmount = 0m;
                             }
                             Tuple<string, string, decimal> x = new Tuple<string, string, decimal>(t.Item1, t.Item2, newAmount);
                             d.Add(t.Item1, x);
@@ -421,17 +421,17 @@ namespace Ticker501_MVC
                             sign = r.Next(2);
                             if(sign==0)
                             {
-                                sign = -1;
+                                sign = -1m;
                             }
                             else
                             {
-                                sign = 1;
+                                sign = 1m;
                             }
-                            change = ((Convert.ToDecimal(r.Next(4)) + Convert.ToDecimal(1)) / Convert.ToDecimal(100)) * sign;
+                            change = ((Convert.ToDecimal(r.Next(4)) + 1m) / 100m) * sign;
                             decimal newAmount = t.Item3 + t.Item3 * change;
                             if (newAmount < 0)
                             {
-                                newAmount = 0;
+                                newAmount = 0m;
                             }
                             Tuple<string, string, decimal> x = new Tuple<string, string, decimal>(t.Item1, t.Item2, newAmount);
                             d.Add(t.Item1, x);
