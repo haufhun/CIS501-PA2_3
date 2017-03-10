@@ -7,17 +7,21 @@ namespace Ticker501_MVC
 {
     // defines the type of method that observes model updates
     public delegate void Observer();
+    //defines the type of method that handles the portfolio event
     public delegate void PortfolioObserver(string portfolioName);
+    //defines the type of method that handles the add portfolio event
     public delegate void AddPortfolioObserver(string portfolioName);
+    //defines the type of method that handles the delete portfolio event
     public delegate void DeletePortfolioObserver(string portfolioName);
+    //defines the type of method that handles the display error message event
     public delegate void DisplayErrorMessageObserver(string errorMessage);
-
+    //defines the type of method that handles the buy stock event
     public delegate void BuyStockObserver();
-
+    //defines the type of method that handles the sell stock event
     public delegate void SellStockObserver();
-
+    //defines the type of method that handles the openform event
     public delegate void OpenForm(Form f, object sender);
-
+    //defines the type of method that handles the portfolio event
     public delegate void PortfolioSelectedHandler(string portfolioName);
     //defines the type of method that handles a deposit cash input event 
     public delegate void DepositCashHandler(decimal cash);
@@ -36,6 +40,9 @@ namespace Ticker501_MVC
     // defines the type of method that handles a read file input event
     public delegate bool ReadFileHandler(OpenFileDialog openFile);
 
+    /// <summary>
+    /// Program class
+    /// </summary>
     public static class Program
     {
         /// <summary>
