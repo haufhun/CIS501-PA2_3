@@ -275,40 +275,36 @@ namespace Ticker501_MVC
 
             try
             {
-                Tuple<string, string, decimal> valueFromDatabase;
-                IStock stock = new Stock(tickerName);
-                    if (_database.StockDatabase.TryGetValue(tickerName, out valueFromDatabase))
+                if (numberOfShares < _account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares)
+                {
+                    var revenue = numberOfShares * _database.StockDatabase[tickerName].Item3;
+
+                    _account.CashBalance += (revenue - Account.TRADE_FEE);
+                    _account.Fees += Account.TRADE_FEE;
+
+                    _account.NumberOfStocks -= numberOfShares;
+                    _account.Portfolios[portfolioName].NumberOfStocks -= numberOfShares;
+                    _account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares -= numberOfShares;
+
+                    _account.InvestedBalance -= revenue;
+                    _account.Portfolios[portfolioName].InvestedBalance -= revenue;
+                    _account.Portfolios[portfolioName].Stocks[tickerName].InvestedBalance -= revenue;
+
+                    SignalObservers();
+                    _portfolioObserver(portfolioName);
+                    _sellStockObserver();
+                    _displayErrorMessageObserver("You sold " + numberOfShares + " share(s) of " + tickerName +
+                                                 " for " + revenue.ToString("C"));
+
+                    if (_account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares == 0)
                     {
-                            var cost = numberOfShares*valueFromDatabase.Item3;
-                            if (cost <= (_account.CashBalance - Account.TRADE_FEE))
-                            {
-                                if(_account.Portfolios[portfolioName].Stocks.ContainsKey(tickerName))
-                                {
-                                    _account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares -=  numberOfShares;
-                                }
-                                else
-                                {
-                                    _account.Portfolios[portfolioName].Stocks.Add(tickerName, stock);
-                                    _account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares -= numberOfShares;
-                                }
-                                stock.InvestedBalance -= cost;
-                                _account.Portfolios[portfolioName].InvestedBalance -= cost;
-                                _account.Portfolios[portfolioName].NumberOfStocks -= numberOfShares;
-                                _account.CashBalance += (cost - Account.TRADE_FEE);
-                                _account.InvestedBalance -= stock.InvestedBalance;
-                                _account.NumberOfStocks -= numberOfShares;
-                                _account.Fees += Account.TRADE_FEE;
-                                SignalObservers();
-                                _portfolioObserver(portfolioName);
-                                _sellStockObserver();
-                                _displayErrorMessageObserver("You sold " + numberOfShares + " share(s) of " + tickerName +
-                                                     " for " + cost.ToString("C"));
-                                if (stock.NumberOfShares == 0)
-                                {
-                                    _account.Portfolios[portfolioName].Stocks.Remove(tickerName);
-                                }
-                            }
+                        _account.Portfolios[portfolioName].Stocks.Remove(tickerName);
                     }
+                }
+                else
+                {
+                    _displayErrorMessageObserver("Too many shares selected. You can only select a max of " + _account.Portfolios[portfolioName].Stocks[tickerName].NumberOfShares + " shares.");
+                }
             }
             catch (Exception)
             {
