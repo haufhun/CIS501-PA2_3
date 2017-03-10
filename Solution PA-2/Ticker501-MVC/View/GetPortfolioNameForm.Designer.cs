@@ -51,7 +51,7 @@
             this.uxPNameTxtBox.Location = new System.Drawing.Point(317, 9);
             this.uxPNameTxtBox.Name = "uxPNameTxtBox";
             this.uxPNameTxtBox.Size = new System.Drawing.Size(127, 22);
-            this.uxPNameTxtBox.TabIndex = 4;
+            this.uxPNameTxtBox.TabIndex = 0;
             this.uxPNameTxtBox.TextChanged += new System.EventHandler(this.uxPNameTxtBox_TextChanged);
             // 
             // uxPortLabel
