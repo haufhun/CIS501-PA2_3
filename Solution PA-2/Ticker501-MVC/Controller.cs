@@ -245,6 +245,7 @@ namespace Ticker501_MVC
                                 _account.CashBalance -= (cost + Account.TRADE_FEE);
                                 _account.InvestedBalance += stock.InvestedBalance;
                                 _account.NumberOfStocks += numberOfShares;
+                                _account.Fees += Account.TRADE_FEE;
                                 SignalObservers();
                                 _portfolioObserver(portfolioName);
                             }
@@ -294,6 +295,7 @@ namespace Ticker501_MVC
                                 _account.CashBalance += (cost - Account.TRADE_FEE);
                                 _account.InvestedBalance -= stock.InvestedBalance;
                                 _account.NumberOfStocks -= numberOfShares;
+                                _account.Fees += Account.TRADE_FEE;
                                 SignalObservers();
                                 _portfolioObserver(portfolioName);
                                 if (stock.NumberOfShares == 0)
@@ -321,7 +323,7 @@ namespace Ticker501_MVC
             }
             else
             {
-                _account.Portfolios.Add(portfolioName, new Portfolio());
+                _account.Portfolios.Add(portfolioName, new Portfolio(_database));
                 _addPortfolioObserver(portfolioName);
                 _portfolioObserver(portfolioName);
             }
@@ -341,6 +343,8 @@ namespace Ticker501_MVC
                 _account.InvestedBalance -= s.NumberOfShares * currentValue;
             }
 
+            _account.CashBalance -= Account.TRADE_FEE;
+            _account.Fees += Account.TRADE_FEE;
             _account.Portfolios.Remove(portfolioName);
 
             _deletePortfolioObserver(portfolioName);

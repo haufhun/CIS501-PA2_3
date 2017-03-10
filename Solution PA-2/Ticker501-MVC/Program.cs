@@ -47,8 +47,8 @@ namespace Ticker501_MVC
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var a = new Account();
             var db = new DataBase();
+            var a = new Account(db);
             var c = new Controller(a, db);
 
             var gpnForm = new GetPortfolioNameForm(c.AddPortfolio);

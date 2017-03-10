@@ -8,7 +8,7 @@ namespace Ticker501_MVC.Model.Interfaces
 
        int NumberOfStocks { get; set; }
 
-        decimal GainsLosses { get; set; }
+        decimal GainsLosses { get; }
         
        Dictionary<string, IStock> Stocks { get; set; }
 

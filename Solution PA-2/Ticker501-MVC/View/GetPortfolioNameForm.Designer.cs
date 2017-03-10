@@ -79,7 +79,7 @@
             this.AcceptButton = this.uxOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(486, 133);
+            this.ClientSize = new System.Drawing.Size(498, 133);
             this.ControlBox = false;
             this.Controls.Add(this.uxCancel);
             this.Controls.Add(this.uxOK);

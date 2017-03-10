@@ -61,7 +61,7 @@
             this.uxBuyStockListInfo.Location = new System.Drawing.Point(12, 58);
             this.uxBuyStockListInfo.MultiSelect = false;
             this.uxBuyStockListInfo.Name = "uxBuyStockListInfo";
-            this.uxBuyStockListInfo.Size = new System.Drawing.Size(478, 326);
+            this.uxBuyStockListInfo.Size = new System.Drawing.Size(478, 400);
             this.uxBuyStockListInfo.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.uxBuyStockListInfo.TabIndex = 29;
             this.uxBuyStockListInfo.UseCompatibleStateImageBehavior = false;
@@ -217,7 +217,7 @@
             this.AcceptButton = this.uxBuyStockBttn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1113, 429);
+            this.ClientSize = new System.Drawing.Size(1125, 470);
             this.ControlBox = false;
             this.Controls.Add(this.uxBuyStockListInfo);
             this.Controls.Add(this.label3);
