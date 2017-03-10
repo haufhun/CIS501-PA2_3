@@ -96,7 +96,6 @@ namespace Ticker501_MVC.View
             //Clear
             uxAmountTxtBox.Clear();
 
-            //Need a handler for this?
             Hide();
         }
 
@@ -110,7 +109,6 @@ namespace Ticker501_MVC.View
             //clear
             uxAmountTxtBox.Clear();
 
-            //Need a handler for this?
             Hide();
         }
     }

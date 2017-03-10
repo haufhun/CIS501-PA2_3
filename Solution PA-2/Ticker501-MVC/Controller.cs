@@ -49,6 +49,11 @@ namespace Ticker501_MVC
         private DisplayErrorMessageObserver _displayErrorMessageObserver;
 
         /// <summary>
+        /// The portfolio that is currently selected.
+        /// </summary>
+        private string _selectedPortfolio = null;
+
+        /// <summary>
         /// contructs the Controller and initialized the account private field
         /// </summary>
         /// <param name="a">Accoutn object</param>
@@ -125,8 +130,9 @@ namespace Ticker501_MVC
         /// <summary>
         /// Will update the info on the portfolio tab when a new portfolio is selected
         /// </summary>
-        public void DisplayPortfolioSelectedObserver(string portfolioName)
+        public void DisplayPortfolioSelected(string portfolioName)
         {
+            _selectedPortfolio = portfolioName;
             _portfolioObserver(portfolioName);
         }
 
@@ -188,6 +194,7 @@ namespace Ticker501_MVC
             {
                 _account.CashBalance += toAdd;
                 SignalObservers();
+                _portfolioObserver(_selectedPortfolio);
             }
             else
             {
@@ -202,10 +209,11 @@ namespace Ticker501_MVC
         public void WithdrawFunds(decimal cash)
         {
             var toWithdraw = cash + Account.TRANSFER_FEE;
-            if ( toWithdraw < _account.CashBalance)
+            if ( toWithdraw <= _account.CashBalance)
             {
                 _account.CashBalance -= toWithdraw;
                 SignalObservers();
+                _portfolioObserver(_selectedPortfolio);
             }
             else
             {
@@ -325,6 +333,7 @@ namespace Ticker501_MVC
             else
             {
                 _account.Portfolios.Add(portfolioName, new Portfolio(_database));
+                _selectedPortfolio = portfolioName;
                 _addPortfolioObserver(portfolioName);
                 _portfolioObserver(portfolioName);
             }
