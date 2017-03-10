@@ -159,10 +159,10 @@ namespace Ticker501_MVC
             }
             else if (form.Name.Contains("Sell"))
             {
-                _sellStockObserver();
                 var parent = (sender as ToolStripMenuItem).OwnerItem;
                 var name = parent.Text;
                 (form as SellStocksForm).RegisterPortfolioName(name);
+                _sellStockObserver();
             }
         }
 
