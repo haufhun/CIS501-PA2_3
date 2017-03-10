@@ -26,7 +26,7 @@ namespace Ticker501_MVC.View
         /// <param name="e"></param>
         private void uxPNameTxtBox_TextChanged(object sender, EventArgs e)
         {
-            uxOK.Enabled = uxPNameTxtBox.Text.Length > 0;
+            uxOK.Enabled = uxPNameTxtBox.Text.Length > 0 && uxPNameTxtBox.Text.Length < 15;
         }
         /// <summary>
         /// The user clicks OK, call the handler, clear and then Hide the form.

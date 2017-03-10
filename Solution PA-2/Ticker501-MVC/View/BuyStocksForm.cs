@@ -116,6 +116,21 @@ namespace Ticker501_MVC.View
                     break;
             }
         }
+        /// <summary>
+        /// Makes sure what the amount the dollar amount they are trying to buy is a decimal.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uxAmountTxtBox_TextChanged(object sender, EventArgs e)
+        {
+            var text = (sender as TextBox).Text;
+
+            decimal temp;
+            if (!decimal.TryParse(text, out temp))
+            {
+                uxBuyStockBttn.Enabled = false;
+            }
+        }
 
 
         /// <summary>
