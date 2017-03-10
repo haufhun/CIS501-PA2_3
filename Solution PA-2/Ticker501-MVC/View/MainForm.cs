@@ -546,7 +546,5 @@ namespace Ticker501_MVC.View
                 l.ForeColor = Color.SeaGreen;
             }
         }
-
-        
     }
 }
