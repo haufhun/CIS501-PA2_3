@@ -38,7 +38,6 @@ namespace Ticker501_MVC.View
             _addPortfolio(uxPNameTxtBox.Text);
             uxPNameTxtBox.Clear();
 
-            //Need a handler for this?
             Hide();
         }
         /// <summary>
@@ -51,7 +50,6 @@ namespace Ticker501_MVC.View
             //clear
             uxPNameTxtBox.Clear();
 
-            //Need a handler for this?
             Hide();
         }
 

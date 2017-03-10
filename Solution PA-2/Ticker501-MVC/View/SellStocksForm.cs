@@ -80,13 +80,6 @@ namespace Ticker501_MVC.View
 
                 var numberOfShares = Convert.ToInt32(uxNumberOfShares.Value);
                 _sellStocksHandler(_portfolioName, tickerName, numberOfShares);
-                
-                //var cost =
-                //(numberOfShares *
-                // Convert.ToDecimal(uxSellStockListInfo.SelectedItems[0].SubItems[2].Text.Substring(1))).ToString(
-                //    "c");
-                //uxResultLabel.Text = "You sold " + numberOfShares + " share(s) of " + tickerName +
-                //                      " for a total of " + cost;
             }
             else
             {
