@@ -378,6 +378,10 @@ namespace Ticker501_MVC
                             }
                             change = ((Convert.ToDecimal(r.Next(13)) + Convert.ToDecimal(3)) / Convert.ToDecimal(100))*sign;
                             decimal newAmount = t.Item3 + t.Item3 * change;
+                            if(newAmount<0)
+                            {
+                                newAmount = 0;
+                            }
                             Tuple<string, string, decimal> x = new Tuple<string, string, decimal>(t.Item1, t.Item2, newAmount);
                             d.Add(t.Item1, x);
                         }
@@ -398,6 +402,10 @@ namespace Ticker501_MVC
                             }
                             change = ((Convert.ToDecimal(r.Next(7)) + Convert.ToDecimal(2)) / Convert.ToDecimal(100)) * sign;
                             decimal newAmount = t.Item3 + t.Item3 * change;
+                            if (newAmount < 0)
+                            {
+                                newAmount = 0;
+                            }
                             Tuple<string, string, decimal> x = new Tuple<string, string, decimal>(t.Item1, t.Item2, newAmount);
                             d.Add(t.Item1, x);
                         }
@@ -421,6 +429,10 @@ namespace Ticker501_MVC
                             }
                             change = ((Convert.ToDecimal(r.Next(4)) + Convert.ToDecimal(1)) / Convert.ToDecimal(100)) * sign;
                             decimal newAmount = t.Item3 + t.Item3 * change;
+                            if (newAmount < 0)
+                            {
+                                newAmount = 0;
+                            }
                             Tuple<string, string, decimal> x = new Tuple<string, string, decimal>(t.Item1, t.Item2, newAmount);
                             d.Add(t.Item1, x);
                         }
